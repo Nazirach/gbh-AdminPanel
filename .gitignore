@@ -30,3 +30,7 @@ yarn-error.log*
 /.idea
 /.vscode
 Admin Panel/
+
+database_backups/
+*.sql
+*.sql.gz
