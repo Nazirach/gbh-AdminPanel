@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('content')
     <div class="page-wrapper">
         <div class="row page-titles">
@@ -592,7 +592,7 @@
             });
 
             provider.get().then(async function(snapshots) {
-                var providerData = snapshots.data();
+                var providerData = snapshots.data() || {};
                 if (providerData.auto_approve_provider) {
                     $("#auto_approve_provider").prop('checked', true);
                 }
@@ -667,7 +667,7 @@
             });
 
             refNotificationSetting.get().then(async function(snapshots) {
-                var notificationData = snapshots.data();
+                var notificationData = snapshots.data() || {};
                 if (notificationData.senderId != '' && notificationData.senderId != null) {
                     $('#sender_id').val(shortString(notificationData.senderId));
                 }
@@ -1142,3 +1142,5 @@
         }
     </script>
 @endsection
+
+
