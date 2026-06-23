@@ -531,5 +531,7 @@
             }).then(function(result) {});
         }
     });
+    }
 </script>
 @endsection
+

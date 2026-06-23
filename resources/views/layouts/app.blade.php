@@ -751,6 +751,9 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <script>
+    window.firebaseClientReady = false;
+    window.firebaseDb = null;
+
     var firebaseConfig = {
         apiKey: "{{ env('FIREBASE_API_KEY') }}",
         authDomain: "{{ env('FIREBASE_AUTH_DOMAIN') }}",
@@ -762,9 +765,19 @@
     };
 
     if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
-        console.error("Firebase config missing: check FIREBASE_* env");
-    } else if (!firebase.apps || firebase.apps.length === 0) {
-        firebase.initializeApp(firebaseConfig);
+        console.warn("Firebase config missing, skipping Firebase client initialization");
+    } else {
+        try {
+            if (!firebase.apps || firebase.apps.length === 0) {
+                firebase.initializeApp(firebaseConfig);
+            }
+            window.firebaseDb = firebase.firestore();
+            window.firebaseClientReady = true;
+        } catch (error) {
+            window.firebaseClientReady = false;
+            window.firebaseDb = null;
+            console.warn("Firebase initialization failed, skipping Firebase client initialization", error);
+        }
     }
 </script>
     <script src="https://unpkg.com/geofirestore@5.2.0/dist/geofirestore.js"></script>
@@ -833,12 +846,15 @@
     </script>
     <script type="text/javascript">
 
-        var languages_list_main = [];
-        var database = firebase.firestore();
-        var geoFirestore = new GeoFirestore(database);
-        var createdAtman = firebase.firestore.Timestamp.fromDate(new Date());
-        var createdAt = { _nanoseconds: createdAtman.nanoseconds, _seconds: createdAtman.seconds };
-        var mapType = 'ONLINE';
+        if (!window.firebaseClientReady || !window.firebaseDb) {
+            console.warn("Firebase config missing, skipping Firebase client initialization");
+        } else {
+            var languages_list_main = [];
+            var database = window.firebaseDb;
+            var geoFirestore = new GeoFirestore(database);
+            var createdAtman = firebase.firestore.Timestamp.fromDate(new Date());
+            var createdAt = { _nanoseconds: createdAtman.nanoseconds, _seconds: createdAtman.seconds };
+            var mapType = 'ONLINE';
 
         var sosInitialized = false; 
         database.collection('SOS').onSnapshot((snapshot) => {
@@ -1484,6 +1500,7 @@
 
 </body>
 </html>
+
 
 
 

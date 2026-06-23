@@ -1,13 +1,30 @@
 
-var firebaseConfig = {
-    apiKey: $.decrypt($.cookie('XSRF-TOKEN-AK')),
-    authDomain: $.decrypt($.cookie('XSRF-TOKEN-AD')),
-    databaseURL: $.decrypt($.cookie('XSRF-TOKEN-DU')),
-    projectId: $.decrypt($.cookie('XSRF-TOKEN-PI')),
-    storageBucket: $.decrypt($.cookie('XSRF-TOKEN-SB')),
-    messagingSenderId: $.decrypt($.cookie('XSRF-TOKEN-MS')),
-    appId: $.decrypt($.cookie('XSRF-TOKEN-AI')),
-    measurementId: $.decrypt($.cookie('XSRF-TOKEN-MI'))
+function safeFirebaseCookieDecrypt(cookieName) {
+    try {
+        var cookieValue = $.cookie(cookieName);
+        if (!cookieValue) {
+            return '';
+        }
+        return $.decrypt(cookieValue) || '';
+    } catch (error) {
+        return '';
+    }
 }
 
-if (!firebase.apps || firebase.apps.length === 0) { firebase.initializeApp(firebaseConfig); }
+var firebaseConfig = {
+    apiKey: safeFirebaseCookieDecrypt('XSRF-TOKEN-AK'),
+    authDomain: safeFirebaseCookieDecrypt('XSRF-TOKEN-AD'),
+    databaseURL: safeFirebaseCookieDecrypt('XSRF-TOKEN-DU'),
+    projectId: safeFirebaseCookieDecrypt('XSRF-TOKEN-PI'),
+    storageBucket: safeFirebaseCookieDecrypt('XSRF-TOKEN-SB'),
+    messagingSenderId: safeFirebaseCookieDecrypt('XSRF-TOKEN-MS'),
+    appId: safeFirebaseCookieDecrypt('XSRF-TOKEN-AI'),
+    measurementId: safeFirebaseCookieDecrypt('XSRF-TOKEN-MI')
+}
+
+if (firebaseConfig.apiKey && firebaseConfig.projectId) {
+    if (!firebase.apps || firebase.apps.length === 0) { firebase.initializeApp(firebaseConfig); }
+} else {
+    console.warn("Firebase cookie config missing, skipping secondary init");
+}
+
