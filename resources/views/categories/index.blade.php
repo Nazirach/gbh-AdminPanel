@@ -95,7 +95,11 @@
         checkDeletePermission = true;
     }
 
-    var database = firebase.firestore();
+    if (!window.firebaseClientReady || !window.firebaseDb) {
+        console.warn('Firebase client is not ready. Please check Firebase configuration.');
+        return;
+    }
+    var database = window.firebaseDb;
     var offest = 1;
     var pagesize = 10;
     var end = null;
@@ -543,9 +547,7 @@ async function getProductTotal(id) {
 
     });
 
+    }
 </script>
-
-
-
 @endsection
 

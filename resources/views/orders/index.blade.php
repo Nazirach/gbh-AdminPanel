@@ -296,7 +296,11 @@
             checkDeletePermission = true;
         }
 
-        var database = firebase.firestore();
+        if (!window.firebaseClientReady || !window.firebaseDb) {
+            console.warn('Firebase client is not ready. Please check Firebase configuration.');
+            return;
+        }
+        var database = window.firebaseDb;
         var refData = database.collection('vendor_orders');
         if (section_id) {
             refData = refData.where('section_id', '==', section_id);
@@ -370,7 +374,7 @@
             ref = refData.orderBy('createdAt', 'desc');
         }
 
-        const sectionsRef = firebase.firestore().collection('sections');
+        const sectionsRef = window.firebaseDb.collection('sections');
         $('.status_selector').select2({
             placeholder: '{{ trans('lang.status') }}',
             minimumResultsForSearch: Infinity,

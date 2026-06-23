@@ -190,7 +190,11 @@
         }
     }
 
-    var database = firebase.firestore();
+    if (!window.firebaseClientReady || !window.firebaseDb) {
+        console.warn('Firebase client is not ready. Please check Firebase configuration.');
+        return;
+    }
+    var database = window.firebaseDb;
     var currentCurrency = '';
     var currencyAtRight = false;
     var decimal_degits = 0;
@@ -1197,9 +1201,7 @@ async function deleteProductData(productId) {
 
 }
 
+    }
 </script>
-
-
-
 @endsection
 

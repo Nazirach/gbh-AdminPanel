@@ -196,7 +196,11 @@
 @section('scripts')
 
     <script type="text/javascript">
-        var database = firebase.firestore();
+        if (!window.firebaseClientReady || !window.firebaseDb) {
+            console.warn('Firebase client is not ready. Please check Firebase configuration.');
+            return;
+        }
+        var database = window.firebaseDb;
         var user_permissions = '<?php echo @session('user_permissions'); ?>';
         user_permissions = Object.values(JSON.parse(user_permissions));
         var checkDeletePermission = false;
