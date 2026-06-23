@@ -528,10 +528,13 @@ if (!active_id) {
             function debounce(func, wait) {
                 let timeout;
                 const context = this;
-                return function(...args) {
-                    clearTimeout(timeout);
-                    timeout = setTimeout(() => func.apply(context, args), wait);
-                };
+                return function () {
+                const args = arguments;
+                clearTimeout(timeout);
+                timeout = setTimeout(function () {
+                    func.apply(context, args);
+                }, wait);
+            };
             }
             $('#search-input').on('input', debounce(function() {
                 const searchValue = $(this).val();

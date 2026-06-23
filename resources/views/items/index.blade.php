@@ -715,12 +715,12 @@
 
             const context = this;
 
-            return function (...args) {
-
+            return function () {
+                const args = arguments;
                 clearTimeout(timeout);
-
-                timeout = setTimeout(() => func.apply(context, args), wait);
-
+                timeout = setTimeout(function () {
+                    func.apply(context, args);
+                }, wait);
             };
 
         }
