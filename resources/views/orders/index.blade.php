@@ -787,8 +787,9 @@
                                     var time = '';
                                     if (childData.hasOwnProperty("createdAt")) {
                                         try {
-                                            date = childData.createdAt.toDate().toDateString();
-                                            time = childData.createdAt.toDate().toLocaleTimeString('en-US');
+                                            var formattedCreatedAt = formatOrderDateValue(childData.createdAt);
+                                            date = formattedCreatedAt.date;
+                                            time = formattedCreatedAt.time;
                                         } catch (err) {
                                         }
                                     }
@@ -814,8 +815,8 @@
                                 let aValue = a[orderByField];
                                 let bValue = b[orderByField];
                                 if (orderByField === 'createdAt' && a[orderByField] != '' && b[orderByField] != '' && a[orderByField] != null && b[orderByField] != null) {
-                                    aValue = a[orderByField] ? new Date(a[orderByField].toDate()).getTime() : 0;
-                                    bValue = b[orderByField] ? new Date(b[orderByField].toDate()).getTime() : 0;
+                                    aValue = normalizeOrderDateValue(a[orderByField]);
+                                    bValue = normalizeOrderDateValue(b[orderByField]);
                                 } else if (orderByField === 'amount') {
                                     aValue = a[orderByField] ? parseFloat(String(a[orderByField]).replace(/[^0-9.]/g, '')) || 0 : 0;
                                     bValue = b[orderByField] ? parseFloat(String(b[orderByField]).replace(/[^0-9.]/g, '')) || 0 : 0;
@@ -939,6 +940,59 @@
                 }, 300));
             });
         });
+        function normalizeOrderDateValue(value) {
+            if (!value) {
+                return 0;
+            }
+
+            try {
+                if (typeof value.toDate === 'function') {
+                    return value.toDate().getTime();
+                }
+
+                if (value instanceof Date) {
+                    return value.getTime();
+                }
+
+                if (typeof value === 'object') {
+                    if (typeof value.seconds !== 'undefined') {
+                        return new Date(value.seconds * 1000).getTime();
+                    }
+
+                    if (typeof value._seconds !== 'undefined') {
+                        return new Date(value._seconds * 1000).getTime();
+                    }
+                }
+
+                if (typeof value === 'number') {
+                    return value;
+                }
+
+                if (typeof value === 'string') {
+                    var parsed = Date.parse(value);
+                    return isNaN(parsed) ? 0 : parsed;
+                }
+            } catch (error) {
+                return 0;
+            }
+
+            return 0;
+        }
+
+        function formatOrderDateValue(value) {
+            var timestamp = normalizeOrderDateValue(value);
+
+            if (!timestamp) {
+                return { date: '', time: '' };
+            }
+
+            var dateObject = new Date(timestamp);
+
+            return {
+                date: dateObject.toDateString(),
+                time: dateObject.toLocaleTimeString('en-US')
+            };
+        }
         async function buildHTML(val) {
             var html = [];
             var id = val.id;
@@ -1088,8 +1142,9 @@
             var time = '';
             if (val.hasOwnProperty("createdAt")) {
                 try {
-                    date = val.createdAt.toDate().toDateString();
-                    time = val.createdAt.toDate().toLocaleTimeString('en-US');
+                    var formattedOrderDate = formatOrderDateValue(val.createdAt);
+                    date = formattedOrderDate.date;
+                    time = formattedOrderDate.time;
                 } catch (err) {
                 }
                 html.push('<td class="dt-time">' + date + ' <br>' + time + '</td>');
@@ -1270,11 +1325,12 @@
             let tip_amount = parseFloat(snapshotsProducts.tip_amount || 0);
             let deliveryCharge = parseFloat(snapshotsProducts.deliveryCharge || 0);
             let platformFee = parseFloat(snapshotsProducts.platformFee || 0);
-            let packagingCharge = parseFloat(snapshotsProducts.vendor.packagingCharge || 0);
+            let packagingCharge = parseFloat((snapshotsProducts.vendor && snapshotsProducts.vendor.packagingCharge) ? snapshotsProducts.vendor.packagingCharge : 0);
             let packagingChargeEnable = snapshotsProducts.packagingChargeEnable;
             //  Calculate subtotal and product extras
-            for (let i = 0; i < snapshotsProducts.products.length; i++) {
-                let product = snapshotsProducts.products[i];
+            let products = Array.isArray(snapshotsProducts.products) ? snapshotsProducts.products : [];
+            for (let i = 0; i < products.length; i++) {
+                let product = products[i];
                 let basePrice = (product.discountPrice && parseFloat(product.discountPrice) > 0) ? parseFloat(product.discountPrice) : parseFloat(product.price);
                 let itemGross = (basePrice + parseFloat(product.extras_price || 0)) * parseInt(product.quantity);
                 order_subtotal += itemGross;
@@ -1288,7 +1344,7 @@
             // Calculate item-level taxes (if product-level)
             if (snapshotsProducts.taxScope === "product") {
                 let itemSubtotal = order_subtotal;
-                snapshotsProducts.products.forEach(product => {
+                products.forEach(product => {
                     let basePrice = (product.discountPrice && parseFloat(product.discountPrice) > 0) ? parseFloat(product.discountPrice) : parseFloat(product.price);
                     let itemGross = (basePrice + parseFloat(product.extras_price || 0)) * parseInt(product.quantity);
                     let itemDiscount = (itemSubtotal > 0) ? (itemGross / itemSubtotal) * total_discount : 0;
