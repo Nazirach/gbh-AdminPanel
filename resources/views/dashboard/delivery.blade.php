@@ -621,13 +621,16 @@
 
         var active_id = "{{$id}}";
         var active_type = "{{$type}}";
-        var db = firebase.firestore();
+        if (!window.firebaseClientReady || !window.firebaseDb) {
+            console.warn('Firebase client is not ready. Please check Firebase configuration.');
+        } else {
+        var db = window.firebaseDb;
         var currency = db.collection('settings');
 
         var currentCurrency = '';
         var currencyAtRight = false;
         var decimal_degits = 0;
-        var refCurrency = database.collection('currencies').where('isActive', '==', true);
+        var refCurrency = db.collection('currencies').where('isActive', '==', true);
         refCurrency.get().then(async function (snapshots) {
             var currencyData = snapshots.docs[0].data();
             currentCurrency = currencyData.symbol;
@@ -1743,6 +1746,7 @@
             };
         }
 
+        }
     </script>
 
 @endsection
