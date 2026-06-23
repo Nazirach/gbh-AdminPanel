@@ -298,8 +298,7 @@
 
         if (!window.firebaseClientReady || !window.firebaseDb) {
             console.warn('Firebase client is not ready. Please check Firebase configuration.');
-            return;
-        }
+        } else {
         var database = window.firebaseDb;
         var refData = database.collection('vendor_orders');
         if (section_id) {

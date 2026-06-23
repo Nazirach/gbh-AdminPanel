@@ -97,8 +97,7 @@
 
     if (!window.firebaseClientReady || !window.firebaseDb) {
         console.warn('Firebase client is not ready. Please check Firebase configuration.');
-        return;
-    }
+    } else {
     var database = window.firebaseDb;
     var offest = 1;
     var pagesize = 10;

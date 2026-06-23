@@ -93,8 +93,7 @@
     
     if (!window.firebaseClientReady || !window.firebaseDb) {
         console.warn('Firebase client is not ready. Please check Firebase configuration.');
-        return;
-    }
+    } else {
     var database = window.firebaseDb;
     var ref = database.collection('users').where("role", "in", ["customer"]).orderBy('createdAt', 'desc');
     var user_permissions = '<?php echo @session('user_permissions') ?>';

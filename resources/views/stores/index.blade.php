@@ -198,8 +198,7 @@
     <script type="text/javascript">
         if (!window.firebaseClientReady || !window.firebaseDb) {
             console.warn('Firebase client is not ready. Please check Firebase configuration.');
-            return;
-        }
+        } else {
         var database = window.firebaseDb;
         var user_permissions = '<?php echo @session('user_permissions'); ?>';
         user_permissions = Object.values(JSON.parse(user_permissions));
