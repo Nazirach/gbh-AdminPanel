@@ -261,6 +261,56 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* GHALBIT dashboard dark readability fix */
+        .ghalbit-dashboard-shell .card.border,
+        .ghalbit-dashboard-shell .card.card-box-with-icon.border {
+            background:
+                linear-gradient(180deg, rgba(4, 25, 49, 0.98), rgba(2, 18, 36, 0.96)) !important;
+            border-color: rgba(88, 205, 255, 0.24) !important;
+            box-shadow: 0 18px 42px rgba(0, 10, 24, 0.34) !important;
+        }
+
+        .ghalbit-dashboard-shell .card-left-title,
+        .ghalbit-dashboard-shell .card-title,
+        .ghalbit-dashboard-shell .card h3,
+        .ghalbit-dashboard-shell .card h4,
+        .ghalbit-dashboard-shell .card p,
+        .ghalbit-dashboard-shell .card span,
+        .ghalbit-dashboard-shell .table th,
+        .ghalbit-dashboard-shell .table td,
+        .ghalbit-dashboard-shell .table a {
+            color: #dff6ff !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .ghalbit-dashboard-shell .total_earning,
+        .ghalbit-dashboard-shell .text-dark-2.font-bold,
+        .ghalbit-dashboard-shell #earnings_count,
+        .ghalbit-dashboard-shell #admincommission_count,
+        .ghalbit-dashboard-shell #vendor_count,
+        .ghalbit-dashboard-shell #order_count,
+        .ghalbit-dashboard-shell #users_count,
+        .ghalbit-dashboard-shell #driver_count {
+            color: #64eaff !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            text-shadow: 0 0 14px rgba(0, 221, 255, 0.32);
+            font-weight: 800 !important;
+        }
+
+        .ghalbit-dashboard-shell .up-down-list {
+            color: #9eefff !important;
+            opacity: 1 !important;
+        }
+
+        .ghalbit-dashboard-shell .box-icon.ab {
+            background: linear-gradient(145deg, rgba(0, 204, 255, 0.12), rgba(41, 119, 255, 0.20)) !important;
+            box-shadow:
+                inset 0 0 0 1px rgba(116, 218, 255, 0.22),
+                0 0 24px rgba(0, 204, 255, 0.10) !important;
+        }
+
     </style>
 
     <div id="main-wrapper" class="page-wrapper" style="min-height: 207px;">
@@ -1427,7 +1477,7 @@
 
                         ctx.save();
                         ctx.font = "16px Arial";
-                        ctx.fillStyle = "#111";
+                        ctx.fillStyle = "#dff6ff";
                         ctx.textAlign = "center";
                         ctx.textBaseline = "middle";
                         ctx.fillText("{{trans('lang.total_orders')}}", centerX, centerY - 20);
