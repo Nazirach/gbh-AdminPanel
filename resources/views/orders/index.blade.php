@@ -1507,6 +1507,7 @@
             await driverRef.update({ orderRequestData });
         }
 
+        }
     </script>
 @endsection
 

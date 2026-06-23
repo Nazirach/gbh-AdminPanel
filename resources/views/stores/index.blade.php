@@ -936,6 +936,7 @@ if (!active_id) {
                 }
             }
         });
+        }
     </script>
     
     <style>
