@@ -261,47 +261,120 @@
                 grid-template-columns: 1fr;
             }
         }
-        /* GHALBIT dashboard dark readability fix */
+        /* GHALBIT dashboard HIGH CONTRAST readability fix */
+        .ghalbit-dashboard-shell {
+            color: #eafcff !important;
+        }
+
         .ghalbit-dashboard-shell .card.border,
-        .ghalbit-dashboard-shell .card.card-box-with-icon.border {
-            background:
-                linear-gradient(180deg, rgba(4, 25, 49, 0.98), rgba(2, 18, 36, 0.96)) !important;
-            border-color: rgba(88, 205, 255, 0.24) !important;
-            box-shadow: 0 18px 42px rgba(0, 10, 24, 0.34) !important;
+        .ghalbit-dashboard-shell .card.card-box-with-icon.border,
+        .ghalbit-dashboard-shell .border.rounded,
+        .ghalbit-dashboard-shell .dashboard-box,
+        .ghalbit-dashboard-shell .widget-box,
+        .ghalbit-dashboard-shell .report-box {
+            background: linear-gradient(180deg, rgba(4, 25, 49, 0.98), rgba(2, 18, 36, 0.98)) !important;
+            border-color: rgba(88, 205, 255, 0.28) !important;
+            box-shadow: 0 18px 42px rgba(0, 10, 24, 0.38) !important;
         }
 
         .ghalbit-dashboard-shell .card-left-title,
         .ghalbit-dashboard-shell .card-title,
+        .ghalbit-dashboard-shell .card h1,
+        .ghalbit-dashboard-shell .card h2,
         .ghalbit-dashboard-shell .card h3,
         .ghalbit-dashboard-shell .card h4,
+        .ghalbit-dashboard-shell .card h5,
+        .ghalbit-dashboard-shell .card h6,
+        .ghalbit-dashboard-shell .title,
+        .ghalbit-dashboard-shell .main-title,
+        .ghalbit-dashboard-shell .box-title,
+        .ghalbit-dashboard-shell .chart-title,
+        .ghalbit-dashboard-shell .section-title,
+        .ghalbit-dashboard-shell label,
+        .ghalbit-dashboard-shell .form-label {
+            color: #f4fcff !important;
+            font-weight: 700 !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .ghalbit-dashboard-shell p,
+        .ghalbit-dashboard-shell span,
+        .ghalbit-dashboard-shell small,
+        .ghalbit-dashboard-shell .text-muted,
+        .ghalbit-dashboard-shell .sub-title,
         .ghalbit-dashboard-shell .card p,
-        .ghalbit-dashboard-shell .card span,
-        .ghalbit-dashboard-shell .table th,
-        .ghalbit-dashboard-shell .table td,
-        .ghalbit-dashboard-shell .table a {
-            color: #dff6ff !important;
+        .ghalbit-dashboard-shell .card span {
+            color: #bfefff !important;
             opacity: 1 !important;
             visibility: visible !important;
         }
 
         .ghalbit-dashboard-shell .total_earning,
         .ghalbit-dashboard-shell .text-dark-2.font-bold,
+        .ghalbit-dashboard-shell .font-bold,
+        .ghalbit-dashboard-shell .fw-bold,
+        .ghalbit-dashboard-shell .fw-700,
+        .ghalbit-dashboard-shell .counter,
+        .ghalbit-dashboard-shell .total_count,
+        .ghalbit-dashboard-shell [id$="_count"],
         .ghalbit-dashboard-shell #earnings_count,
         .ghalbit-dashboard-shell #admincommission_count,
         .ghalbit-dashboard-shell #vendor_count,
         .ghalbit-dashboard-shell #order_count,
         .ghalbit-dashboard-shell #users_count,
         .ghalbit-dashboard-shell #driver_count {
-            color: #64eaff !important;
+            color: #57e7ff !important;
             opacity: 1 !important;
             visibility: visible !important;
-            text-shadow: 0 0 14px rgba(0, 221, 255, 0.32);
             font-weight: 800 !important;
+            text-shadow: 0 0 16px rgba(0, 221, 255, 0.38);
+            letter-spacing: 0.3px;
         }
 
-        .ghalbit-dashboard-shell .up-down-list {
-            color: #9eefff !important;
+        .ghalbit-dashboard-shell .card .amount,
+        .ghalbit-dashboard-shell .card .number,
+        .ghalbit-dashboard-shell .card .count,
+        .ghalbit-dashboard-shell .card .price,
+        .ghalbit-dashboard-shell .card strong {
+            color: #7cf4ff !important;
+            font-weight: 800 !important;
+            text-shadow: 0 0 14px rgba(0, 221, 255, 0.30);
+        }
+
+        .ghalbit-dashboard-shell .table th,
+        .ghalbit-dashboard-shell .table td,
+        .ghalbit-dashboard-shell .table a,
+        .ghalbit-dashboard-shell table th,
+        .ghalbit-dashboard-shell table td,
+        .ghalbit-dashboard-shell table a {
+            color: #dff6ff !important;
             opacity: 1 !important;
+        }
+
+        .ghalbit-dashboard-shell .table thead th,
+        .ghalbit-dashboard-shell table thead th {
+            color: #9eefff !important;
+            font-weight: 700 !important;
+        }
+
+        .ghalbit-dashboard-shell .form-control,
+        .ghalbit-dashboard-shell .form-select,
+        .ghalbit-dashboard-shell select,
+        .ghalbit-dashboard-shell input {
+            background: rgba(8, 28, 52, 0.95) !important;
+            color: #eafcff !important;
+            border-color: rgba(88, 205, 255, 0.25) !important;
+        }
+
+        .ghalbit-dashboard-shell .form-control::placeholder,
+        .ghalbit-dashboard-shell input::placeholder {
+            color: #8fcde0 !important;
+        }
+
+        .ghalbit-dashboard-shell .btn,
+        .ghalbit-dashboard-shell button {
+            font-weight: 700 !important;
         }
 
         .ghalbit-dashboard-shell .box-icon.ab {
@@ -311,7 +384,26 @@
                 0 0 24px rgba(0, 204, 255, 0.10) !important;
         }
 
-    </style>
+        .ghalbit-dashboard-shell .apexcharts-legend-text,
+        .ghalbit-dashboard-shell .chartjs-render-monitor,
+        .ghalbit-dashboard-shell .highcharts-title,
+        .ghalbit-dashboard-shell .highcharts-axis-labels text,
+        .ghalbit-dashboard-shell .highcharts-legend-item text {
+            color: #dff6ff !important;
+            fill: #dff6ff !important;
+        }
+
+        .ghalbit-dashboard-shell #earnings_count,
+        .ghalbit-dashboard-shell #admincommission_count,
+        .ghalbit-dashboard-shell #vendor_count,
+        .ghalbit-dashboard-shell #order_count,
+        .ghalbit-dashboard-shell #users_count,
+        .ghalbit-dashboard-shell #driver_count {
+            font-size: 34px !important;
+            line-height: 1.15 !important;
+        }
+
+        </style>
 
     <div id="main-wrapper" class="page-wrapper" style="min-height: 207px;">
 
