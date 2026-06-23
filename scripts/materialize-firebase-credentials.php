@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 $base64 = getenv('FIREBASE_CREDENTIALS_JSON_BASE64');
 if ($base64 === false || trim($base64) === '') {
-    fwrite(STDERR, "[firebase-materialize] Missing FIREBASE_CREDENTIALS_JSON_BASE64\n");
-    exit(1);
+    fwrite(STDOUT, "[firebase-materialize] Missing FIREBASE_CREDENTIALS_JSON_BASE64, skipping credentials materialization\n");
+    exit(0);
 }
 
 $decoded = base64_decode($base64, true);
