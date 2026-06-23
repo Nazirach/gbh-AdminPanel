@@ -1493,7 +1493,7 @@
 
             return checkFlag;
         }
-        
+        }
     </script>
 
     @yield('scripts')
