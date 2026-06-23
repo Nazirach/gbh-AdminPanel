@@ -293,13 +293,19 @@
 
     $(document).ready(async function () {
 
-        let sectionSnap = await database.collection('sections').doc(section_id).get();
-        let sectionData = sectionSnap.data();
-        if (sectionData.dine_in_active === true) {
-            $(".dine_in_future").show();
-        }
-        if (sectionData.is_product_details === true) {
-            $(".item_type_selector_div").show();
+        if (section_id) {
+            let sectionSnap = await database.collection('sections').doc(section_id).get();
+            let sectionData = sectionSnap.exists ? sectionSnap.data() : null;
+
+            if (sectionData && sectionData.dine_in_active === true) {
+                $(".dine_in_future").show();
+            }
+
+            if (sectionData && sectionData.is_product_details === true) {
+                $(".item_type_selector_div").show();
+            }
+        } else {
+            console.warn('section_id cookie is empty; skipping section detail lookup on items page.');
         }
         
         $('.item_type_selector').select2({
