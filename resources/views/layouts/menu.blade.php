@@ -5,8 +5,58 @@ $service_type = @$_COOKIE['service_type'];
 @endphp
 
 <div class="sidebar-search">
+    <div class="ghalbit-sidebar-brand">
+        <div class="ghalbit-sidebar-brand__mark">⚓</div>
+        <div class="ghalbit-sidebar-brand__copy">
+            <strong>GHALBIT MARITRONIX</strong>
+            <span>Integrated Maritime &amp; Land Intelligence Platform</span>
+        </div>
+    </div>
     <input type="text" id="sideBarSearchInput" placeholder="{{trans('lang.search_menu')}}" autocomplete="one-time-code" onkeyup="filterMenu()">
 </div>
+<style>
+    .ghalbit-sidebar-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 14px;
+        padding: 14px 14px 12px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(6, 27, 48, 0.96), rgba(4, 17, 33, 0.98));
+        border: 1px solid rgba(52, 173, 255, 0.16);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .ghalbit-sidebar-brand__mark {
+        width: 48px;
+        height: 48px;
+        flex: 0 0 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(186, 246, 255, 0.24), rgba(47, 93, 255, 0.24));
+        color: #42d8ff;
+        font-size: 1.45rem;
+        border: 1px solid rgba(66, 216, 255, 0.24);
+    }
+
+    .ghalbit-sidebar-brand__copy strong {
+        display: block;
+        color: #eef7ff;
+        font-size: .9rem;
+        line-height: 1.2;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+    }
+
+    .ghalbit-sidebar-brand__copy span {
+        display: block;
+        margin-top: 4px;
+        color: #91badf;
+        font-size: .74rem;
+        line-height: 1.45;
+    }
+</style>
 
 <nav class="sidebar-nav">
 

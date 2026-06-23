@@ -1,6 +1,86 @@
 @extends('layouts.app')
 @section('content')
     <div class="page-wrapper">
+        <style>
+            .ghalbit-settings-intro {
+                margin: 0 0 22px;
+                padding: 24px 26px;
+                border-radius: 24px;
+                border: 1px solid rgba(0, 217, 255, 0.16);
+                background: linear-gradient(135deg, rgba(4, 27, 45, 0.96), rgba(7, 36, 58, 0.92));
+                box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+                color: #effbff;
+            }
+
+            .ghalbit-settings-intro__eyebrow {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 12px;
+                color: #72e8ff;
+                font-size: .82rem;
+                font-weight: 700;
+                letter-spacing: .12em;
+                text-transform: uppercase;
+            }
+
+            .ghalbit-settings-intro__eyebrow::before {
+                content: "";
+                width: 40px;
+                height: 1px;
+                background: linear-gradient(90deg, rgba(114, 232, 255, 0), rgba(114, 232, 255, 1));
+            }
+
+            .ghalbit-settings-intro h4 {
+                margin: 0 0 10px;
+                color: #ffffff;
+                font-size: 1.9rem;
+                font-weight: 800;
+            }
+
+            .ghalbit-settings-intro p {
+                margin: 0;
+                max-width: 840px;
+                color: #a8cce0;
+                line-height: 1.7;
+            }
+
+            .ghalbit-settings-grid {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 12px;
+                margin-top: 18px;
+            }
+
+            .ghalbit-settings-grid div {
+                padding: 14px 16px;
+                border-radius: 16px;
+                border: 1px solid rgba(0, 217, 255, 0.13);
+                background: rgba(255,255,255,.04);
+                color: #dff8ff;
+                font-weight: 700;
+            }
+
+            .ghalbit-settings-grid span {
+                display: block;
+                margin-top: 4px;
+                color: #91bed6;
+                font-size: .86rem;
+                font-weight: 500;
+            }
+
+            @media (max-width: 991.98px) {
+                .ghalbit-settings-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+
+            @media (max-width: 575.98px) {
+                .ghalbit-settings-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
                 <h3 class="text-themecolor">{{ trans('lang.app_setting_global') }}</h3>
@@ -13,6 +93,21 @@
             </div>
         </div>
         <div class="card-body">
+            <div class="ghalbit-settings-intro">
+                <span class="ghalbit-settings-intro__eyebrow">GHALBIT MARITRONIX</span>
+                <h4>Integrated Maritime &amp; Land Intelligence Platform</h4>
+                <p>
+                    Panel ini merangkum pengaturan inti sistem dalam nuansa command center modern.
+                    Semua area tetap memakai struktur dasar yang sama, hanya tampilannya yang dirapikan
+                    agar lebih premium, fokus, dan siap operasional.
+                </p>
+                <div class="ghalbit-settings-grid">
+                    <div>General<span>Identitas, warna panel, dan branding aplikasi.</span></div>
+                    <div>Application<span>Map, contact center, wallet, dan pengaturan app.</span></div>
+                    <div>Notifications<span>Alur pemberitahuan dan integrasi operasional.</span></div>
+                    <div>System<span>Parameter inti yang menjaga kontrol panel tetap stabil.</span></div>
+                </div>
+            </div>
             <div class="error_top" style="display:none"></div>
             <div class="row vendor_payout_create">
                 <div class="vendor_payout_create-inner">

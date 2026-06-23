@@ -2,6 +2,267 @@
 
 @section('content')
 
+    <style>
+        .ghalbit-dashboard-shell {
+            position: relative;
+        }
+
+        .ghalbit-dashboard-shell::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at top left, rgba(31, 212, 255, 0.16), transparent 30%),
+                radial-gradient(circle at top right, rgba(58, 123, 255, 0.2), transparent 32%);
+            pointer-events: none;
+        }
+
+        .ghalbit-dashboard-shell > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .ghalbit-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 32px;
+            margin-bottom: 24px;
+            border-radius: 28px;
+            border: 1px solid rgba(77, 176, 255, 0.24);
+            background:
+                linear-gradient(135deg, rgba(3, 18, 39, 0.96), rgba(7, 34, 74, 0.93)),
+                radial-gradient(circle at top right, rgba(0, 219, 255, 0.18), transparent 26%);
+            box-shadow: 0 24px 60px rgba(2, 12, 29, 0.28);
+        }
+
+        .ghalbit-hero::before,
+        .ghalbit-hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 999px;
+            opacity: .85;
+            pointer-events: none;
+        }
+
+        .ghalbit-hero::before {
+            right: -72px;
+            top: -48px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.24), transparent 72%);
+        }
+
+        .ghalbit-hero::after {
+            left: 28%;
+            bottom: -80px;
+            width: 320px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(46, 96, 255, 0.18), transparent 72%);
+        }
+
+        .ghalbit-hero__content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .ghalbit-hero__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            font-size: .8rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: #7fe3ff;
+        }
+
+        .ghalbit-hero__eyebrow::before {
+            content: "";
+            width: 42px;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(127, 227, 255, 0), rgba(127, 227, 255, 1));
+        }
+
+        .ghalbit-hero h1 {
+            margin: 0;
+            font-size: clamp(1.9rem, 4vw, 3.3rem);
+            font-weight: 800;
+            line-height: 1.04;
+            letter-spacing: .02em;
+            text-transform: uppercase;
+            color: #f8fbff;
+        }
+
+        .ghalbit-hero h1 span {
+            display: block;
+            color: #46caff;
+        }
+
+        .ghalbit-hero p {
+            max-width: 660px;
+            margin: 16px 0 0;
+            color: rgba(219, 239, 255, 0.86);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .ghalbit-hero__brand {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-width: 230px;
+            align-self: flex-start;
+            padding: 16px 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(90, 171, 255, 0.26);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+        }
+
+        .ghalbit-hero__brand img {
+            width: 58px;
+            height: 58px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .ghalbit-hero__brand strong {
+            display: block;
+            color: #f6fbff;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .ghalbit-hero__brand small {
+            display: block;
+            margin-top: 4px;
+            color: #8ecdf8;
+            line-height: 1.5;
+            font-size: .8rem;
+        }
+
+        .ghalbit-hero__pillbar {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .ghalbit-hero__pill {
+            padding: 14px 16px;
+            border-radius: 18px;
+            border: 1px solid rgba(86, 168, 255, 0.18);
+            background: rgba(255, 255, 255, 0.045);
+            color: #cbe8ff;
+        }
+
+        .ghalbit-hero__pill strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #ffffff;
+            font-size: .94rem;
+            font-weight: 700;
+        }
+
+        .ghalbit-hero__pill span {
+            font-size: .86rem;
+            line-height: 1.5;
+        }
+
+        .ghalbit-dashboard-shell .card.border,
+        .ghalbit-dashboard-shell .card.card-box-with-icon.border {
+            border: 1px solid rgba(100, 181, 255, 0.16) !important;
+            border-radius: 24px !important;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 251, 255, 0.96));
+            box-shadow: 0 16px 40px rgba(12, 34, 67, 0.08);
+            transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+        }
+
+        .ghalbit-dashboard-shell .card.border:hover,
+        .ghalbit-dashboard-shell .card.card-box-with-icon.border:hover {
+            transform: translateY(-3px);
+            border-color: rgba(59, 153, 255, 0.26) !important;
+            box-shadow: 0 24px 48px rgba(10, 37, 74, 0.14);
+        }
+
+        .ghalbit-dashboard-shell .card.card-box-with-icon .card-body,
+        .ghalbit-dashboard-shell .card.border .card-body {
+            padding: 1.25rem !important;
+        }
+
+        .ghalbit-dashboard-shell .box-icon.ab {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 72px;
+            height: 72px;
+            border-radius: 22px;
+            background: linear-gradient(145deg, rgba(9, 36, 77, 0.08), rgba(50, 190, 255, 0.18));
+            box-shadow: inset 0 0 0 1px rgba(97, 180, 255, 0.15);
+        }
+
+        .ghalbit-dashboard-shell .box-icon.ab img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+        }
+
+        .ghalbit-dashboard-shell .card-left-title {
+            color: #12345f !important;
+            letter-spacing: .01em;
+        }
+
+        .ghalbit-dashboard-shell .total_earning,
+        .ghalbit-dashboard-shell .text-dark-2.font-bold {
+            color: #031e43 !important;
+        }
+
+        .ghalbit-dashboard-shell .card-header.no-border {
+            padding: 1.25rem 1.25rem 0;
+        }
+
+        .ghalbit-dashboard-shell .card-title {
+            color: #092b55;
+            font-weight: 700;
+        }
+
+        .ghalbit-dashboard-shell .top-filter .btn-primary {
+            border: none;
+            background: linear-gradient(135deg, #265dff, #18b5ff);
+            box-shadow: 0 14px 28px rgba(38, 93, 255, 0.18);
+        }
+
+        .ghalbit-dashboard-shell .top-filter .btn-secondary {
+            border-color: rgba(71, 132, 199, 0.24);
+            background: #f7fbff;
+            color: #17406e;
+        }
+
+        @media (max-width: 991.98px) {
+            .ghalbit-hero {
+                padding: 24px;
+            }
+
+            .ghalbit-hero__content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .ghalbit-hero__brand {
+                width: 100%;
+            }
+
+            .ghalbit-hero__pillbar {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
     <div id="main-wrapper" class="page-wrapper" style="min-height: 207px;">
 
 
@@ -11,7 +272,45 @@
             </div>
         </div>
 
-        <div class="container-fluid">
+        <div class="container-fluid ghalbit-dashboard-shell">
+
+            <section class="ghalbit-hero">
+                <div class="ghalbit-hero__content">
+                    <div>
+                        <span class="ghalbit-hero__eyebrow">GHALBIT MARITRONIX</span>
+                        <h1>
+                            Kekuatan Laut
+                            <span>Untuk Masa Depan</span>
+                        </h1>
+                        <p>
+                            Integrated Maritime &amp; Land Intelligence Platform untuk operasi yang cerdas,
+                            terintegrasi, dan terhubung. Panel ini menjadi pusat kendali visual untuk
+                            memantau pergerakan bisnis, distribusi, dan layanan dari laut hingga darat.
+                        </p>
+                    </div>
+                    <div class="ghalbit-hero__brand">
+                        <img src="{{ asset('images/ghalbit-maritronix-logo.svg') }}" alt="GHALBIT MARITRONIX">
+                        <div>
+                            <strong>GHALBIT MARITRONIX</strong>
+                            <small>Integrated Maritime &amp; Land Intelligence Platform</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="ghalbit-hero__pillbar">
+                    <div class="ghalbit-hero__pill">
+                        <strong>Transportasi Dron Laut</strong>
+                        <span>Cerdas, cepat, dan siap dipantau dalam satu kendali visual.</span>
+                    </div>
+                    <div class="ghalbit-hero__pill">
+                        <strong>Operasi Terintegrasi</strong>
+                        <span>Laut dan darat dalam satu jaringan masa depan yang tersambung rapi.</span>
+                    </div>
+                    <div class="ghalbit-hero__pill">
+                        <strong>Dashboard Tangguh</strong>
+                        <span>Brand baru dengan tampilan modern tanpa mengubah struktur sistem dasar.</span>
+                    </div>
+                </div>
+            </section>
 
             <div class="top-filter">
                 <div class="row">

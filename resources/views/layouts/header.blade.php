@@ -7,9 +7,13 @@ $service_type = @$_COOKIE['service_type'];
 <div class="navbar-header position-relative">
     <a class="navbar-brand" href="<?php echo URL::to('/'); ?>">
         <b>
-            <img src="{{ asset('/images/logo_web.png') }}" onerror="this.onerror=null; this.src='{{ asset('/images/logo_web.png') }}';" alt="homepage" class="dark-logo" width="100%" id="logo_web">
-            <img src="{{ asset('images/logo-light-icon.png') }}" onerror="this.onerror=null; this.src='{{ asset('images/logo-light-icon.png') }}';" alt="homepage" class="light-logo">
+            <img src="{{ asset('images/ghalbit-maritronix-logo.svg') }}" onerror="this.onerror=null; this.src='{{ asset('images/ghalbit-maritronix-logo.svg') }}';" alt="GHALBIT MARITRONIX" class="dark-logo" width="100%" id="logo_web">
+            <img src="{{ asset('images/ghalbit-maritronix-icon.svg') }}" onerror="this.onerror=null; this.src='{{ asset('images/ghalbit-maritronix-icon.svg') }}';" alt="GHALBIT MARITRONIX" class="light-logo">
         </b>
+        <span class="ghalbit-brand-copy">
+            <span class="ghalbit-brand-copy__title">GHALBIT MARITRONIX</span>
+            <span class="ghalbit-brand-copy__tagline">Integrated Maritime &amp; Land Intelligence Platform</span>
+        </span>
     </a>
     <div class="sidebar-toggle">  
         <span class="nav-item mb-toggle">
@@ -26,6 +30,48 @@ $service_type = @$_COOKIE['service_type'];
         </span>
     </div>
 </div>
+<style>
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .ghalbit-brand-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 0;
+        line-height: 1.1;
+    }
+
+    .ghalbit-brand-copy__title {
+        color: #f7fbff;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        font-size: .98rem;
+    }
+
+    .ghalbit-brand-copy__tagline {
+        color: #8dc7f1;
+        font-size: .76rem;
+        letter-spacing: .02em;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 991.98px) {
+        .ghalbit-brand-copy__tagline {
+            display: none;
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .ghalbit-brand-copy {
+            display: none;
+        }
+    }
+</style>
 <div class="navbar-collapse sidebar-nav">
     <ul class="navbar-nav mr-auto mt-md-0 header-user-menu sidebarnav p-l-20">
         @if (in_array('users', $role_has_permission))
@@ -199,18 +245,54 @@ $service_type = @$_COOKIE['service_type'];
     </div>
     
     <ul class="navbar-nav my-lg-0">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"><img src="{{ asset('/images/users/user-new.png') }}"
-                    alt="user" onerror="this.onerror=null; this.src='{{ asset('/images/users/user-new.png') }}';"
-                    class="profile-pic"></a>
-            <div class="dropdown-menu dropdown-menu-right scale-up">
+        <li class="nav-item dropdown gm-profile-nav-item">
+            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark gm-profile-trigger" href="" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="gm-profile-avatar profile-pic" aria-hidden="true">
+                    <svg viewBox="0 0 64 64" role="img" focusable="false" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="gmProfileGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#00D9FF" />
+                                <stop offset="100%" stop-color="#29B6F6" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M32 4l20 8v16c0 15.5-9.1 25.9-20 31.6C21.1 53.9 12 43.5 12 28V12l20-8z" fill="url(#gmProfileGradient)" opacity=".95"/>
+                        <path d="M32 12l12 4.8v11.1c0 9.9-5.5 16.9-12 20.7-6.5-3.8-12-10.8-12-20.7V16.8L32 12z" fill="#041B2D"/>
+                        <path d="M31 19.5a8.5 8.5 0 108.5 8.5A8.5 8.5 0 0031 19.5zm0 2.8a5.7 5.7 0 11-5.7 5.7 5.7 5.7 0 015.7-5.7z" fill="#7FEFFF"/>
+                        <path d="M24.5 42.4a1.8 1.8 0 01.7-2.5l5.5-3.1V28a1.8 1.8 0 113.6 0v8.8l5.4 3a1.8 1.8 0 11-1.7 3.1L32 39.5l-5.1 2.9a1.8 1.8 0 01-2.4-.7z" fill="#7FEFFF"/>
+                        <circle cx="20" cy="24" r="2.2" fill="#7FEFFF"/>
+                        <circle cx="44" cy="24" r="2.2" fill="#7FEFFF"/>
+                        <path d="M22.2 24h7.1M34.7 24h7.1" stroke="#7FEFFF" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                </span>
+                <span class="gm-profile-meta d-none d-lg-flex">
+                    <span class="gm-profile-name">{{ Auth::user()->name }}</span>
+                    <span class="gm-profile-role">{{ session('user_role') }}</span>
+                </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right scale-up gm-profile-dropdown">
                 <ul class="dropdown-user">
                     <li>
-                        <div class="dw-user-box">
-                            <div class="u-img"><img src="{{ asset('/images/users/user-2.png') }}"
-                                    onerror="this.onerror=null; this.src='{{ asset('/images/users/user-2.png') }}';"
-                                    alt="user" style="max-width: 45px;"></div>
+                        <div class="dw-user-box gm-user-box">
+                            <div class="u-img gm-user-box__avatar" aria-hidden="true">
+                                <span class="gm-user-box__avatar-inner">
+                                    <svg viewBox="0 0 64 64" role="img" focusable="false" aria-hidden="true">
+                                        <defs>
+                                            <linearGradient id="gmProfileGradientInner" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#00D9FF" />
+                                                <stop offset="100%" stop-color="#29B6F6" />
+                                            </linearGradient>
+                                        </defs>
+                                        <path d="M32 4l20 8v16c0 15.5-9.1 25.9-20 31.6C21.1 53.9 12 43.5 12 28V12l20-8z" fill="url(#gmProfileGradientInner)" opacity=".95"/>
+                                        <path d="M32 12l12 4.8v11.1c0 9.9-5.5 16.9-12 20.7-6.5-3.8-12-10.8-12-20.7V16.8L32 12z" fill="#041B2D"/>
+                                        <path d="M31 19.5a8.5 8.5 0 108.5 8.5A8.5 8.5 0 0031 19.5zm0 2.8a5.7 5.7 0 11-5.7 5.7 5.7 5.7 0 015.7-5.7z" fill="#7FEFFF"/>
+                                        <path d="M24.5 42.4a1.8 1.8 0 01.7-2.5l5.5-3.1V28a1.8 1.8 0 113.6 0v8.8l5.4 3a1.8 1.8 0 11-1.7 3.1L32 39.5l-5.1 2.9a1.8 1.8 0 01-2.4-.7z" fill="#7FEFFF"/>
+                                        <circle cx="20" cy="24" r="2.2" fill="#7FEFFF"/>
+                                        <circle cx="44" cy="24" r="2.2" fill="#7FEFFF"/>
+                                        <path d="M22.2 24h7.1M34.7 24h7.1" stroke="#7FEFFF" stroke-width="1.8" stroke-linecap="round"/>
+                                    </svg>
+                                </span>
+                            </div>
                             <div class="u-text">
                                 <h4>{{ Auth::user()->name }}</h4>
                                 <p class="text-muted">{{ session('user_role') }}</p>
@@ -218,12 +300,14 @@ $service_type = @$_COOKIE['service_type'];
                         </div>
                     </li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="{{ route('users.profile') }}"><i class="ti-user"></i>
-                            {!! trans('lang.user_profile') !!}</a></li>
+                    <li><a href="{{ route('users.profile') }}"><i class="mdi mdi-shield-account-outline"></i>
+                            Profil</a></li>
+                    <li><a href="{{ route('users.profile') }}"><i class="mdi mdi-cog-outline"></i>
+                            Pengaturan Akun</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                                class="fa fa-power-off"></i> {{ __('Logout') }}</a></li>
+                    <li><a href="#"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit(); return false;"><i
+                                class="mdi mdi-logout-variant"></i> Keluar</a></li>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
@@ -232,13 +316,15 @@ $service_type = @$_COOKIE['service_type'];
         </li>
     </ul>
     <div class="navbar-nav my-lg-0 multi-service-nav">
-        <div class="nav-item dropdown" id="activeSection">
-            <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="activeSectionLink"
+        <div class="nav-item dropdown gm-service-switcher" id="activeSection">
+            <a class="nav-link dropdown-toggle waves-effect waves-dark gm-service-switcher__trigger" href="#" id="activeSectionLink"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="{{ asset('/images/logo-light-icon.png') }}" id="activeSectionLogo" style="height:40px; margin-right:5px;">
+                <span class="gm-service-switcher__logo-wrap">
+                    <img src="{{ asset('images/ghalbit-maritronix-icon.svg') }}" id="activeSectionLogo" alt="GHALBIT MARITRONIX" class="gm-service-switcher__logo">
+                </span>
                 <span id="activeSectionName"> {{ trans('lang.select_section') }}</span>
             </a>
-            <div class="dropdown-menu dropdown-service scale-up">
+            <div class="dropdown-menu dropdown-service scale-up gm-service-switcher__menu">
                 <div class="dropdown-service_inner">
                     <div class="dropdown-service-top mb-4">
                         <h2>{{ trans('lang.modules_section') }}</h2>
@@ -250,3 +336,4 @@ $service_type = @$_COOKIE['service_type'];
         </div>
     </div>
 </div>
+

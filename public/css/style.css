@@ -76,22 +76,26 @@ html {
 }
 
 a {
-    color: #FF683A;
+    color: #6BE8FF;
+    text-shadow: 0 0 4px rgba(0,217,255,.15);
 }
 
 a:hover,
 a:focus {
     text-decoration: none;
-    color: #FF683A;
+    color: #6BE8FF;
+    text-shadow: 0 0 4px rgba(0,217,255,.15);
 }
 
 a.link {
-    color: #455a64;
+    color: #6BE8FF;
+    text-shadow: 0 0 4px rgba(0,217,255,.15);
 }
 
 a.link:hover,
 a.link:focus {
-    color: #FF683A;
+    color: #6BE8FF;
+    text-shadow: 0 0 4px rgba(0,217,255,.15);
 }
 
 .img-responsive {
@@ -112,7 +116,7 @@ html body .mdi-set {
 /*******************Headings*******************/
 
 h1,h2,h3,h4,h5,h6 {
-    color: #455a64;
+    color: #FFFFFF;
     font-family: "Urbanist", sans-serif;
     font-weight: 500;
 }
@@ -120,33 +124,48 @@ h1,h2,h3,h4,h5,h6 {
 h1 {
     line-height: 40px;
     font-size: 36px;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(0,217,255,.25);
 }
 
 h2 {
     line-height: 36px;
     font-size: 24px;
+    color: #DDF6FF;
+    font-weight: 600;
+    text-shadow: 0 0 4px rgba(0,217,255,.15);
 }
 
 h3 {
     line-height: 30px;
     font-size: 21px;
+    color: #DDF6FF;
+    font-weight: 600;
+    text-shadow: 0 0 4px rgba(0,217,255,.15);
 }
 
 h4 {
     line-height: 22px;
     font-size: 18px;
+    color: #DDF6FF;
+    font-weight: 600;
+    text-shadow: 0 0 4px rgba(0,217,255,.15);
 }
 
 h5 {
     line-height: 18px;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
+    color: #DDF6FF;
+    text-shadow: 0 0 4px rgba(0,217,255,.15);
 }
 
 h6 {
     line-height: 16px;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
+    color: #DDF6FF;
+    text-shadow: 0 0 4px rgba(0,217,255,.15);
 }
 
 .bg-light-gray {
@@ -510,7 +529,9 @@ html body .b-all {
 }
 
 .text-muted {
-    color: #99abb4 !important;
+    color: #CFEFFF !important;
+    text-shadow: 0 0 4px rgba(0,217,255,.15);
+    font-weight: 600;
 }
 
 .text-warning {
@@ -1874,7 +1895,9 @@ textarea {
 }
 
 form label {
-    font-weight: 500;
+    color: #FFFFFF;
+    font-weight: 600;
+    text-shadow: 0 0 4px rgba(0,217,255,.15);
 }
 
 .form-group {
@@ -16075,3 +16098,505 @@ border-bottom: 2px solid #fff;
 /* Caht new design end */
 
 
+/* ======================================================
+   GHALBIT MARITRONIX FINAL TYPOGRAPHY OVERRIDE
+====================================================== */
+
+.sidebar-menu li a,
+.sidebar-menu li a span,
+.sidebar__menu li a,
+.navbar-nav .nav-link,
+.dropdown-item,
+.breadcrumb-item,
+.breadcrumb-item a,
+.card-title,
+.card-header,
+.card-header h6,
+.table th,
+.table td,
+.table tbody td,
+.dataTables_info,
+.dataTables_paginate,
+.page-link,
+.text-muted,
+.text-small,
+small,
+.form-text,
+.form-group label,
+.badge,
+.modal-title,
+.footer,
+.footer *,
+p{
+    color:#EAFBFF !important;
+    font-weight:600 !important;
+    text-shadow:0 0 4px rgba(0,217,255,.15);
+}
+
+h1,h2,h3,h4,h5,h6{
+    color:#FFFFFF !important;
+    font-weight:700 !important;
+    text-shadow:0 0 8px rgba(0,217,255,.25);
+}
+
+a,
+a:hover,
+a:focus{
+    color:#6BE8FF !important;
+}
+
+/* =========================================================
+   GHALBIT MARITRONIX MAXIMUM CONTRAST
+========================================================= */
+
+body,
+p,
+span,
+small,
+label,
+.form-control,
+.form-control::placeholder,
+.select2-selection__rendered,
+.nav-link,
+.dropdown-item,
+.breadcrumb-item,
+.table td,
+.table tbody td,
+.card-body,
+.card-text,
+.dataTables_info,
+.page-link,
+.text-muted{
+    color:#F5FDFF !important;
+    font-weight:600 !important;
+    opacity:1 !important;
+    text-shadow:0 0 3px rgba(0,217,255,.15);
+}
+
+.table th,
+.card-title,
+.card-header,
+.card-header h5,
+.card-header h6,
+.sidebar-menu li a,
+.sidebar-menu li a span,
+.navbar-nav .nav-link,
+.modal-title{
+    color:#FFFFFF !important;
+    font-weight:700 !important;
+    text-shadow:0 0 6px rgba(0,217,255,.25);
+}
+
+a,
+a:hover,
+a:focus{
+    color:#7FEFFF !important;
+    font-weight:600 !important;
+}
+
+.sidebar-menu li.active a{
+    color:#FFFFFF !important;
+    font-weight:700 !important;
+}
+
+.text-muted{
+    color:#DDF6FF !important;
+}
+
+/* GHALBIT MARITRONIX PROFILE MENU */
+
+.gm-profile-trigger{
+    display:flex !important;
+    align-items:center;
+    gap:12px;
+    min-height:56px;
+    padding:10px 16px 10px 10px !important;
+    border-radius:18px !important;
+    background:rgba(4,27,45,.78) !important;
+    border:1px solid rgba(0,217,255,.14) !important;
+    box-shadow:0 0 18px rgba(0,217,255,.12);
+    color:#FFFFFF !important;
+}
+
+.gm-profile-trigger:hover,
+.gm-profile-trigger:focus{
+    background:rgba(0,217,255,.08) !important;
+    color:#FFFFFF !important;
+}
+
+.gm-profile-avatar{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#00D9FF,#29B6F6);
+    border:2px solid rgba(255,255,255,.15);
+    box-shadow:0 0 18px rgba(0,217,255,.22);
+    overflow:hidden;
+    flex-shrink:0;
+}
+
+.gm-profile-avatar svg,
+.gm-user-box__avatar-inner svg{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+.gm-profile-meta{
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+    line-height:1.1;
+}
+
+.gm-profile-name{
+    color:#FFFFFF !important;
+    font-weight:700 !important;
+    font-size:.95rem;
+    letter-spacing:.02em;
+}
+
+.gm-profile-role{
+    color:#CFEFFF !important;
+    font-weight:600 !important;
+    font-size:.76rem;
+    text-transform:capitalize;
+    margin-top:3px;
+}
+
+.gm-profile-dropdown .dropdown-user{
+    margin:0;
+}
+
+.gm-user-box{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:2px 0;
+}
+
+.gm-user-box__avatar{
+    width:56px !important;
+    max-width:56px !important;
+    height:56px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#00D9FF,#29B6F6);
+    border:2px solid rgba(255,255,255,.15);
+    box-shadow:0 0 20px rgba(0,217,255,.18);
+    padding:3px;
+    overflow:hidden;
+}
+
+.gm-user-box__avatar-inner{
+    width:100%;
+    height:100%;
+    display:block;
+    border-radius:50%;
+    overflow:hidden;
+}
+
+.gm-profile-dropdown .u-text h4{
+    color:#FFFFFF !important;
+    font-weight:700 !important;
+    margin-bottom:4px;
+}
+
+.gm-profile-dropdown .u-text p,
+.gm-profile-dropdown .u-text .text-muted{
+    color:#CFEFFF !important;
+    font-weight:600 !important;
+    margin-bottom:0;
+}
+
+.gm-profile-dropdown .divider{
+    background:rgba(0,217,255,.12) !important;
+}
+
+.gm-profile-dropdown .dropdown-user li a{
+    display:flex !important;
+    align-items:center;
+    gap:10px;
+    border-radius:12px;
+    padding:10px 12px !important;
+}
+
+.gm-profile-dropdown .dropdown-user li a i{
+    color:#00D9FF !important;
+    font-size:18px !important;
+}
+
+.dropdown-menu,
+.dropdown-menu.show{
+    background:#041B2D !important;
+    border:1px solid rgba(0,217,255,.15) !important;
+    border-radius:18px !important;
+    box-shadow:0 0 20px rgba(0,217,255,.15);
+}
+
+.dropdown-item{
+    color:#FFFFFF !important;
+    font-weight:600 !important;
+}
+
+.dropdown-item:hover{
+    background:rgba(0,217,255,.08) !important;
+}
+
+.dropdown-header{
+    color:#FFFFFF !important;
+}
+
+/* GHALBIT MARITRONIX SERVICE SWITCHER */
+
+.gm-service-switcher__trigger{
+    display:flex !important;
+    align-items:center;
+    gap:10px;
+    min-height:52px;
+    padding:8px 16px 8px 10px !important;
+    border-radius:16px !important;
+    background:linear-gradient(135deg,rgba(4,27,45,.96),rgba(10,47,78,.92)) !important;
+    border:1px solid rgba(0,217,255,.15) !important;
+    box-shadow:0 0 18px rgba(0,217,255,.14);
+    color:#FFFFFF !important;
+}
+
+.gm-service-switcher__trigger:hover,
+.gm-service-switcher__trigger:focus{
+    background:linear-gradient(135deg,rgba(7,39,64,.98),rgba(14,62,98,.94)) !important;
+    color:#FFFFFF !important;
+}
+
+.gm-service-switcher__trigger #activeSectionName{
+    color:#FFFFFF !important;
+    font-weight:700 !important;
+    letter-spacing:.01em;
+}
+
+.gm-service-switcher__logo-wrap{
+    width:36px;
+    height:36px;
+    border-radius:12px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#00D9FF,#29B6F6);
+    border:1px solid rgba(255,255,255,.16);
+    box-shadow:0 0 16px rgba(0,217,255,.20);
+    flex-shrink:0;
+    overflow:hidden;
+}
+
+.gm-service-switcher__logo{
+    width:26px !important;
+    height:26px !important;
+    margin-right:0 !important;
+    display:block;
+}
+
+.gm-service-switcher__menu.dropdown-service{
+    background:#041B2D !important;
+    border:1px solid rgba(0,217,255,.15) !important;
+    border-radius:20px !important;
+    box-shadow:0 0 24px rgba(0,217,255,.16) !important;
+}
+
+.gm-service-switcher__menu.dropdown-service:after{
+    border-bottom-color:#041B2D !important;
+}
+
+.gm-service-switcher__menu .dropdown-service_top,
+.gm-service-switcher__menu .dropdown-service_inner,
+.gm-service-switcher__menu .dropdown-service-top h2,
+.gm-service-switcher__menu .dropdown-service-top p{
+    color:#FFFFFF !important;
+}
+
+.gm-service-switcher__menu .dropdown-service-top p{
+    color:#CFEFFF !important;
+}
+
+/* GHALBIT MARITRONIX FINAL READABILITY BOOST */
+
+.sidebar-nav ul li a,
+.sidebar-nav ul li a span,
+.left-sidebar .sidebar-nav ul li a,
+.left-sidebar .sidebar-nav ul li a span,
+.left-sidebar .nav-small-cap,
+.sidebar-nav .has-arrow::after,
+.sidebar-nav .hide-menu,
+.navbar-nav .nav-link,
+.navbar-nav .nav-link span,
+.topbar .top-navbar .navbar-nav > .nav-item > .nav-link,
+.topbar .top-navbar .navbar-nav > .nav-item > .nav-link i,
+.page-titles h3,
+.page-titles .breadcrumb,
+.breadcrumb-item,
+.breadcrumb-item a,
+.card-body,
+.card-body p,
+.card-body span,
+.table,
+.table td,
+.table tbody td,
+.table th,
+.table thead th,
+.dataTables_wrapper,
+.dataTables_wrapper label,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_filter label,
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_length label,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .paginate_button,
+.dataTables_wrapper .page-link,
+.form-control,
+.form-control::placeholder,
+.btn,
+.btn span,
+.content-wrapper p,
+.content-wrapper span,
+.content-wrapper label{
+    color:#F7FDFF !important;
+    opacity:1 !important;
+    font-weight:600 !important;
+    text-shadow:0 0 2px rgba(0,217,255,.12);
+}
+
+.left-sidebar .nav-small-cap,
+.table th,
+.table thead th,
+.page-titles h3,
+.card-title,
+.card-header,
+.card-header h5,
+.card-header h6{
+    color:#FFFFFF !important;
+    font-weight:700 !important;
+    text-shadow:0 0 5px rgba(0,217,255,.20);
+}
+
+.sidebar-nav ul li a:hover,
+.sidebar-nav ul li a:hover span,
+.navbar-nav .nav-link:hover,
+.breadcrumb-item a:hover,
+.table a,
+.table a:hover{
+    color:#8BF2FF !important;
+}
+
+/* GHALBIT MARITRONIX ULTRA BRIGHT TEXT */
+
+body,
+.wrapper,
+.page-wrapper,
+.content-wrapper,
+.card,
+.card-body,
+.card-body *,
+.table,
+.table *,
+.sidebar-nav,
+.sidebar-nav *,
+.left-sidebar,
+.left-sidebar *,
+.topbar,
+.topbar *,
+.navbar-nav,
+.navbar-nav *,
+.breadcrumb,
+.breadcrumb *,
+.page-titles,
+.page-titles *,
+.dataTables_wrapper,
+.dataTables_wrapper *{
+    color:#F8FEFF !important;
+}
+
+.sidebar-nav ul li a,
+.sidebar-nav ul li a span,
+.left-sidebar .sidebar-nav ul li a,
+.left-sidebar .sidebar-nav ul li a span,
+.left-sidebar .nav-small-cap,
+.topbar .nav-link,
+.topbar .nav-link span,
+.topbar .nav-link i,
+.breadcrumb-item,
+.breadcrumb-item a,
+.page-titles h3,
+.page-titles h4,
+.table td,
+.table tbody td,
+.table th,
+.table thead th,
+.card-title,
+.card-header,
+.card-header h5,
+.card-header h6,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_length label,
+.dataTables_wrapper .dataTables_filter label,
+.dataTables_wrapper .page-link,
+.dataTables_wrapper .paginate_button,
+.form-control,
+.form-control::placeholder,
+.btn,
+.btn span{
+    color:#FFFFFF !important;
+    font-weight:700 !important;
+    opacity:1 !important;
+    text-shadow:0 0 4px rgba(0,217,255,.16) !important;
+}
+
+.sidebar-nav ul li a:hover,
+.sidebar-nav ul li a:hover span,
+.sidebar-nav ul li.active > a,
+.sidebar-nav ul li.active > a span,
+.topbar .nav-link:hover,
+.breadcrumb-item a:hover,
+.table a,
+.table a:hover{
+    color:#9CF6FF !important;
+}
+
+.left-sidebar .sidebar-nav ul li a i,
+.sidebar-nav ul li a i,
+.topbar .nav-link i{
+    color:#B9F4FF !important;
+    opacity:1 !important;
+}
+
+/* GHALBIT MARITRONIX CLOUD FINAL SERVICE SWITCHER LOCK */
+
+.multi-service-nav #activeSection.gm-service-switcher > .gm-service-switcher__trigger,
+.multi-service-nav #activeSection.gm-service-switcher > .nav-link.gm-service-switcher__trigger,
+.topbar .multi-service-nav #activeSection.gm-service-switcher > .nav-link.gm-service-switcher__trigger{
+    background:linear-gradient(135deg,#041B2D,#0A2F4E) !important;
+    border:1px solid rgba(0,217,255,.35) !important;
+    color:#FFFFFF !important;
+    box-shadow:0 0 14px rgba(0,217,255,.20) !important;
+    border-radius:12px !important;
+}
+
+.multi-service-nav #activeSection.gm-service-switcher > .gm-service-switcher__trigger:hover,
+.multi-service-nav #activeSection.gm-service-switcher > .gm-service-switcher__trigger:focus,
+.topbar .multi-service-nav #activeSection.gm-service-switcher > .nav-link.gm-service-switcher__trigger:hover,
+.topbar .multi-service-nav #activeSection.gm-service-switcher > .nav-link.gm-service-switcher__trigger:focus{
+    background:rgba(0,217,255,.12) !important;
+    color:#FFFFFF !important;
+}
+
+.multi-service-nav #activeSection.gm-service-switcher > .gm-service-switcher__trigger #activeSectionName,
+.topbar .multi-service-nav #activeSection.gm-service-switcher > .gm-service-switcher__trigger #activeSectionName{
+    color:#FFFFFF !important;
+    font-weight:700 !important;
+}
+
+.multi-service-nav #activeSection.gm-service-switcher > .gm-service-switcher__trigger i,
+.multi-service-nav #activeSection.gm-service-switcher > .gm-service-switcher__trigger svg,
+.multi-service-nav #activeSection.gm-service-switcher > .gm-service-switcher__trigger img{
+    color:#00D9FF !important;
+}

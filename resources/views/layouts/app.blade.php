@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo-light-icon.png') }}">
+    <title>GHALBIT MARITRONIX Control Center</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -79,6 +79,621 @@
     </style>
 
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <style>
+        :root {
+            --ghalbit-bg: #021321;
+            --ghalbit-panel: rgba(4, 27, 45, 0.95);
+            --ghalbit-panel-soft: rgba(7, 36, 58, 0.9);
+            --ghalbit-border: rgba(0, 217, 255, 0.15);
+            --ghalbit-border-strong: rgba(0, 217, 255, 0.32);
+            --ghalbit-cyan: #00d9ff;
+            --ghalbit-cyan-soft: #6feaff;
+            --ghalbit-text: #eaf7ff;
+            --ghalbit-text-soft: #9fc2d9;
+            --ghalbit-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
+            --ghalbit-glow: 0 0 0 1px rgba(0, 217, 255, 0.1), 0 12px 36px rgba(0, 150, 255, 0.12);
+            --ghalbit-radius: 20px;
+            --ghalbit-radius-sm: 12px;
+        }
+
+        .ghalbit-footer {
+            margin: 28px 24px 18px;
+            padding: 16px 22px;
+            border-radius: 18px;
+            border: 1px solid rgba(57, 171, 255, 0.14);
+            background: linear-gradient(180deg, rgba(6, 25, 45, 0.92), rgba(4, 18, 33, 0.96));
+            color: #d7ebff;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .ghalbit-footer__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .ghalbit-footer__brand {
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .ghalbit-footer__tagline,
+        .ghalbit-footer__message {
+            color: #93b9dd;
+            font-size: .92rem;
+            line-height: 1.5;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top left, rgba(0, 217, 255, 0.08), transparent 22%),
+                radial-gradient(circle at top right, rgba(43, 100, 255, 0.09), transparent 26%),
+                linear-gradient(180deg, #031321 0%, #061a2f 100%);
+            color: var(--ghalbit-text);
+        }
+
+        .page-wrapper {
+            background: transparent !important;
+        }
+
+        .page-titles {
+            margin: 0 24px 22px;
+            padding: 22px 26px;
+            border-radius: 24px;
+            border: 1px solid var(--ghalbit-border);
+            background: linear-gradient(180deg, rgba(4, 27, 45, 0.94), rgba(6, 33, 54, 0.92));
+            box-shadow: var(--ghalbit-shadow);
+        }
+
+        .page-titles .text-themecolor,
+        .page-titles h3,
+        .page-titles .top-title-left h3,
+        .page-titles .top-title-left .mb-0 {
+            color: #f5fbff !important;
+            font-weight: 800;
+            letter-spacing: .01em;
+        }
+
+        .breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            margin-bottom: 0;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--ghalbit-border);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.015);
+        }
+
+        .breadcrumb-item,
+        .breadcrumb-item.active,
+        .breadcrumb-item a {
+            color: #d5edff !important;
+            font-size: .9rem;
+        }
+
+        .breadcrumb-item + .breadcrumb-item::before {
+            color: #5fd9ff;
+        }
+
+        .container-fluid,
+        .page-wrapper > .card-body {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        .admin-top-section,
+        .table-list,
+        .menu-tab,
+        .vendor_payout_create,
+        .vendor_payout_create-inner,
+        .error_top {
+            position: relative;
+            z-index: 1;
+        }
+
+        .top-title-section,
+        .sis-card-head-select-box {
+            gap: 12px;
+        }
+
+        .top-title-left .icon,
+        .top-title-left .counter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            border-radius: 16px;
+            border: 1px solid var(--ghalbit-border);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: var(--ghalbit-glow);
+        }
+
+        .top-title-left .icon {
+            min-width: 52px;
+            padding: 8px;
+        }
+
+        .top-title-left .icon img {
+            max-width: 26px;
+            max-height: 26px;
+            object-fit: contain;
+        }
+
+        .top-title-left .counter {
+            min-width: 56px;
+            padding: 0 14px;
+            color: #7ce8ff;
+            font-weight: 800;
+        }
+
+        .card,
+        .card.border,
+        .vendor_payout_create-inner,
+        .page-wrapper > .card-body,
+        .menu-tab ul,
+        fieldset {
+            border-radius: var(--ghalbit-radius) !important;
+            border: 1px solid var(--ghalbit-border) !important;
+            background: linear-gradient(180deg, rgba(4, 27, 45, 0.96), rgba(6, 29, 47, 0.94)) !important;
+            box-shadow: var(--ghalbit-shadow);
+            color: var(--ghalbit-text);
+        }
+
+        .card-header,
+        .card-body,
+        .vendor_payout_create-inner,
+        fieldset,
+        .menu-tab ul {
+            color: var(--ghalbit-text);
+        }
+
+        .card-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+            background: transparent !important;
+        }
+
+        .card-header .text-dark-2,
+        .card-header h3,
+        .card-header h4,
+        .card-body .text-dark-2,
+        .card-body h3,
+        .card-body h4,
+        .card-body label,
+        .card-body legend,
+        .card-title,
+        .form-text,
+        .control-label {
+            color: var(--ghalbit-text) !important;
+        }
+
+        .card-body p,
+        .form-text,
+        .card-header p,
+        .table-list p,
+        fieldset small,
+        fieldset span,
+        fieldset .text-muted {
+            color: var(--ghalbit-text-soft) !important;
+        }
+
+        .table-responsive {
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.035);
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        table.dataTable,
+        .table {
+            color: var(--ghalbit-text) !important;
+            border-collapse: separate !important;
+            border-spacing: 0;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+
+        table.dataTable thead th,
+        .table thead th {
+            background: #041b2d !important;
+            color: #dbf7ff !important;
+            border-bottom: 1px solid var(--ghalbit-border-strong) !important;
+            border-top: none !important;
+            border-left: none !important;
+            border-right: none !important;
+            font-weight: 700;
+            letter-spacing: .02em;
+        }
+
+        table.dataTable tbody tr,
+        .table tbody tr {
+            background: transparent !important;
+        }
+
+        table.dataTable tbody td,
+        .table tbody td {
+            color: #ebf9ff !important;
+            border-color: rgba(0, 217, 255, 0.1) !important;
+            background: transparent !important;
+            vertical-align: middle;
+        }
+
+        table.dataTable tbody tr:hover td,
+        .table-hover tbody tr:hover td {
+            background: rgba(0, 217, 255, .08) !important;
+        }
+
+        table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:before,
+        table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child:before {
+            background-color: #00cfff !important;
+        }
+
+        td.dataTables_empty {
+            padding: 28px 18px !important;
+            text-align: center !important;
+            color: #dff8ff !important;
+            font-weight: 700;
+        }
+
+        td.dataTables_empty::before {
+            content: "GHALBIT MARITRONIX";
+            display: block;
+            margin-bottom: 8px;
+            color: #70eaff;
+            font-size: 1rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        td.dataTables_empty::after {
+            content: "Integrated Maritime & Land Intelligence Platform";
+            display: block;
+            margin-top: 8px;
+            color: #97bfd4;
+            font-size: .88rem;
+            font-weight: 500;
+        }
+
+        .dataTables_wrapper .dataTables_filter input,
+        .dataTables_wrapper .dataTables_length select,
+        .form-control,
+        .select2-container--default .select2-selection--single,
+        .select2-container--default .select2-selection--multiple,
+        textarea.form-control,
+        input[type="date"].form-control,
+        input[type="number"].form-control,
+        input[type="text"].form-control,
+        input[type="password"].form-control,
+        input[type="email"].form-control,
+        select.form-control,
+        #daterange {
+            min-height: 46px;
+            border-radius: 12px !important;
+            border: 1px solid rgba(0, 217, 255, 0.18) !important;
+            background: rgba(8, 28, 46, 0.88) !important;
+            color: #f0fbff !important;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.015);
+        }
+
+        .form-control::placeholder,
+        .dataTables_wrapper .dataTables_filter input::placeholder,
+        textarea.form-control::placeholder {
+            color: #84aac0 !important;
+        }
+
+        .dataTables_wrapper .dataTables_filter input:focus,
+        .dataTables_wrapper .dataTables_length select:focus,
+        .form-control:focus,
+        .select2-container--default.select2-container--focus .select2-selection--single,
+        .select2-container--default.select2-container--focus .select2-selection--multiple,
+        #daterange:focus,
+        #daterange:hover {
+            border-color: rgba(0, 217, 255, 0.48) !important;
+            box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.12), 0 10px 26px rgba(0, 140, 255, 0.12) !important;
+            outline: none;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered,
+        .select2-container--default .select2-selection--multiple .select2-selection__rendered,
+        .select2-container--default .select2-selection--single .select2-selection__placeholder,
+        .select2-dropdown {
+            color: #effbff !important;
+            background: #092236 !important;
+        }
+
+        .select2-container--default .select2-results__option--highlighted[aria-selected],
+        .select2-container--default .select2-results__option[aria-selected=true] {
+            background: rgba(0, 217, 255, 0.18) !important;
+            color: #fff !important;
+        }
+
+        .dataTables_wrapper .dataTables_filter,
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_paginate {
+            color: var(--ghalbit-text-soft) !important;
+            margin-top: 14px;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            border-radius: 12px !important;
+            border: 1px solid var(--ghalbit-border) !important;
+            background: rgba(255,255,255,.03) !important;
+            color: #dff8ff !important;
+            transition: all .2s ease;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover,
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background: linear-gradient(135deg, rgba(0, 160, 255, 0.25), rgba(0, 217, 255, 0.22)) !important;
+            color: #fff !important;
+            border-color: rgba(0, 217, 255, 0.32) !important;
+            box-shadow: 0 8px 18px rgba(0, 140, 255, 0.18);
+        }
+
+        .dt-buttons .dt-button,
+        button.dt-button,
+        div.dt-button,
+        a.dt-button {
+            border-radius: 12px !important;
+            border: 1px solid var(--ghalbit-border) !important;
+            background: rgba(255,255,255,.04) !important;
+            color: #def6ff !important;
+            box-shadow: none !important;
+        }
+
+        .dt-buttons .dt-button:hover,
+        button.dt-button:hover,
+        div.dt-button:hover,
+        a.dt-button:hover {
+            background: rgba(0, 217, 255, .12) !important;
+            border-color: rgba(0, 217, 255, .26) !important;
+        }
+
+        .btn,
+        button,
+        input[type="submit"],
+        input[type="button"] {
+            border-radius: 12px !important;
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+        }
+
+        .btn:hover,
+        button:hover,
+        input[type="submit"]:hover,
+        input[type="button"]:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary,
+        .btn.btn-primary,
+        .card-header-btn .btn-primary {
+            border: none !important;
+            color: #fff !important;
+            background: linear-gradient(135deg, #0d78ff, #00d9ff) !important;
+            box-shadow: 0 14px 32px rgba(0, 156, 255, 0.22);
+        }
+
+        .btn-success,
+        .btn.btn-success {
+            border: none !important;
+            color: #fff !important;
+            background: linear-gradient(135deg, #0f8c5f, #19cc80) !important;
+            box-shadow: 0 14px 28px rgba(25, 204, 128, 0.18);
+        }
+
+        .btn-danger,
+        .btn.btn-danger {
+            border: none !important;
+            color: #fff !important;
+            background: linear-gradient(135deg, #b91c3a, #ff4b6b) !important;
+            box-shadow: 0 14px 28px rgba(255, 75, 107, 0.18);
+        }
+
+        .btn-warning,
+        .btn.btn-warning {
+            border: none !important;
+            color: #15120b !important;
+            background: linear-gradient(135deg, #d18912, #ffca56) !important;
+            box-shadow: 0 14px 28px rgba(255, 202, 86, 0.18);
+        }
+
+        .btn-secondary,
+        .btn.btn-secondary {
+            color: #dff6ff !important;
+            border: 1px solid var(--ghalbit-border) !important;
+            background: rgba(255,255,255,.04) !important;
+        }
+
+        .menu-tab ul {
+            padding: 10px !important;
+            gap: 8px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .menu-tab ul li a {
+            border-radius: 12px;
+            color: #d8f3ff !important;
+            background: rgba(255,255,255,.03);
+            border: 1px solid transparent;
+        }
+
+        .menu-tab ul li.active a,
+        .menu-tab ul li a:hover {
+            background: rgba(0, 217, 255, .11);
+            border-color: rgba(0, 217, 255, .24);
+        }
+
+        .badge,
+        .badge-success,
+        .badge-danger,
+        .badge-warning,
+        .badge-primary,
+        .badge-secondary,
+        .status,
+        .status-active,
+        .status-inactive {
+            border-radius: 999px !important;
+            padding: .45rem .75rem !important;
+            font-weight: 700 !important;
+            letter-spacing: .02em;
+        }
+
+        .badge-success,
+        .status-active {
+            background: rgba(25, 204, 128, 0.16) !important;
+            color: #76f0b1 !important;
+            border: 1px solid rgba(25, 204, 128, 0.22) !important;
+        }
+
+        .badge-danger,
+        .status-inactive {
+            background: rgba(255, 75, 107, 0.14) !important;
+            color: #ff8ea4 !important;
+            border: 1px solid rgba(255, 75, 107, 0.2) !important;
+        }
+
+        .badge-warning {
+            background: rgba(255, 202, 86, 0.16) !important;
+            color: #ffd67f !important;
+            border: 1px solid rgba(255, 202, 86, 0.18) !important;
+        }
+
+        .badge-primary,
+        .badge-secondary {
+            background: rgba(0, 217, 255, 0.12) !important;
+            color: #8defff !important;
+            border: 1px solid rgba(0, 217, 255, 0.18) !important;
+        }
+
+        .modal-content {
+            border-radius: 24px !important;
+            border: 1px solid var(--ghalbit-border) !important;
+            background: linear-gradient(180deg, rgba(4, 27, 45, 0.98), rgba(5, 23, 39, 0.98)) !important;
+            box-shadow: 0 24px 56px rgba(0, 0, 0, 0.28);
+            color: var(--ghalbit-text);
+        }
+
+        .modal-header,
+        .modal-footer {
+            border-color: rgba(255,255,255,.06) !important;
+        }
+
+        .modal-title,
+        .modal-content label,
+        .modal-content h1,
+        .modal-content h2,
+        .modal-content h3,
+        .modal-content h4,
+        .modal-content h5,
+        .modal-content h6 {
+            color: #f4fbff !important;
+        }
+
+        .modal-content p,
+        .modal-content span,
+        .modal-content small {
+            color: var(--ghalbit-text-soft);
+        }
+
+        .modal-backdrop.show {
+            opacity: .72;
+        }
+
+        fieldset {
+            padding: 24px !important;
+            margin-bottom: 20px !important;
+        }
+
+        legend {
+            width: auto !important;
+            padding: 0 14px !important;
+            border-radius: 999px;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.18);
+            font-size: .95rem !important;
+            letter-spacing: .03em;
+        }
+
+        .page-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(3, 17, 29, 0.68);
+            backdrop-filter: blur(6px);
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 88px;
+            height: 88px;
+            border-radius: 999px;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.16), rgba(4, 27, 45, 0.94));
+            box-shadow: 0 0 0 12px rgba(0, 217, 255, 0.05), 0 0 42px rgba(0, 217, 255, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .overlay-text img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 12px rgba(0, 217, 255, 0.3));
+        }
+
+        .bg--1,
+        .bg--5,
+        .bg--6,
+        .bg--8 {
+            background: transparent !important;
+        }
+
+        .card.card-box-with-icon.bg--1,
+        .card.card-box-with-icon.bg--5,
+        .card.card-box-with-icon.bg--6,
+        .card.card-box-with-icon.bg--8 {
+            background: linear-gradient(180deg, rgba(4, 27, 45, 0.96), rgba(6, 29, 47, 0.94)) !important;
+        }
+
+        @media (max-width: 991.98px) {
+            .page-titles,
+            .container-fluid,
+            .page-wrapper > .card-body {
+                margin-left: 14px;
+                margin-right: 14px;
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .page-titles {
+                padding: 18px;
+            }
+
+            .top-title-section,
+            .sis-card-head-select-box {
+                flex-direction: column;
+                align-items: stretch !important;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .ghalbit-footer {
+                margin: 18px 14px 14px;
+                padding: 14px 16px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -103,6 +718,15 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer class="ghalbit-footer">
+            <div class="ghalbit-footer__inner">
+                <div>
+                    <div class="ghalbit-footer__brand">GHALBIT MARITRONIX</div>
+                    <div class="ghalbit-footer__tagline">Integrated Maritime &amp; Land Intelligence Platform</div>
+                </div>
+                <div class="ghalbit-footer__message">Kekuatan Laut Untuk Masa Depan. Laut dan darat dalam satu jaringan masa depan.</div>
+            </div>
+        </footer>
     </div>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
@@ -244,9 +868,11 @@
         var ref = database.collection('settings').doc("globalSettings");
         ref.get().then(async function (snapshots) {
             var globalSettings = snapshots.data();
-            $("#app_name").html(globalSettings.applicationName);
-            $("#logo_web").attr('src', globalSettings.appLogo);
-            document.documentElement.style.setProperty('--admin-panel-color', globalSettings.admin_panel_color);
+            $("#app_name").html("GHALBIT MARITRONIX");
+            $("#logo_web").attr('src', "{{ asset('images/ghalbit-maritronix-logo.svg') }}");
+            if (globalSettings && globalSettings.admin_panel_color) {
+                document.documentElement.style.setProperty('--admin-panel-color', globalSettings.admin_panel_color);
+            }
         });
         
         var placeholderImage = '';
@@ -372,7 +998,7 @@
                 var isSelected = (sectionId === idSecActive && (data.serviceTypeFlag || '') === typeSecActive);
                 var selectedClass = isSelected ? 'selected-section' : '';
                 if (isSelected) {
-                    $('#activeSectionLogo').attr('src', sectionImage || placeholderImage);
+                    $('#activeSectionLogo').attr('src', `{{ asset('images/ghalbit-maritronix-icon.svg') }}`);
                     $('#activeSectionName').text(sectionName);
                 }
                 html += `
