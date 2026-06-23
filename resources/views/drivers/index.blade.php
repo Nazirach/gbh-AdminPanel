@@ -103,6 +103,11 @@
 
         <script type="text/javascript">
 
+            if (!window.firebaseClientReady || !window.firebaseDb) {
+                console.warn('Firebase client is not ready. Please check Firebase configuration.');
+            } else {
+                var database = window.firebaseDb;
+
             var section_id = getCookie('section_id') || '';
             var type = "{{ $type }}";
 
@@ -871,5 +876,6 @@
             });
 
             var rows = document.getElementsByTagName("table")[0].rows;
+            }
         </script>
     @endsection
