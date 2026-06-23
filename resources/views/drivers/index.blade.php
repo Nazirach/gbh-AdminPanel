@@ -241,6 +241,17 @@
                 return driverData.isOwner === false || typeof driverData.isOwner === 'undefined' || driverData.isOwner === null;
             }
 
+            function isDriverApproved(driverData) {
+                return driverData.isDocumentVerify === true ||
+                    driverData.isAutoVerify === true ||
+                    driverData.isVerified === true ||
+                    driverData.verified === true ||
+                    driverData.documentVerified === true ||
+                    driverData.documentVerification === true ||
+                    driverData.documentVerification === 'approved' ||
+                    driverData.documentStatus === 'approved' ||
+                    driverData.status === 'approved';
+            }
             function normalizeServiceTypes(serviceTypes, serviceType) {
                 if (Array.isArray(serviceTypes)) {
                     return serviceTypes.filter(function(item) {
