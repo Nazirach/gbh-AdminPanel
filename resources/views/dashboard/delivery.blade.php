@@ -621,6 +621,25 @@
 
         var active_id = "{{$id}}";
         var active_type = "{{$type}}";
+
+        active_id = active_id || getCookie("section_id") || "";
+        active_type = active_type || getCookie("service_type") || "";
+
+        function withSectionFilter(query, sectionId) {
+            return sectionId ? query.where("section_id", "==", sectionId) : query;
+        }
+
+        function withServiceTypeFilter(query, serviceType) {
+            return serviceType ? query.where("serviceType", "==", serviceType) : query;
+        }
+
+        if (!active_id) {
+            console.warn("dashboard section_id is empty; loading dashboard data without section filter.");
+        }
+
+        if (!active_type) {
+            console.warn("dashboard service_type is empty; loading drivers without service type filter.");
+        }
         if (!window.firebaseClientReady || !window.firebaseDb) {
             console.warn('Firebase client is not ready. Please check Firebase configuration.');
         } else {
@@ -728,7 +747,7 @@
             var cLast = Array(12).fill(0);
 
             let now = new Date();
-            // 🔹 Setup ranges
+            // Setup ranges
             let startOfThisPeriod = new Date();
             let endOfThisPeriod = new Date();
             let startOfLastPeriod = null;
@@ -757,7 +776,7 @@
             const startLastTS = startOfLastPeriod ? firebase.firestore.Timestamp.fromDate(startOfLastPeriod) : null;
             const endLastTS = endOfLastPeriod ? firebase.firestore.Timestamp.fromDate(endOfLastPeriod) : null;
 
-            let ordersQuery = db.collection('vendor_orders').where('status', 'in', ["Order Completed"]).where('section_id','==',active_id);
+            let ordersQuery = withSectionFilter(db.collection('vendor_orders').where('status', 'in', ["Order Completed"]), active_id);
             if (filterType) {
                 ordersQuery = ordersQuery.where('createdAt', '>=', startTS).where('createdAt', '<=', endTS);
             }
@@ -765,7 +784,6 @@
             let ordersLastQuery = startLastTS && endLastTS
                 ? db.collection('vendor_orders')
                     .where('status', 'in', ["Order Completed"])
-                    .where('section_id','==',active_id)
                     .where('createdAt', '>=', startLastTS)
                     .where('createdAt', '<=', endLastTS)
                 : null;
@@ -927,7 +945,7 @@
                     total += price;
                     totalComm += commission;
 
-                    // 🔹 Put values in correct index
+                    // Put values in correct index
                     if (orderData.createdAt) {
                         let d = orderData.createdAt.toDate();
 
@@ -1056,7 +1074,7 @@
             };
 
             const promises = Object.entries(statuses).map(([key, statusArray]) => {
-                let query = db.collection('vendor_orders').where('status', 'in', statusArray).where('section_id','==',active_id);
+                let query = withSectionFilter(db.collection('vendor_orders').where('status', 'in', statusArray), active_id);
                 if (startTS && endTS) {
                     query = query.where('createdAt', '>=', startTS)
                         .where('createdAt', '<=', endTS);
@@ -1595,7 +1613,7 @@
             const append_listvendors = document.getElementById('append_list');
             append_listvendors.innerHTML = '';
 
-            let refVendor = db.collection('vendors').where('section_id', '==', active_id).orderBy('reviewsCount', 'desc').limit(5);
+            let refVendor = withSectionFilter(db.collection('vendors'), active_id).orderBy('reviewsCount', 'desc').limit(5);
             
             let snapshotsVendor = await refVendor.get();
             html = buildHTML(snapshotsVendor);
@@ -1608,7 +1626,7 @@
             const append_listrecent_order = document.getElementById('append_list_recent_order');
             append_listrecent_order.innerHTML = '';
 
-            ref = db.collection('vendor_orders').where('section_id','==',active_id)
+            ref = withSectionFilter(db.collection('vendor_orders'), active_id)
                 .where('status', 'in', ["Order Placed", "Order Accepted", "Driver Pending", "Driver Accepted", "Order Shipped", "In Transit"]);
 
             ref = ref.orderBy('createdAt', 'desc');
@@ -1623,7 +1641,7 @@
             const append_listtop_drivers = document.getElementById('append_list_top_drivers');
             append_listtop_drivers.innerHTML = '';
 
-            ref = db.collection('users').where('role', '==', 'driver').where('serviceType', '==', active_type);
+            ref = withServiceTypeFilter(db.collection('users').where('role', '==', 'driver'), active_type);
 
             ref = ref.orderBy('orderCompleted', 'desc');
 
@@ -1674,22 +1692,22 @@
             const endLastTS = endOfLastPeriod ? firebase.firestore.Timestamp.fromDate(endOfLastPeriod) : null;
             Promise.all([
                 // All-time
-                db.collection('vendor_orders').where('section_id','==',active_id).orderBy('createdAt', 'desc').get(),
+                withSectionFilter(db.collection('vendor_orders'), active_id).orderBy('createdAt', 'desc').get(),
                 db.collection('users').where("role", "==", "customer").orderBy("createdAt").get(),
-                db.collection('users').where("role", "==", "driver").where('isOwner','==',false).where('serviceType', '==', active_type).orderBy('createdAt', 'desc').get(),
-                db.collection('vendors').where('section_id', '==', active_id).get(),
+                withServiceTypeFilter(db.collection('users').where("role", "==", "driver").where('isOwner','==',false), active_type).orderBy('createdAt', 'desc').get(),
+                withSectionFilter(db.collection('vendors'), active_id).get(),
 
                 // Current period
-                db.collection('vendor_orders').where('section_id','==',active_id).orderBy('createdAt', 'desc').where('createdAt', '<=', endThisTS).get(),
+                withSectionFilter(db.collection('vendor_orders'), active_id).orderBy('createdAt', 'desc').where('createdAt', '<=', endThisTS).get(),
                 db.collection('users').where("role", "==", "customer").where('createdAt', '>=', startThisTS).where('createdAt', '<=', endThisTS).orderBy("createdAt").get(),
-                db.collection('users').where("role", "==", "driver").where('isOwner','==',false).where('serviceType', '==', active_type).where('createdAt', '>=', startThisTS).where('createdAt', '<=', endThisTS).orderBy('createdAt', 'desc').get(),
-                db.collection('vendors').where('section_id', '==', active_id).where('createdAt', '>=', startThisTS).where('createdAt', '<=', endThisTS).get(),
+                withServiceTypeFilter(db.collection('users').where("role", "==", "driver").where('isOwner','==',false), active_type).where('createdAt', '>=', startThisTS).where('createdAt', '<=', endThisTS).orderBy('createdAt', 'desc').get(),
+                withSectionFilter(db.collection('vendors'), active_id).where('createdAt', '>=', startThisTS).where('createdAt', '<=', endThisTS).get(),
 
                 // Last period
-                startLastTS ? db.collection('vendor_orders').where('section_id','==',active_id).where('createdAt', '>=', startLastTS).where('createdAt', '<=', endLastTS).get() : Promise.resolve({ docs: [] }),
+                startLastTS ? withSectionFilter(db.collection('vendor_orders'), active_id).where('createdAt', '>=', startLastTS).where('createdAt', '<=', endLastTS).get() : Promise.resolve({ docs: [] }),
                 startLastTS ? db.collection('users').where("role", "==", "customer").where('createdAt', '>=', startLastTS).where('createdAt', '<=', endLastTS).orderBy("createdAt").get() : Promise.resolve({ docs: [] }),
-                startLastTS ? db.collection('users').where("role", "==", "driver").where('isOwner','==',false).where('serviceType', '==', active_type).where('createdAt', '>=', startLastTS).where('createdAt', '<=', endLastTS).orderBy('createdAt', 'desc').get() : Promise.resolve({ docs: [] }),
-                startLastTS ? db.collection('vendors').where('section_id', '==', active_id).where('createdAt', '>=', startLastTS).where('createdAt', '<=', endLastTS).get() : Promise.resolve({ docs: [] })
+                startLastTS ? withServiceTypeFilter(db.collection('users').where("role", "==", "driver").where('isOwner','==',false), active_type).where('createdAt', '>=', startLastTS).where('createdAt', '<=', endLastTS).orderBy('createdAt', 'desc').get() : Promise.resolve({ docs: [] }),
+                startLastTS ? withSectionFilter(db.collection('vendors'), active_id).where('createdAt', '>=', startLastTS).where('createdAt', '<=', endLastTS).get() : Promise.resolve({ docs: [] })
             ])
                 .then(([allOrders, allUsers, allDrivers, allVendors,
                     ordersCurr, usersCurr, driversCurr, vendorsCurr,
