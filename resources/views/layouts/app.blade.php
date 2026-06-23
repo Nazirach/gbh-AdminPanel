@@ -755,13 +755,13 @@
     window.firebaseDb = null;
 
     var firebaseConfig = {
-        apiKey: "{{ env('FIREBASE_API_KEY') }}",
-        authDomain: "{{ env('FIREBASE_AUTH_DOMAIN') }}",
-        projectId: "{{ env('FIREBASE_PROJECT_ID') }}",
-        storageBucket: "{{ env('FIREBASE_STORAGE_BUCKET') }}",
-        messagingSenderId: "{{ env('FIREBASE_MESSAGING_SENDER_ID') }}",
-        appId: "{{ env('FIREBASE_APP_ID') }}",
-        measurementId: "{{ env('FIREBASE_MEASUREMENT_ID') }}"
+        apiKey: @json(config('firebase.web.api_key')),
+        authDomain: @json(config('firebase.web.auth_domain')),
+        projectId: @json(config('firebase.web.project_id')),
+        storageBucket: @json(config('firebase.web.storage_bucket')),
+        messagingSenderId: @json(config('firebase.web.messaging_sender_id')),
+        appId: @json(config('firebase.web.app_id')),
+        measurementId: @json(config('firebase.web.measurement_id'))
     };
 
     if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
@@ -1500,6 +1500,7 @@
 
 </body>
 </html>
+
 
 
 
