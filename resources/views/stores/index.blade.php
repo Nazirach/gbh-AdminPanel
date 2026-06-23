@@ -228,7 +228,14 @@ if (!active_id) {
         $(document).on('click', '#create_vendor .close, #create_vendor [data-dismiss="modal"], #create_vendor [data-bs-dismiss="modal"]', function () {
             $('#create_vendor').modal('hide');
         });
-        var refData = database.collection('vendors').where('section_id', '==', active_id);
+        var refData = active_id
+            ? database.collection('vendors').where('section_id', '==', active_id)
+            : database.collection('vendors');
+
+        if (!active_id) {
+            console.warn('section_id cookie is empty; loading all stores without section filter.');
+        }
+
         var ref = refData.orderBy('createdAt', 'desc');
         var userData = [];
         var vendorData = [];
@@ -240,7 +247,11 @@ if (!active_id) {
             var placeholderImageData = snapshotsimage.data();
             placeholderImage = placeholderImageData.image;
         })
-        database.collection('vendor_categories').where('section_id', '==', active_id).where('publish', '==', true).get().then(async function(snapshots) {
+        var categoryRef = active_id
+            ? database.collection('vendor_categories').where('section_id', '==', active_id).where('publish', '==', true)
+            : database.collection('vendor_categories').where('publish', '==', true);
+
+        categoryRef.get().then(async function(snapshots) {
             snapshots.docs.forEach((listval) => {
                 var data = listval.data();
                 $('.cuisine_selector').append($("<option></option>")
