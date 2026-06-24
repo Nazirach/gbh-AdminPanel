@@ -633,6 +633,18 @@
 
             return value;
         }
+
+        function safeHexColor(value, fallback) {
+            if (!value || typeof value !== 'string') {
+                return fallback;
+            }
+
+            if (/^#[0-9A-Fa-f]{6}$/.test(value)) {
+                return value;
+            }
+
+            return fallback;
+        }
         
         $(document).ready(function() {
 
@@ -642,15 +654,15 @@
 
                 var globalSettings = snapshots.exists ? snapshots.data() : {};
                 $(".application_name").val(globalSettings.applicationName);
-                $("#website_color").val(globalSettings.website_color);
-                $("#admin_color").val(globalSettings.admin_panel_color);
-                $("#store_color").val(globalSettings.store_panel_color);
-                $("#customer_app_color").val(globalSettings.app_customer_color);
-                $("#driver_app_color").val(globalSettings.app_driver_color);
-                $("#store_app_color").val(globalSettings.app_store_color);
-                $("#provider_app_color").val(globalSettings.provider_app_color);
-                $("#worker_app_color").val(globalSettings.worker_app_color);
-                $("#provider_panel_color").val(globalSettings.provider_panel_color);
+                $("#website_color").val(safeHexColor(globalSettings.website_color, "#000000"));
+                $("#admin_color").val(safeHexColor(globalSettings.admin_panel_color, "#000000"));
+                $("#store_color").val(safeHexColor(globalSettings.store_panel_color, "#000000"));
+                $("#customer_app_color").val(safeHexColor(globalSettings.app_customer_color, "#000000"));
+                $("#driver_app_color").val(safeHexColor(globalSettings.app_driver_color, "#000000"));
+                $("#store_app_color").val(safeHexColor(globalSettings.app_store_color, "#000000"));
+                $("#provider_app_color").val(safeHexColor(globalSettings.provider_app_color, "#000000"));
+                $("#worker_app_color").val(safeHexColor(globalSettings.worker_app_color, "#000000"));
+                $("#provider_panel_color").val(safeHexColor(globalSettings.provider_panel_color, "#000000"));
                 $("#api_secure_key").val(shortString(globalSettings.apiSecureKey));
                 $("#tax_scope").val(globalSettings.taxScope);
                 if (globalSettings.defaultCountryCode) {

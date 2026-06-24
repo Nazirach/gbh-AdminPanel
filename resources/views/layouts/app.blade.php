@@ -1086,7 +1086,7 @@
                         return;
                     }
 
-                    script.src = "https://maps.googleapis.com/maps/api/js?key=" + encodeURIComponent(googleMapKey) + "&libraries=places,drawing";
+                    script.src = "https://maps.googleapis.com/maps/api/js?key=" + encodeURIComponent(googleMapKey) + "&libraries=places,drawing&loading=async";
                     script.setAttribute('data-google-maps-api', 'true');
                     script.onerror = function () {
                         console.warn('Google Maps script failed to load. Check API key configuration and restrictions.');
