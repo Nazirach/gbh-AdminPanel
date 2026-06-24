@@ -414,10 +414,11 @@
             };
             
             var placeholderImage = '';
+            var localFallbackImage = '{{ asset('images/default_user.png') }}';
             var placeholder = database.collection('settings').doc('placeHolderImage');
             placeholder.get().then(async function(snapshotsimage) {
-                var placeholderImageData = snapshotsimage.data();
-                placeholderImage = placeholderImageData.image;
+                var placeholderImageData = snapshotsimage.exists ? snapshotsimage.data() : null;
+                placeholderImage = placeholderImageData && placeholderImageData.image ? placeholderImageData.image : localFallbackImage;
             })
 
             var append_list = '';
@@ -765,14 +766,14 @@
                 }
 
                 if (val.profilePictureURL == '') {
-                    html.push('<td><img class="rounded" style="width:50px" src="' + placeholderImage + '" alt="image"></td> ' + ' <a data-url="' + driverView + '" href="' + driverView + '" class="redirecttopage left_space">' + val.firstName + ' ' + val.lastName + '</a>' + verified);
+                    html.push('<td><img class="rounded" style="width:50px" src="' + (placeholderImage || localFallbackImage) + '" alt="driver image" onerror="this.onerror=null;this.src=\'' + localFallbackImage + '\';"></td> ' + ' <a data-url="' + driverView + '" href="' + driverView + '" class="redirecttopage left_space">' + val.firstName + ' ' + val.lastName + '</a>' + verified);
                 } else {
                     if (val.profilePictureURL) {
                         photo = val.profilePictureURL;
                     } else {
                         photo = placeholderImage;
                     }
-                    html.push('<td><img class="rounded" style="width:50px" src="' + photo + '" alt="image" onerror="this.onerror=null;this.src=\'' + placeholderImage + '\'"></td>' + '<a data-url="' + driverView + '" href="' + driverView + '" class="redirecttopage left_space">' + val.firstName + ' ' + val.lastName + '</a>' + verified);
+                    html.push('<td><img class="rounded" style="width:50px" src="' + photo + '" alt="driver image" onerror="this.onerror=null;this.src=\'' + (placeholderImage || localFallbackImage) + '\'"></td>' + '<a data-url="' + driverView + '" href="' + driverView + '" class="redirecttopage left_space">' + val.firstName + ' ' + val.lastName + '</a>' + verified);
                 }
 
                 if (val.active == true) {
