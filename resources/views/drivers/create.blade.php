@@ -197,8 +197,17 @@ foreach ($countries as $keycountry => $valuecountry) {
     var section_id = getCookie('section_id') || '';
     var service_type = getCookie('service_type') || '';
 
-    var database = firebase.firestore();
-    var geoFirestore = new GeoFirestore(database);
+    if (!window.firebaseClientReady || !window.firebaseDb) {
+        console.warn('Firebase client is not ready. Please check Firebase configuration.');
+        jQuery('#data-table_processing').hide();
+    }
+
+    var database = window.firebaseDb;
+    var geoFirestore = database ? new GeoFirestore(database) : null;
+
+    if (!database) {
+        console.warn('Driver create stopped because Firebase database is not available.');
+    }
     var createdAt = firebase.firestore.FieldValue.serverTimestamp();
     var photo = "";
     var fileName = '';
@@ -214,10 +223,21 @@ foreach ($countries as $keycountry => $valuecountry) {
     
     $(document).ready(async function () {
 
+        if (!database) {
+            jQuery("#data-table_processing").hide();
+            return;
+        }
+
         jQuery("#data-table_processing").show();
 
-        let sectionRef = await database.collection('sections').doc(section_id).get();
-        let sectionData = sectionRef.data();
+        let sectionData = null;
+
+        if (section_id) {
+            let sectionRef = await database.collection('sections').doc(section_id).get();
+            sectionData = sectionRef.exists ? sectionRef.data() : null;
+        } else {
+            console.warn('section_id cookie is empty; skipping section detail lookup on driver create page.');
+        }
         
         jQuery("#country_selector").select2({
 			templateResult: formatState,
@@ -248,8 +268,8 @@ foreach ($countries as $keycountry => $valuecountry) {
         // --- END OF DEFAULT COUNTRY LOGIC ---
 
         let documentVerify = await database.collection('settings').doc('document_verification_settings').get();
-        let documentSettings = documentVerify.data();
-        if(documentSettings.isDriverVerification === false){
+        let documentSettings = documentVerify.exists ? documentVerify.data() : null;
+        if(documentSettings && documentSettings.isDriverVerification === false){
             isAutoVerify = true;
         }
     
