@@ -118,3 +118,12 @@ Perilaku patch:
 - Akar masalah: handler tombol polygon berada di scope luar, sementara `initializeOnlineDrawingManager` sebelumnya dideklarasikan di dalam `initMap()`
 - Patch mempromosikan `initializeOnlineDrawingManager` menjadi variabel fungsi di scope halaman agar bisa dipanggil dari handler tombol shape
 - Efek yang dituju: klik tombol `+` bisa benar-benar mengaktifkan mode polygon, bukan gagal karena ReferenceError
+
+
+## Google Maps DrawingManager deprecation fallback
+- Runtime cloud terbaru memastikan akar masalah utama: `google.maps.drawing.DrawingManager` sudah tidak tersedia pada Maps JavaScript API v3.65
+- Karena itu mode polygon online tidak bisa lagi mengandalkan DrawingManager bawaan Google
+- Patch menambahkan fallback manual polygon mode berbasis `google.maps.Polygon` dan click listener pada map
+- Klik tombol `+` sekarang akan mencoba DrawingManager dulu jika tersedia; jika tidak, otomatis pindah ke manual polygon mode
+- Manual mode mengubah cursor ke `crosshair`, menangkap klik titik di peta, dan membentuk polygon setelah titik cukup
+- Tombol hand akan mematikan mode gambar manual tanpa merusak peta dasar

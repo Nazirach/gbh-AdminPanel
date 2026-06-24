@@ -361,30 +361,22 @@
                 onclick = function() {
                     if (drawingManager && isGoogleDrawingReady()) {
                         drawingManager.setDrawingMode(null);
-                        return;
                     }
-
-                    waitForGoogleDrawingReady(function() {
-                        initializeOnlineDrawingManager();
-                        if (drawingManager) {
-                            drawingManager.setDrawingMode(null);
-                        }
-                    });
+                    disableOnlinePolygonMode();
                 };
                 polygon = function() {
+                    disableOnlinePolygonMode();
                     if (drawingManager && isGoogleDrawingReady()) {
                         drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
                         return;
                     }
 
-                    waitForGoogleDrawingReady(function() {
-                        initializeOnlineDrawingManager();
-                        if (drawingManager && isGoogleDrawingReady()) {
-                            drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
-                        } else {
-                            console.warn('Drawing manager is not ready yet.');
-                        }
-                    });
+                    if (initializeOnlineDrawingManager() && drawingManager && isGoogleDrawingReady()) {
+                        drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
+                        return;
+                    }
+
+                    enableOnlinePolygonMode();
                 };
                 deletearea = function() {
                     clearMap();
@@ -568,6 +560,7 @@
         }
 
         function clearMap() {
+            resetOnlinePolygonDrawing();
             if (allShapes.length > 0) {
                 for (var i = 0; i < allShapes.length; i++) {
                     allShapes[i].setMap(null);
@@ -1071,22 +1064,34 @@
                     editable: true,
                     draggable: true
                 };
+                var onlineDrawingClickListener = null;
+                var onlineDrawingPath = [];
+                var onlineDrawingShape = null;
+                var drawingManagerDeprecated = false;
+
+                function detachOnlineDrawingClickListener() {
+                    if (onlineDrawingClickListener) {
+                        google.maps.event.removeListener(onlineDrawingClickListener);
+                        onlineDrawingClickListener = null;
+                    }
+                }
 
                 function bindOnlineShapeEvents(newShape) {
-                    allShapes.push(newShape);
-                    let lat_lng = [];
-                    allShapes.forEach(function(data, index) {
-                        lat_lng[index] = getCoordinates(data);
-                    });
-                    document.getElementById('coordinates').value = JSON.stringify(lat_lng);
+                    if (allShapes.indexOf(newShape) === -1) {
+                        allShapes.push(newShape);
+                    }
+                    document.getElementById('coordinates').value = JSON.stringify(getCoordinates(newShape));
                     newShape.setOptions({
                         fillColor: shapeColor
                     });
-                    getCoordinates(newShape);
                     if (drawingManager) {
                         drawingManager.setDrawingMode(null);
                     }
                     setSelection(newShape, 0);
+                    if (newShape.__zoneEventsBound) {
+                        return;
+                    }
+                    newShape.__zoneEventsBound = true;
                     google.maps.event.addListener(newShape, 'click', function(e) {
                         if (e.vertex !== undefined) {
                             var path = newShape.getPaths().getAt(e.path);
@@ -1115,9 +1120,85 @@
                     });
                 }
 
+                disableOnlinePolygonMode = function() {
+                    detachOnlineDrawingClickListener();
+                    if (map && typeof map.setOptions === 'function') {
+                        map.setOptions({ draggableCursor: null });
+                    }
+                    return true;
+                };
+
+                resetOnlinePolygonDrawing = function() {
+                    detachOnlineDrawingClickListener();
+                    onlineDrawingPath = [];
+                    if (onlineDrawingShape && typeof onlineDrawingShape.setMap === 'function') {
+                        onlineDrawingShape.setMap(null);
+                    }
+                    onlineDrawingShape = null;
+                    if (map && typeof map.setOptions === 'function') {
+                        map.setOptions({ draggableCursor: null });
+                    }
+                };
+
+                enableOnlinePolygonMode = function() {
+                    if (!map || !isGoogleMapsReady()) {
+                        console.warn('Google Maps is not ready; manual polygon mode skipped.');
+                        return false;
+                    }
+
+                    detachOnlineDrawingClickListener();
+                    if (map && typeof map.setOptions === 'function') {
+                        map.setOptions({ draggableCursor: 'crosshair' });
+                    }
+
+                    onlineDrawingClickListener = google.maps.event.addListener(map, 'click', function(event) {
+                        if (!event || !event.latLng) {
+                            return;
+                        }
+
+                        var nextPoint = {
+                            lat: event.latLng.lat(),
+                            lng: event.latLng.lng()
+                        };
+                        onlineDrawingPath.push(nextPoint);
+
+                        if (!onlineDrawingShape) {
+                            onlineDrawingShape = new google.maps.Polygon({
+                                paths: onlineDrawingPath,
+                                strokeWeight: shapeOptions.strokeWeight,
+                                fillOpacity: shapeOptions.fillOpacity,
+                                editable: false,
+                                draggable: false,
+                                fillColor: shapeColor,
+                                strokeColor: '#007cff',
+                                map: map
+                            });
+                            bindOnlineShapeEvents(onlineDrawingShape);
+                        } else {
+                            onlineDrawingShape.setPath(onlineDrawingPath);
+                        }
+
+                        if (onlineDrawingPath.length >= 3) {
+                            onlineDrawingShape.setEditable(true);
+                            onlineDrawingShape.setDraggable(true);
+                            bindOnlineShapeEvents(onlineDrawingShape);
+                            setSelection(onlineDrawingShape, 0);
+                            document.getElementById('coordinates').value = JSON.stringify(getCoordinates(onlineDrawingShape));
+                        } else {
+                            document.getElementById('coordinates').value = JSON.stringify(onlineDrawingPath);
+                        }
+                    });
+
+                    return true;
+                };
+
                 initializeOnlineDrawingManager = function() {
                     if (drawingManager) {
                         return true;
+                    }
+
+                    if (drawingManagerDeprecated) {
+                        return false;
                     }
 
                     if (!isGoogleDrawingReady()) {
@@ -1137,7 +1218,8 @@
                         map: map
                         });
                     } catch (error) {
-                        console.warn('DrawingManager unavailable; polygon drawing disabled.', error);
+                        drawingManagerDeprecated = true;
+                        console.warn('DrawingManager unavailable; falling back to manual polygon mode.', error);
                         drawingManager = null;
                         return false;
                     }
