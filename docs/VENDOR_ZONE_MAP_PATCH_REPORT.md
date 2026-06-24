@@ -111,3 +111,10 @@ Perilaku patch:
 - Patch menambahkan `initializeOnlineDrawingManager()` agar inisialisasi drawing manager bisa dipanggil ulang dengan aman
 - Patch membuat tombol hand/polygon menunggu lalu mengaktifkan drawing manager, bukan langsung gagal diam
 - Patch mempertahankan alur simpan lama; error simpan sebelumnya berasal dari koordinat yang belum pernah terbentuk karena polygon gagal aktif
+
+
+## Zone drawing scope fix
+- Cloud test `zone-drawing-cloud-03` menemukan `initializeOnlineDrawingManager is not defined`
+- Akar masalah: handler tombol polygon berada di scope luar, sementara `initializeOnlineDrawingManager` sebelumnya dideklarasikan di dalam `initMap()`
+- Patch mempromosikan `initializeOnlineDrawingManager` menjadi variabel fungsi di scope halaman agar bisa dipanggil dari handler tombol shape
+- Efek yang dituju: klik tombol `+` bisa benar-benar mengaktifkan mode polygon, bukan gagal karena ReferenceError

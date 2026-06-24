@@ -1115,7 +1115,7 @@
                     });
                 }
 
-                function initializeOnlineDrawingManager() {
+                initializeOnlineDrawingManager = function() {
                     if (drawingManager) {
                         return true;
                     }

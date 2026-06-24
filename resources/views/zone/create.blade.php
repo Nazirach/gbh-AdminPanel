@@ -267,6 +267,10 @@
         let polygon;
         let polygonPath;
         var drawingManager;
+        var initializeOnlineDrawingManager = function() {
+            console.warn('Drawing manager is not ready yet.');
+            return false;
+        };
         var selectedShape;
         var selectedKernel;
         var gmarkers = [];
@@ -1042,7 +1046,7 @@
                     });
                 }
 
-                function initializeOnlineDrawingManager() {
+                initializeOnlineDrawingManager = function() {
                     if (drawingManager) {
                         return true;
                     }
