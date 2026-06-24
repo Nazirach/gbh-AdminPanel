@@ -1,6 +1,104 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        /* DRIVER CONTRAST FIX */
+        .page-wrapper,
+        .page-wrapper .container-fluid,
+        .page-wrapper .admin-top-section,
+        .page-wrapper .card,
+        .page-wrapper .card-body,
+        .page-wrapper .table-list {
+            color: #eafcff !important;
+        }
+
+        .page-wrapper h1,
+        .page-wrapper h2,
+        .page-wrapper h3,
+        .page-wrapper h4,
+        .page-wrapper h5,
+        .page-wrapper h6,
+        .page-wrapper .text-dark,
+        .page-wrapper .text-dark-2,
+        .page-wrapper .font-medium,
+        .page-wrapper .card-title,
+        .page-wrapper .card-header-title,
+        .page-wrapper .card-header-title h3,
+        .page-wrapper .card-header-title p,
+        .page-wrapper .top-title-left h3,
+        .page-wrapper .breadcrumb,
+        .page-wrapper .breadcrumb a,
+        .page-wrapper .breadcrumb-item,
+        .page-wrapper .breadcrumb-item.active {
+            color: #f4fcff !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            font-weight: 700 !important;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.16);
+        }
+
+        .page-wrapper .counter,
+        .page-wrapper .total_count {
+            color: #08263a !important;
+            background: linear-gradient(145deg, #ffffff, #bff5ff) !important;
+            border: 1px solid rgba(255,255,255,0.65) !important;
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.26) !important;
+            font-weight: 900 !important;
+            text-shadow: none !important;
+        }
+
+        .page-wrapper table,
+        .page-wrapper table thead th,
+        .page-wrapper table tbody td,
+        .page-wrapper table tbody a,
+        .page-wrapper .dataTables_length,
+        .page-wrapper .dataTables_length label,
+        .page-wrapper .dataTables_filter,
+        .page-wrapper .dataTables_filter label,
+        .page-wrapper .dataTables_info,
+        .page-wrapper label,
+        .page-wrapper p,
+        .page-wrapper span {
+            color: #dff6ff !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .page-wrapper table thead th {
+            color: #9eefff !important;
+            font-weight: 800 !important;
+        }
+
+        .page-wrapper input,
+        .page-wrapper select,
+        .page-wrapper option,
+        .page-wrapper .form-control,
+        .page-wrapper .select2-selection,
+        .page-wrapper .select2-selection__rendered {
+            background: rgba(8, 28, 52, 0.96) !important;
+            color: #ecfeff !important;
+            border-color: rgba(88, 205, 255, 0.28) !important;
+        }
+
+        .page-wrapper input::placeholder {
+            color: rgba(220, 250, 255, 0.78) !important;
+        }
+
+        .page-wrapper .btn,
+        .page-wrapper .btn span,
+        .page-wrapper .dropdown-toggle,
+        .page-wrapper .dropdown-toggle span {
+            color: #ffffff !important;
+            font-weight: 700 !important;
+        }
+
+        .page-wrapper .icon,
+        .page-wrapper .box-icon {
+            border-color: rgba(88, 205, 255, 0.25) !important;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.12) !important;
+        }
+    </style>
+
     <div class="page-wrapper">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
