@@ -1,0 +1,1207 @@
+﻿COMMAND CENTER MAP SOURCE AUDIT RAW
+Generated: 06/24/2026 17:27:40
+
+
+===== routes\web.php =====
+Line 2: use Illuminate\Support\Facades\Route;
+Line 5: | Web Routes
+Line 8: | Here is where you can register web routes for your application. These
+Line 9: | routes are loaded by the RouteServiceProvider within a group which
+Line 14: Route::get('lang/change', [App\Http\Controllers\LangController::class, 'change'])->name('changeLang');
+Line 15: Route::post('payments/razorpay/createorder', [App\Http\Controllers\RazorPayController::class, 'createOrderid']);
+Line 16: Route::post('payments/getpaytmchecksum', [App\Http\Controllers\PaymentController::class, 'getPaytmChecksum']);
+Line 17: Route::post('payments/validatechecksum', [App\Http\Controllers\PaymentController::class, 'validateChecksum']);
+Line 18: Route::post('payments/initiatepaytmpayment', [App\Http\Controllers\PaymentController::class, 'initiatePaytmPayment']);
+Line 19: Route::get('payments/paytmpaymentcallback', [App\Http\Controllers\PaymentController::class, 'paytmPaymentcallback']);
+Line 20: Route::post('payments/paypalclientid', [App\Http\Controllers\PaymentController::class, 'getPaypalClienttoken']);
+Line 21: Route::post('payments/paypaltransaction', [App\Http\Controllers\PaymentController::class, 'createBraintreePayment']);
+Line 22: Route::post('payments/stripepaymentintent', [App\Http\Controllers\PaymentController::class, 'createStripePaymentIntent']);
+Line 24: Auth::routes();
+Line 26: Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Line 27: Route::get('/dashboard/{id?}/{type?}', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Line 30: Route::middleware(['permission:users,users'])->group(function () {
+Line 31: Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
+Line 33: Route::middleware(['permission:users,users.create'])->group(function () {
+Line 34: Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('users.create');
+Line 36: Route::middleware(['permission:users,users.edit'])->group(function () {
+Line 37: Route::get('/users/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
+Line 39: Route::middleware(['permission:users,users.view'])->group(function () {
+Line 40: Route::get('/users/view/{id}', [App\Http\Controllers\UserController::class, 'view'])->name('users.view');
+Line 42: Route::get('/users/profile', [App\Http\Controllers\UserController::class, 'profile'])->name('users.profile');
+Line 43: Route::post('/users/profile/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.profile.update');
+Line 46: Route::middleware(['permission:vendors,vendors'])->group(function () {
+Line 47: Route::get('/vendors', [App\Http\Controllers\VendorController::class, 'index'])->name('vendors');
+Line 49: Route::middleware(['permission:approve_vendors,approve.vendors.list'])->group(function () {
+Line 50: Route::get('/vendors/approved', [App\Http\Controllers\VendorController::class, 'index'])->name('vendors.approved');
+Line 52: Route::middleware(['permission:pending_vendors,pending.vendors.list'])->group(function () {
+Line 53: Route::get('/vendors/pending', [App\Http\Controllers\VendorController::class, 'index'])->name('vendors.pending');
+Line 55: Route::middleware(['permission:vendors,vendors.create'])->group(function () {
+Line 56: Route::get('/vendors/create', [App\Http\Controllers\VendorController::class, 'create'])->name('vendors.create');
+Line 58: Route::middleware(['permission:vendors,vendors.edit'])->group(function () {
+Line 59: Route::get('/vendor/edit/{id}', [App\Http\Controllers\VendorController::class, 'edit'])->name('vendors.edit');
+Line 61: Route::middleware(['permission:vendors-document,vendor.document.list'])->group(function () {
+Line 62: Route::get('vendors/document-list/{id}', [App\Http\Controllers\VendorController::class, 'DocumentList'])->name('vendors.document');
+Line 64: Route::middleware(['permission:vendors-document,vendor.document.edit'])->group(function () {
+Line 65: Route::get('/vendors/document/upload/{ownerId}/{id}', [App\Http\Controllers\VendorController::class, 'DocumentUpload'])->name('vendors.document.upload');
+Line 69: Route::middleware(['permission:stores,stores'])->group(function () {
+Line 70: Route::get('/stores', [App\Http\Controllers\StoreController::class, 'index'])->name('stores');
+Line 72: Route::middleware(['permission:stores,stores.create'])->group(function () {
+Line 73: Route::get('/stores/create', [App\Http\Controllers\StoreController::class, 'create'])->name('stores.create');
+Line 75: Route::middleware(['permission:stores,stores.edit'])->group(function () {
+Line 76: Route::get('/stores/edit/{id}', [App\Http\Controllers\StoreController::class, 'edit'])->name('stores.edit');
+Line 78: Route::middleware(['permission:stores,stores.view'])->group(function () {
+Line 79: Route::get('/stores/view/{id}', [App\Http\Controllers\StoreController::class, 'view'])->name('stores.view');
+Line 83: Route::middleware(['permission:drivers,drivers'])->group(function () {
+Line 84: Route::get('/drivers', [App\Http\Controllers\DriverController::class, 'index'])->name('drivers');
+Line 86: Route::middleware(['permission:approve_drivers,approve.driver.list'])->group(function () {
+Line 87: Route::get('/drivers/approved', [App\Http\Controllers\DriverController::class, 'index'])->name('drivers.approved');
+Line 89: Route::middleware(['permission:pending_drivers,pending.driver.list'])->group(function () {
+Line 90: Route::get('/drivers/pending', [App\Http\Controllers\DriverController::class, 'index'])->name('drivers.pending');
+Line 92: Route::middleware(['permission:drivers,drivers.edit'])->group(function () {
+Line 93: Route::get('/drivers/edit/{id}', [App\Http\Controllers\DriverController::class, 'edit'])->name('drivers.edit');
+Line 95: Route::middleware(['permission:drivers,drivers.create'])->group(function () {
+Line 96: Route::get('/drivers/create', [App\Http\Controllers\DriverController::class, 'create'])->name('drivers.create');
+Line 98: Route::middleware(['permission:drivers,drivers.view'])->group(function () {
+Line 99: Route::get('/drivers/view/{id}', [App\Http\Controllers\DriverController::class, 'view'])->name('drivers.view');
+Line 101: Route::middleware(['permission:drivers-document,driver.document.list'])->group(function () {
+Line 102: Route::get('drivers/document-list/{id}', [App\Http\Controllers\DriverController::class, 'DocumentList'])->name('drivers.document');
+Line 104: Route::middleware(['permission:drivers-document,driver.document.edit'])->group(function () {
+Line 105: Route::get('/drivers/document/upload/{driverId}/{id}', [App\Http\Controllers\DriverController::class, 'DocumentUpload'])->name('drivers.document.upload');
+Line 107: Route::middleware(['permission:fleet-drivers,fleet.drivers'])->group(function () {
+Line 108: Route::get('/fleet-drivers', [App\Http\Controllers\DriverController::class, 'fleetDrivers'])->name('fleet.drivers');
+Line 110: Route::middleware(['permission:fleet-drivers,fleet.drivers.create'])->group(function () {
+Line 111: Route::get('/fleet-drivers/create', [App\Http\Controllers\DriverController::class, 'fleetDriversCreate'])->name('fleet.drivers.create');
+Line 113: Route::middleware(['permission:fleet-drivers,fleet.drivers.edit'])->group(function () {
+Line 114: Route::get('/fleet-drivers/edit/{id}', [App\Http\Controllers\DriverController::class, 'fleetDriversEdit'])->name('fleet.drivers.edit');
+Line 116: Route::middleware(['permission:fleet-drivers,fleet.drivers.view'])->group(function () {
+Line 117: Route::get('/fleet-drivers/view/{id}', [App\Http\Controllers\DriverController::class, 'fleetDriversview'])->name('fleet.drivers.view');
+Line 120: Route::middleware(['permission:coupons,coupons'])->group(function () {
+Line 121: Route::get('/coupon/{id}', [App\Http\Controllers\CouponController::class, 'index'])->name('vendors.coupons');
+Line 123: Route::middleware(['permission:items,items'])->group(function () {
+Line 124: Route::get('/items/{id}', [App\Http\Controllers\ProductController::class, 'index'])->name('vendors.items');
+Line 126: Route::middleware(['permission:items,items.create'])->group(function () {
+Line 127: Route::get('/item/create/{id}', [App\Http\Controllers\ProductController::class, 'create']);
+Line 129: Route::middleware(['permission:deliveryman,deliveryman.create'])->group(function () {
+Line 130: Route::get('/deliveryman/create/{id}', [App\Http\Controllers\DeliverymanController::class, 'create']);
+Line 132: Route::middleware(['permission:coupons,coupons.create'])->group(function () {
+Line 133: Route::get('/coupons/create/{id}', [App\Http\Controllers\CouponController::class, 'create']);
+Line 136: Route::middleware(['permission:advertisements,advertisements.create'])->group(function () {
+Line 137: Route::get('/advertisements/create/{id}', [App\Http\Controllers\AdvertisementsController::class, 'create']);
+Line 140: Route::middleware(['permission:orders,orders'])->group(function () {
+Line 141: Route::get('/orders/{id}', [App\Http\Controllers\OrderController::class, 'index'])->name('vendors.orders');
+Line 143: Route::get('/reviews/{id}', [App\Http\Controllers\OrderReviewController::class, 'index'])->name('vendors.reviews');
+Line 144: Route::get('/vendorFilters', [App\Http\Controllers\VendorFiltersController::class, 'index'])->name('vendorFilters');
+Line 145: Route::get('/vendorFilters/create', [App\Http\Controllers\VendorFiltersController::class, 'create'])->name('vendorFilters.create');
+Line 146: Route::get('/vendorFilters/edit/{id}', [App\Http\Controllers\VendorFiltersController::class, 'edit'])->name('vendorFilters.edit');
+Line 148: Route::middleware(['permission:categories,categories'])->group(function () {
+Line 149: Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories');
+Line 151: Route::middleware(['permission:categories,categories.edit'])->group(function () {
+Line 152: Route::get('/categories/edit/{id}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('categories.edit');
+Line 154: Route::middleware(['permission:categories,categories.create'])->group(function () {
+Line 155: Route::get('/categories/create', [App\Http\Controllers\CategoryController::class, 'create'])->name('categories.create');
+Line 158: Route::middleware(['permission:section-service,section-service.list'])->group(function () {
+Line 159: Route::get('/section', [App\Http\Controllers\SectionController::class, 'index'])->name('section');
+Line 161: Route::middleware(['permission:section-service,section.service.edit'])->group(function () {
+Line 162: Route::get('/section/edit/{id}', [App\Http\Controllers\SectionController::class, 'edit'])->name('section.edit');
+Line 164: Route::middleware(['permission:section-service,section.service.save'])->group(function () {
+Line 165: Route::get('/section/create', [App\Http\Controllers\SectionController::class, 'create'])->name('section.create');
+Line 168: Route::middleware(['permission:items,items'])->group(function () {
+Line 169: Route::get('/items', [App\Http\Controllers\ProductController::class, 'index'])->name('items');
+Line 171: Route::middleware(['permission:items,items.edit'])->group(function () {
+Line 172: Route::get('/items/edit/{id}', [App\Http\Controllers\ProductController::class, 'edit'])->name('items.edit');
+Line 174: Route::middleware(['permission:items,items.create'])->group(function () {
+Line 175: Route::get('/item/create', [App\Http\Controllers\ProductController::class, 'create'])->name('items.create');
+Line 177: Route::get('/item/view/{id}', [App\Http\Controllers\ProductController::class, 'view'])->name('items.view');
+Line 179: Route::middleware(['permission:parcel-categories,parcel.categories'])->group(function () {
+Line 180: Route::get('/parcelCategory', [App\Http\Controllers\ParcelController::class, 'index'])->name('parcelCategory');
+Line 182: Route::middleware(['permission:parcel-categories,parcel.categories.create'])->group(function () {
+Line 183: Route::get('/parcelCategory/create', [App\Http\Controllers\ParcelController::class, 'create'])->name('parcelCategory.create');
+Line 185: Route::middleware(['permission:parcel-categories,parcel.categories.edit'])->group(function () {
+Line 186: Route::get('/parcelCategory/edit/{id}', [App\Http\Controllers\ParcelController::class, 'edit'])->name('parcelCategory.edit');
+Line 189: Route::middleware(['permission:parcel-weight,parcel.weight'])->group(function () {
+Line 190: Route::get('/parcel_weight', [App\Http\Controllers\ParcelController::class, 'parcelWeight'])->name('parcel_weight');
+Line 193: Route::middleware(['permission:parcel-coupons,parcel.coupons'])->group(function () {
+Line 194: Route::get('/parcel_coupons', [App\Http\Controllers\ParcelController::class, 'parcelCoupons'])->name('parcel_coupons');
+Line 196: Route::middleware(['permission:parcel-coupons,parcel.coupons.edit'])->group(function () {
+Line 197: Route::get('/parcel_coupons/edit/{id}', [App\Http\Controllers\ParcelController::class, 'parcelCouponsEdit'])->name('parcel_coupons.edit');
+Line 199: Route::middleware(['permission:parcel-coupons,parcel.coupons.create'])->group(function () {
+Line 200: Route::get('/parcel_coupons/create', [App\Http\Controllers\ParcelController::class, 'parcelCouponsCreate'])->name('parcel_coupons.create');
+Line 203: Route::middleware(['permission:parcel-orders,parcel.orders'])->group(function () {
+Line 204: Route::get('/parcel_orders', [App\Http\Controllers\ParcelController::class, 'parcelOrders'])->name('parcel_orders');
+Line 206: Route::get('/parcel_orders/{id}', [App\Http\Controllers\ParcelController::class, 'parcelOrders'])->name('parcel_orders.driver');
+Line 207: Route::middleware(['permission:parcel-orders,parcel.orders.edit'])->group(function () {
+Line 208: Route::get('/parcel_orders/edit/{id}', [App\Http\Controllers\ParcelController::class, 'parcelOrderEdit'])->name('parcel_orders.edit');
+Line 211: Route::get('/rides/{id}', [App\Http\Controllers\RideController::class, 'index'])->name('drivers.ride');
+Line 212: Route::get('/rides/{driverId}', [App\Http\Controllers\RideController::class, 'index'])->name('drivers.rides');
+Line 213: Route::get('/ride/{sosId}', [App\Http\Controllers\RideController::class, 'index2'])->name('ride');
+Line 215: Route::middleware(['permission:rides,rides'])->group(function () {
+Line 216: Route::get('/rides', [App\Http\Controllers\RideController::class, 'index'])->name('rides');
+Line 218: Route::get('/rides/view/{id}', [App\Http\Controllers\RideController::class, 'view'])->name('rides.view');
+Line 219: Route::middleware(['permission:rides,rides.edit'])->group(function () {
+Line 220: Route::get('/rides/edit/{id}', [App\Http\Controllers\RideController::class, 'edit'])->name('rides.edit');
+Line 223: Route::middleware(['permission:orders,orders'])->group(function () {
+Line 224: Route::get('/orders/', [App\Http\Controllers\OrderController::class, 'index'])->name('orders');
+Line 226: Route::middleware(['permission:orders,orders.edit'])->group(function () {
+Line 227: Route::get('/orders/edit/{id}', [App\Http\Controllers\OrderController::class, 'edit'])->name('orders.edit');
+Line 229: Route::get('/orders/review/{oid}', [App\Http\Controllers\OrderController::class, 'review'])->name('orders.review');
+Line 230: Route::get('/orderReview', [App\Http\Controllers\OrderReviewController::class, 'index'])->name('orderReview');
+Line 231: Route::get('/orderReview/edit/{id}', [App\Http\Controllers\OrderReviewController::class, 'edit'])->name('orderReview.edit');
+Line 233: Route::middleware(['permission:coupons,coupons'])->group(function () {
+Line 234: Route::get('/coupons', [App\Http\Controllers\CouponController::class, 'index'])->name('coupons');
+Line 236: Route::middleware(['permission:coupons,coupons.edit'])->group(function () {
+Line 237: Route::get('/coupons/edit/{id}', [App\Http\Controllers\CouponController::class, 'edit'])->name('coupons.edit');
+Line 239: Route::middleware(['permission:coupons,coupons.create'])->group(function () {
+Line 240: Route::get('/coupons/create', [App\Http\Controllers\CouponController::class, 'create'])->name('coupons.create');
+Line 243: Route::middleware(['permission:stores-payment,stores.payment'])->group(function () {
+Line 244: Route::get('/payments', [App\Http\Controllers\AdminPaymentsController::class, 'index'])->name('payments');
+Line 248: Route::middleware(['permission:stores-payout,stores.payout'])->group(function () {
+Line 249: Route::get('vendorsPayouts', [App\Http\Controllers\VendorsPayoutController::class, 'index'])->name('vendorsPayouts');
+Line 251: Route::middleware(['permission:stores-payout,stores.payout.create'])->group(function () {
+Line 252: Route::get('vendorsPayouts/create', [App\Http\Controllers\VendorsPayoutController::class, 'create'])->name('vendorsPayouts.create');
+Line 254: Route::middleware(['permission:stores-payout,stores.payout'])->group(function () {
+Line 255: Route::get('/vendorsPayouts/{id}', [App\Http\Controllers\VendorsPayoutController::class, 'index'])->name('vendors.payout');
+Line 257: Route::middleware(['permission:stores-payout,stores.payout.create'])->group(function () {
+Line 258: Route::get('/vendorsPayouts/create/{id}', [App\Http\Controllers\VendorsPayoutController::class, 'create']);
+Line 261: Route::middleware(['permission:drivers-payment,drivers.payment'])->group(function () {
+Line 262: Route::get('driverpayments', [App\Http\Controllers\AdminPaymentsController::class, 'driverIndex'])->name('driver.driverpayments');
+Line 264: Route::middleware(['permission:drivers-payout,drivers.payout.create'])->group(function () {
+Line 265: Route::get('driversPayouts/create', [App\Http\Controllers\DriversPayoutController::class, 'create'])->name('driversPayouts.create');
+Line 267: Route::middleware(['permission:drivers-payout,drivers.payout.create'])->group(function () {
+Line 268: Route::get('driversPayouts/create/{id}', [App\Http\Controllers\DriversPayoutController::class, 'create']);
+Line 270: Route::middleware(['permission:drivers-payout,drivers.payout'])->group(function () {
+Line 271: Route::get('driversPayouts', [App\Http\Controllers\DriversPayoutController::class, 'index'])->name('driversPayouts');
+Line 273: Route::middleware(['permission:drivers-payout,drivers.payout'])->group(function () {
+Line 274: Route::get('driversPayouts/{id}', [App\Http\Controllers\DriversPayoutController::class, 'index'])->name('driver.payouts');
+Line 277: Route::middleware(['permission:owners-payout,owners.payout'])->group(function () {
+Line 278: Route::get('ownersPayouts/{id}', [App\Http\Controllers\OwnersPayoutController::class, 'index'])->name('owners.payouts');
+Line 280: Route::middleware(['permission:owners-payout,owners.payout.create'])->group(function () {
+Line 281: Route::get('ownersPayouts/create', [App\Http\Controllers\OwnersPayoutController::class, 'create'])->name('ownersPayouts.create');
+Line 283: Route::middleware(['permission:owners-payout,owners.payout.create'])->group(function () {
+Line 284: Route::get('ownersPayouts/create/{id}', [App\Http\Controllers\OwnersPayoutController::class, 'create']);
+Line 286: Route::middleware(['permission:wallet-transaction,wallet-transaction'])->group(function () {
+Line 287: Route::get('walletstransaction', [App\Http\Controllers\TransactionController::class, 'index'])->name('walletstransaction');
+Line 289: Route::middleware(['permission:wallet-transaction,wallet-transaction'])->group(function () {
+Line 290: Route::get('/walletstransaction/{id}', [App\Http\Controllers\TransactionController::class, 'index'])->name('users.walletstransaction');
+Line 292: Route::post('order-status-notification', [App\Http\Controllers\OrderController::class, 'sendNotification'])->name('order-status-notification');
+Line 294: Route::middleware(['permission:god-eye,map'])->group(function () {
+Line 295: Route::get('/map/multivendor', [App\Http\Controllers\MapController::class, 'multivendor'])->name('map.multivendor');
+Line 297: Route::middleware(['permission:parcel-service-god-eye,parcel-service-map'])->group(function () {
+Line 298: Route::get('/map/parcel', [App\Http\Controllers\MapController::class, 'parcel'])->name('map.parcel');
+Line 300: Route::middleware(['permission:rental-plural-god-eye,rental-plural-map'])->group(function () {
+Line 301: Route::get('/map/rental', [App\Http\Controllers\MapController::class, 'rental'])->name('map.rental');
+Line 303: Route::middleware(['permission:cab-service-god-eye,cab-service-map'])->group(function () {
+Line 304: Route::get('/map/cab', [App\Http\Controllers\MapController::class, 'cab'])->name('map.cab');
+Line 307: Route::prefix('settings')->group(function () {
+Line 308: Route::middleware(['permission:currency,currencies'])->group(function () {
+Line 309: Route::get('/currencies', [App\Http\Controllers\CurrencyController::class, 'index'])->name('currencies');
+Line 311: Route::middleware(['permission:currency,currencies.edit'])->group(function () {
+Line 312: Route::get('/currencies/edit/{id}', [App\Http\Controllers\CurrencyController::class, 'edit'])->name('currencies.edit');
+Line 314: Route::middleware(['permission:currency,currencies.create'])->group(function () {
+Line 315: Route::get('/currencies/create', [App\Http\Controllers\CurrencyController::class, 'create'])->name('currencies.create');
+Line 317: Route::middleware(['permission:global-setting,settings.app.globals'])->group(function () {
+Line 318: Route::get('app/globals', [App\Http\Controllers\SettingsController::class, 'globals'])->name('settings.app.globals');
+Line 320: Route::middleware(['permission:app-banners-setting,settings.app.banners'])->group(function () {
+Line 321: Route::get('app/banners', [App\Http\Controllers\SettingsController::class, 'banners'])->name('settings.app.banners');
+Line 323: Route::middleware(['permission:radius,settings.app.radiusConfiguration'])->group(function () {
+Line 324: Route::get('app/radiusConfiguration', [App\Http\Controllers\SettingsController::class, 'radiosConfiguration'])->name('settings.app.radiusConfiguration');
+Line 326: Route::middleware(['permission:scheduleOrderNotification,settings.app.scheduleOrderNotification'])->group(function () {
+Line 327: Route::get('app/scheduleOrderNotification', [App\Http\Controllers\SettingsController::class, 'scheduleOrderNotification'])->name('settings.app.scheduleOrderNotification');
+Line 329: Route::get('mobile/globals', [App\Http\Controllers\SettingsController::class, 'mobileGlobals'])->name('settings.mobile.globals');
+Line 330: Route::middleware(['permission:payment-method,payment-method'])->group(function () {
+Line 331: Route::get('payment/stripe', [App\Http\Controllers\SettingsController::class, 'stripe'])->name('payment.stripe');
+Line 332: Route::get('payment/razorpay', [App\Http\Controllers\SettingsController::class, 'razorpay'])->name('payment.razorpay');
+Line 333: Route::get('payment/cod', [App\Http\Controllers\SettingsController::class, 'cod'])->name('payment.cod');
+Line 334: Route::get('payment/paypal', [App\Http\Controllers\SettingsController::class, 'paypal'])->name('payment.paypal');
+Line 335: Route::get('payment/wallet', [App\Http\Controllers\SettingsController::class, 'wallet'])->name('payment.wallet');
+Line 336: Route::get('payment/payfast', [App\Http\Controllers\SettingsController::class, 'payfast'])->name('payment.payfast');
+Line 337: Route::get('payment/paystack', [App\Http\Controllers\SettingsController::class, 'paystack'])->name('payment.paystack');
+Line 338: Route::get('payment/flutterwave', [App\Http\Controllers\SettingsController::class, 'flutterwave'])->name('payment.flutterwave');
+Line 339: Route::get('payment/mercadopago', [App\Http\Controllers\SettingsController::class, 'mercadopago'])->name('payment.mercadopago');
+Line 340: Route::get('payment/xendit', [App\Http\Controllers\SettingsController::class, 'xendit'])->name('payment.xendit');
+Line 341: Route::get('payment/midtrans', [App\Http\Controllers\SettingsController::class, 'midTrans'])->name('payment.midTrans');
+Line 342: Route::get('payment/orangepay', [App\Http\Controllers\SettingsController::class, 'orangePay'])->name('payment.orangePay');
+Line 344: Route::middleware(['permission:delivery-charge,settings.app.deliveryCharge'])->group(function () {
+Line 345: Route::get('app/deliveryCharge', [App\Http\Controllers\SettingsController::class, 'deliveryCharge'])->name('settings.app.deliveryCharge');
+Line 347: Route::middleware(['permission:openai-settings,settings.app.openai-settings'])->group(function () {
+Line 348: Route::get('app/openai-settings', [App\Http\Controllers\SettingsController::class, 'openaiSettings'])->name('settings.app.openai-settings');
+Line 350: Route::middleware(['permission:document-verification,settings.app.documentVerification'])->group(function () {
+Line 351: Route::get('app/documentVerification', [App\Http\Controllers\SettingsController::class, 'documentVerification'])->name('settings.app.documentVerification');
+Line 353: Route::middleware(['permission:settings-maintenance,settings.app.maintenance'])->group(function () {
+Line 354: Route::get('app/maintenance', [App\Http\Controllers\SettingsController::class, 'maintenanceSettings'])->name('settings.app.maintenance');
+Line 356: Route::middleware(['permission:language,language'])->group(function () {
+Line 357: Route::get('app/languages', [App\Http\Controllers\SettingsController::class, 'languages'])->name('settings.app.languages');
+Line 359: Route::middleware(['permission:language,language.create'])->group(function () {
+Line 360: Route::get('app/languages/create', [App\Http\Controllers\SettingsController::class, 'languagescreate'])->name('settings.app.languages.create');
+Line 362: Route::middleware(['permission:language,language.edit'])->group(function () {
+Line 363: Route::get('app/languages/edit/{id}', [App\Http\Controllers\SettingsController::class, 'languagesedit'])->name('settings.app.languages.edit');
+Line 365: Route::middleware(['permission:cab-promo,cab.promo'])->group(function () {
+Line 366: Route::get('promos', [App\Http\Controllers\SettingsController::class, 'promos'])->name('settings.promos');
+Line 368: Route::middleware(['permission:cab-promo,cab.promo.create'])->group(function () {
+Line 369: Route::get('promos/create', [App\Http\Controllers\SettingsController::class, 'promosCreate'])->name('settings.promos.create');
+Line 371: Route::middleware(['permission:cab-promo,cab.promo.edit'])->group(function () {
+Line 372: Route::get('promos/edit/{id}', [App\Http\Controllers\SettingsController::class, 'promosEdit'])->name('settings.promos.edit');
+Line 374: Route::middleware(['permission:special-offer,setting.specialOffer'])->group(function () {
+Line 375: Route::get('app/specialOffer', [App\Http\Controllers\SettingsController::class, 'specialOffer'])->name('settings.app.specialoffer');
+Line 377: Route::middleware(['permission:business-model,business-model'])->group(function () {
+Line 378: Route::get('app/businessModel', [App\Http\Controllers\SettingsController::class, 'businessModel'])->name('businessModel');
+Line 382: Route::middleware(['permission:make,make'])->group(function () {
+Line 383: Route::get('carMake', [App\Http\Controllers\VehicleController::class, 'carMake'])->name('carMake');
+Line 385: Route::middleware(['permission:make,make.create'])->group(function () {
+Line 386: Route::get('carMake/create', [App\Http\Controllers\VehicleController::class, 'carMakeCreate'])->name('carMake.create');
+Line 388: Route::middleware(['permission:make,make.edit'])->group(function () {
+Line 389: Route::get('carMake/edit/{id}', [App\Http\Controllers\VehicleController::class, 'carMakeEdit'])->name('carMake.edit');
+Line 392: Route::middleware(['permission:model,model'])->group(function () {
+Line 393: Route::get('carModel', [App\Http\Controllers\VehicleController::class, 'carModel'])->name('carModel');
+Line 395: Route::middleware(['permission:model,model.create'])->group(function () {
+Line 396: Route::get('carModel/create', [App\Http\Controllers\VehicleController::class, 'carModelCreate'])->name('carModel.create');
+Line 398: Route::middleware(['permission:model,model.edit'])->group(function () {
+Line 399: Route::get('carModel/edit/{id}', [App\Http\Controllers\VehicleController::class, 'carModelEdit'])->name('carModel.edit');
+Line 402: Route::middleware(['permission:cab-vehicle-type,cab-vehicle-type'])->group(function () {
+Line 403: Route::get('vehicleType', [App\Http\Controllers\VehicleController::class, 'vehicleType'])->name('vehicleType');
+Line 405: Route::middleware(['permission:cab-vehicle-type,cab-vehicle-type.create'])->group(function () {
+Line 406: Route::get('vehicleType/create', [App\Http\Controllers\VehicleController::class, 'vehicleTypeCreate'])->name('vehicleType.create');
+Line 408: Route::middleware(['permission:cab-vehicle-type,cab-vehicle-type.edit'])->group(function () {
+Line 409: Route::get('vehicleType/edit/{id}', [App\Http\Controllers\VehicleController::class, 'vehicleTypeEdit'])->name('vehicleType.edit');
+Line 412: Route::middleware(['permission:terms,termsAndConditions'])->group(function () {
+Line 413: Route::get('/termsAndConditions', [App\Http\Controllers\TermsAndConditionsController::class, 'index'])->name('termsAndConditions');
+Line 415: Route::middleware(['permission:privacy,privacyPolicy'])->group(function () {
+Line 416: Route::get('/privacyPolicy', [App\Http\Controllers\TermsAndConditionsController::class, 'privacyindex'])->name('privacyPolicy');
+Line 419: Route::middleware(['permission:banners,banners'])->group(function () {
+Line 420: Route::get('/banners', [App\Http\Controllers\BannerController::class, 'index'])->name('banners');
+Line 422: Route::middleware(['permission:banners,banners.create'])->group(function () {
+Line 423: Route::get('/banners/create', [App\Http\Controllers\BannerController::class, 'create'])->name('banners.create');
+Line 425: Route::middleware(['permission:banners,banners.edit'])->group(function () {
+Line 426: Route::get('/banners/edit/{id}', [App\Http\Controllers\BannerController::class, 'edit'])->name('banners.edit');
+Line 429: Route::middleware(['permission:brands,brands'])->group(function () {
+Line 430: Route::get('/brands', [App\Http\Controllers\BrandController::class, 'brand'])->name('brands');
+Line 432: Route::middleware(['permission:brands,brands.create'])->group(function () {
+Line 433: Route::get('/brands/create', [App\Http\Controllers\BrandController::class, 'brandCreate'])->name('brands.create');
+Line 435: Route::middleware(['permission:brands,brands.edit'])->group(function () {
+Line 436: Route::get('/brands/edit/{id}', [App\Http\Controllers\BrandController::class, 'brandEdit'])->name('brands.edit');
+Line 439: Route::middleware(['permission:destinations,destinations'])->group(function () {
+Line 440: Route::get('/destinations', [App\Http\Controllers\PopularDestinationController::class, 'index'])->name('destinations');
+Line 442: Route::middleware(['permission:destinations,destinations.create'])->group(function () {
+Line 443: Route::get('/destinations/create', [App\Http\Controllers\PopularDestinationController::class, 'create'])->name('destinations.create');
+Line 445: Route::middleware(['permission:destinations,destinations.edit'])->group(function () {
+Line 446: Route::get('/destinations/edit/{id}', [App\Http\Controllers\PopularDestinationController::class, 'edit'])->name('destinations.edit');
+Line 449: Route::middleware(['permission:home-page,homepageTemplate'])->group(function () {
+Line 450: Route::get('/homepageTemplate', [App\Http\Controllers\SettingsController::class, 'homepageTemplate'])->name('homepageTemplate');
+Line 453: Route::middleware(['permission:rental-vehicle-type,rental-vehicle-type'])->group(function () {
+Line 454: Route::get('rentalvehicleType', [App\Http\Controllers\SettingsController::class, 'rentalvehicleType'])->name('rentalvehicleType');
+Line 456: Route::middleware(['permission:rental-vehicle-type,rental-vehicle-type.edit'])->group(function () {
+Line 457: Route::get('rentalvehicleType/edit/{id}', [App\Http\Controllers\SettingsController::class, 'rentalvehicleTypeEdit'])->name('rentalvehicleType.edit');
+Line 459: Route::middleware(['permission:rental-vehicle-type,rental-vehicle-type.create'])->group(function () {
+Line 460: Route::get('rentalvehicleType/create', [App\Http\Controllers\SettingsController::class, 'rentalvehicleTypeCreate'])->name('rentalvehicleType.create');
+Line 463: Route::middleware(['permission:complaints,complaints'])->group(function () {
+Line 464: Route::get('complaints', [App\Http\Controllers\SettingsController::class, 'complaints'])->name('complaints');
+Line 466: Route::middleware(['permission:complaints,complaints.edit'])->group(function () {
+Line 467: Route::get('complaints/edit/{id}', [App\Http\Controllers\SettingsController::class, 'complaintsEdit'])->name('complaints.edit');
+Line 470: Route::middleware(['permission:sos-rides,sos.rides'])->group(function () {
+Line 471: Route::get('sos', [App\Http\Controllers\SettingsController::class, 'sos'])->name('sos');
+Line 473: Route::middleware(['permission:sos-rides,sos.rides.edit'])->group(function () {
+Line 474: Route::get('sos/edit/{id}', [App\Http\Controllers\SettingsController::class, 'sosEdit'])->name('sos.edit');
+Line 477: Route::middleware(['permission:general-notifications,notification.send'])->group(function () {
+Line 478: Route::get('/notification/send', [App\Http\Controllers\NotificationController::class, 'send'])->name('notification/send');
+Line 480: Route::middleware(['permission:general-notifications,notification'])->group(function () {
+Line 481: Route::get('/notification', [App\Http\Controllers\NotificationController::class, 'index'])->name('notification');
+Line 484: Route::post('broadcastnotification', [App\Http\Controllers\NotificationController::class, 'broadcastnotification'])->name('broadcastnotification');
+Line 485: Route::get('/booktable/{id}', [App\Http\Controllers\BookTableController::class, 'index'])->name('vendors.booktable');
+Line 486: Route::get('/booktable/edit/{id}', [App\Http\Controllers\BookTableController::class, 'edit'])->name('booktable.edit');
+Line 487: Route::post('/sendnotification', [App\Http\Controllers\BookTableController::class, 'sendnotification'])->name('sendnotification');
+Line 489: Route::middleware(['permission:payout-request-driver,payout-request.driver'])->group(function () {
+Line 490: Route::get('/payoutRequests/drivers', [App\Http\Controllers\PayoutRequestController::class, 'index'])->name('payoutRequests.drivers');
+Line 491: Route::get('/payoutRequests/drivers/{id}', [App\Http\Controllers\PayoutRequestController::class, 'index'])->name('payoutRequests.drivers.view');
+Line 493: Route::middleware(['permission:payout-request-vendor,payout-request.vendor'])->group(function () {
+Line 494: Route::get('/payoutRequests/vendor', [App\Http\Controllers\PayoutRequestController::class, 'vendor'])->name('payoutRequests.vendor');
+Line 495: Route::get('/payoutRequests/vendor/{id}', [App\Http\Controllers\PayoutRequestController::class, 'vendor'])->name('payoutRequests.vendor.view');
+Line 498: Route::middleware(['permission:payout-request-vendor,payout-request.vendor'])->group(function () {
+Line 499: Route::get('/disbursements/vendor', [App\Http\Controllers\PayoutRequestController::class, 'vendorDisbursements'])->name('payoutRequests.vendor.disbursement');
+Line 501: Route::middleware(['permission:payout-request-driver,payout-request.driver'])->group(function () {
+Line 502: Route::get('/disbursements/drivers', [App\Http\Controllers\PayoutRequestController::class, 'driverDisbursements'])->name('payoutRequests.driver.disbursement');
+Line 504: Route::middleware(['permission:payout-request-owner,payout-request.owner'])->group(function () {
+Line 505: Route::get('/disbursements/owners', [App\Http\Controllers\PayoutRequestController::class, 'ownerDisbursements'])->name('payoutRequests.owner.disbursement');
+Line 507: Route::middleware(['permission:payout-request-provider,payout-request.provider'])->group(function () {
+Line 508: Route::get('/disbursements/providers', [App\Http\Controllers\PayoutRequestController::class, 'providerDisbursements'])->name('payoutRequests.providers.disbursement');
+Line 511: Route::get('order_transactions', [App\Http\Controllers\PaymentController::class, 'index'])->name('order_transactions');
+Line 512: Route::get('/order_transactions/{id}', [App\Http\Controllers\PaymentController::class, 'index'])->name('order_transactions.index');
+Line 513: Route::get('/orders/print/{id}', [App\Http\Controllers\OrderController::class, 'orderprint'])->name('vendors.orderprint');
+Line 515: Route::middleware(['permission:item-attributes,item.attributes'])->group(function () {
+Line 516: Route::get('/attributes', [App\Http\Controllers\AttributeController::class, 'index'])->name('attributes');
+Line 518: Route::middleware(['permission:item-attributes,item.attributes.edit'])->group(function () {
+Line 519: Route::get('/attributes/edit/{id}', [App\Http\Controllers\AttributeController::class, 'edit'])->name('attributes.edit');
+Line 521: Route::middleware(['permission:item-attributes,item.attributes.create'])->group(function () {
+Line 522: Route::get('/attributes/create', [App\Http\Controllers\AttributeController::class, 'create'])->name('attributes.create');
+Line 525: Route::middleware(['permission:review-attributes,review.attributes'])->group(function () {
+Line 526: Route::get('/reviewattributes', [App\Http\Controllers\ReviewAttributeController::class, 'index'])->name('reviewattributes');
+Line 528: Route::middleware(['permission:review-attributes,review.attributes.edit'])->group(function () {
+Line 529: Route::get('/reviewattributes/edit/{id}', [App\Http\Controllers\ReviewAttributeController::class, 'edit'])->name('reviewattributes.edit');
+Line 531: Route::middleware(['permission:review-attributes,review.attributes.create'])->group(function () {
+Line 532: Route::get('/reviewattributes/create', [App\Http\Controllers\ReviewAttributeController::class, 'create'])->name('reviewattributes.create');
+Line 535: Route::middleware(['permission:rental-discount,rental-discount'])->group(function () {
+Line 536: Route::get('/rentaldiscount', [App\Http\Controllers\SettingsController::class, 'rentalDiscount'])->name('rentaldiscount');
+Line 538: Route::middleware(['permission:rental-discount,rental-discount.edit'])->group(function () {
+Line 539: Route::get('/rentaldiscount/edit/{id}', [App\Http\Controllers\SettingsController::class, 'rentalDiscountEdit'])->name('rentaldiscount.edit');
+Line 541: Route::middleware(['permission:rental-discount,rental-discount.create'])->group(function () {
+Line 542: Route::get('/rentaldiscount/create', [App\Http\Controllers\SettingsController::class, 'rentalDiscountCreate'])->name('rentaldiscount.create');
+Line 545: Route::middleware(['permission:rental-package,rental-package'])->group(function () {
+Line 546: Route::get('rental-package', [App\Http\Controllers\RentalController::class, 'rentalPackage'])->name('rental-package');
+Line 548: Route::middleware(['permission:rental-package,rental-package.create'])->group(function () {
+Line 549: Route::get('rental-package/create', [App\Http\Controllers\RentalController::class, 'rentalPackageCreate'])->name('rental-package.create');
+Line 551: Route::middleware(['permission:rental-package,rental-package.edit'])->group(function () {
+Line 552: Route::get('rental-package/edit/{id}', [App\Http\Controllers\RentalController::class, 'rentalPackageEdit'])->name('rental-package.edit');
+Line 555: Route::middleware(['permission:rental-orders,rental-orders'])->group(function () {
+Line 556: Route::get('/rental_orders', [App\Http\Controllers\RentalController::class, 'rentalOrders'])->name('rental_orders');
+Line 558: Route::get('/rental_orders/{id}', [App\Http\Controllers\RentalController::class, 'rentalOrders'])->name('rental_orders.driver');
+Line 559: Route::middleware(['permission:rental-orders,rental-orders.edit'])->group(function () {
+Line 560: Route::get('/rental_orders/edit/{id}', [App\Http\Controllers\RentalController::class, 'rentalOrderEdit'])->name('rental_orders.edit');
+Line 563: Route::middleware(['permission:rental-vehicle,rental-vehicle'])->group(function () {
+Line 564: Route::get('rentalvehicle', [App\Http\Controllers\SettingsController::class, 'rentalvehicle'])->name('rentalvehicle');
+Line 566: Route::middleware(['permission:rental-vehicle,rental-vehicle.view'])->group(function () {
+Line 567: Route::get('/rentalvehicle/view/{id}', [App\Http\Controllers\SettingsController::class, 'rentalVehicleView'])->name('drivers.vehicle');
+Line 569: Route::middleware(['permission:footer,footerTemplate'])->group(function () {
+Line 570: Route::get('footerTemplate', [App\Http\Controllers\SettingsController::class, 'footerTemplate'])->name('footerTemplate');
+Line 572: Route::post('complaint_notification', [App\Http\Controllers\RideController::class, 'complaintNotification'])->name('complaint_notification');
+Line 573: Route::middleware(['permission:cms,cms'])->group(function () {
+Line 574: Route::get('cms', [App\Http\Controllers\CmsController::class, 'index'])->name('cms');
+Line 577: Route::middleware(['permission:cms,cms.edit'])->group(function () {
+Line 578: Route::get('/cms/edit/{id}', [App\Http\Controllers\CmsController::class, 'edit'])->name('cms.edit');
+Line 580: Route::middleware(['permission:cms,cms.create'])->group(function () {
+Line 581: Route::get('/cms/create', [App\Http\Controllers\CmsController::class, 'create'])->name('cms.create');
+Line 583: Route::post('/firebase/config', [App\Http\Controllers\FirebaseController::class, 'config'])->name('firebase.config');
+Line 584: Route::middleware(['permission:dynamic-notifications,dynamic-notification.index'])->group(function () {
+Line 585: Route::get('dynamic-notification', [App\Http\Controllers\DynamicNotificationController::class, 'index'])->name('dynamic-notification.index');
+Line 587: Route::middleware(['permission:dynamic-notifications,dynamic-notification.save'])->group(function () {
+Line 588: Route::get('dynamic-notification/save/{id?}', [App\Http\Controllers\DynamicNotificationController::class, 'save'])->name('dynamic-notification.save');
+Line 590: Route::get('dynamic-notification/delete/{id}', [App\Http\Controllers\DynamicNotificationController::class, 'delete'])->name('dynamic-notification.delete');
+Line 591: Route::middleware(['permission:tax,tax'])->group(function () {
+Line 592: Route::get('/tax', [App\Http\Controllers\TaxController::class, 'index'])->name('tax');
+Line 595: Route::middleware(['permission:tax,tax.edit'])->group(function () {
+Line 596: Route::get('/tax/edit/{id}', [App\Http\Controllers\TaxController::class, 'edit'])->name('tax.edit');
+Line 598: Route::middleware(['permission:tax,tax.create'])->group(function () {
+Line 599: Route::get('/tax/create', [App\Http\Controllers\TaxController::class, 'create'])->name('tax.create');
+Line 602: Route::middleware(['permission:email-template,email-templates.index'])->group(function () {
+Line 603: Route::get('email-templates', [App\Http\Controllers\SettingsController::class, 'emailTemplatesIndex'])->name('email-templates.index');
+Line 605: Route::middleware(['permission:email-template,email-templates.edit'])->group(function () {
+Line 606: Route::get('email-templates/save/{id?}', [App\Http\Controllers\SettingsController::class, 'emailTemplatesSave'])->name('email-templates.save');
+Line 608: Route::get('email-templates/delete/{id}', [App\Http\Controllers\SettingsController::class, 'emailTemplatesDelete'])->name('email-templates.delete');
+Line 610: Route::post('send-email', [App\Http\Controllers\SendEmailController::class, 'sendMail'])->name('sendMail');
+Line 612: Route::middleware(['permission:report,' . ((str_contains(Request::url(), 'report/')) ? explode("report/", Request::url())[1] : Request::url())])->group(function () {
+Line 613: Route::get('report/{type}', [App\Http\Controllers\ReportController::class, 'index'])->name('report.index');
+Line 616: Route::middleware(['permission:gift-cards,gift-card.index'])->group(function () {
+Line 617: Route::get('gift-card', [App\Http\Controllers\GiftCardController::class, 'index'])->name('gift-card.index');
+Line 619: Route::middleware(['permission:gift-cards,gift-card.save'])->group(function () {
+Line 620: Route::get('gift-card/save/{id?}', [App\Http\Controllers\GiftCardController::class, 'save'])->name('gift-card.save');
+Line 622: Route::middleware(['permission:gift-cards,gift-card.edit'])->group(function () {
+Line 623: Route::get('gift-card/edit/{id}', [App\Http\Controllers\GiftCardController::class, 'save'])->name('gift-card.edit');
+Line 626: Route::middleware(['permission:roles,role.index'])->group(function () {
+Line 627: Route::get('role', [App\Http\Controllers\RoleController::class, 'index'])->name('role.index');
+Line 629: Route::middleware(['permission:roles,role.save'])->group(function () {
+Line 630: Route::get('role/save', [App\Http\Controllers\RoleController::class, 'save'])->name('role.save');
+Line 632: Route::middleware(['permission:roles,role.store'])->group(function () {
+Line 633: Route::post('role/store', [App\Http\Controllers\RoleController::class, 'store'])->name('role.store');
+Line 635: Route::middleware(['permission:roles,role.delete'])->group(function () {
+Line 636: Route::get('role/delete/{id}', [App\Http\Controllers\RoleController::class, 'delete'])->name('role.delete');
+Line 638: Route::middleware(['permission:roles,role.edit'])->group(function () {
+Line 639: Route::get('role/edit/{id}', [App\Http\Controllers\RoleController::class, 'edit'])->name('role.edit');
+Line 641: Route::middleware(['permission:roles,role.update'])->group(function () {
+Line 642: Route::post('role/update/{id}', [App\Http\Controllers\RoleController::class, 'update'])->name('role.update');
+Line 645: Route::middleware(['permission:admins,admin.users'])->group(function () {
+Line 646: Route::get('admin-users', [App\Http\Controllers\UserController::class, 'adminUsers'])->name('admin.users');
+Line 648: Route::middleware(['permission:admins,admin.users.create'])->group(function () {
+Line 649: Route::get('admin-users/create', [App\Http\Controllers\UserController::class, 'createAdminUsers'])->name('admin.users.create');
+Line 651: Route::middleware(['permission:admins,admin.users.store'])->group(function () {
+Line 652: Route::post('admin-users/store', [App\Http\Controllers\UserController::class, 'storeAdminUsers'])->name('admin.users.store');
+Line 654: Route::middleware(['permission:admins,admin.users.delete'])->group(function () {
+Line 655: Route::get('admin-users/delete/{id}', [App\Http\Controllers\UserController::class, 'deleteAdminUsers'])->name('admin.users.delete');
+Line 657: Route::middleware(['permission:admins,admin.users.edit'])->group(function () {
+Line 658: Route::get('admin-users/edit/{id}', [App\Http\Controllers\UserController::class, 'editAdminUsers'])->name('admin.users.edit');
+Line 660: Route::middleware(['permission:admins,admin.users.update'])->group(function () {
+Line 661: Route::post('admin-users/update/{id}', [App\Http\Controllers\UserController::class, 'updateAdminUsers'])->name('admin.users.update');
+Line 664: Route::middleware(['permission:ondemand-categories,ondemand.categories'])->group(function () {
+Line 665: Route::get('/ondemand-categories', [App\Http\Controllers\OnDemandServiceController::class, 'Category'])->name('ondemandcategory');
+Line 667: Route::middleware(['permission:ondemand-categories,ondemand.categories.create'])->group(function () {
+Line 668: Route::get('/ondemand-categories/create', [App\Http\Controllers\OnDemandServiceController::class, 'CategoryCreate'])->name('ondemandcategory.create');
+Line 670: Route::middleware(['permission:ondemand-categories,ondemand.categories.edit'])->group(function () {
+Line 671: Route::get('/ondemand-categories/edit/{id}', [App\Http\Controllers\OnDemandServiceController::class, 'CategoryEdit'])->name('ondemandcategory.edit');
+Line 674: Route::middleware(['permission:providers,providers'])->group(function () {
+Line 675: Route::get('/providers', [App\Http\Controllers\ProvidersController::class, 'index'])->name('providers');
+Line 677: Route::middleware(['permission:providers,providers.create'])->group(function () {
+Line 678: Route::get('/providers/create', [App\Http\Controllers\ProvidersController::class, 'create'])->name('providers.create');
+Line 680: Route::middleware(['permission:providers,providers.edit'])->group(function () {
+Line 681: Route::get('/providers/edit/{id}', [App\Http\Controllers\ProvidersController::class, 'edit'])->name('providers.edit');
+Line 683: Route::middleware(['permission:providers,providers.view'])->group(function () {
+Line 684: Route::get('/providers/view/{id}', [App\Http\Controllers\ProvidersController::class, 'view'])->name('providers.view');
+Line 687: Route::middleware(['permission:ondemand-coupons,ondemand.coupons'])->group(function () {
+Line 688: Route::get('/ondemand-coupons/{id?}', [App\Http\Controllers\OnDemandServiceController::class, 'Coupons'])->name('ondemand.coupons');
+Line 690: Route::middleware(['permission:ondemand-coupons,ondemand.coupons.create'])->group(function () {
+Line 691: Route::get('/ondemand-coupon/create', [App\Http\Controllers\OnDemandServiceController::class, 'CouponCreate'])->name('ondemand.coupons.create');
+Line 693: Route::middleware(['permission:ondemand-coupons,ondemand.coupons.edit'])->group(function () {
+Line 694: Route::get('/ondemand-coupons/edit/{id}', [App\Http\Controllers\OnDemandServiceController::class, 'CouponEdit'])->name('ondemand.coupons.edit');
+Line 696: Route::middleware(['permission:ondemand-services,ondemand.services.index'])->group(function () {
+Line 697: Route::get('/ondemand-services/{id?}', [App\Http\Controllers\OnDemandServiceController::class, 'Services'])->name('ondemand.services.index');
+Line 699: Route::middleware(['permission:ondemand-services,ondemand.services.create'])->group(function () {
+Line 700: Route::get('/ondemand-service/create', [App\Http\Controllers\OnDemandServiceController::class, 'ServicesCreate'])->name('ondemand.services.create');
+Line 702: Route::middleware(['permission:ondemand-services,ondemand.services.edit'])->group(function () {
+Line 703: Route::get('/ondemand-services/edit/{id}', [App\Http\Controllers\OnDemandServiceController::class, 'ServicesEdit'])->name('ondemand.services.edit');
+Line 705: Route::middleware(['permission:ondemand-bookings,ondemand.bookings.index'])->group(function () {
+Line 706: Route::get('/ondemand-bookings/{id?}', [App\Http\Controllers\OnDemandServiceController::class, 'Bookings'])->name('ondemand.bookings.index');
+Line 708: Route::middleware(['permission:ondemand-bookings,ondemand.bookings.edit'])->group(function () {
+Line 709: Route::get('/ondemand-bookings/edit/{id}', [App\Http\Controllers\OnDemandServiceController::class, 'BookingsEdit'])->name('ondemand.bookings.edit');
+Line 711: Route::middleware(['permission:ondemand-bookings,ondemand.bookings.print'])->group(function () {
+Line 712: Route::get('/ondemand-bookings/print/{id}', [App\Http\Controllers\OnDemandServiceController::class, 'BookingsPrint'])->name('ondemand.bookings.print');
+Line 714: Route::middleware(['permission:ondemand-workers,ondemand.workers.index'])->group(function () {
+Line 715: Route::get('/ondemand-workers/{id?}', [App\Http\Controllers\OnDemandServiceController::class, 'Workers'])->name('ondemand.workers.index');
+Line 717: Route::middleware(['permission:ondemand-workers,ondemand.workers.create'])->group(function () {
+Line 718: Route::get('/ondemand-worker/create', [App\Http\Controllers\OnDemandServiceController::class, 'WorkersCreate'])->name('ondemand.workers.create');
+Line 720: Route::middleware(['permission:ondemand-workers,ondemand.workers.edit'])->group(function () {
+Line 721: Route::get('/ondemand-worker/edit/{id}', [App\Http\Controllers\OnDemandServiceController::class, 'WorkersEdit'])->name('ondemand.workers.edit');
+Line 724: Route::middleware(['permission:on-board,onboard.list'])->group(function () {
+Line 725: Route::get('/on-board', [App\Http\Controllers\OnBoardController::class, 'index'])->name('on-board');
+Line 727: Route::middleware(['permission:on-board,onboard.edit'])->group(function () {
+Line 728: Route::get('/on-board/save/{id}', [App\Http\Controllers\OnBoardController::class, 'save'])->name('on-board.save');
+Line 731: Route::middleware(['permission:provider-payout,provider.payout'])->group(function () {
+Line 732: Route::get('providerPayouts', [App\Http\Controllers\ProviderPayoutsController::class, 'index'])->name('providerPayouts');
+Line 734: Route::middleware(['permission:provider-payout,provider.payout.create'])->group(function () {
+Line 735: Route::get('providerPayouts/create', [App\Http\Controllers\ProviderPayoutsController::class, 'create'])->name('providerPayouts.create');
+Line 737: Route::middleware(['permission:provider-payout,provider.payout'])->group(function () {
+Line 738: Route::get('/providerPayouts/{id}', [App\Http\Controllers\ProviderPayoutsController::class, 'index'])->name('providerPayouts.payout');
+Line 740: Route::middleware(['permission:provider-payout,provider.payout.create'])->group(function () {
+Line 741: Route::get('/providerPayouts/create/{id}', [App\Http\Controllers\ProviderPayoutsController::class, 'create']);
+Line 743: Route::middleware(['permission:provider-payment,provider.payment'])->group(function () {
+Line 744: Route::get('providerpayments', [App\Http\Controllers\AdminPaymentsController::class, 'providerIndex'])->name('providerpayments');
+Line 746: Route::middleware(['permission:payout-request-provider,payout-request.provider'])->group(function () {
+Line 747: Route::get('/payoutRequests/providers/{id?}', [App\Http\Controllers\PayoutRequestController::class, 'provider'])->name('payoutRequests.providers');
+Line 750: Route::post('store-firebase-service', [App\Http\Controllers\HomeController::class,'storeFirebaseService'])->name('store-firebase-service');
+Line 751: Route::post('pay-to-user', [App\Http\Controllers\UserController::class,'payToUser'])->name('pay.user');
+Line 752: Route::post('check-payout-status', [App\Http\Controllers\UserController::class,'checkPayoutStatus'])->name('check.payout.status');
+Line 754: Route::middleware(['permission:subscription-plans,subscription-plans'])->group(function () {
+Line 755: Route::get('/subscription-plans', [App\Http\Controllers\SubscriptionPlanController::class, 'index'])->name('subscription-plans.index');
+Line 756: Route::get('/current-subscriber/{id}', [App\Http\Controllers\SubscriptionPlanController::class, 'currentSubscriberList'])->name('current-subscriber.list');
+Line 758: Route::middleware(['permission:subscription-plans,subscription-plans.'.((str_contains(Request::url(), 'save')) ? (explode("save", Request::url())[1] ? "edit" : "create") : Request::url())])->group(function () {
+Line 759: Route::get('/subscription-plans/save/{id?}', [App\Http\Controllers\SubscriptionPlanController::class, 'save'])->name('subscription-plans.save');
+Line 761: Route::middleware(['permission:subscription-history,subscription.history'])->group(function () {
+Line 762: Route::get('/subscription-plan/history/{id?}', [App\Http\Controllers\SubscriptionPlanController::class, 'SubscriptionPlanHistory'])->name('subscription.subscriptionPlanHistory');
+Line 765: Route::middleware(['permission:advertisements,advertisements.edit'])->group(function () {
+Line 766: Route::get('/advertisements/edit/{id}', [App\Http\Controllers\AdvertisementsController::class, 'edit'])->name('advertisements.edit');
+Line 768: Route::middleware(['permission:advertisements,advertisements.create'])->group(function () {
+Line 769: Route::get('/advertisements/create', [App\Http\Controllers\AdvertisementsController::class, 'create'])->name('advertisements.create');
+Line 771: Route::middleware(['permission:advertisements,advertisements'])->group(function () {
+Line 772: Route::get('advertisements', [App\Http\Controllers\AdvertisementsController::class, 'index'])->name('advertisements');
+Line 774: Route::middleware(['permission:advertisements,advertisements'])->group(function () {
+Line 775: Route::get('/advertisements/{id}', [App\Http\Controllers\AdvertisementsController::class, 'index'])->name('restaurants.advertisements');
+Line 777: Route::middleware(['permission:advertisements,advertisements.view'])->group(function () {
+Line 778: Route::get('/advertisements/view/{id}', [App\Http\Controllers\AdvertisementsController::class, 'view'])->name('advertisements.view');
+Line 779: Route::get('/advertisement/chat/{id}', [App\Http\Controllers\AdvertisementsController::class, 'chat'])->name('advertisement.chat');
+Line 781: Route::middleware(['permission:advertisements-list,advertisements.request'])->group(function () {
+Line 782: Route::get('advertisements-list/requestes', [App\Http\Controllers\AdvertisementsController::class, 'requested'])->name('advertisements.request');
+Line 785: Route::middleware(['permission:deliveryman,deliveryman.edit'])->group(function () {
+Line 786: Route::get('/deliveryman/edit/{id}', [App\Http\Controllers\DeliverymanController::class, 'edit'])->name('deliveryman.edit');
+Line 788: Route::middleware(['permission:deliveryman,deliveryman.create'])->group(function () {
+Line 789: Route::get('/deliveryman/create', [App\Http\Controllers\DeliverymanController::class, 'create'])->name('deliveryman.create');
+Line 791: Route::middleware(['permission:deliveryman,deliveryman'])->group(function () {
+Line 792: Route::get('deliveryman', [App\Http\Controllers\DeliverymanController::class, 'index'])->name('deliveryman');
+Line 794: Route::middleware(['permission:deliveryman,deliveryman'])->group(function () {
+Line 795: Route::get('restaurant/deliveryman/{id}', [App\Http\Controllers\DeliverymanController::class, 'index'])->name('restaurants.deliveryman');
+Line 799: Route::post('/send-ad-notification', [App\Http\Controllers\AdvertisementsController::class, 'sendNotification'])->name('advertisement.sendnotification');
+Line 801: Route::middleware(['permission:zone,zone.list'])->group(function () {
+Line 802: Route::get('zone', [App\Http\Controllers\ZoneController::class, 'index'])->name('zone');
+Line 804: Route::middleware(['permission:zone,zone.create'])->group(function () {
+Line 805: Route::get('/zone/create', [App\Http\Controllers\ZoneController::class, 'create'])->name('zone.create');
+Line 807: Route::middleware(['permission:zone,zone.edit'])->group(function () {
+Line 808: Route::get('/zone/edit/{id}', [App\Http\Controllers\ZoneController::class, 'edit'])->name('zone.edit');
+Line 811: Route::middleware(['permission:documents,documents.list'])->group(function () {
+Line 812: Route::get('documents', [App\Http\Controllers\DocumentController::class, 'index'])->name('documents');
+Line 814: Route::middleware(['permission:documents,documents.create'])->group(function () {
+Line 815: Route::get('/documents/create', [App\Http\Controllers\DocumentController::class, 'create'])->name('documents.create');
+Line 817: Route::middleware(['permission:documents,documents.edit'])->group(function () {
+Line 818: Route::get('/documents/edit/{id}', [App\Http\Controllers\DocumentController::class, 'edit'])->name('documents.edit');
+Line 822: Route::middleware(['permission:owners,owner.list'])->group(function () {
+Line 823: Route::get('/owners', [App\Http\Controllers\OwnerController::class, 'index'])->name('owners');
+Line 825: Route::middleware(['permission:approve_owners,approve.owner.list'])->group(function () {
+Line 826: Route::get('/owners/approved', [App\Http\Controllers\OwnerController::class, 'index'])->name('owners.approved');
+Line 828: Route::middleware(['permission:pending_owners,pending.owner.list'])->group(function () {
+Line 829: Route::get('/owners/pending', [App\Http\Controllers\OwnerController::class, 'index'])->name('owners.pending');
+Line 831: Route::middleware(['permission:owners,owner.create'])->group(function () {
+Line 832: Route::get('/owners/create', [App\Http\Controllers\OwnerController::class, 'create'])->name('owners.create');
+Line 834: Route::middleware(['permission:owners,owner.edit'])->group(function () {
+Line 835: Route::get('/owners/edit/{id}', [App\Http\Controllers\OwnerController::class, 'edit'])->name('owners.edit');
+Line 837: Route::middleware(['permission:owners,owner.view'])->group(function () {
+Line 838: Route::get('/owners/view/{id}', [App\Http\Controllers\OwnerController::class, 'view'])->name('owners.view');
+Line 840: Route::middleware(['permission:owners-document,owner.document.list'])->group(function () {
+Line 841: Route::get('/owners/document/{id}', [App\Http\Controllers\OwnerController::class, 'ownerDocuments'])->name('owners.document');
+Line 843: Route::middleware(['permission:owners-document,owner.document.edit'])->group(function () {
+Line 844: Route::get('/owners/document/upload/{ownerId}/{id}', [App\Http\Controllers\OwnerController::class, 'ownerDocumentUpload'])->name('owners.document.upload');
+Line 846: Route::middleware(['permission:owners-wallet-transaction,owner.wallet.list'])->group(function () {
+Line 847: Route::get('/walletTransaction/owner', [App\Http\Controllers\TransactionController::class, 'ownerWalletTranscation'])->name('walletTransaction.owner');
+Line 849: Route::middleware(['permission:owners-wallet-transaction,owner.wallet.list'])->group(function () {
+Line 850: Route::get('/walletTransaction/owner/{id}', [App\Http\Controllers\TransactionController::class, 'ownerWalletTranscation'])->name('owners.walletTransaction');
+Line 852: Route::middleware(['permission:payout-request-owner,payout-request.owner'])->group(function () {
+Line 853: Route::get('/payoutRequests/owners', [App\Http\Controllers\PayoutRequestController::class, 'owner'])->name('payoutRequests.owners');
+Line 854: Route::get('/payoutRequests/owners/{id}', [App\Http\Controllers\PayoutRequestController::class, 'owner'])->name('payoutRequests.owners.view');
+Line 856: Route::get('/rides/owners/{ownerId}', [App\Http\Controllers\RideController::class, 'ownerRides'])->name('owner.rides');
+Line 857: Route::get('owner/rentalorders/{id}', [App\Http\Controllers\RentalController::class, 'rentalOrdersOwner'])->name('rental.orders.owner');
+Line 858: Route::middleware(['permission:orders,orders'])->group(function () {
+Line 859: Route::get('owner/orders/{id}', [App\Http\Controllers\OrderController::class, 'ownerOrderList'])->name('orders.owner');
+Line 861: Route::get('owner/parcelorders/{id}', [App\Http\Controllers\ParcelController::class, 'parcelOrdersOwners'])->name('parcel_orders.owner');
+Line 863: Route::middleware(['permission:drivers,drivers'])->group(function () {
+Line 864: Route::get('/owner/drivers/{id}', [App\Http\Controllers\OwnerController::class, 'driverList'])->name('owner.driver.list');
+Line 867: Route::middleware(['permission:pos,pos.view'])->group(function () {
+Line 868: Route::get('point-of-sale', [App\Http\Controllers\POSController::class, 'pointOfSale'])->name('pos');
+Line 870: Route::middleware(['permission:pos,pos.order'])->group(function () {
+Line 871: Route::get('pos-orders', [App\Http\Controllers\POSController::class, 'posOrder'])->name('pos.order');
+Line 874: Route::any('add-to-cart', [App\Http\Controllers\ProductController::class, 'addToCart'])->name('add-to-cart');
+Line 875: Route::any('cart-remove/{index}', [App\Http\Controllers\ProductController::class, 'remove'])->name('cart.remove');
+Line 876: Route::any('cart-update', [App\Http\Controllers\ProductController::class, 'update'])->name('cart.update');
+Line 877: Route::post('/clear-cart', function () {
+Line 881: Route::get('/get-session-cart', function () {
+Line 885: Route::middleware(['permission:bulk_import_products,bulk_import_products'])->group(function () {
+Line 886: Route::get('/bulk-import-products', [App\Http\Controllers\BulkImportProductsController::class, 'index'])->name('bulk_import_products');
+Line 888: Route::middleware(['permission:bulk_import_products,bulk_import_products.edit'])->group(function () {
+Line 889: Route::get('/bulk-import-product/edit/{id}', [App\Http\Controllers\BulkImportProductsController::class, 'edit'])->name('bulk_import_products.edit');
+Line 892: Route::middleware(['permission:employee,employee'])->group(function () {
+Line 893: Route::get('employee', [App\Http\Controllers\EmployeeController::class, 'index'])->name('employee');
+Line 895: Route::middleware(['permission:employee,employee'])->group(function () {
+Line 896: Route::get('stores/employee/{id}', [App\Http\Controllers\EmployeeController::class, 'index'])->name('stores.employee');
+Line 899: Route::middleware(['permission:supportHistory,supportHistory.list'])->group(function () {
+Line 900: Route::get('/support', [App\Http\Controllers\SupportHistoryController::class, 'index'])->name('users.support');
+Line 902: Route::middleware(['permission:drivers,drivers.chat'])->group(function () {
+Line 903: Route::get('/drivers/chat/{id}', [App\Http\Controllers\DriverController::class, 'driverChat'])->name('drivers.chat');
+Line 905: Route::post('send-notification', [App\Http\Controllers\NotificationController::class, 'sendNotification'])->name('send-notification');
+Line 906: Route::middleware(['permission:vendors,vendors.chat'])->group(function () {
+Line 907: Route::get('/vendors/chat/{id}', [App\Http\Controllers\VendorController::class, 'vendorChat'])->name('vendors.chat');
+Line 909: Route::middleware(['permission:users,users.chat'])->group(function () {
+Line 910: Route::get('/users/chat/{id}', [App\Http\Controllers\UserController::class, 'userChat'])->name('users.chat');
+Line 912: Route::middleware(['permission:providers,providers.chat'])->group(function () {
+Line 913: Route::get('/provider/chat/{id}', [App\Http\Controllers\ProvidersController::class, 'providerChat'])->name('providers.chat');
+Line 915: Route::middleware(['permission:ondemand-workers,ondemand.workers.chat'])->group(function () {
+Line 916: Route::get('/worker/chat/{id}', [App\Http\Controllers\OnDemandServiceController::class, 'workerChat'])->name('ondemand.workers.chat');
+
+===== app\Http\Controllers\MapController.php =====
+
+===== app\Http\Controllers\StoreController.php =====
+
+===== app\Http\Controllers\DriverController.php =====
+
+===== app\Http\Controllers\OrderController.php =====
+Line 61: 'status' => 'done',
+
+===== app\Http\Controllers\ZoneController.php =====
+Line 5: class ZoneController extends Controller
+Line 14: return view('zone.index');
+Line 18: return view('zone.edit')->with('id',$id);
+Line 23: return view('zone.create');
+
+===== app\Http\Controllers\UserController.php =====
+Line 316: if(isset($response->statusCode) && $response->statusCode == "201"){
+Line 320: $payout_response['status'] = "In Process";
+Line 334: $payout_response['message'] = 'User paypal email address is required';
+Line 357: 'destination' => $accountId,
+Line 367: $payout_response['status'] = "Success";
+Line 370: $payout_response['message'] = "No such destination: '".$accountId."'";
+Line 404: if(isset($response['status']) && isset($response['id'])){
+Line 408: $payout_response['status'] = "In Process";
+Line 460: if($response['status'] == "success"){
+Line 464: $payout_response['status'] = "In Process";
+Line 478: public function checkPayoutStatus(Request $request){
+Line 489: $response = $this->checkStatusPaypal($data);
+Line 493: $response = $this->checkStatusRazorpay($data);
+Line 497: $response = $this->checkStatusFlutterwave($data);
+Line 502: $response['message'] = 'Something went wrong to check status';
+Line 508: public function checkStatusPaypal($data){
+Line 540: //Get status
+Line 553: if(isset($response2['items']) && isset($response2['items'][0]['transaction_status'])){
+Line 554: if($response2['items'][0]['transaction_status'] == "SUCCESS"){
+Line 558: $payout_response['status'] = "Success";
+Line 563: $payout_response['status'] = "Failed";
+Line 587: public function checkStatusRazorpay($data){
+Line 606: if(isset($response['settlement_status']) && $response['settlement_status'] == "settled"){
+Line 610: $payout_response['status'] = "Success";
+Line 614: $payout_response['status'] = "Failed";
+Line 635: public function checkStatusFlutterwave($data){
+Line 659: if($response['status'] == "success"){
+Line 663: $payout_response['status'] = "Success";
+
+===== resources\views\map\cab.blade.php =====
+Line 31: <a href="{{ route('dashboard') }}">{{trans('lang.dashboard')}}</a>
+Line 250: database.collection('rides').where('sectionId','==', section_id).where('status', '==', 'In Transit').get().then(async function (snapshots) {
+Line 278: database.collection('users').where('role', '==', 'driver').where('sectionId','==',section_id)/* .where('serviceType', '==', 'cab-service') */.where('location', '!=', null).get().then(async function (snapshots) {
+Line 288: if(isNaN(data.location.latitude)!=true && isNaN(data.location.longitude)!=true && data.location.latitude!=null && data.location.latitude!=null){
+Line 344: map.panTo(new google.maps.LatLng(lat, lng));
+Line 346: google.maps.event.trigger(markers[index], 'click');
+Line 386: var default_lat = getCookie('default_latitude');
+Line 388: var default_lng = getCookie('default_longitude');
+Line 408: var myLatlng = new google.maps.LatLng(default_lat, default_lng);
+Line 410: var infowindow = new google.maps.InfoWindow();
+Line 420: mapTypeId: google.maps.MapTypeId.ROADMAP
+Line 424: map = new google.maps.Map(document.getElementById("map"), mapOptions);
+Line 490: map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+Line 540: html += '<div class="live-tracking-box track-from" data-index="' + i + '" data-lat="' + driver.location.latitude + '" data-lng="' + driver.location.longitude + '">';
+Line 562: html += '<div class="live-tracking-box track-from" data-index="' + i + '" data-lat="' + driver.location.latitude + '" data-lng="' + driver.location.longitude + '">';
+Line 578: if (val.author?.shippingAddress && val.vendor?.location) {
+Line 580: html += '<div class="location-ride">';
+Line 582: html += '<div class="from-ride"><span>' + val.vendor.location + '</span></div>';
+Line 584: destination = '';
+Line 586: if (val.address.hasOwnProperty('address')) {
+Line 588: destination = val.address.address;
+Line 590: if (val.address.hasOwnProperty('locality')) {
+Line 592: destination = destination + val.address.locality;
+Line 600: html += '<div class="to-ride"><span>' + destination + '</span></div>';
+Line 608: var orderEditUrl = "{{ route('rides.edit', ['id' => ':id']) }}";
+Line 628: html += '<div class="live-tracking-box track-from" data-lat="' + driver.location.latitude + '" data-lng="' + driver.location.longitude + '">';
+Line 632: html += '<div class="live-tracking-box track-from" data-lat="' + driver.location.latitude + '" data-lng="' + driver.location.longitude + '">';
+Line 660: if (typeof driver.location.latitude != 'undefined' && typeof driver.location.longitude != 'undefined') {
+Line 706: let marker = L.marker([driver.location.latitude, driver.location.longitude], { icon: customIcon }).addTo(map);
+Line 722: locationUpdate(marker, driver);
+Line 728: let marker = new google.maps.Marker({
+Line 730: position: new google.maps.LatLng(driver.location.latitude, driver.location.longitude),
+Line 736: scaledSize: new google.maps.Size(25, 25)
+Line 744: let infowindow = new google.maps.InfoWindow({
+Line 762: locationUpdate(marker, driver);
+Line 776: async function locationUpdate(marker, driver) {
+Line 782: if(data && data.location && data.location.latitude && data.location.longitude ){
+Line 786: marker.setLatLng([data.location.latitude, data.location.longitude]);
+Line 790: marker.setPosition(new google.maps.LatLng(data.location.latitude, data.location.longitude));
+
+===== resources\views\map\multivendor.blade.php =====
+Line 16: <a href="{{ route('dashboard') }}">{{trans('lang.dashboard')}}</a>
+Line 114: await database.collection('vendor_orders').where('status', '==', 'In Transit').get().then(async function (snapshots) {
+Line 129: database.collection('users').where('role', '==', 'driver').where('serviceType', '==', 'delivery-service').where('location', '!=', null).get().then(async function (snapshots) {
+Line 134: if(isNaN(data.location.latitude)!=true && isNaN(data.location.longitude)!=true && data.location.latitude!=null && data.location.latitude!=null){
+Line 162: map.panTo(new google.maps.LatLng(lat, lng));
+Line 163: google.maps.event.trigger(markers[index], 'click');
+Line 183: var default_lat = getCookie('default_latitude');
+Line 184: var default_lng = getCookie('default_longitude');
+Line 202: var myLatlng = new google.maps.LatLng(default_lat, default_lng);
+Line 203: var infowindow = new google.maps.InfoWindow();
+Line 208: mapTypeId: google.maps.MapTypeId.ROADMAP
+Line 210: map = new google.maps.Map(document.getElementById("map"), mapOptions);
+Line 245: map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+Line 270: if (driver && driver.location &&
+Line 271: typeof driver.location.latitude !== 'undefined' &&
+Line 272: typeof driver.location.longitude !== 'undefined') {
+Line 275: html += '<div class="live-tracking-box track-from" data-index="' + i + '" data-lat="' + driver.location.latitude + '" data-lng="' + driver.location.longitude + '">';
+Line 291: html += '<div class="live-tracking-box track-from" data-index="' + i + '" data-lat="' + driver.location.latitude + '" data-lng="' + driver.location.longitude + '">';
+Line 299: if (val.author.shippingAddress && val.vendor.location) {
+Line 300: html += '<div class="location-ride">';
+Line 301: html += '<div class="from-ride"><span>' + val.vendor.location + '</span></div>';
+Line 302: destination = '';
+Line 303: if (val.address.hasOwnProperty('address')) {
+Line 304: destination = val.address.address;
+Line 305: if (val.address.hasOwnProperty('locality')) {
+Line 306: destination = destination + val.address.locality;
+Line 310: html += '<div class="to-ride"><span>' + destination + '</span></div>';
+Line 315: var orderEditUrl = "{{ route('orders.edit', ['id' => ':id']) }}";
+Line 327: html += '<div class="live-tracking-box track-from" data-lat="' + driver.location.latitude + '" data-lng="' + driver.location.longitude + '">';
+Line 343: if (typeof driver.location.latitude != 'undefined' && typeof driver.location.longitude != 'undefined') {
+Line 364: let marker = L.marker([driver.location.latitude, driver.location.longitude], { icon: customIcon }).addTo(map);
+Line 372: locationUpdate(marker, driver);
+Line 375: let marker = new google.maps.Marker({
+Line 376: position: new google.maps.LatLng(driver.location.latitude, driver.location.longitude),
+Line 379: scaledSize: new google.maps.Size(25, 25)
+Line 383: let infowindow = new google.maps.InfoWindow({
+Line 392: locationUpdate(marker, driver);
+Line 399: async function locationUpdate(marker, driver) {
+Line 402: if(data && data.location && data.location.latitude && data.location.longitude ){
+Line 404: marker.setLatLng([data.location.latitude, data.location.longitude]);
+Line 406: marker.setPosition(new google.maps.LatLng(data.location.latitude, data.location.longitude));
+
+===== resources\views\map\parcel.blade.php =====
+Line 11: <a href="{{ route('dashboard') }}">{{trans('lang.dashboard')}}</a>
+Line 97: database.collection('parcel_orders').where('status', '==', 'In Transit').where('sectionId', '==', section_id).get().then(async function (snapshots) {
+Line 111: database.collection('users').where('role', '==', 'driver').where('serviceType', '==', 'parcel_delivery').where('sectionId', '==', section_id).where('location', '!=', null).get().then(async function (snapshots) {
+Line 116: if(isNaN(data.location.latitude)!=true && isNaN(data.location.longitude)!=true && data.location.latitude!=null && data.location.latitude!=null){
+Line 143: map.panTo(new google.maps.LatLng(lat, lng));
+Line 144: google.maps.event.trigger(markers[index], 'click');
+Line 163: var default_lat = getCookie('default_latitude');
+Line 164: var default_lng = getCookie('default_longitude');
+Line 173: var myLatlng = new google.maps.LatLng(default_lat, default_lng);
+Line 174: var infowindow = new google.maps.InfoWindow();
+Line 179: mapTypeId: google.maps.MapTypeId.ROADMAP
+Line 181: map = new google.maps.Map(document.getElementById("map"), mapOptions);
+Line 211: map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+Line 230: html += '<div class="live-tracking-box track-from" data-index="' + i + '" data-lat="' + driver.location.latitude + '" data-lng="' + driver.location.longitude + '">';
+Line 239: html += '<div class="live-tracking-box track-from" data-index="' + i + '" data-lat="' + driver.location.latitude + '" data-lng="' + driver.location.longitude + '">';
+Line 247: if (val.author.shippingAddress && val.sender && val.senderLatLong) {
+Line 248: html += '<div class="location-ride">';
+Line 249: html += '<div class="from-ride"><span>' + val.sender.address + '</span></div>';
+Line 250: html += '<div class="to-ride"><span>' + val.receiver.address + '</span></div>';
+Line 255: var orderEditUrl = "{{ route('parcel_orders.edit', ['id' => ':id']) }}";
+Line 265: html += '<div class="live-tracking-box track-from" data-lat="' + driver.location.latitude + '" data-lng="' + driver.location.longitude + '">';
+Line 278: if (typeof driver.location.latitude != 'undefined' && typeof driver.location.longitude != 'undefined') {
+Line 296: let marker = L.marker([driver.location.latitude, driver.location.longitude], { icon: customIcon }).addTo(map);
+Line 303: locationUpdate(marker, driver);
+Line 306: let marker = new google.maps.Marker({
+Line 307: position: new google.maps.LatLng(driver.location.latitude, driver.location.longitude),
+Line 310: scaledSize: new google.maps.Size(25, 25)
+Line 314: let infowindow = new google.maps.InfoWindow({
+Line 323: locationUpdate(marker, driver);
+Line 329: async function locationUpdate(marker, driver) {
+Line 332: if(data && data.location && data.location.latitude && data.location.longitude ){
+Line 334: marker.setLatLng([data.location.latitude, data.location.longitude]);
+Line 336: marker.setPosition(new google.maps.LatLng(data.location.latitude, data.location.longitude));
+
+===== resources\views\map\rental.blade.php =====
+Line 11: <a href="{{ route('dashboard') }}">{{trans('lang.dashboard')}}</a>
+Line 96: database.collection('rental_orders').where('status', '==', 'In Transit').where('sectionId', '==', section_id).get().then(async function (snapshots) {
+Line 109: database.collection('users').where('role', '==', 'driver').where('serviceType', '==', 'rental-service').where('sectionId', '==', section_id).where('location', '!=', null).get().then(async function (snapshots) {
+Line 114: if(isNaN(data.location.latitude)!=true && isNaN(data.location.longitude)!=true && data.location.latitude!=null && data.location.latitude!=null){
+Line 141: map.panTo(new google.maps.LatLng(lat, lng));
+Line 142: google.maps.event.trigger(markers[index], 'click');
+Line 159: var default_lat = getCookie('default_latitude');
+Line 160: var default_lng = getCookie('default_longitude');
+Line 169: var myLatlng = new google.maps.LatLng(default_lat, default_lng);
+Line 170: var infowindow = new google.maps.InfoWindow();
+Line 175: mapTypeId: google.maps.MapTypeId.ROADMAP
+Line 177: map = new google.maps.Map(document.getElementById("map"), mapOptions);
+Line 207: map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+Line 225: if (!driver || !driver.location || typeof driver.location.latitude !== 'number' || typeof driver.location.longitude !== 'number') {
+Line 226: console.warn("Driver missing or has invalid location:", driverId);
+Line 230: html += '<div class="live-tracking-box track-from" data-index="' + i + '" data-lat="' + driver.location.latitude + '" data-lng="' + driver.location.longitude + '">';
+Line 239: html += '<div class="live-tracking-box track-from" data-index="' + i + '" data-lat="' + driver.location.latitude + '" data-lng="' + driver.location.longitude + '">';
+Line 247: if (val.author.shippingAddress && val.dropAddress) {
+Line 248: html += '<div class="location-ride">';
+Line 249: html += '<div class="from-ride"><span>' + val.pickupAddress + '</span></div>';
+Line 250: html += '<div class="to-ride"><span>' + val.dropAddress + '</span></div>';
+Line 255: var orderEditUrl = "{{ route('rental_orders.edit', ['id' => ':id']) }}";
+Line 265: html += '<div class="live-tracking-box track-from" data-lat="' + driver.location.latitude + '" data-lng="' + driver.location.longitude + '">';
+Line 278: if (typeof driver.location.latitude != 'undefined' && typeof driver.location.longitude != 'undefined') {
+Line 298: let marker = L.marker([driver.location.latitude, driver.location.longitude], { icon: customIcon }).addTo(map);
+Line 305: locationUpdate(marker, driver);
+Line 308: let marker = new google.maps.Marker({
+Line 309: position: new google.maps.LatLng(driver.location.latitude, driver.location.longitude),
+Line 312: scaledSize: new google.maps.Size(25, 25)
+Line 316: let infowindow = new google.maps.InfoWindow({
+Line 325: locationUpdate(marker, driver);
+Line 331: async function locationUpdate(marker, driver) {
+Line 334: if(data && data.location && data.location.latitude && data.location.longitude ){
+Line 336: marker.setLatLng([data.location.latitude, data.location.longitude]);
+Line 338: marker.setPosition(new google.maps.LatLng(data.location.latitude, data.location.longitude));
+
+===== resources\views\layouts\app.blade.php =====
+Line 539: .status,
+Line 540: .status-active,
+Line 541: .status-inactive {
+Line 549: .status-active {
+Line 556: .status-inactive {
+Line 855: var createdAtman = firebase.firestore.Timestamp.fromDate(new Date());
+Line 856: var createdAt = { _nanoseconds: createdAtman.nanoseconds, _seconds: createdAtman.seconds };
+Line 877: window.location.href = '/sos/edit/' + change.doc.id;
+Line 911: window.location.href = sectionUrl;
+Line 912: /*window.location.reload();*/
+Line 938: var url = "{{ route('changeLang') }}";
+Line 948: window.location.href = url + "?lang=" + slug;
+Line 981: error: function (xhr, status, error) {
+Line 1004: var addSectionRoute = "{{ route('section.create') }}";
+Line 1013: var sectionRoute = `{{ route('dashboard') }}/${sectionId}/${data.serviceTypeFlag}`;
+Line 1022: <div class="service-list-box ${selectedClass}" data-section-url="${sectionRoute}" data-section-id="${data.id}" data-section-type="${data.serviceTypeFlag}">
+Line 1032: <div class="service-list-box" data-section-url="${addSectionRoute}" data-section-id="" data-section-type="">
+Line 1043: const fallbackGoogleMapsApiKey = @json(config('google.maps_api_key'));
+Line 1089: script.src = "https://maps.googleapis.com/maps/api/js?key=" + encodeURIComponent(googleMapKey) + "&libraries=places,drawing&loading=async";
+Line 1096: navigator.geolocation.getCurrentPosition(GeolocationSuccessCallback, GeolocationErrorCallback);
+Line 1107: const GeolocationSuccessCallback = (position) => {
+Line 1109: default_latitude = position.coords.latitude
+Line 1110: default_longitude = position.coords.longitude
+Line 1111: setCookie('default_latitude', default_latitude, 365);
+Line 1112: setCookie('default_longitude', default_longitude, 365);
+Line 1115: const GeolocationErrorCallback = (error) => {
+Line 1116: console.log('Error: You denied for your default Geolocation', error.message);
+Line 1117: setCookie('default_latitude', '23.022505', 365);
+Line 1118: setCookie('default_longitude', '72.571365', 365);
+Line 1135: url: "{{ route('store-firebase-service') }}",
+Line 1342: function encodeGeohash(latitude, longitude, precision = 10) {
+Line 1356: if (longitude > mid) {
+Line 1365: if (latitude > mid) {
+Line 1423: async function getUserZoneId(address_lng,address_lat){
+Line 1424: var zone_id = null;
+Line 1425: var zone_list = [];
+Line 1426: var snapshots = await database.collection('zone').where("publish","==",true).get();
+Line 1429: var zone_data = snapshot.data();
+Line 1430: zone_list.push(zone_data);
+Line 1433: if(zone_list.length > 0){
+Line 1434: for (i = 0; i < zone_list.length; i++) {
+Line 1435: var zone = zone_list[i];
+Line 1438: for (j = 0; j < zone.area.length; j++) {
+Line 1439: var geopoint = zone.area[j];
+Line 1440: vertices_x.push(geopoint.longitude);
+Line 1441: vertices_y.push(geopoint.latitude);
+Line 1443: var points_polygon = (vertices_x.length)-1;
+Line 1444: if(is_in_polygon(points_polygon, vertices_x, vertices_y, address_lng, address_lat)){
+Line 1445: zone_id = zone.id;
+Line 1450: return zone_id;
+Line 1453: function is_in_polygon($points_polygon, $vertices_x, $vertices_y, $longitude_x, $latitude_y){
+Line 1455: for ($i = 0, $j = $points_polygon ; $i < $points_polygon; $j = $i++) {
+Line 1457: if( $point === $points_polygon )
+Line 1459: if ( (($vertices_y[$point]  >  $latitude_y !== ($vertices_y[$j] > $latitude_y)) && ($longitude_x < ($vertices_x[$j] - $vertices_x[$point]) * ($latitude_y - $vertices_y[$point]) / ($vertices_y[$j] - $vertices_y[$point]) + $vertices_x[$point]) ) )
+Line 1505: return data?.address?.country || '';
+Line 1510: var sendNotificationUrl = "{{ route('send-notification') }}";
+
+===== resources\views\dashboard\delivery.blade.php =====
+Line 498: <a href="#" class="btn btn-secondary" onclick="window.location.reload();">{{trans('lang.clear_filter')}}</a>
+Line 540: <div class="card card-box-with-icon border cursor-pointer" onclick="location.href='{!! route('stores') !!}'">
+Line 555: <div class="card card-box-with-icon border cursor-pointer" onclick="location.href='{!! route('orders') !!}'">
+Line 569: <div class="card card-box-with-icon border cursor-pointer" onclick="location.href='{!! route('users') !!}'">
+Line 584: <div class="card card-box-with-icon border cursor-pointer" onclick="location.href='{!! route('drivers') !!}'">
+Line 604: <h3 class="card-title">{{ trans('lang.order_status_overview') }}</h3>
+Line 608: <canvas id="order_status" height="330"></canvas>
+Line 675: <a href="{{ route('stores') }}">{{trans('lang.view_all')}}</a>
+Line 698: <a href="{!! route('drivers') !!}">{{trans('lang.view_all')}}</a>
+Line 727: <a href="{{ route('orders') }}">{{trans('lang.view_all')}}</a>
+Line 864: loadOrderStatusCounts(null, null, null, null, null, active_id);
+Line 877: loadOrderStatusCounts(view, year, month, startDate, endDate, active_id);
+Line 921: let ordersQuery = withSectionFilter(db.collection('vendor_orders').where('status', 'in', ["Order Completed"]), active_id);
+Line 923: ordersQuery = ordersQuery.where('createdAt', '>=', startTS).where('createdAt', '<=', endTS);
+Line 928: .where('status', 'in', ["Order Completed"])
+Line 929: .where('createdAt', '>=', startLastTS)
+Line 930: .where('createdAt', '<=', endLastTS)
+Line 1091: if (orderData.createdAt) {
+Line 1092: let d = orderData.createdAt.toDate();
+Line 1185: async function loadOrderStatusCounts(filterType = null, year = null, month = null, startDate = null, endDate = null, active_id) {
+Line 1206: const statuses = {
+Line 1218: const promises = Object.entries(statuses).map(([key, statusArray]) => {
+Line 1219: let query = withSectionFilter(db.collection('vendor_orders').where('status', 'in', statusArray), active_id);
+Line 1221: query = query.where('createdAt', '>=', startTS)
+Line 1222: .where('createdAt', '<=', endTS);
+Line 1233: setorderStatus();
+Line 1245: var route = '<?php echo route("stores.edit", ":id");?>';
+Line 1246: route = route.replace(':id', val.id);
+Line 1256: '<a href="' + route + '">' + val.title + '</a>' +
+Line 1271: html = html + '<td><span class="action-btn"><a href="' + route + '" > <i class="mdi mdi-lead-pencil"></i></span></a></td>';
+Line 1287: var driverroute = '<?php echo route("drivers.edit", ":id");?>';
+Line 1288: driverroute = driverroute.replace(':id', val.id);
+Line 1290: var driverView = '{{route("drivers.view", ":id")}}';
+Line 1302: html = html + '<td data-url="' + driverroute + '" class="redirecttopage"><span class="action-btn"><a><i class="mdi mdi-lead-pencil"></i></a></span></td>';
+Line 1315: var route = '<?php echo route("orders.edit", ":id"); ?>';
+Line 1316: route = route.replace(':id', val.id);
+Line 1318: var vendorroute = '<?php echo route("stores.view", ":id");?>';
+Line 1319: vendorroute = vendorroute.replace(':id', val.vendorID);
+Line 1323: html = html + '<td data-url="' + route + '" class="redirecttopage">' + val.id + '</td>';
+Line 1324: html = html + '<td data-url="' + vendorroute + '" class="redirecttopage">' + val.vendor.title + '</td>';
+Line 1328: html = html + '<td data-url="' + route + '" class="redirecttopage">' + price + '</td>';
+Line 1329: html = html + '<td data-url="' + route + '" class="redirecttopage"><i class="fa fa-shopping-cart"></i> ' + val.products.length + '</td>';
+Line 1432: window.location.href = url;
+Line 1540: async function setorderStatus() {
+Line 1554: var ctx = document.getElementById("order_status").getContext("2d");
+Line 1584: if (window.orderStatusChart) {
+Line 1585: window.orderStatusChart.data.datasets[0].data = dataValues;
+Line 1586: window.orderStatusChart.update();
+Line 1588: window.orderStatusChart = new Chart(ctx, {
+Line 1772: .where('status', 'in', ["Order Placed", "Order Accepted", "Driver Pending", "Driver Accepted", "Order Shipped", "In Transit"]);
+Line 1774: ref = ref.orderBy('createdAt', 'desc');
+Line 1837: withSectionFilter(db.collection('vendor_orders'), active_id).orderBy('createdAt', 'desc').get(),
+Line 1838: db.collection('users').where("role", "==", "customer").orderBy("createdAt").get(),
+Line 1839: withServiceTypeFilter(db.collection('users').where("role", "==", "driver").where('isOwner','==',false), active_type).orderBy('createdAt', 'desc').get(),
+Line 1843: withSectionFilter(db.collection('vendor_orders'), active_id).orderBy('createdAt', 'desc').where('createdAt', '<=', endThisTS).get(),
+Line 1844: db.collection('users').where("role", "==", "customer").where('createdAt', '>=', startThisTS).where('createdAt', '<=', endThisTS).orderBy("createdAt").get(),
+Line 1845: withServiceTypeFilter(db.collection('users').where("role", "==", "driver").where('isOwner','==',false), active_type).where('createdAt', '>=', startThisTS).where('createdAt', '<=', endThisTS).orderBy('createdAt', 'desc').get(),
+Line 1846: withSectionFilter(db.collection('vendors'), active_id).where('createdAt', '>=', startThisTS).where('createdAt', '<=', endThisTS).get(),
+Line 1849: startLastTS ? withSectionFilter(db.collection('vendor_orders'), active_id).where('createdAt', '>=', startLastTS).where('createdAt', '<=', endLastTS).get() : Promise.resolve({ docs: [] }),
+Line 1850: startLastTS ? db.collection('users').where("role", "==", "customer").where('createdAt', '>=', startLastTS).where('createdAt', '<=', endLastTS).orderBy("createdAt").get() : Promise.resolve({ docs: [] }),
+Line 1851: startLastTS ? withServiceTypeFilter(db.collection('users').where("role", "==", "driver").where('isOwner','==',false), active_type).where('createdAt', '>=', startLastTS).where('createdAt', '<=', endLastTS).orderBy('createdAt', 'desc').get() : Promise.resolve({ docs: [] }),
+Line 1852: startLastTS ? withSectionFilter(db.collection('vendors'), active_id).where('createdAt', '>=', startLastTS).where('createdAt', '<=', endLastTS).get() : Promise.resolve({ docs: [] })
+
+===== resources\views\stores\index.blade.php =====
+Line 10: <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ trans('lang.dashboard') }}</a></li>
+Line 103: <a class="btn-primary btn rounded-full" href="{!! route('stores.create') !!}"><i class="mdi mdi-plus mr-2"></i>{{ trans('lang.create_vendor') }}</a>
+Line 216: window.location.reload();
+Line 220: var createdAt = firebase.firestore.FieldValue.serverTimestamp();
+Line 239: var ref = refData.orderBy('createdAt', 'desc');
+Line 301: key: 'createdAt',
+Line 340: const orderableColumns = (checkDeletePermission) ? ['', '', 'title',  'phonenumber', 'createdAt', 'items', 'orders'] : ['', 'title',  'phonenumber', 'createdAt', 'items', 'orders']; // Ensure this matches the actual column names
+Line 379: if (childData.hasOwnProperty("createdAt")) {
+Line 381: date = childData.createdAt.toDate().toDateString();
+Line 382: time = childData.createdAt.toDate().toLocaleTimeString('en-US');
+Line 386: var createdAt = date + '<br> ' + time;
+Line 389: (createdAt && createdAt.toString().toLowerCase().indexOf(searchValue) > -1) ||
+Line 407: if (orderByField === 'createdAt') {
+Line 438: isActive = await vendorStatus(user_id);
+Line 445: if (childData.createdAt && new Date(childData.createdAt.seconds * 1000).setHours(0, 0, 0, 0) === today) {
+Line 565: var route1 = '{{ route('stores.edit', ':id') }}';
+Line 566: route1 = route1.replace(':id', id);
+Line 567: var route_view = '{{ route('stores.view', ':id') }}';
+Line 568: route_view = route_view.replace(':id', id);
+Line 575: var payoutRequests = '{{ route('users.walletstransaction', ':id') }}';
+Line 582: actionHtml = actionHtml + '<a href="' + route_view + '" data-toggle="tooltip" data-bs-original-title="{{ trans('lang.view') }}"><i class="mdi mdi-eye"></i></a><a href="' + route1 + '" data-toggle="tooltip" data-bs-original-title="{{ trans('lang.edit') }}"><i class="mdi mdi-lead-pencil"></i></a>';
+Line 594: html.push('<img alt="" width="100%" style="width:70px;height:70px;" src="' + photo + '" onerror="this.onerror=null;this.src=\'' + placeholderImage + '\'" alt="image">' + '<a href="' + route_view + '" class="redirecttopage left_space">' + val.title + '</a>');
+Line 596: html.push('<img alt="" width="100%" style="width:70px;height:70px;" src="' + placeholderImage + '" alt="image">' + '<a href="' + route_view + '" class="redirecttopage left_space">' + val.title + '</a>');
+Line 610: if (val.hasOwnProperty("createdAt")) {
+Line 612: date = val.createdAt.toDate().toDateString();
+Line 613: time = val.createdAt.toDate().toLocaleTimeString('en-US');
+Line 622: var url = '{{ route('vendors.items', ':id') }}';
+Line 626: var url = '{{ route('vendors.orders', ':id') }}';
+Line 633: async function vendorStatus(id) {
+Line 634: let status = true;
+Line 638: status = data.active;
+Line 641: return status;
+Line 672: window.location.reload();
+Line 726: error: function(xhr, status, error) {
+Line 784: window.location.href = url;
+Line 809: location.reload();
+Line 821: window.location.reload();
+Line 893: userData.createdAt = createdAt;
+Line 899: coordinates = new firebase.firestore.GeoPoint(vendorData.latitude, vendorData.longitude);
+Line 900: vendorData.coordinates = coordinates;
+Line 901: vendorData.createdAt = createdAt;
+Line 922: location.reload();
+Line 938: location.reload();
+
+===== resources\views\drivers\index.blade.php =====
+Line 120: <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ trans('lang.dashboard') }}</a></li>
+Line 139: <select class="form-control status_selector filteredRecords">
+Line 140: <option value="" selected>{{ trans('lang.status') }}</option>
+Line 167: <a class="btn-primary btn rounded-full" href="{!! route('drivers.create') !!}"><i class="mdi mdi-plus mr-2"></i>{{ trans('lang.drivers_create') }}</a>
+Line 227: $('.status_selector').select2({
+Line 228: placeholder: '{{ trans('lang.status') }}',
+Line 310: function applyDriverFilters(query, status, daterangepicker) {
+Line 311: if (status) {
+Line 312: query = (status == "active") ? query.where('active', '==', true) : query.where('active', '==', false);
+Line 319: query = query.where('createdAt', '>=', fromDate);
+Line 321: query = query.where('createdAt', '<=', toDate);
+Line 324: return query.orderBy('createdAt', 'desc');
+Line 350: driverData.documentStatus === 'approved' ||
+Line 351: driverData.status === 'approved';
+Line 377: async function getDriverQueryDocs(status, daterangepicker) {
+Line 378: const primaryQuery = applyDriverFilters(getDriverBaseQuery(false), status, daterangepicker);
+Line 385: const fallbackQuery = applyDriverFilters(getDriverBaseQuery(true), status, daterangepicker);
+Line 402: var status = $('.status_selector').val();
+Line 405: status: status,
+Line 412: status: $('.status_selector').val(),
+Line 460: key: 'createdAt',
+Line 481: const orderableColumns = (checkDeletePermission) ? ['', '', 'name', '', '', 'createdAt', '','', '', ''] : ['', 'name', '', '', 'createdAt', '', '','', '']; // Ensure this matches the actual column names
+Line 488: getDriverQueryDocs(ref.status, ref.daterangepicker).then(async function(driverDocs) {
+Line 534: var formattedCreatedAt = formatDateValue(childData.createdAt);
+Line 535: var createdAt = formattedCreatedAt.date + ' ' + formattedCreatedAt.time;
+Line 539: (createdAt && createdAt.toString().toLowerCase().indexOf(searchValue) > -1)
+Line 553: if (orderByField === 'createdAt' && a[orderByField] != '' && b[orderByField] != '' && a[orderByField] != null && b[orderByField] != null) {
+Line 686: database.collection('vendor_orders').where('driverID', '==', listval.id).where("status", "in", ["Order Completed"]).get().then(async function(orderSnapshots) {
+Line 701: //document verification status icon add new code
+Line 702: async function getDocumentStatusIcon(driverId) {
+Line 708: const approved = docs.filter(d => d.status === 'approved').length;
+Line 709: const rejected = docs.filter(d => d.status === 'rejected').length;
+Line 724: var route1 = '{{ route('drivers.edit', ':id') }}';
+Line 725: route1 = route1.replace(':id', id);
+Line 727: var driverView = '{{ route('drivers.view', ':id') }}';
+Line 736: var chatViewRoute = "{{ route('drivers.chat', ':id') }}".replace(':id', val.id);
+Line 740: var document_list_view = "{{ route('drivers.document', ':id') }}";
+Line 745: var payoutRequests = '{{ route('users.walletstransaction', ':id') }}';
+Line 749: actionHtml += '<a href="' + driverView + '" data-toggle="tooltip" data-bs-original-title="{{ trans('lang.view') }}"><i class="mdi mdi-eye"></i></a><a href="' + route1 + '" data-toggle="tooltip" data-bs-original-title="{{ trans('lang.edit') }}"><i class="mdi mdi-lead-pencil"></i></a>';
+Line 754: actionHtml += '<a href="' + chatViewRoute + '" class="chat-message" style="position: relative; display: inline-block;">' +
+Line 762: var verified = await getDocumentStatusIcon(val.id);
+Line 790: if (val.hasOwnProperty("createdAt")) {
+Line 791: var formattedDate = formatDateValue(val.createdAt);
+Line 802: url = "{{ route('parcel_orders.driver', 'id') }}";
+Line 805: url = "{{ route('rental_orders.driver', 'id') }}";
+Line 808: url = "{{ route('orders', 'id') }}";
+Line 811: url = "{{ route('drivers.rides', 'driverId') }}";
+Line 903: window.location.reload();
+Line 948: error: function(xhr, status, error) {
+Line 957: window.location.href = url;
+Line 983: window.location.reload();
+
+===== resources\views\orders\index.blade.php =====
+Line 16: <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{ trans('lang.dashboard') }}</a></li>
+Line 30: <select class="form-control status_selector filteredRecords">
+Line 31: <option value="" selected>{{ trans('lang.status') }}</option>
+Line 66: <a href="{{ route('drivers.view', $_GET['driverId']) }}"><i class="ri-list-indefinite"></i>{{ trans('lang.tab_basic') }}</a>
+Line 69: <a href="{{ route('drivers.vehicle', $_GET['driverId']) }}"><i class="ri-car-line"></i>{{ trans('lang.vehicle') }}</a>
+Line 72: <a href="{{ route('orders', 'driverId=' . $_GET['driverId']) }}"><i class="ri-shopping-bag-line"></i> {{ trans('lang.order_plural') }}</a>
+Line 75: <a href="{{ route('driver.payouts', $_GET['driverId']) }}"><i class="ri-bank-card-line"></i>{{ trans('lang.tab_payouts') }}</a>
+Line 78: <a href="{{ route('payoutRequests.drivers.view', $_GET['driverId']) }}" class="vendor_payout"><i class="ri-refund-line"></i>{{ trans('lang.tab_payout_request') }}</a>
+Line 81: <a href="{{ route('users.walletstransaction', $_GET['driverId']) }}" class="wallet_transaction"><i class="ri-wallet-line"></i>{{ trans('lang.wallet_transaction') }}</a>
+Line 89: <li><a href="{{ route('users.view', $_GET['userId']) }}"><i class="ri-list-indefinite"></i>{{ trans('lang.tab_basic') }}</a>
+Line 91: <li class="active"><a href="{{ route('orders', 'userId=' . $_GET['userId']) }}"><i class="ri-shopping-bag-line"></i>{{ trans('lang.tab_orders') }}</a>
+Line 94: <a href="{{ route('users.walletstransaction', $_GET['userId']) }}"><i class="ri-wallet-line"></i>{{ trans('lang.wallet_transaction') }}</a>
+Line 102: <a href="{{ route('stores.view', $id) }}"><i class="ri-list-indefinite"></i>{{ trans('lang.tab_basic') }}</a>
+Line 105: <a href="{{ route('vendors.items', $id) }}"><i class="ri-shopping-basket-fill"></i>{{ trans('lang.tab_items') }}</a>
+Line 108: <a href="{{ route('vendors.orders', $id) }}"><i class="ri-shopping-bag-line"></i> {{ trans('lang.tab_orders') }}</a>
+Line 111: <a href="{{ route('vendors.reviews', $id) }}"><i class="ri-shield-star-fill"></i>{{ trans('lang.tab_reviews') }}</a>
+Line 114: <a href="{{ route('vendors.coupons', $id) }}"><i class="ri-discount-percent-fill"></i>{{ trans('lang.tab_promos') }}</a>
+Line 116: <a href="{{ route('vendors.payout', $id) }}"><i class="ri-bank-card-line"></i>{{ trans('lang.tab_payouts') }}</a>
+Line 119: <a href="{{ route('payoutRequests.vendor.view', $id) }}"><i class="ri-refund-line"></i>{{ trans('lang.tab_payout_request') }}</a>
+Line 125: <a href="{{ route('vendors.booktable', $id) }}"><i class="ri-restaurant-line"></i>{{ trans('lang.dine_in_booking_history') }}</a>
+Line 128: $subscription = route('subscription.subscriptionPlanHistory', ':id');
+Line 135: <a href="{{ route('restaurants.advertisements', $id) }}"><i class="mdi mdi-newspaper"></i>{{ trans('lang.advertisement_plural') }}</a>
+Line 139: <a href="{{ route('restaurants.deliveryman', $id) }}"><i class="ri-riding-fill"></i>{{ trans('lang.deliveryman') }}</a>
+Line 244: <th>{{ trans('lang.order_order_status_id') }}</th>
+Line 330: var order_status = jQuery('#order_status').val();
+Line 338: $(document.body).on('change', '#order_status', function() {
+Line 339: order_status = jQuery(this).val();
+Line 348: ref = refData.orderBy('createdAt', 'desc').where('authorID', '==', userID);
+Line 353: var wallet_route = "{{ route('users.walletstransaction', 'id') }}";
+Line 354: $(".wallet_transaction").attr("href", wallet_route.replace('id', 'driverID=' + driverID));
+Line 362: ref = refData.orderBy('createdAt', 'desc').where('driverID', '==', driverID);
+Line 369: ref = refData.orderBy('createdAt', 'desc').where('vendorID', '==', vendorID);
+Line 373: ref = refData.orderBy('createdAt', 'desc');
+Line 377: $('.status_selector').select2({
+Line 378: placeholder: '{{ trans('lang.status') }}',
+Line 423: var status = $('.status_selector').val();
+Line 428: if (status) {
+Line 429: refData = refData.where('status', '==', status);
+Line 449: refData = refData.where('createdAt', '>=', fromDate);
+Line 450: refData = refData.where('createdAt', '<', toDate); // FIX
+Line 469: var refPlacedOrder = ref.where('status', 'in', ["Order Placed"]);
+Line 475: var refAcceptedOrder = ref.where('status', 'in', ["Order Accepted"]);
+Line 481: var refCompletedOrder = ref.where('status', 'in', ["Order Completed"]);
+Line 489: window.location.href = url;
+Line 493: if (jQuery(this).val() == 'status') {
+Line 494: jQuery('#order_status').show();
+Line 496: jQuery('#order_status').hide();
+Line 537: key: 'createdAt',
+Line 549: key: 'status',
+Line 550: header: "{{ trans('lang.order_order_status_id') }}"
+Line 568: key: 'createdAt',
+Line 580: key: 'status',
+Line 581: header: "{{ trans('lang.order_order_status_id') }}"
+Line 599: key: 'createdAt',
+Line 611: key: 'status',
+Line 612: header: "{{ trans('lang.order_order_status_id') }}"
+Line 634: key: 'createdAt',
+Line 646: key: 'status',
+Line 647: header: "{{ trans('lang.order_order_status_id') }}"
+Line 714: orderableColumns = (checkDeletePermission) ? ['', 'id', 'clientName', 'createdAt', 'amount', 'orderType', 'status', ''] : ['id', 'clientName', 'createdAt', 'amount', 'orderType', 'status', ''];
+Line 716: orderableColumns = (checkDeletePermission) ? ['', 'id', 'storeName', 'clientName', 'createdAt', 'amount', 'orderType', 'status', ''] : ['id', 'storeName',  'clientName', 'createdAt', 'amount', 'orderType', 'status', ''];
+Line 718: orderableColumns = (checkDeletePermission) ? ['', 'id', 'storeName', 'createdAt', 'amount', 'orderType', 'status', ''] : ['id', 'storeName', 'createdAt', 'amount', 'orderType', 'status', ''];
+Line 720: orderableColumns = (checkDeletePermission) ? ['', 'id', 'storeName', 'clientName', 'createdAt', 'amount', 'orderType', 'status', ''] : ['id', 'storeName', 'clientName', 'createdAt', 'amount', 'orderType', 'status', ''];
+Line 724: orderableColumns = (checkDeletePermission) ? ['', 'id', 'driverName', 'clientName', 'createdAt', 'amount', 'orderType', 'status', ''] : ['id', 'driverName', 'clientName', 'createdAt', 'amount', 'orderType', 'status', ''];
+Line 726: orderableColumns = (checkDeletePermission) ? ['', 'id', 'storeName', 'clientName', 'createdAt', 'amount', 'orderType', 'status', ''] : ['id', 'storeName',  'clientName', 'createdAt', 'amount', 'orderType', 'status', ''];
+Line 728: orderableColumns = (checkDeletePermission) ? ['', 'id', 'storeName', 'driverName', 'createdAt', 'amount', 'orderType', 'status', ''] : ['id', 'storeName', 'driverName', 'createdAt', 'amount', 'orderType', 'status', ''];
+Line 730: orderableColumns = (checkDeletePermission) ? ['', 'id', 'storeName',  'driverName', 'clientName', 'createdAt', 'amount', 'orderType', 'status', ''] : ['id', 'storeName', 'driverName', 'clientName', 'createdAt', 'amount', 'orderType', 'status', ''];
+Line 788: if (childData.hasOwnProperty("createdAt")) {
+Line 790: var formattedCreatedAt = formatOrderDateValue(childData.createdAt);
+Line 791: date = formattedCreatedAt.date;
+Line 792: time = formattedCreatedAt.time;
+Line 796: var createdAt = date + '<br> ' + time;
+Line 803: (createdAt && createdAt.toString().toLowerCase().indexOf(searchValue) > -1) ||
+Line 805: (childData.status && childData.status.toLowerCase().toString().includes(searchValue)) ||
+Line 817: if (orderByField === 'createdAt' && a[orderByField] != '' && b[orderByField] != '' && a[orderByField] != null && b[orderByField] != null) {
+Line 1001: var route1 = '{{ route('orders.edit', ':id') }}';
+Line 1002: route1 = route1.replace(':id', id);
+Line 1003: var printRoute = '{{ route('vendors.orderprint', ':id') }}';
+Line 1004: printRoute = printRoute.replace(':id', id);
+Line 1007: route1 = route1 + '?eid={{ $id }}';
+Line 1008: printRoute = printRoute + '?eid={{ $id }}';
+Line 1011: var route_view = '{{ route('stores.view', ':id') }}';
+Line 1012: route_view = route_view.replace(':id', val.vendorID);
+Line 1013: var customer_view = '{{ route('users.view', ':id') }}';
+Line 1020: html.push('<a href="' + route1 + '" class="redirecttopage"  data-toggle="tooltip" data-bs-original-title="' + val.id + '">' + (val.id.length > 8 ? val.id.substring(0, 8) + '...' : val.id) + '</a>');
+Line 1027: html.push('<a  data-url="' + route_view + '" href="' + route_view + '" class="redirecttopage">' + val.storeName + '</a>');
+Line 1032: html.push('<a  data-url="' + route_view + '" href="' + route_view + '" class="redirecttopage">' + val.storeName + '</a>');
+Line 1056: html.push('<a  data-url="' + route_view + '" href="' + route_view + '" class="redirecttopage">' + title + '</a>');
+Line 1074: html.push('<td  data-url="' + route_view + '" href="' + route_view + '" class="redirecttopage">' + title + '</td>');
+Line 1078: var diverRoute = '{{ route('drivers.view', ':id') }}';
+Line 1079: diverRoute = diverRoute.replace(':id', driverId);
+Line 1080: html.push('<td  data-url="' + diverRoute + '" class="redirecttopage">' + val.driver.firstName + ' ' + val.driver.lastName + '</td>');
+Line 1088: html.push('<a  data-url="' + route_view + '" href="' + route_view + '" class="redirecttopage">' + val.storeName + '</a>');
+Line 1101: var diverRoute = '{{ route('drivers.view', ':id') }}';
+Line 1102: diverRoute = diverRoute.replace(':id', driverId);
+Line 1103: html.push('<a  data-url="' + diverRoute + '" href="' + diverRoute + '"  class="redirecttopage">' + val.driver.firstName + ' ' + val.driver.lastName + '</a>');
+Line 1121: html.push('<a  data-url="' + route_view + '" href="' + route_view + '" class="redirecttopage">' + title + '</a>');
+Line 1125: var diverRoute = '{{ route('drivers.view', ':id') }}';
+Line 1126: diverRoute = diverRoute.replace(':id', driverId);
+Line 1127: html.push('<a  data-url="' + diverRoute + '" href="' + diverRoute + '" class="redirecttopage">' + val.driver.firstName + ' ' + val.driver.lastName + '</a>');
+Line 1143: if (val.hasOwnProperty("createdAt")) {
+Line 1145: var formattedOrderDate = formatOrderDateValue(val.createdAt);
+Line 1161: if (val.status === 'Order Placed') {
+Line 1162: html.push('<td><span class="badge badge-warning ">' + val.status + '</span></td>');
+Line 1163: } else if (val.status === 'Order Accepted') {
+Line 1164: html.push('<td><span class="badge badge-info ">' + val.status + '</span></td>');
+Line 1165: } else if (val.status === 'Order Rejected') {
+Line 1166: html.push('<td><span class="badge badge-danger ">' + val.status + '</span></td>');
+Line 1167: } else if (val.status === 'Driver Pending') {
+Line 1168: html.push('<td><span class="badge badge-secondary ">' + val.status + '</span></td>');
+Line 1169: } else if (val.status === 'Driver Rejected') {
+Line 1170: html.push('<td><span class="badge badge-danger ">' + val.status + '</span></td>');
+Line 1171: } else if (val.status === 'Order Shipped') {
+Line 1172: html.push('<td><span class="badge badge-primary ">' + val.status + '</span></td>');
+Line 1173: } else if (val.status === 'In Transit') {
+Line 1174: html.push('<td><span class="badge badge-info ">' + val.status + '</span></td>');
+Line 1175: } else if (val.status === 'Order Completed') {
+Line 1176: html.push('<td><span class="badge badge-success ">' + val.status + '</span></td>');
+Line 1178: html.push('<td><span class="badge badge-dark ">' + val.status + '</span></td>');
+Line 1182: actionHtml = actionHtml + '<span class="action-btn"><?php if (in_array('orders.print', json_decode(@session('user_permissions'),true))) { ?><a href="' + printRoute + '" data-toggle="tooltip" data-bs-original-title="{{ trans('lang.print') }}"><i class="mdi mdi-printer" style="font-size:20px;"></i></a><?php } ?><a href="' + route1 + '" data-toggle="tooltip" data-bs-original-title="{{ trans('lang.edit') }}"><i class="mdi mdi-lead-pencil"></i></a> ';
+Line 1183: if (val.status === "Order Accepted" || val.status === "Driver Rejected") {
+Line 1263: window.location.reload();
+Line 1291: var wallet_route = "{{ route('users.walletstransaction', 'id') }}";
+Line 1292: $(".wallet_transaction_vendor").attr("href", wallet_route.replace('id', 'storeID=' + vendorData.author));
+Line 1318: location.reload();
+Line 1426: location.reload();
+Line 1451: let zone_id = null;
+Line 1452: if(orderData.address?.location?.latitude && orderData.address?.location?.longitude){
+Line 1453: zone_id = await getUserZoneId(orderData.address.location.longitude, orderData.address.location.latitude);
+Line 1470: if(zone_id && driver.zoneId && driver.zoneId !== zone_id) return;
+Line 1477: if(driver.location && orderData.vendor){
+Line 1479: driver.location.latitude,
+Line 1480: driver.location.longitude,
+Line 1481: orderData.vendor.latitude,
+Line 1482: orderData.vendor.longitude
+Line 1490: distance: driver.location && orderData.vendor
+Line 1491: ? distanceRadius(driver.location.latitude, driver.location.longitude, orderData.vendor.latitude, orderData.vendor.longitude)
+Line 1539: window.location.reload();
+Line 1551: // Set order status to Driver Pending
+Line 1552: await orderRef.set({ status: "Driver Pending" }, { merge: true });
+
+===== resources\views\zone\index.blade.php =====
+Line 6: <h3 class="text-themecolor">{{trans('lang.zone_plural')}}</h3>
+Line 10: <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{trans('lang.dashboard')}}</a></li>
+Line 11: <li class="breadcrumb-item active">{{trans('lang.zone_table')}}</li>
+Line 23: <span class="icon mr-3"><img src="{{ asset('images/zone.png') }}"></span>
+Line 24: <h3 class="mb-0">{{trans('lang.zone_table')}}</h3>
+Line 25: <span class="counter ml-3 zone_count"></span>
+Line 42: <h3 class="text-dark-2 mb-2 h4">{{trans('lang.zone_table')}}</h3>
+Line 43: <p class="mb-0 text-dark-2">{{trans('lang.zone_table_text')}}</p>
+Line 47: <a class="btn-primary btn rounded-full" href="{!! route('zone.create') !!}"><i class="mdi mdi-plus mr-2"></i>{{trans('lang.zone_create')}}</a>
+Line 56: <?php if (in_array('zone.delete', json_decode(@session('user_permissions'),true))) { ?>
+Line 63: <th>{{trans('lang.zone_name')}}</th>
+Line 64: <th>{{trans('lang.status')}}</th>
+Line 89: var ref = database.collection('zone');
+Line 95: if ($.inArray('zone.delete', user_permissions) >= 0) {
+Line 106: $('.zone_count').text(snapshots.docs.length);
+Line 155: var route1 = '{{route("zone.edit",":id")}}';
+Line 156: route1 = route1.replace(':id', id);
+Line 161: html = html + '<td><a href="' + route1 + '">' + val.name + '</a></td>';
+Line 167: html = html + '<td class="action-btn"><a href="' + route1 + '"  data-toggle="tooltip" data-bs-original-title="{{ trans('lang.edit') }}"><i class="mdi mdi-lead-pencil"></i></a>';
+Line 169: html = html + '<a id="' + val.id + '" name="zone-delete" class="delete-btn" href="javascript:void(0)" data-toggle="tooltip" data-bs-original-title="{{ trans('lang.delete') }}"><i class="mdi mdi-delete"></i></a>';
+Line 184: database.collection('zone').doc(dataId).delete().then(function () {
+Line 185: window.location.reload();
+Line 197: database.collection('zone').doc(id).update({
+Line 202: database.collection('zone').doc(id).update({
+Line 208: $(document).on("click", "a[name='zone-delete']", function (e) {
+Line 211: database.collection('zone').doc(id).delete().then(function (result) {
+Line 212: window.location.reload();
+
+===== resources\views\users\index.blade.php =====
+Line 10: <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">{{trans('lang.dashboard')}}</a></li>
+Line 29: <select class="form-control status_selector filteredRecords">
+Line 30: <option value="">{{trans("lang.status")}}</option>
+Line 56: <a class="btn-primary btn rounded-full" href="{!! route('users.create') !!}"><i class="mdi mdi-plus mr-2"></i>{{trans('lang.user_create')}}</a>
+Line 98: var ref = database.collection('users').where("role", "in", ["customer"]).orderBy('createdAt', 'desc');
+Line 109: $('.status_selector').select2({
+Line 110: placeholder: '{{trans("lang.status")}}',
+Line 143: var status = $('.status_selector').val();
+Line 151: ref = ref.where('createdAt', '>=', fromDate);
+Line 153: ref = ref.where('createdAt', '<=', toDate);
+Line 156: if (status) {
+Line 157: ref = (status == "active") ? ref.where('active', '==', true) : ref.where('active', '==', false);
+Line 165: window.location.href = url;
+Line 192: { key: 'createdAt', header: "{{trans('lang.date')}}" },
+Line 207: const orderableColumns = (checkDeletePermission) ? ['', 'name', 'contactInfo', 'createdAt', '', ''] : ['name', 'contactInfo', 'createdAt', '', ''];
+Line 239: if (childData.hasOwnProperty("createdAt")) {
+Line 241: date = childData.createdAt.toDate().toDateString();
+Line 242: time = childData.createdAt.toDate().toLocaleTimeString('en-US');
+Line 246: var createdAt = date + '<br> ' + time;
+Line 250: || (createdAt && createdAt.toString().toLowerCase().indexOf(searchValue) > -1) || (childData.phoneNumber && childData.phoneNumber.toString().toLowerCase().includes(searchValue))
+Line 270: if (orderByField === 'createdAt') {
+Line 396: var route1 = '{{route("users.edit",":id")}}';
+Line 397: route1 = route1.replace(':id', id);
+Line 398: var user_view = '{{route("users.view",":id")}}';
+Line 400: var trroute1 = '{{route("users.walletstransaction",":id")}}';
+Line 401: trroute1 = trroute1.replace(':id', id);
+Line 414: if (val.hasOwnProperty("createdAt")) {
+Line 416: date = val.createdAt.toDate().toDateString();
+Line 417: time = val.createdAt.toDate().toLocaleTimeString('en-US');
+Line 430: var chatViewRoute = "{{ route('users.chat', ':id') }}".replace(':id', val.id);
+Line 433: actionHtml = actionHtml+'<a href="' + trroute1 + '" data-toggle="tooltip" data-bs-original-title="{{ trans('lang.wallet_transaction') }}"><i class="mdi mdi-wallet" ></i></a>';
+Line 434: actionHtml = actionHtml + '<a href="' + user_view + '" data-toggle="tooltip" data-bs-original-title="{{ trans('lang.view') }}"><i class="mdi mdi-eye"></i></a><a href="' + route1 + '" data-toggle="tooltip" data-bs-original-title="{{ trans('lang.edit') }}"><i class="mdi mdi-lead-pencil"></i></a>';
+Line 439: actionHtml = actionHtml + '<a href="' + chatViewRoute + '" class="chat-message" style="position: relative; display: inline-block;">' +
+Line 459: window.location.reload();
+Line 512: error: function(xhr, status, error) {
+Line 524: window.location.reload();
