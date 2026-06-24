@@ -115,6 +115,26 @@
             }
             map.panTo(target);
         }
+
+
+        function createSafeInfoWindow(options) {
+            var InfoWindowCtor = window.google && google.maps ? google.maps['InfoWindow'] : null;
+            if (typeof InfoWindowCtor === 'function') {
+                try {
+                    return new InfoWindowCtor(options || {});
+                } catch (error) {
+                    console.warn('InfoWindow unavailable; popup disabled.', error);
+                }
+            } else {
+                console.warn('InfoWindow unavailable; popup disabled.');
+            }
+
+            return {
+                setContent: function () {},
+                open: function () {},
+                close: function () {}
+            };
+        }
         var map_data = [];
         var base_url = '{!! asset('/images/') !!}';
         var mapType = 'ONLINE';
@@ -220,7 +240,7 @@
                 }).addTo(map);
             } else{
                 var myLatlng = toGoogleLatLngLiteral(default_lat, default_lng) || { lat: 0, lng: 0 };
-                var infowindow = new google.maps.InfoWindow();
+                var infowindow = createSafeInfoWindow();
                 var mapOptions = {
                     zoom: 10,
                     center: myLatlng,
@@ -400,7 +420,7 @@
                                 },
                                 map: map
                             });
-                            let infowindow = new google.maps.InfoWindow({
+                            let infowindow = createSafeInfoWindow({
                                 content: content
                             });
                             marker.addListener('click', function () {
@@ -520,7 +540,7 @@
                                 strokeWeight: 2
                             }
                         });
-                        var vendorInfoWindow = new google.maps.InfoWindow({
+                        var vendorInfoWindow = createSafeInfoWindow({
                             content: popupContent
                         });
                         vendorMarker.addListener('click', function() {

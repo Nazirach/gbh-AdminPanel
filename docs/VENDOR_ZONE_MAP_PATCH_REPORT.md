@@ -82,3 +82,9 @@ Perilaku patch:
 - Patch mengganti `LatLng` constructor menjadi literal object
 - Patch menambahkan `safeMapPanTo`
 - Patch membungkus `DrawingManager` constructor dengan `try/catch`
+
+## Cloud InfoWindow follow-up
+- Cloud test setelah `7435c75` menemukan `google.maps.InfoWindow is not a constructor`
+- Patch menambahkan `createSafeInfoWindow`
+- Patch mengganti `InfoWindow` constructor dengan safe wrapper
+- Zone `DrawingManager` warning sudah tertangani dan tidak crash
