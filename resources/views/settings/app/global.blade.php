@@ -624,6 +624,15 @@
         var providerLogo = '';
         var workerLogo = '';
         var serviceJsonFile = '';
+        var localFallbackImage = '{{ asset('images/default_user.png') }}';
+
+        function safeImageUrl(value) {
+            if (!value || value === 'undefined' || value === 'null') {
+                return localFallbackImage;
+            }
+
+            return value;
+        }
         
         $(document).ready(function() {
 
@@ -631,7 +640,7 @@
 
             ref.get().then(async function(snapshots) {
 
-                var globalSettings = snapshots.data();
+                var globalSettings = snapshots.exists ? snapshots.data() : {};
                 $(".application_name").val(globalSettings.applicationName);
                 $("#website_color").val(globalSettings.website_color);
                 $("#admin_color").val(globalSettings.admin_panel_color);
@@ -651,12 +660,13 @@
                     $('.defaultCountryCode').val(selectedCountry).trigger('change');
                 }
 
-                photo = globalSettings.appLogo;
-                $(".logo_img_thumb").append('<img class="rounded" style="width:50px" src="' + photo + '" onerror="this.onerror=null;this.src=\'' + placeholderphoto + '\'" alt="image">');
-                providerLogo = globalSettings.providerLogo;
-                $(".provider_logo_img_thumb").html('<img class="rounded" style="width:100px;padding:15px" src="' + providerLogo + '" onerror="this.onerror=null;this.src=\'' + placeholderphoto + '\'" alt="image">');
-                workerLogo = globalSettings.workerLogo;
-                $(".worker_logo_img_thumb").html('<img class="rounded" style="width:100px;padding:15px" src="' + workerLogo + '" onerror="this.onerror=null;this.src=\'' + placeholderphoto + '\'" alt="image">');
+                placeholderphoto = safeImageUrl(globalSettings.placeholderImage);
+                photo = safeImageUrl(globalSettings.appLogo);
+                $(".logo_img_thumb").append('<img class="rounded" style="width:50px" src="' + photo + '" onerror="this.onerror=null;this.src=\'' + localFallbackImage + '\'" alt="image">');
+                providerLogo = safeImageUrl(globalSettings.providerLogo);
+                $(".provider_logo_img_thumb").html('<img class="rounded" style="width:100px;padding:15px" src="' + providerLogo + '" onerror="this.onerror=null;this.src=\'' + localFallbackImage + '\'" alt="image">');
+                workerLogo = safeImageUrl(globalSettings.workerLogo);
+                $(".worker_logo_img_thumb").html('<img class="rounded" style="width:100px;padding:15px" src="' + workerLogo + '" onerror="this.onerror=null;this.src=\'' + localFallbackImage + '\'" alt="image">');
                 (globalSettings.isEnableAdsFeature) ? $('#enable_adv_feature').prop('checked', true): '';
                 (globalSettings.isSelfDelivery) ? $('#enable_self_delivery').prop('checked', true): '';
                 if (globalSettings.order_ringtone_url != '' && globalSettings.order_ringtone_url != null) {
