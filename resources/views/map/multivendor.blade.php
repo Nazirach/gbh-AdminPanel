@@ -97,6 +97,7 @@
         var map;
         var marker;
         var markers = [];
+        var vendorMarkers = [];
         var map_data = [];
         var base_url = '{!! asset('/images/') !!}';
         var mapType = 'ONLINE';
@@ -141,6 +142,7 @@
 
                 let mapdata = $.merge(orders, drivers)
                 loadData(mapdata);
+                renderVendorMarkers();
             });
 
             setTimeout(function () {
@@ -409,6 +411,113 @@
                 });
             }
 
+        }
+
+        function getNestedValue(obj, path) {
+            return path.reduce(function(current, key) {
+                return current && typeof current === 'object' ? current[key] : undefined;
+            }, obj);
+        }
+
+        function normalizeVendorCoordinates(vendor) {
+            var candidates = [
+                { lat: getNestedValue(vendor, ['location', 'latitude']), lng: getNestedValue(vendor, ['location', 'longitude']) },
+                { lat: vendor ? vendor.latitude : undefined, lng: vendor ? vendor.longitude : undefined },
+                { lat: getNestedValue(vendor, ['coordinates', 'latitude']), lng: getNestedValue(vendor, ['coordinates', 'longitude']) },
+                { lat: vendor ? vendor.lat : undefined, lng: vendor ? vendor.lng : undefined }
+            ];
+
+            for (var i = 0; i < candidates.length; i++) {
+                var lat = parseFloat(candidates[i].lat);
+                var lng = parseFloat(candidates[i].lng);
+
+                if (Number.isFinite(lat) && Number.isFinite(lng)) {
+                    return { lat: lat, lng: lng };
+                }
+            }
+
+            return null;
+        }
+
+        function getVendorMarkerContent(vendor) {
+            var vendorName = vendor && (vendor.title || vendor.name || vendor.storeName) ? (vendor.title || vendor.name || vendor.storeName) : '{{ trans('lang.vendor') }}';
+            return '<div class="p-2"><h6>{{ trans('lang.vendor') }} : ' + vendorName + '</h6></div>';
+        }
+
+        async function renderVendorMarkers() {
+            if (!map) {
+                console.warn('Vendor markers skipped because map is not ready.');
+                return;
+            }
+
+            var vendorMarkersRendered = 0;
+            var vendorMarkersSkipped = 0;
+
+            try {
+                const vendorSnapshot = await database.collection('vendors').get();
+                if (!vendorSnapshot || vendorSnapshot.empty) {
+                    console.info('Vendor markers rendered:', vendorMarkersRendered, 'Vendor markers skipped:', vendorMarkersSkipped);
+                    return;
+                }
+
+                vendorSnapshot.forEach(function(doc) {
+                    var vendor = doc.data() || {};
+                    var coordinates = normalizeVendorCoordinates(vendor);
+
+                    if (!coordinates) {
+                        vendorMarkersSkipped++;
+                        return;
+                    }
+
+                    var popupContent = getVendorMarkerContent(vendor);
+
+                    if (mapType == "OFFLINE") {
+                        var vendorIcon = L.divIcon({
+                            className: 'vendor-map-marker',
+                            html: '<div style="width:16px;height:16px;border-radius:50%;background:#29b6f6;border:2px solid #ffffff;box-shadow:0 0 10px rgba(41,182,246,.45);"></div>',
+                            iconSize: [16, 16],
+                            iconAnchor: [8, 8]
+                        });
+                        var vendorMarker = L.marker([coordinates.lat, coordinates.lng], { icon: vendorIcon }).addTo(map);
+                        vendorMarker.bindPopup(popupContent);
+                        vendorMarkers.push(vendorMarker);
+                    } else if (window.google && google.maps && google.maps.Marker) {
+                        var vendorMarker = new google.maps.Marker({
+                            position: new google.maps.LatLng(coordinates.lat, coordinates.lng),
+                            map: map,
+                            label: {
+                                text: 'V',
+                                color: '#ffffff',
+                                fontWeight: '700'
+                            },
+                            icon: {
+                                path: google.maps.SymbolPath.CIRCLE,
+                                scale: 9,
+                                fillColor: '#29B6F6',
+                                fillOpacity: 1,
+                                strokeColor: '#FFFFFF',
+                                strokeWeight: 2
+                            }
+                        });
+                        var vendorInfoWindow = new google.maps.InfoWindow({
+                            content: popupContent
+                        });
+                        vendorMarker.addListener('click', function() {
+                            vendorInfoWindow.open(map, vendorMarker);
+                        });
+                        vendorMarkers.push(vendorMarker);
+                    } else {
+                        vendorMarkersSkipped++;
+                        return;
+                    }
+
+                    vendorMarkersRendered++;
+                });
+
+                console.info('Vendor markers rendered:', vendorMarkersRendered, 'Vendor markers skipped:', vendorMarkersSkipped);
+            } catch (error) {
+                console.warn('Vendor markers could not be loaded.', error);
+            }
         }
 
         async function getUserDetail(userId) {

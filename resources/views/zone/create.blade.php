@@ -181,9 +181,9 @@
         var id = database.collection("tmp").doc().id;
         var ref = database.collection('zone');
         $(document).ready(function() {
-            setTimeout(function(){
+            waitForGoogleMapsReady(function () {
                 initMap();
-            },2500);
+            });
             $(".save-setting-btn").click(function() {
                 var name = $("#name").val();
                 var publish = $("#publish").is(":checked");
@@ -200,16 +200,33 @@
                     $(".error_top").append("<p>{{ trans('lang.zone_coordinates_error') }}</p>");
                     window.scrollTo(0, 0);
                 } else {
+                    var parsedCoordinates;
+                    try {
+                        parsedCoordinates = $.parseJSON(coordinates_object);
+                    } catch (error) {
+                        console.warn("Unable to parse zone coordinates.", error);
+                        $(".error_top").show();
+                        $(".error_top").html("<p>{{ trans('lang.invalid_coordinates_error') }}</p>");
+                        window.scrollTo(0, 0);
+                        return;
+                    }
+
+                    var normalizedArea = normalizeZoneArea(parsedCoordinates);
+                    if (normalizedArea.length < 3) {
+                        console.warn("Zone polygon must contain at least 3 valid points.", parsedCoordinates);
+                        $(".error_top").show();
+                        $(".error_top").html("<p>{{ trans('lang.invalid_coordinates_error') }}</p>");
+                        window.scrollTo(0, 0);
+                        return;
+                    }
+
+                    var latitude = normalizedArea[0].lat;
+                    var longitude = normalizedArea[0].lng;
+                    var area = normalizedArea.map(function(item) {
+                        return new firebase.firestore.GeoPoint(item.lat, item.lng);
+                    });
+
                     if (mapType == "ONLINE") {
-                        var coordinates_parse = coordinates_object;
-                        var coordinates = $.parseJSON(coordinates_parse);
-                        var latitude = coordinates[0].lat;
-                        var longitude = coordinates[0].lng;
-                        var area = [];
-                        for (let i = 0; i < coordinates.length; i++) {
-                            var item = coordinates[i];
-                            area.push(new firebase.firestore.GeoPoint(item.lat, item.lng));
-                        }
                         jQuery("#overlay").show();
                         database.collection('zone').doc(id).set({
                             'id': id,
@@ -223,79 +240,8 @@
                             window.location.href = '{{ route('zone') }}';
                         });
                     } else {
-                        var coordinates, latitude, longitude;
-                        var coordinates_parse = $.parseJSON(coordinates_object);
-                        // Check if coordinates_parse is an array and has at least one item
-                        if (Array.isArray(coordinates_parse) && coordinates_parse.length > 0) {
-                            // Check if the first item in coordinates_parse is an array (polygon)
-                            if (Array.isArray(coordinates_parse[0])) {
-                                // Handle case where the first element is an array of points (polygon)
-                                if (coordinates_parse[0].length > 0) {
-                                    var firstPoint = coordinates_parse[0][0]; // First point in the first polygon 
-                                    // Ensure the first point has valid lat and lng properties
-                                    if (firstPoint && typeof firstPoint.lat === 'number' && typeof firstPoint.lng === 'number') {
-                                        latitude = firstPoint.lat; // First point's latitude
-                                        longitude = firstPoint.lng; // First point's longitude
-                                    } else {
-                                        console.error("Invalid first point in coordinates_parse:", firstPoint);
-                                        return; // Exit if the first point is invalid
-                                    }
-                                } else {
-                                    console.error("First polygon (coordinates_parse[0]) is empty.");
-                                    return; // Exit if the first polygon is empty
-                                }
-                            } else {
-                                // Handle case where the first element is a single point object (no array of points)
-                                var firstPoint = coordinates_parse[0]; // This is an object with lat/lon (single point)
-                                // Ensure this object has valid lat and lon properties
-                                if (firstPoint && typeof firstPoint.lat === 'number' && typeof firstPoint.lon === 'number') {
-                                    latitude = firstPoint.lat; // Set latitude from the first point
-                                    longitude = firstPoint.lon; // Set longitude from the first point
-                                } else {
-                                    console.error("Invalid first point object in coordinates_parse:", firstPoint);
-                                    return; // Exit if the point is invalid
-                                }
-                            }
-                        } else {
-                            console.error("coordinates_parse is not a valid array or is empty:", coordinates_parse);
-                            return; // Exit if coordinates_parse is empty or invalid
-                        }
-                        var area = [];
-                        for (let i = 0; i < coordinates_parse.length; i++) {
-                            var polygon = coordinates_parse[i]; // Each polygon is an array of points or a single point object
-                            // Check if the polygon is an array (an array of points)
-                            if (Array.isArray(polygon)) {
-                                // Iterate over each point in the polygon
-                                polygon.forEach(function(point, index) {
-                                    // Check if the point is valid (has lat and lng properties)
-                                    if (point && typeof point.lat === 'number' && typeof point.lng === 'number') {
-                                        // Correctly create GeoPoint for each valid point and add to the area array
-                                        area.push(new firebase.firestore.GeoPoint(point.lat, point.lng));
-                                    } else {
-                                        // Log the error if a point is invalid or undefined
-                                        console.error("Invalid lat/lng at polygon index " + i + ", point index " + index, point);
-                                        $(".error_top").show();
-                                        $(".error_top").html("<p>{{ trans('lang.invalid_coordinates_error') }}</p>");
-                                        window.scrollTo(0, 0);
-                                        return; // Stop processing invalid point
-                                    }
-                                });
-                            } else {
-                                // If the polygon is not an array, handle it as a single point object
-                                if (polygon && typeof polygon.lat === 'number' && typeof polygon.lon === 'number') {
-                                    // Correctly create GeoPoint for a single valid point and add to the area array
-                                    area.push(new firebase.firestore.GeoPoint(polygon.lat, polygon.lon));
-                                } else {
-                                    console.error("Invalid single point object at polygon index " + i, polygon);
-                                    $(".error_top").show();
-                                    $(".error_top").html("<p>{{ trans('lang.invalid_coordinates_error') }}</p>");
-                                    window.scrollTo(0, 0);
-                                    return; // Stop processing invalid point
-                                }
-                            }
-                        }
                         jQuery("#overlay").show();
-                        if (latitude && longitude && area.length > 0) {
+                        if (Number.isFinite(latitude) && Number.isFinite(longitude) && area.length >= 3) {
                             database.collection('zone').doc(id).set({
                                 'id': id,
                                 'name': name,
@@ -308,7 +254,7 @@
                                 window.location.href = '{{ route('zone') }}';
                             });
                         } else {
-                            console.error("Invalid latitude, longitude, or area:", latitude, longitude, area);
+                            console.warn("Invalid latitude, longitude, or area for zone save.", normalizedArea);
                             $(".error_top").show();
                             $(".error_top").html("<p>{{ trans('lang.invalid_coordinates_error') }}</p>");
                             window.scrollTo(0, 0);
@@ -335,6 +281,70 @@
         let deleteButton, dragMap;
         let selectedPolygon = null;
         var mapType = 'ONLINE';
+
+        function isValidLatLngPoint(point) {
+            if (!point || typeof point !== 'object') {
+                return false;
+            }
+
+            var lat = parseFloat(point.lat ?? point.latitude);
+            var lng = parseFloat(point.lng ?? point.lon ?? point.longitude);
+
+            return Number.isFinite(lat) && Number.isFinite(lng);
+        }
+
+        function normalizeZonePoint(point) {
+            if (!isValidLatLngPoint(point)) {
+                return null;
+            }
+
+            return {
+                lat: parseFloat(point.lat ?? point.latitude),
+                lng: parseFloat(point.lng ?? point.lon ?? point.longitude)
+            };
+        }
+
+        function normalizeZoneArea(area) {
+            if (!Array.isArray(area)) {
+                return [];
+            }
+
+            return area.reduce(function(accumulator, item) {
+                if (Array.isArray(item)) {
+                    return accumulator.concat(normalizeZoneArea(item));
+                }
+
+                var normalizedPoint = normalizeZonePoint(item);
+                if (normalizedPoint) {
+                    accumulator.push(normalizedPoint);
+                }
+
+                return accumulator;
+            }, []);
+        }
+
+        function isGoogleMapsReady() {
+            return !!(window.google && google.maps && google.maps.Map);
+        }
+
+        function isGoogleDrawingReady() {
+            return !!(window.google && google.maps && google.maps.drawing && google.maps.drawing.DrawingManager);
+        }
+
+        function waitForGoogleMapsReady(callback, retries = 40) {
+            if (isGoogleMapsReady()) {
+                callback();
+                return;
+            }
+            if (retries <= 0) {
+                console.warn('Google Maps is not ready; zone map initialization skipped.');
+                return;
+            }
+            setTimeout(function () {
+                waitForGoogleMapsReady(callback, retries - 1);
+            }, 250);
+        }
+
         
         database.collection('settings').doc('DriverNearBy').get().then(async function(snapshots) {
             var data = snapshots.data();
@@ -353,9 +363,17 @@
                 };
             } else {
                 onclick = function() {
+                    if (!drawingManager || !isGoogleDrawingReady()) {
+                        console.warn('Drawing manager is not ready yet.');
+                        return;
+                    }
                     drawingManager.setDrawingMode(null);
                 };
                 polygon = function() {
+                    if (!drawingManager || !isGoogleDrawingReady()) {
+                        console.warn('Drawing manager is not ready yet.');
+                        return;
+                    }
                     drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
                 };
                 deletearea = function() {
@@ -773,6 +791,10 @@
                 });
             }
             else {
+                if (!(window.google && google.maps && google.maps.places && google.maps.places.SearchBox && google.maps.places.Autocomplete)) {
+                    console.warn('Google Maps Places is not ready yet.');
+                    return;
+                }
                 var input = document.getElementById('search-box');
                 var searchBox = new google.maps.places.SearchBox(input);
                 map.addListener('bounds_changed', function() {
@@ -822,6 +844,10 @@
             var default_lng = getCookie('default_longitude');
             var legend = document.getElementById('legend');
             if (mapType == "ONLINE") {
+                if (!isGoogleMapsReady()) {
+                    console.warn('Google Maps is not ready; zone map initialization skipped.');
+                    return;
+                }
                 $(".mapType").show();
                 var infowindow = new google.maps.InfoWindow({
                     size: new google.maps.Size(150, 50)
@@ -852,6 +878,10 @@
                     editable: true,
                     draggable: true
                 };
+                if (!isGoogleDrawingReady()) {
+                    console.warn('Drawing manager is not ready yet.');
+                    return;
+                }
                 drawingManager = new google.maps.drawing.DrawingManager({
                     drawingMode: null,
                     drawingControl: false,
