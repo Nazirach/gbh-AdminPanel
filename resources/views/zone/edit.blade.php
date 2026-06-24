@@ -955,7 +955,8 @@
                     console.warn('Drawing manager is not ready yet.');
                     return;
                 }
-                drawingManager = new google.maps.drawing.DrawingManager({
+                try {
+                    drawingManager = new google.maps.drawing.DrawingManager({
                     // direct polygon drawing setting
                     // drawingMode: google.maps.drawing.OverlayType.POLYGON,
                     drawingMode: null,
@@ -966,7 +967,12 @@
                     },
                     polygonOptions: shapeOptions,
                     map: map
-                });
+                    });
+                } catch (error) {
+                    console.warn('DrawingManager unavailable; polygon drawing disabled.', error);
+                    drawingManager = null;
+                    return;
+                }
                 google.maps.event.addListener(drawingManager, 'overlaycomplete', function(e) {
                     var newShape = e.overlay;
                     allShapes.push(newShape);

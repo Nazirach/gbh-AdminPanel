@@ -98,6 +98,23 @@
         var marker;
         var markers = [];
         var vendorMarkers = [];
+
+        function toGoogleLatLngLiteral(lat, lng) {
+            lat = parseFloat(lat);
+            lng = parseFloat(lng);
+            if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+                return null;
+            }
+            return { lat: lat, lng: lng };
+        }
+
+        function safeMapPanTo(target) {
+            if (!map || typeof map.panTo !== 'function' || !target) {
+                console.warn('Map panTo skipped because map is not ready.');
+                return;
+            }
+            map.panTo(target);
+        }
         var map_data = [];
         var base_url = '{!! asset('/images/') !!}';
         var mapType = 'ONLINE';
@@ -161,7 +178,8 @@
                        console.log("Marker at index " + index + " is undefined.");
                     }
                 } else{
-                    map.panTo(new google.maps.LatLng(lat, lng));
+                    var panTarget = toGoogleLatLngLiteral(lat, lng);
+                    safeMapPanTo(panTarget);
                     google.maps.event.trigger(markers[index], 'click');
                 }
             });
@@ -201,7 +219,7 @@
                     attribution: '© OpenStreetMap'
                 }).addTo(map);
             } else{
-                var myLatlng = new google.maps.LatLng(default_lat, default_lng);
+                var myLatlng = toGoogleLatLngLiteral(default_lat, default_lng) || { lat: 0, lng: 0 };
                 var infowindow = new google.maps.InfoWindow();
                 var mapOptions = {
                     zoom: 10,
@@ -375,7 +393,7 @@
                             }, 10000);
                         } else{
                             let marker = new google.maps.Marker({
-                                position: new google.maps.LatLng(driver.location.latitude, driver.location.longitude),
+                                position: toGoogleLatLngLiteral(driver.location.latitude, driver.location.longitude),
                                 icon: {
                                     url: iconImg,
                                     scaledSize: new google.maps.Size(25, 25)
@@ -405,7 +423,10 @@
                         if (mapType == "OFFLINE" ){
                             marker.setLatLng([data.location.latitude, data.location.longitude]);
                         } else{
-                            marker.setPosition(new google.maps.LatLng(data.location.latitude, data.location.longitude));
+                            var updatedMarkerPosition = toGoogleLatLngLiteral(data.location.latitude, data.location.longitude);
+                            if (updatedMarkerPosition && marker && typeof marker.setPosition === 'function') {
+                                marker.setPosition(updatedMarkerPosition);
+                            }
                         }
                     }
                 });
@@ -483,7 +504,7 @@
                         vendorMarkers.push(vendorMarker);
                     } else if (window.google && google.maps && google.maps.Marker) {
                         var vendorMarker = new google.maps.Marker({
-                            position: new google.maps.LatLng(coordinates.lat, coordinates.lng),
+                            position: toGoogleLatLngLiteral(coordinates.lat, coordinates.lng),
                             map: map,
                             label: {
                                 text: 'V',

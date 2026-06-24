@@ -74,3 +74,11 @@ Perilaku patch:
 - fixed google ready guard pada zone create/edit
 - fixed drawingManager ready guard sebelum mode polygon dipanggil
 - test ulang target utama: `/zone/create`
+
+## Runtime hardening update
+- Runtime Cloud menemukan `google.maps.LatLng is not a constructor`
+- Runtime Cloud menemukan `panTo` undefined
+- Runtime Cloud menemukan `DrawingManager unavailable`
+- Patch mengganti `LatLng` constructor menjadi literal object
+- Patch menambahkan `safeMapPanTo`
+- Patch membungkus `DrawingManager` constructor dengan `try/catch`
