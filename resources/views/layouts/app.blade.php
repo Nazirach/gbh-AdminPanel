@@ -1040,29 +1040,68 @@
             return html;
         }
 
-        async function loadGoogleMapsScript() {
-            var googleMapKeySnapshotsHeader = await database.collection('settings').doc("googleMapKey").get();
-            var placeholderImageHeaderData = googleMapKeySnapshotsHeader.data();
-            googleMapKey = placeholderImageHeaderData.key;
-            const script = document.createElement('script');
-            if (mapType == "OFFLINE") {
-                script.src = "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js";
-                script.src = "https://unpkg.com/leaflet-draw/dist/leaflet.draw.js";
-                script.src = "https://cdnjs.cloudflare.com/ajax/libs/leaflet-editable/0.7.3/leaflet.editable.min.js";
-                script.src = "https://unpkg.com/leaflet-draw@0.4.14/dist/leaflet.draw-src.js";
-                script.src = "https://unpkg.com/leaflet-ajax/dist/leaflet.ajax.min.js";
-                script.src = "https://unpkg.com/leaflet-geojson-layer/src/leaflet.geojson.js";
-                script.src = "https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js";
-            } else {
-                script.src = "https://maps.googleapis.com/maps/api/js?key=" + googleMapKey + "&libraries=places,drawing";
-            }
-            script.onload = function () {
-                navigator.geolocation.getCurrentPosition(GeolocationSuccessCallback, GeolocationErrorCallback);
-                if (typeof window['InitializeGodsEyeMap'] === 'function') {
-                    InitializeGodsEyeMap();
+        const fallbackGoogleMapsApiKey = @json(config('google.maps_api_key'));
+        let googleMapsScriptLoadPromise = null;
+
+        async function resolveGoogleMapsApiKey() {
+            let resolvedKey = typeof fallbackGoogleMapsApiKey === 'string' ? fallbackGoogleMapsApiKey.trim() : '';
+
+            if (window.firebaseClientReady === true && window.firebaseDb) {
+                try {
+                    const googleMapKeySnapshot = await window.firebaseDb.collection('settings').doc('googleMapKey').get();
+                    const googleMapKeyData = googleMapKeySnapshot.exists ? googleMapKeySnapshot.data() : null;
+                    const firebaseKey = googleMapKeyData && typeof googleMapKeyData.key === 'string'
+                        ? googleMapKeyData.key.trim()
+                        : '';
+
+                    if (firebaseKey !== '') {
+                        resolvedKey = firebaseKey;
+                    }
+                } catch (error) {
+                    console.warn('Google Maps key lookup from Firebase failed, using fallback configuration.');
                 }
-            };
-            document.head.appendChild(script);
+            }
+
+            return resolvedKey;
+        }
+
+        async function loadGoogleMapsScript() {
+            if (googleMapsScriptLoadPromise) {
+                return googleMapsScriptLoadPromise;
+            }
+
+            googleMapsScriptLoadPromise = (async function () {
+                const existingGoogleMapsScript = document.querySelector('script[data-google-maps-api="true"]');
+                if (existingGoogleMapsScript) {
+                    return;
+                }
+
+                const script = document.createElement('script');
+                if (mapType == "OFFLINE") {
+                    script.src = "https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js";
+                } else {
+                    const googleMapKey = await resolveGoogleMapsApiKey();
+                    if (!googleMapKey) {
+                        console.warn('Google Maps API key is not configured; skipping Google Maps script load.');
+                        return;
+                    }
+
+                    script.src = "https://maps.googleapis.com/maps/api/js?key=" + encodeURIComponent(googleMapKey) + "&libraries=places,drawing";
+                    script.setAttribute('data-google-maps-api', 'true');
+                    script.onerror = function () {
+                        console.warn('Google Maps script failed to load. Check API key configuration and restrictions.');
+                    };
+                }
+                script.onload = function () {
+                    navigator.geolocation.getCurrentPosition(GeolocationSuccessCallback, GeolocationErrorCallback);
+                    if (typeof window['InitializeGodsEyeMap'] === 'function') {
+                        InitializeGodsEyeMap();
+                    }
+                };
+                document.head.appendChild(script);
+            })();
+
+            return googleMapsScriptLoadPromise;
         }
 
         const GeolocationSuccessCallback = (position) => {
@@ -1500,6 +1539,7 @@
 
 </body>
 </html>
+
 
 
 
