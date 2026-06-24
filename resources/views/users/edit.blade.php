@@ -136,7 +136,7 @@ foreach ($countries as $keycountry => $valuecountry) {
                                                     +<?php echo $valuecy->phoneCode; ?> {{$valuecy->countryName}}</option>
                                                 <?php } ?>
                                             </select>
-                                    <input type="text" class="form-control user_phone"
+                                    <input type="text" class="form-control user_phone" maxlength="15" inputmode="numeric"
                                         onkeypress="return chkAlphabets2(event,'error2')">
                                     <div id="error2" class="err"></div>
                                 </div>
@@ -254,13 +254,22 @@ foreach ($countries as $keycountry => $valuecountry) {
                 $(".user_email").val(shortEmail(user.email)).prop('disabled',true);
                 $("#country_selector").val(user.countryCode.replace('+', '')).trigger('change');
                 if(user.phoneNumber != ""){
-                    $(".user_phone").val(user.phoneNumber);
+                    var normalizedPhone = String(user.phoneNumber || "");
+                    var normalizedCountryCode = String(user.countryCode || "");
+
+                    if (normalizedCountryCode && normalizedPhone.indexOf(normalizedCountryCode) === 0) {
+                        normalizedPhone = normalizedPhone.substring(normalizedCountryCode.length);
+                    }
+
+                    normalizedPhone = normalizedPhone.replace(/^\+/, "").replace(/\D/g, "");
+                    $(".user_phone").val(normalizedPhone);
                 }
                 else{
                     $(".user_phone").val("");
                 }
 
-                $(".user_phone").attr('disabled',true);
+                $(".user_phone").attr("maxlength", "15");
+                $(".user_phone").attr("inputmode", "numeric");
 
                 photo = user.profilePictureURL;
                 if (photo != '') {
@@ -317,7 +326,7 @@ foreach ($countries as $keycountry => $valuecountry) {
             var userLastName = $(".user_last_name").val();
             var email = $(".user_email").val();
             var countryCode = '+' + jQuery("#country_selector").val();
-            var userPhone = $(".user_phone").val();
+            var userPhone = String($(".user_phone").val() || "").replace(/\D/g, "");
             var active = $(".user_active").is(":checked");
             var user_name = userFirstName + " " + userLastName;
 
