@@ -565,8 +565,14 @@
                 return state.text;
             }
             var baseUrl = "<?php echo URL::to('/'); ?>/flags/120/";
+            var countrySlug = newcountriesjs[state.element.value] ? newcountriesjs[state.element.value].toLowerCase() : "";
+
+            if (!countrySlug) {
+                return state.text;
+            }
+
             var $state = $(
-                '<span><img src="' + baseUrl + '/' + newcountriesjs[state.element.value].toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
+                '<span><img src="' + baseUrl + '/' + countrySlug + '.png" class="img-flag" /> ' + state.text + '</span>'
             );
             return $state;
         }
@@ -576,11 +582,17 @@
                 return state.text;
             }
             var baseUrl = "<?php echo URL::to('/'); ?>/flags/120/"
+            var countrySlug = newcountriesjs[state.element.value] ? newcountriesjs[state.element.value].toLowerCase() : "";
+
+            if (!countrySlug) {
+                return state.text;
+            }
+
             var $state = $(
                 '<span><img class="img-flag" /> <span></span></span>'
             );
             $state.find("span").text(state.text);
-            $state.find("img").attr("src", baseUrl + "/" + newcountriesjs[state.element.value].toLowerCase() + ".png");
+            $state.find("img").attr("src", baseUrl + "/" + countrySlug + ".png");
             return $state;
         }
 
@@ -703,17 +715,18 @@
             });
 
             version.get().then(async function(snapshots) {
-                var version_data = snapshots.data();
-                $('.app_version').val(version_data.app_version);
-                $('#web_version').val(version_data.web_version);
-                $('#store_url').val(version_data.storeUrl);
-                $('#website_url').val(version_data.websiteUrl);
-                $('#provider_url').val(version_data.providerUrl);
+                var version_data = snapshots.exists ? snapshots.data() : {};
+
+                $('.app_version').val(version_data.app_version || "");
+                $('#web_version').val(version_data.web_version || "");
+                $('#store_url').val(version_data.storeUrl || "");
+                $('#website_url').val(version_data.websiteUrl || "");
+                $('#provider_url').val(version_data.providerUrl || "");
             });
 
             mapKey.get().then(async function(snapshots) {
-                var key = snapshots.data();
-                $('#map_key').val(shortString(key.key));
+                var key = snapshots.exists ? snapshots.data() : {};
+                $('#map_key').val(key.key ? shortString(key.key) : "");
             });
 
             DriverNearByRef.get().then(async function(snapshots) {
