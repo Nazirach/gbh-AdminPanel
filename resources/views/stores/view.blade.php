@@ -809,7 +809,7 @@
             jQuery("#data-table_processing").show();
 
             await email_templates.get().then(async function(snapshots) {
-                emailTemplatesData = snapshots.docs[0].data();
+                emailTemplatesData = snapshots.docs.length > 0 ? snapshots.docs[0].data() : null;
             });
 
             if(serviceType !== 'ecommerce-service'){
@@ -901,7 +901,7 @@
 
                     if (vendor.hasOwnProperty('subscriptionExpiryDate') && vendor.hasOwnProperty(
                             'subscriptionPlanId') && vendor.subscriptionPlanId != '' && vendor
-                        .subscriptionPlanId != null) {
+                        .subscriptionPlanId != null && vendor.subscription_plan) {
                         $(".update-limit-div").show();
                         $(".plan_name").html(vendor.subscription_plan.name);
                         $(".plan_type").html(vendor.subscription_plan.type);
@@ -1019,7 +1019,7 @@
                     }
 
                     var photos = '';
-                    if (vendor.photos.length > 0) {
+                    if (Array.isArray(vendor.photos) && vendor.photos.length > 0) {
                         vendor.photos.forEach((photo) => {
                             photos = photos +
                                 '<span class="image-item"><img width="100px" id="" height="auto" src="' +
@@ -1050,9 +1050,11 @@
                     $(".reviewhtml").html(review);
 
                     filtershtml = '';
-                    for (var key in vendor.filters) {
-                        filtershtml = filtershtml + '<li>' + key + ': ' + vendor.filters[key] +
-                            '</li>';
+                    if (vendor.filters && typeof vendor.filters === 'object') {
+                        for (var key in vendor.filters) {
+                            filtershtml = filtershtml + '<li>' + key + ': ' + vendor.filters[key] +
+                                '</li>';
+                        }
                     }
                     if (filtershtml != '') {
                         $("#filtershtml").html(filtershtml);
@@ -1330,7 +1332,8 @@
                         var commission = parseInt(orderData.adminCommission);
                         adminCommission = commission + adminCommission;
                     }
-                    orderData.products.forEach((product) => {
+                    const orderProducts = Array.isArray(orderData.products) ? orderData.products : [];
+                    orderProducts.forEach((product) => {
 
                         if (product.price && product.quantity != 0) {
                             var productTotal = parseInt(product.price) * parseInt(product
@@ -1441,6 +1444,12 @@
                             day = day < 10 ? '0' + day : day;
 
                             formattedDate = day + '-' + month + '-' + year;
+
+                            if (!emailTemplatesData || !emailTemplatesData.message) {
+                                console.warn('wallet_topup email template is missing; skipping email body rendering.');
+                                window.location.reload();
+                                return;
+                            }
 
                             var message = emailTemplatesData.message;
                             message = message.replace(/{username}/g, data
