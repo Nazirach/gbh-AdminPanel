@@ -94,3 +94,20 @@ Perilaku patch:
 - Patch menambahkan fallback `getGoogleRoadmapTypeId()` ke string `roadmap`
 - Patch menambahkan `waitForMapReady(...)` agar marker dan vendor marker tidak dieksekusi sebelum map siap
 - Patch menambahkan guard aman saat legend didorong ke `google.maps.ControlPosition.LEFT_BOTTOM`
+
+
+## Zone Google Maps runtime stabilization
+- Zone create/edit sekarang memakai `toGoogleLatLngLiteral(...)` untuk center map agar tidak bergantung pada `new google.maps.LatLng(...)`
+- Zone create/edit sekarang memakai `createSafeInfoWindow(...)` agar popup helper tidak membuat runtime crash bila constructor `InfoWindow` belum tersedia
+- Control position dan map type style sekarang memakai helper fallback agar `ControlPosition` atau `MapTypeControlStyle` yang belum siap tidak menjatuhkan halaman
+- Search bounds/icon helper sekarang memakai wrapper aman untuk `LatLngBounds`, `Size`, dan `Point`
+- Tujuan patch ini adalah menjaga form `/zone/create` dan `/zone/edit` tetap bisa dipakai walau library Google Maps cloud belum lengkap saat script pertama kali dieksekusi
+
+
+## Zone polygon tool activation follow-up
+- Test nyata menunjukkan tombol shape `+` tidak merespons walau peta sudah tampil
+- Akar masalah: `drawingManager` belum siap saat tombol polygon diklik, sehingga hanya warning dan tidak masuk mode gambar
+- Patch menambahkan `waitForGoogleDrawingReady(...)` untuk menunggu library drawing siap
+- Patch menambahkan `initializeOnlineDrawingManager()` agar inisialisasi drawing manager bisa dipanggil ulang dengan aman
+- Patch membuat tombol hand/polygon menunggu lalu mengaktifkan drawing manager, bukan langsung gagal diam
+- Patch mempertahankan alur simpan lama; error simpan sebelumnya berasal dari koordinat yang belum pernah terbentuk karena polygon gagal aktif

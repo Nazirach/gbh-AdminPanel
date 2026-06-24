@@ -253,6 +253,94 @@
         }
 
 
+        function waitForGoogleDrawingReady(callback, retries = 40) {
+            if (isGoogleDrawingReady()) {
+                callback();
+                return;
+            }
+            if (retries <= 0) {
+                console.warn('Google Drawing library is not ready; polygon tools are temporarily unavailable.');
+                return;
+            }
+            setTimeout(function () {
+                waitForGoogleDrawingReady(callback, retries - 1);
+            }, 250);
+        }
+
+
+        function toGoogleLatLngLiteral(lat, lng) {
+            lat = parseFloat(lat);
+            lng = parseFloat(lng);
+
+            if (!Number.isFinite(lat) || !Number.isFinite(lng)) {
+                return null;
+            }
+
+            return {
+                lat: lat,
+                lng: lng
+            };
+        }
+
+        function createSafeInfoWindow(options) {
+            if (window.google && google.maps && typeof google.maps.InfoWindow === 'function') {
+                try {
+                    return new google.maps.InfoWindow(options || {});
+                } catch (error) {
+                    console.warn('InfoWindow unavailable; popup disabled.', error);
+                }
+            } else {
+                console.warn('InfoWindow unavailable; popup disabled.');
+            }
+
+            return {
+                setContent: function () {},
+                open: function () {},
+                close: function () {}
+            };
+        }
+
+        function getGoogleControlPosition(positionKey, fallback) {
+            if (window.google && google.maps && google.maps.ControlPosition && google.maps.ControlPosition[positionKey]) {
+                return google.maps.ControlPosition[positionKey];
+            }
+
+            return fallback;
+        }
+
+        function getGoogleMapTypeControlStyle(styleKey, fallback) {
+            if (window.google && google.maps && google.maps.MapTypeControlStyle && google.maps.MapTypeControlStyle[styleKey]) {
+                return google.maps.MapTypeControlStyle[styleKey];
+            }
+
+            return fallback;
+        }
+
+        function createSafeGoogleSize(width, height) {
+            if (window.google && google.maps && typeof google.maps.Size === 'function') {
+                return new google.maps.Size(width, height);
+            }
+
+            return null;
+        }
+
+        function createSafeGooglePoint(x, y) {
+            if (window.google && google.maps && typeof google.maps.Point === 'function') {
+                return new google.maps.Point(x, y);
+            }
+
+            return null;
+        }
+
+        function createSafeGoogleLatLngBounds() {
+            if (window.google && google.maps && typeof google.maps.LatLngBounds === 'function') {
+                return new google.maps.LatLngBounds();
+            }
+
+            return null;
+        }
+
+
 
         database.collection('settings').doc('DriverNearBy').get().then(async function(snapshots) {
             var data = snapshots.data();
@@ -271,18 +359,32 @@
                 };
             } else {
                 onclick = function() {
-                    if (!drawingManager || !isGoogleDrawingReady()) {
-                        console.warn('Drawing manager is not ready yet.');
+                    if (drawingManager && isGoogleDrawingReady()) {
+                        drawingManager.setDrawingMode(null);
                         return;
                     }
-                    drawingManager.setDrawingMode(null);
+
+                    waitForGoogleDrawingReady(function() {
+                        initializeOnlineDrawingManager();
+                        if (drawingManager) {
+                            drawingManager.setDrawingMode(null);
+                        }
+                    });
                 };
                 polygon = function() {
-                    if (!drawingManager || !isGoogleDrawingReady()) {
-                        console.warn('Drawing manager is not ready yet.');
+                    if (drawingManager && isGoogleDrawingReady()) {
+                        drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
                         return;
                     }
-                    drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
+
+                    waitForGoogleDrawingReady(function() {
+                        initializeOnlineDrawingManager();
+                        if (drawingManager && isGoogleDrawingReady()) {
+                            drawingManager.setDrawingMode(google.maps.drawing.OverlayType.POLYGON);
+                        } else {
+                            console.warn('Drawing manager is not ready yet.');
+                        }
+                    });
                 };
                 deletearea = function() {
                     clearMap();
@@ -818,18 +920,35 @@
                     if (places.length == 0) {
                         return;
                     }
-                    var bounds = new google.maps.LatLngBounds();
+                    var bounds = createSafeGoogleLatLngBounds();
+                    if (!bounds) {
+                        console.warn('LatLngBounds unavailable; search bounds update skipped.');
+                        return;
+                    }
                     places.forEach(function(place) {
                         if (!place.geometry) {
                             return;
                         }
                         var icon = {
-                            url: place.icon,
-                            size: new google.maps.Size(71, 71),
-                            origin: new google.maps.Point(0, 0),
-                            anchor: new google.maps.Point(17, 34),
-                            scaledSize: new google.maps.Size(25, 25)
+                            url: place.icon
                         };
+                        var largeIconSize = createSafeGoogleSize(71, 71);
+                        var iconOrigin = createSafeGooglePoint(0, 0);
+                        var iconAnchor = createSafeGooglePoint(17, 34);
+                        var scaledIconSize = createSafeGoogleSize(25, 25);
+
+                        if (largeIconSize) {
+                            icon.size = largeIconSize;
+                        }
+                        if (iconOrigin) {
+                            icon.origin = iconOrigin;
+                        }
+                        if (iconAnchor) {
+                            icon.anchor = iconAnchor;
+                        }
+                        if (scaledIconSize) {
+                            icon.scaledSize = scaledIconSize;
+                        }
                         if (place.geometry.viewport) {
                             bounds.union(place.geometry.viewport);
                         } else {
@@ -858,25 +977,26 @@
                     console.warn('Google Maps is not ready; zone map initialization skipped.');
                     return;
                 }
-                var infowindow = new google.maps.InfoWindow({
-                    size: new google.maps.Size(150, 50)
-                })
+                var infoWindowSize = createSafeGoogleSize(150, 50);
+                var infowindow = createSafeInfoWindow(infoWindowSize ? {
+                    size: infoWindowSize
+                } : {})
                 $(".mapType").show();
                 map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 8,
-                    center: new google.maps.LatLng(default_lat, default_lng),
+                    center: toGoogleLatLngLiteral(default_lat, default_lng) || { lat: 0, lng: 0 },
                     mapTypeControl: false,
                     mapTypeControlOptions: {
-                        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-                        position: google.maps.ControlPosition.LEFT_CENTER
+                        style: getGoogleMapTypeControlStyle('DROPDOWN_MENU', 'DROPDOWN_MENU'),
+                        position: getGoogleControlPosition('LEFT_CENTER', null)
                     },
                     zoomControl: true,
                     zoomControlOptions: {
-                        position: google.maps.ControlPosition.RIGHT_CENTER
+                        position: getGoogleControlPosition('RIGHT_CENTER', null)
                     },
                     scaleControl: false,
                     scaleControlOptions: {
-                        position: google.maps.ControlPosition.RIGHT_CENTER
+                        position: getGoogleControlPosition('RIGHT_CENTER', null)
                     },
                     streetViewControl: false,
                     fullscreenControl: false
@@ -951,30 +1071,8 @@
                     editable: true,
                     draggable: true
                 };
-                if (!isGoogleDrawingReady()) {
-                    console.warn('Drawing manager is not ready yet.');
-                    return;
-                }
-                try {
-                    drawingManager = new google.maps.drawing.DrawingManager({
-                    // direct polygon drawing setting
-                    // drawingMode: google.maps.drawing.OverlayType.POLYGON,
-                    drawingMode: null,
-                    drawingControl: false,
-                    drawingControlOptions: {
-                        position: google.maps.ControlPosition.RIGHT_CENTER,
-                        drawingModes: ['polygon']
-                    },
-                    polygonOptions: shapeOptions,
-                    map: map
-                    });
-                } catch (error) {
-                    console.warn('DrawingManager unavailable; polygon drawing disabled.', error);
-                    drawingManager = null;
-                    return;
-                }
-                google.maps.event.addListener(drawingManager, 'overlaycomplete', function(e) {
-                    var newShape = e.overlay;
+
+                function bindOnlineShapeEvents(newShape) {
                     allShapes.push(newShape);
                     let lat_lng = [];
                     allShapes.forEach(function(data, index) {
@@ -985,7 +1083,9 @@
                         fillColor: shapeColor
                     });
                     getCoordinates(newShape);
-                    drawingManager.setDrawingMode(null);
+                    if (drawingManager) {
+                        drawingManager.setDrawingMode(null);
+                    }
                     setSelection(newShape, 0);
                     google.maps.event.addListener(newShape, 'click', function(e) {
                         if (e.vertex !== undefined) {
@@ -998,7 +1098,6 @@
                         }
                         setSelection(newShape, 0);
                     });
-                    //update coordinates
                     google.maps.event.addListener(newShape, 'click', function(e) {
                         getCoordinates(newShape);
                     });
@@ -1014,9 +1113,46 @@
                     google.maps.event.addListener(newShape.getPath(), "set_at", function(e) {
                         getCoordinates(newShape);
                     });
+                }
+
+                function initializeOnlineDrawingManager() {
+                    if (drawingManager) {
+                        return true;
+                    }
+
+                    if (!isGoogleDrawingReady()) {
+                        console.warn('Drawing manager is not ready yet.');
+                        return false;
+                    }
+
+                    try {
+                        drawingManager = new google.maps.drawing.DrawingManager({
+                        drawingMode: null,
+                        drawingControl: false,
+                        drawingControlOptions: {
+                            position: getGoogleControlPosition('RIGHT_CENTER', null),
+                            drawingModes: ['polygon']
+                        },
+                        polygonOptions: shapeOptions,
+                        map: map
+                        });
+                    } catch (error) {
+                        console.warn('DrawingManager unavailable; polygon drawing disabled.', error);
+                        drawingManager = null;
+                        return false;
+                    }
+
+                    google.maps.event.addListener(drawingManager, 'overlaycomplete', function(e) {
+                        bindOnlineShapeEvents(e.overlay);
+                    });
+                    google.maps.event.addListener(drawingManager, 'drawingmode_changed', clearSelection);
+                    google.maps.event.addListener(map, 'click', clearSelection);
+                    return true;
+                }
+
+                waitForGoogleDrawingReady(function() {
+                    initializeOnlineDrawingManager();
                 });
-                google.maps.event.addListener(drawingManager, 'drawingmode_changed', clearSelection);
-                google.maps.event.addListener(map, 'click', clearSelection);
             } else {
                 $(".mapType").hide();
                 searchBox();
