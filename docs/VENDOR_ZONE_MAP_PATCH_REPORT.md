@@ -88,3 +88,9 @@ Perilaku patch:
 - Patch menambahkan `createSafeInfoWindow`
 - Patch mengganti `InfoWindow` constructor dengan safe wrapper
 - Zone `DrawingManager` warning sudah tertangani dan tidak crash
+
+## Cloud map readiness follow-up
+- Cloud runtime menemukan `google.maps.MapTypeId.ROADMAP` undefined pada init map online
+- Patch menambahkan fallback `getGoogleRoadmapTypeId()` ke string `roadmap`
+- Patch menambahkan `waitForMapReady(...)` agar marker dan vendor marker tidak dieksekusi sebelum map siap
+- Patch menambahkan guard aman saat legend didorong ke `google.maps.ControlPosition.LEFT_BOTTOM`

@@ -135,6 +135,29 @@
                 close: function () {}
             };
         }
+
+
+        function getGoogleRoadmapTypeId() {
+            if (window.google && google.maps && google.maps.MapTypeId && google.maps.MapTypeId.ROADMAP) {
+                return google.maps.MapTypeId.ROADMAP;
+            }
+            return 'roadmap';
+        }
+
+        function waitForMapReady(callback, retries) {
+            retries = typeof retries === 'number' ? retries : 30;
+            if (map) {
+                callback();
+                return;
+            }
+            if (retries <= 0) {
+                console.warn('Map is not ready yet; deferred map action skipped.');
+                return;
+            }
+            setTimeout(function () {
+                waitForMapReady(callback, retries - 1);
+            }, 300);
+        }
         var map_data = [];
         var base_url = '{!! asset('/images/') !!}';
         var mapType = 'ONLINE';
@@ -178,8 +201,10 @@
                 }
 
                 let mapdata = $.merge(orders, drivers)
-                loadData(mapdata);
-                renderVendorMarkers();
+                waitForMapReady(function () {
+                    loadData(mapdata);
+                    renderVendorMarkers();
+                });
             });
 
             setTimeout(function () {
@@ -245,7 +270,7 @@
                     zoom: 10,
                     center: myLatlng,
                     streetViewControl: false,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                    mapTypeId: getGoogleRoadmapTypeId()
                 };
                 map = new google.maps.Map(document.getElementById("map"), mapOptions);
             }
@@ -282,7 +307,9 @@
                 };
                 lmaplegend.addTo(map);
             } else{
-                map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+                if (window.google && google.maps && google.maps.ControlPosition && map && map.controls && map.controls[google.maps.ControlPosition.LEFT_BOTTOM]) {
+                    map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+                }
             }
         }
 
