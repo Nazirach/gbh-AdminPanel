@@ -14,3 +14,8 @@ Teks tidak terbaca pada background putih di halaman order edit, terutama pada ar
 ## Konfirmasi Keamanan
 Patch ini hanya mengubah CSS/class tampilan agar teks lebih gelap dan mudah dibaca.
 Patch ini tidak mengubah logic order, perhitungan harga, query Firestore, ID/name field, event handler, atau database.
+
+## Patch Lanjutan
+- Patch lanjutan memperbaiki kontras badge/input kecil payment summary.
+- Tidak mengubah logic order/perhitungan.
+

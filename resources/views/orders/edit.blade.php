@@ -175,7 +175,7 @@
 
                                                         </tbody>
                                                     </table>
-                                                    <div class="order-data-row order-totals-items">
+                                                    <div class="order-data-row order-totals-items order-payment-summary">
                                                         <div class="card">
                                                             <div class="card-body">
                                                                 <table class="order-totals">
@@ -568,6 +568,35 @@
         color: #111827 !important;
         -webkit-text-fill-color: #111827 !important;
         opacity: 1 !important;
+    }
+
+    .order-payment-summary input,
+    .order-payment-summary input *,
+    .order-payment-summary .badge,
+    .order-payment-summary .badge *,
+    .order-payment-summary .btn-light,
+    .order-payment-summary .btn-light *,
+    .order-payment-summary .bg-white,
+    .order-payment-summary .bg-white *,
+    .order-payment-summary .text-danger,
+    .order-payment-summary .text-danger *,
+    .order-payment-summary .sub_total,
+    .order-payment-summary .discount,
+    .order-payment-summary .special_discount,
+    .order-payment-summary .deliveryCharge,
+    .order-payment-summary .tip_amount_val,
+    .order-payment-summary .packaging_charge,
+    .order-payment-summary .platform_charge,
+    .order-payment-summary .total_tax,
+    .order-payment-summary .total_price_val,
+    .order-payment-summary .tax_amount {
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+        opacity: 1 !important;
+    }
+    .order-payment-summary input::placeholder {
+        color: #64748b !important;
+        -webkit-text-fill-color: #64748b !important;
     }
 </style>
 @endsection
@@ -2661,4 +2690,3 @@
     </script>
 
 @endsection
-
