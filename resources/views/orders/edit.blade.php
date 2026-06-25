@@ -706,25 +706,6 @@
         -webkit-text-fill-color: #111827 !important;
         opacity: 1 !important;
     }
-
-    /* ORDER_EDIT_SUMMARY_SECTION_FIX */
-    #order_products_total tr.order-summary-section td {
-        color: #e5f6ff !important;
-        -webkit-text-fill-color: #e5f6ff !important;
-        background: transparent !important;
-        border-top: 1px solid rgba(255,255,255,0.16) !important;
-        padding: 14px 0 8px 0 !important;
-        font-weight: 700 !important;
-        text-shadow: none !important;
-        opacity: 1 !important;
-    }
-
-    #order_products_total tr.order-summary-divider td {
-        border-top: 1px solid rgba(255,255,255,0.16) !important;
-        padding: 10px 0 0 0 !important;
-        height: 1px !important;
-        background: transparent !important;
-    }
 </style>
 @endsection
 
@@ -2395,13 +2376,13 @@
             let order_total = (order_subtotal - total_discount) + deliveryCharge + tip_amount + (packagingChargeEnable ? packagingCharge : 0) + platformFee + total_tax_amount;
             let order_total_val = formatCurrency(order_total, currencyData);
 
-            html = html + '<tr class="order-summary-section"><td colspan="2">{{ trans('lang.sub_total') }}</td></tr>';
+            html = html + '<tr><td class="seprater" colspan="2"><hr><span>{{ trans('lang.sub_total') }}</span></td></tr>';
             html = html +
                 '<tr class="final-rate"><td class="label order-readable-text">{{ trans('lang.sub_total') }}</td><td class="sub_total order-readable-text" style="color:#111827">(' +
                 formatCurrency(order_subtotal, currencyData) + ')</td></tr>';
 
             html = html +
-                '<tr class="order-summary-section"><td colspan="2">{{ trans('lang.discount') }}</td></tr>';
+                '<tr><td class="seprater" colspan="2"><hr><span>{{ trans('lang.discount') }}</span></td></tr>';
             couponCode_html = '';
             if (couponCode) {
                 couponCode_html = '</br><small>{{ trans('lang.coupon_codes') }} :' + couponCode + '</small>';
@@ -2421,26 +2402,26 @@
 
             if (takeAway == '' || takeAway == false) {
                 html = html +
-                    '<tr class="order-summary-section"><td colspan="2">{{ trans('lang.delivery_charge') }}</td></tr>';
+                    '<tr><td class="seprater" colspan="2"><hr><span>{{ trans('lang.delivery_charge') }}</span></td></tr>';
                  html = html +
                         '<tr><td class="label order-readable-text">{{ trans('lang.delivery_charge') }}</td><td class="deliveryCharge order-readable-text" id="greenColor">+' +
                         formatCurrency(deliveryCharge, currencyData) + '</td></tr>';
                         
-                html = html + '<tr class="order-summary-section"><td colspan="2">{{ trans('lang.tip') }}</td></tr>';
+                html = html + '<tr><td class="seprater" colspan="2"><hr><span>{{ trans('lang.tip') }}</span></td></tr>';
                 html = html +'<tr><td class="label order-readable-text">{{ trans('lang.tip_amount') }}</td><td class="tip_amount_val order-readable-text" id="greenColor">+' +
                         formatCurrency(tip_amount, currencyData) + '</td></tr>';
             }
             if(packagingChargeEnable) {
-                html = html + '<tr class="order-summary-section"><td colspan="2">{{ trans('lang.packaging_charge') }}</td></tr>';
+                html = html + '<tr><td class="seprater" colspan="2"><hr><span>{{ trans('lang.packaging_charge') }}</span></td></tr>';
                 html = html +'<tr><td class="label order-readable-text">{{ trans('lang.packaging_charge') }}</td><td class="packaging_charge order-readable-text" id="greenColor">+' +
                         formatCurrency(packagingCharge, currencyData) + '</td></tr>';
             }
 
-            html = html + '<tr class="order-summary-section"><td colspan="2">{{ trans('lang.platform_charge') }}</td></tr>';
+            html = html + '<tr><td class="seprater" colspan="2"><hr><span>{{ trans('lang.platform_charge') }}</span></td></tr>';
             html = html +'<tr><td class="label order-readable-text">{{ trans('lang.platform_charge') }}</td><td class="platform_charge order-readable-text" id="greenColor">+' +
                     formatCurrency(platformFee, currencyData) + '</td></tr>';
 
-            html = html + '<tr class="order-summary-section"><td colspan="2">{{ trans('lang.tax_calculation') }}</td></tr>';
+            html = html + '<tr><td class="seprater" colspan="2"><hr><span>{{ trans('lang.tax_calculation') }}</span></td></tr>';
             html = html + renderTaxSection('item', 'Tax on Item Total');
             html = html + renderTaxSection('order', 'Tax on Order Total');
             html = html + renderTaxSection('delivery', 'Tax on Delivery Fee');
@@ -2451,7 +2432,7 @@
             html = html +'<tr><td class="label order-readable-text"><strong>{{ trans('lang.total_tax') }}</strong></td><td class="total_tax order-readable-text" id="greenColor"><strong>+' +
             formatCurrency(total_tax_amount, currencyData) + '</strong></td></tr>';
             
-            html += '<tr class="order-summary-divider"><td colspan="2"></td></tr>';
+            html += '<tr><td class="seprater" colspan="2"><hr></td></tr>';
             
             html = html +
                 '<tr class="grand-total"><td class="label order-readable-text">{{ trans('lang.total_amount') }}</td><td class="total_price_val order-readable-text" id="greenColor">' +
