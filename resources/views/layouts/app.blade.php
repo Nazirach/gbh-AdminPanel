@@ -1004,8 +1004,24 @@
         });
         
         async function getServiceSections() {
-            let ref = database.collection('sections').where('isActive', '==', true).orderBy('order');
-            const sectionsSnapshot = await ref.get();
+            /* SECTION_SELECTOR_ORDERBY_FALLBACK_FIX */
+            let sectionsSnapshot = null;
+
+            try {
+                let ref = database.collection('sections').where('isActive', '==', true).orderBy('order');
+                sectionsSnapshot = await ref.get();
+            } catch (error) {
+                console.warn('[SECTION_SELECTOR_TRACE] orderBy query failed, retrying without orderBy', error);
+            }
+
+            if (!sectionsSnapshot || sectionsSnapshot.empty) {
+                let fallbackRef = database.collection('sections').where('isActive', '==', true);
+                sectionsSnapshot = await fallbackRef.get();
+                console.log('[SECTION_SELECTOR_TRACE] fallback sections query used', {
+                    size: sectionsSnapshot.size
+                });
+            }
+
             const sectionsContainer = document.getElementById('sections_header');
             sectionsContainer.innerHTML = await buildServiceSectionsHTML(sectionsSnapshot);
         }
