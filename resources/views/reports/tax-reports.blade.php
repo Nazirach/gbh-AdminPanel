@@ -259,9 +259,49 @@
             return;
         }
 
+        /* TAX_REPORT_REQUIRE_SECTION_GUARD */
+        if (!section_id) {
+            $("#tax_report_table_container").html(
+                '<div class="alert alert-warning mb-0">Please select a section first before generating the tax report.</div>'
+            );
+            Swal.fire({ icon: 'warning', text: 'Please select a section first before generating the tax report.' });
+            traceTaxReport('blocked missing section', {
+                sectionIdPresent: !!section_id,
+                serviceType: service_type || null,
+                ordersCollection: ordersCollection || null,
+                ordersSectionField: ordersSectionField || null
+            });
+            return;
+        }
+
+        if (!ordersCollection || !ordersSectionField) {
+            $("#tax_report_table_container").html(
+                '<div class="alert alert-warning mb-0">Order report context is incomplete. Please reselect section and try again.</div>'
+            );
+            Swal.fire({ icon: 'warning', text: 'Order report context is incomplete. Please reselect section and try again.' });
+            traceTaxReport('blocked incomplete order context', {
+                sectionIdPresent: !!section_id,
+                serviceType: service_type || null,
+                ordersCollection: ordersCollection || null,
+                ordersSectionField: ordersSectionField || null
+            });
+            return;
+        }
+
         $("#data-table_processing").show();
 
         try {
+
+            traceTaxReport('generate query context', {
+                sectionIdPresent: !!section_id,
+                serviceType: service_type || null,
+                ordersCollection: ordersCollection || null,
+                ordersSectionField: ordersSectionField || null,
+                startDate: start_date,
+                endDate: end_date,
+                taxMethod: taxMethod,
+                selectedTaxes: selectedTaxes
+            });
 
             // Orders
             let ordersRef = database.collection(ordersCollection)
