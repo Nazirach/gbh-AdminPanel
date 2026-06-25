@@ -543,6 +543,34 @@
 @endsection
 
 @section('style')
+<style>
+    .order-readable-input,
+    .order-readable-input:read-only,
+    .order-readable-input:disabled {
+        color: #111827 !important;
+        background-color: #ffffff !important;
+        -webkit-text-fill-color: #111827 !important;
+        opacity: 1 !important;
+    }
+
+    .order-readable-input::placeholder {
+        color: #64748b !important;
+        -webkit-text-fill-color: #64748b !important;
+    }
+
+    .order-readable-text,
+    .order-readable-text strong,
+    .order-readable-text small,
+    .order-readable-text span,
+    #order_products_total .order-readable-text,
+    #order_products_total .label.order-readable-text,
+    #order_products_total td.order-readable-text {
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+        opacity: 1 !important;
+    }
+</style>
+@endsection
 
 @section('scripts')
 
@@ -2109,7 +2137,7 @@
 
             html = html + '<tr><td class="seprater" colspan="2"><hr><span>{{ trans('lang.sub_total') }}</span></td></tr>';
             html = html +
-                '<tr class="final-rate"><td class="label">{{ trans('lang.sub_total') }}</td><td class="sub_total" style="color:green">(' +
+                '<tr class="final-rate"><td class="label order-readable-text">{{ trans('lang.sub_total') }}</td><td class="sub_total order-readable-text" style="color:#111827">(' +
                 formatCurrency(order_subtotal, currencyData) + ')</td></tr>';
 
             html = html +
@@ -2118,16 +2146,16 @@
             if (couponCode) {
                 couponCode_html = '</br><small>{{ trans('lang.coupon_codes') }} :' + couponCode + '</small>';
             }
-            html = html + '<tr><td class="label">{{ trans('lang.discount') }}' + couponCode_html +
-                '</td><td class="discount text-danger">(-' + formatCurrency(order_discount, currencyData) + ')</td></tr>';
+            html = html + '<tr><td class="label order-readable-text">{{ trans('lang.discount') }}' + couponCode_html +
+                '</td><td class="discount text-danger order-readable-text">(-' + formatCurrency(order_discount, currencyData) + ')</td></tr>';
 
             if (specialDiscount != undefined) {
                 special_html = '';
                 if (specialDiscount.specialType == "percentage") {
                     special_html = '</br><small>(' + specialDiscount.special_discount_label + '%)</small>';
                 }
-                html = html + '<tr><td class="label">{{ trans('lang.special_offer') }} {{ trans('lang.discount') }}' +
-                    special_html + '</td><td class="special_discount text-danger">(-' + formatCurrency(special_discount, currencyData) +
+                html = html + '<tr><td class="label order-readable-text">{{ trans('lang.special_offer') }} {{ trans('lang.discount') }}' +
+                    special_html + '</td><td class="special_discount text-danger order-readable-text">(-' + formatCurrency(special_discount, currencyData) +
                     ')</td></tr>';
             }
 
@@ -2135,21 +2163,21 @@
                 html = html +
                     '<tr><td class="seprater" colspan="2"><hr><span>{{ trans('lang.delivery_charge') }}</span></td></tr>';
                  html = html +
-                        '<tr><td class="label">{{ trans('lang.delivery_charge') }}</td><td class="deliveryCharge " id="greenColor">+' +
+                        '<tr><td class="label order-readable-text">{{ trans('lang.delivery_charge') }}</td><td class="deliveryCharge order-readable-text" id="greenColor">+' +
                         formatCurrency(deliveryCharge, currencyData) + '</td></tr>';
                         
                 html = html + '<tr><td class="seprater" colspan="2"><hr><span>{{ trans('lang.tip') }}</span></td></tr>';
-                html = html +'<tr><td class="label">{{ trans('lang.tip_amount') }}</td><td class="tip_amount_val " id="greenColor">+' +
+                html = html +'<tr><td class="label order-readable-text">{{ trans('lang.tip_amount') }}</td><td class="tip_amount_val order-readable-text" id="greenColor">+' +
                         formatCurrency(tip_amount, currencyData) + '</td></tr>';
             }
             if(packagingChargeEnable) {
                 html = html + '<tr><td class="seprater" colspan="2"><hr><span>{{ trans('lang.packaging_charge') }}</span></td></tr>';
-                html = html +'<tr><td class="label">{{ trans('lang.packaging_charge') }}</td><td class="packaging_charge " id="greenColor">+' +
+                html = html +'<tr><td class="label order-readable-text">{{ trans('lang.packaging_charge') }}</td><td class="packaging_charge order-readable-text" id="greenColor">+' +
                         formatCurrency(packagingCharge, currencyData) + '</td></tr>';
             }
 
             html = html + '<tr><td class="seprater" colspan="2"><hr><span>{{ trans('lang.platform_charge') }}</span></td></tr>';
-            html = html +'<tr><td class="label">{{ trans('lang.platform_charge') }}</td><td class="platform_charge " id="greenColor">+' +
+            html = html +'<tr><td class="label order-readable-text">{{ trans('lang.platform_charge') }}</td><td class="platform_charge order-readable-text" id="greenColor">+' +
                     formatCurrency(platformFee, currencyData) + '</td></tr>';
 
             html = html + '<tr><td class="seprater" colspan="2"><hr><span>{{ trans('lang.tax_calculation') }}</span></td></tr>';
@@ -2160,13 +2188,13 @@
                 html = html + renderTaxSection('packaging', 'Tax on Packaging Fee');
             }
             html = html + renderTaxSection('platform', 'Tax on Platform Fee');
-            html = html +'<tr><td class="label"><strong>{{ trans('lang.total_tax') }}</strong></td><td class="total_tax " id="greenColor"><strong>+' +
+            html = html +'<tr><td class="label order-readable-text"><strong>{{ trans('lang.total_tax') }}</strong></td><td class="total_tax order-readable-text" id="greenColor"><strong>+' +
             formatCurrency(total_tax_amount, currencyData) + '</strong></td></tr>';
             
             html += '<tr><td class="seprater" colspan="2"><hr></td></tr>';
             
             html = html +
-                '<tr class="grand-total"><td class="label">{{ trans('lang.total_amount') }}</td><td class="total_price_val " id="greenColor">' +
+                '<tr class="grand-total"><td class="label order-readable-text">{{ trans('lang.total_amount') }}</td><td class="total_price_val order-readable-text" id="greenColor">' +
                 order_total_val + '</td></tr>';
 
             var priceWithCommision = total_price;
@@ -2188,10 +2216,10 @@
             } else {
                 adminCommission_val = currentCurrency + "" + parseFloat(adminCommission).toFixed(decimal_degits);
             }
-            html = html + '<tr><td class="label"><small>{{ trans('lang.admin_commission') }} ' + adminCommHtml +
-                '</small> </td><td style="color:red"><small>( ' + adminCommission_val + ' )</small></td></tr>';
+            html = html + '<tr><td class="label order-readable-text"><small>{{ trans('lang.admin_commission') }} ' + adminCommHtml +
+                '</small> </td><td class="order-readable-text" style="color:#111827"><small>( ' + adminCommission_val + ' )</small></td></tr>';
             if (notes) {
-                html = html + '<tr><td class="label">{{ trans('lang.notes') }}</td><td class="adminCommission_val">' +
+                html = html + '<tr><td class="label order-readable-text">{{ trans('lang.notes') }}</td><td class="adminCommission_val order-readable-text">' +
                     notes + '</td></tr>';
             }
 
@@ -2576,7 +2604,7 @@
             for (let title in taxBreakdownGrouped[section]) {
                 let taxlabel = title;
                 let taxAmount = parseFloat(taxBreakdownGrouped[section][title]);
-                html = html + '<tr><td class="label">' + taxlabel + " " + labelSuffix + '</td><td class="tax_amount" id="greenColor">+' + formatCurrency(taxAmount, currencyData) + '</td></tr>';
+                html = html + '<tr><td class="label order-readable-text">' + taxlabel + " " + labelSuffix + '</td><td class="tax_amount order-readable-text" id="greenColor">+' + formatCurrency(taxAmount, currencyData) + '</td></tr>';
             }
             return html;
         }
