@@ -608,9 +608,28 @@
         var paymentMethod = '';
 
         var database = firebase.firestore();
+
+        function getSafeFirestoreData(snapshot, fallback) {
+            fallback = fallback || {};
+            if (!snapshot) {
+                return fallback;
+            }
+            if (typeof snapshot.exists !== 'undefined' && !snapshot.exists) {
+                return fallback;
+            }
+            if (typeof snapshot.data !== 'function') {
+                return fallback;
+            }
+            return snapshot.data() || fallback;
+        }
+
+        function hideOrderEditLoader() {
+            jQuery("#data-table_processing").hide();
+        }
+
         var subscriptionBusinessModel = database.collection('settings').doc("vendor");
         subscriptionBusinessModel.get().then(async function(snapshots) {
-            var subscriptionSetting = snapshots.data();
+            var subscriptionSetting = getSafeFirestoreData(snapshots);
             if (subscriptionSetting.subscription_model == true) {
                 subscriptionModel = true;
             }
@@ -652,7 +671,11 @@
 
         var currencyData = '';
         refCurrency.get().then(async function(snapshots) {
-            currencyData = snapshots.docs[0].data();
+            if (!snapshots || !snapshots.docs || !snapshots.docs.length) {
+                console.warn('Order edit data missing; section skipped safely.');
+                return;
+            }
+            currencyData = getSafeFirestoreData(snapshots.docs[0]);
             currentCurrency = currencyData.symbol;
             currencyAtRight = currencyData.symbolAtRight;
             if (currencyData.decimal_degits) {
@@ -672,7 +695,7 @@
         var ref_place = database.collection('settings').doc("placeHolderImage");
         ref_place.get().then(async function(snapshots) {
 
-            var placeHolderImage = snapshots.data();
+            var placeHolderImage = getSafeFirestoreData(snapshots);
             place_image = placeHolderImage.image;
 
 
@@ -709,7 +732,7 @@
         var singleOrderReceive = false;
         var refDriverNearBy = database.collection('settings').doc("DriverNearBy");
         refDriverNearBy.get().then(async function(snapshot) {
-            var data = snapshot.data();
+            var data = getSafeFirestoreData(snapshot);
             if (data.singleOrderReceive) {
                 singleOrderReceive = true;
             }
@@ -718,7 +741,7 @@
         var scheduleOrderAcceptData = {};
         var scheduleOrderNotificationRef = database.collection('settings').doc("scheduleOrderNotification");
         scheduleOrderNotificationRef.get().then(async function(snapshot) {
-            var data = snapshot.data();
+            var data = getSafeFirestoreData(snapshot);
             scheduleOrderAcceptData.notifyTime = data.notifyTime;
             scheduleOrderAcceptData.timeUnit = data.timeUnit;
         })
@@ -726,8 +749,8 @@
         var refGlobal = database.collection('settings').doc("globalSettings");
         refGlobal.get().then(async function(
             settingSnapshots) {
-            if (settingSnapshots.data()) {
-                var settingData = settingSnapshots.data();
+            var settingData = getSafeFirestoreData(settingSnapshots);
+            if (Object.keys(settingData).length) {
                 if (settingData.isSelfDelivery) {
                     isSelfDeliveryGlobally = true;
                 }
@@ -745,7 +768,7 @@
         database.collection('dynamic_notification').get().then(async function(snapshot) {
             if (snapshot.docs.length > 0) {
                 snapshot.docs.map(async (listval) => {
-                    val = listval.data();
+                    val = getSafeFirestoreData(listval);
 
                     if (val.type == "restaurant_rejected") {
 
@@ -832,15 +855,20 @@
             jQuery("#data-table_processing").show();
 
             ref.get().then(async function(snapshots) {
-                vendorOrder = snapshots.docs[0].data();
+                if (!snapshots || !snapshots.docs || !snapshots.docs.length) {
+                    console.warn('Order edit data missing; section skipped safely.');
+                    hideOrderEditLoader();
+                    return;
+                }
+                vendorOrder = getSafeFirestoreData(snapshots.docs[0]);
                 await getDeliverymanList(vendorOrder.vendorID);
                 getUserReview(vendorOrder);
-                var order = snapshots.docs[0].data();
+                var order = getSafeFirestoreData(snapshots.docs[0]);
                 packagingChargeEnable = order.packagingChargeEnable;
                 orderCustomerId = order.authorID;
                 database.collection('zone').where('publish', '==', true)/* .where('sectionId', '==', order.vendor.section_id) */.orderBy('name', 'asc').get().then(async function(snapshots) {
                     snapshots.docs.forEach((listval) => {
-                        var data = listval.data();
+                        var data = getSafeFirestoreData(listval);
                         $('#zone').append($("<option></option>")
                             .attr("value", data.id)
                             .text(data.name));
@@ -849,11 +877,15 @@
                 
                 if (order.vendor.section_id != undefined && order.vendor.section_id != '') {
                     await database.collection('sections').doc(order.vendor.section_id).get().then(async function(snapshot) {
-                        service_type = snapshot.data().serviceTypeFlag;
-                        delivery_enable = snapshot.data().dine_in_active;
-                        if (snapshot.data().adminCommision != null && snapshot.data()
-                            .adminCommision != '') {
-                            if (snapshot.data().adminCommision.enable) {
+                        var sectionData = getSafeFirestoreData(snapshot);
+                        if (!Object.keys(sectionData).length) {
+                            console.warn('Order edit data missing; section skipped safely.');
+                            return;
+                        }
+                        service_type = sectionData.serviceTypeFlag;
+                        delivery_enable = sectionData.dine_in_active;
+                        if (sectionData.adminCommision != null && sectionData.adminCommision != '') {
+                            if (sectionData.adminCommision.enable) {
                                 commissionModel = true;
                             }
                         }
@@ -1105,7 +1137,7 @@
 
                 if (order_sectionId != '' && order_sectionId != undefined) {
                     database.collection('sections').doc(order_sectionId).get().then(async function(snapshots) {
-                        var secInfo = snapshots.data();
+                        var secInfo = getSafeFirestoreData(snapshots);
                         if (secInfo != undefined) {
                             referralAmount = parseFloat(secInfo.referralAmount);
                         }
@@ -1114,7 +1146,7 @@
 
                 if (userId != '' && userId != undefined) {
                     database.collection('referral').doc(userId).get().then(async function(snapshots) {
-                        var refInfo = snapshots.data();
+                        var refInfo = getSafeFirestoreData(snapshots);
                         if (refInfo != undefined) {
                             referralBy = refInfo.referralBy;
                         }
@@ -1175,7 +1207,7 @@
 
                     await vendor.get().then(async function(snapshotsnew) {
                         if (snapshotsnew.docs.length > 0) {
-                            var vendordata = snapshotsnew.docs[0].data();
+                            var vendordata = getSafeFirestoreData(snapshotsnew.docs[0]);
                             if (vendordata.hasOwnProperty('isSelfDelivery') && vendordata.isSelfDelivery) {
                                 isSelfDeliveryByVendor = true;
                             }
@@ -1256,13 +1288,13 @@
                     $('#order_accepted').hide();
 
                 }
-                jQuery("#data-table_processing").hide();
+                hideOrderEditLoader();
 
                 ref_review_attributes.get().then(async function(snapshots) {
 
                     var ra_html = '';
                     snapshots.docs.forEach((listval) => {
-                        var data = listval.data();
+                        var data = getSafeFirestoreData(listval);
                         ra_html += '<div class="row"><div class="form-check width-100" style="padding-left: 19.25rem;">';
                         var checked = $.inArray(data.id, order.review_attributes) !== -1 ? 'checked' : '';
                         ra_html += '<input type="checkbox" id="review_attribute_' + data.id + '" value="' + data.id + '" ' + checked + '>';
@@ -1278,7 +1310,7 @@
                 database.collection('users').where('role', '==', 'driver').where('vendorID', '==', vendorID).where('isActive', '==', true).get().then(async function(snapshot) {
                     if (snapshot.docs.length > 0) {
                         snapshot.docs.forEach((listval) => {
-                            var data = listval.data();
+                            var data = getSafeFirestoreData(listval);
                             if (singleOrderReceive) {
                                 let option = $("<option></option>")
                                     .attr("value", data.id)
@@ -1345,7 +1377,7 @@
                     var driverData = '';
                     await database.collection('users').where('id', '==', deliveryman).get().then(async function(snapshot) {
                         if (snapshot.docs.length > 0) {
-                            driverData = snapshot.docs[0].data();
+                            driverData = getSafeFirestoreData(snapshot.docs[0]);
                             fcmTokenDriver = driverData.fcmToken;
                             if (driverData.hasOwnProperty('orderRequestData') && driverData.orderRequestData != null && driverData.orderRequestData != '') {
                                 orderRequestData = driverData.orderRequestData;
@@ -1429,8 +1461,13 @@
                         }
 
                         database.collection('users').where('id', '==', vendorAuthor).get().then(async function(snapshotsnew) {
-                            var vendordata = snapshotsnew.docs[0].data();
-                            if (vendordata) {
+                            if (!snapshotsnew || !snapshotsnew.docs || !snapshotsnew.docs.length) {
+                                console.warn('Order edit data missing; section skipped safely.');
+                                callAjax(orderStatus);
+                                return;
+                            }
+                            var vendordata = getSafeFirestoreData(snapshotsnew.docs[0]);
+                            if (vendordata && Object.keys(vendordata).length) {
                                 if (parseInt(subscriptionTotalOrders) != -1) {
                                     subscriptionTotalOrders = parseInt(subscriptionTotalOrders) - 1;
                                     await database.collection('vendors').doc(vendordata.vendorID).update({
@@ -1521,7 +1558,7 @@
                             return false;
                         }
                         ref.get().then(async function(snapshot) {
-                            order = snapshot.docs[0].data();
+                            order = getSafeFirestoreData(snapshot.docs[0]);
                             id = order.id;
                             var scheduleTime = '';
                             if (order.hasOwnProperty('scheduleTime') && order.scheduleTime != null && order.scheduleTime != '') {
@@ -1621,8 +1658,12 @@
                                     if (driverId && driverAmount) {
                                         var driver = database.collection('users').where("id", "==", driverId);
                                         await driver.get().then(async function(snapshotsdriver) {
-                                            var driverdata = snapshotsdriver.docs[0].data();
-                                            if (driverdata) {
+                                            if (!snapshotsdriver || !snapshotsdriver.docs || !snapshotsdriver.docs.length) {
+                                                console.warn('Order edit data missing; section skipped safely.');
+                                                return;
+                                            }
+                                            var driverdata = getSafeFirestoreData(snapshotsdriver.docs[0]);
+                                            if (driverdata && Object.keys(driverdata).length) {
                                                 if (isNaN(driverdata.wallet_amount) || driverdata.wallet_amount == undefined) {
                                                     driverWallet = 0;
                                                 } else {
@@ -1658,7 +1699,7 @@
 
                                     if (service_type == "ecommerce-service" && add_reff_amount == true) {
                                         database.collection('users').doc(referralBy).get().then(async function(snapshots) {
-                                            var refUserInfo = snapshots.data();
+                                            var refUserInfo = getSafeFirestoreData(snapshots);
                                             if (refUserInfo != undefined) {
                                                 if (refUserInfo.hasOwnProperty('wallet_amount')) {
                                                     var current_wallet_amount = parseFloat(refUserInfo.wallet_amount);
@@ -1720,7 +1761,7 @@
                                                 }).then(function(result) {
                                                     database.collection('users').where("id", "==", orderCustomerId).get().then(async function(userSnapshots) {
                                                         if (userSnapshots.docs.length > 0) {
-                                                            data = userSnapshots.docs[0].data();
+                                                            data = getSafeFirestoreData(userSnapshots.docs[0]);
                                                             var wallet_amount = 0;
                                                             if (data.wallet_amount != undefined && data.wallet_amount != '' && data.wallet_amount != null && !isNaN(data.wallet_amount)) {
                                                                 wallet_amount = parseFloat(data.wallet_amount);
@@ -1799,7 +1840,7 @@
                                                     database.collection('users').where("id", "==", orderCustomerId).get().then(async function(userSnapshots) {
                                                         if (userSnapshots.docs.length > 0) {
 
-                                                            data = userSnapshots.docs[0].data();
+                                                            data = getSafeFirestoreData(userSnapshots.docs[0]);
                                                             var wallet_amount = 0;
                                                             if (data.wallet_amount != undefined && data.wallet_amount != '' && data.wallet_amount != null && !isNaN(data.wallet_amount)) {
                                                                 wallet_amount = parseFloat(data.wallet_amount);
@@ -1978,7 +2019,7 @@
             }
             database.collection('vendor_products').doc(productId).get().then(async function(snapshots) {
                 if (snapshots.exists) {
-                    var productData = snapshots.data();
+                    var productData = getSafeFirestoreData(snapshots);
                     if (product.variant_info && product.variant_info.variant_id) {
                         var variant_info = $.map(productData.item_attribute.variants, function(v, i) {
                             if (v.variant_sku == product.variant_info.variant_sku) {
@@ -2004,12 +2045,15 @@
                     }
                     $(".base-price-" + product_id).text('(Base Price: ' + base_price_format + ')');
                 }
+            }).catch(function(error) {
+                console.warn('Order edit data missing; section skipped safely.', error);
+                hideOrderEditLoader();
             });
         }
 
         function checkIsDownloadedItem(productId) {
             database.collection('vendor_products').doc(productId).get().then(async function(snapshots) {
-                var productInfo = snapshots.data();
+                var productInfo = getSafeFirestoreData(snapshots);
                 if (productInfo != undefined) {
                     if (productInfo.hasOwnProperty('isDigitalProduct') && productInfo.hasOwnProperty('digitalProduct') && productInfo.isDigitalProduct == true && productInfo.digitalProduct) {
                         $(".d-head").show();
@@ -2245,7 +2289,7 @@
         refReviewAttributes.get().then(async function(snapshots) {
             if (snapshots != undefined) {
                 snapshots.forEach((doc) => {
-                    var data = doc.data();
+                    var data = getSafeFirestoreData(doc);
                     reviewAttributes[data.id] = data.title;
                 });
             }
@@ -2268,7 +2312,7 @@
             var allreviewdata = [];
             var reviewhtml = '';
             userreviewsnapshot.docs.forEach((listval) => {
-                var reviewDatas = listval.data();
+                var reviewDatas = getSafeFirestoreData(listval);
                 reviewDatas.id = listval.id;
                 allreviewdata.push(reviewDatas);
             });
@@ -2422,7 +2466,7 @@
                         window.location.reload();
                     });
                 }).catch(err => {
-                    jQuery("#data-table_processing").hide();
+                    hideOrderEditLoader();
                     $(".error_top").append("<p>" + err + "</p>");
                 });
             }
@@ -2433,7 +2477,12 @@
             $('#data-table_processing').show();
             ref.get().then(async function(snapshot) {
 
-                orderData = snapshot.docs[0].data();
+                if (!snapshot || !snapshot.docs || !snapshot.docs.length) {
+                    console.warn('Order edit data missing; section skipped safely.');
+                    hideOrderEditLoader();
+                    return;
+                }
+                orderData = getSafeFirestoreData(snapshot.docs[0]);
                 try {
 
                     const vendorId = orderData.vendor?.author;
@@ -2454,7 +2503,7 @@
                     if (vendorBaseAmount && orderStatus == "Order Cancelled") {
                         const vendorDoc = await database.collection('users').doc(vendorId).get();
                         if (vendorDoc.exists) {
-                            const vendorData = vendorDoc.data();
+                            const vendorData = getSafeFirestoreData(vendorDoc);
                             vendorFcm = vendorData.fcmToken || '';
                             const vendorWallet = parseFloat(vendorData.wallet_amount || 0);
                             await vendorDoc.ref.update({
@@ -2494,7 +2543,7 @@
                         let customerAmount = orderRefundPrice;
                         const customerDoc = await database.collection('users').doc(customerId).get();
                         if (customerDoc.exists) {
-                            const customerData = customerDoc.data();
+                            const customerData = getSafeFirestoreData(customerDoc);
                             customerFcm = customerData.fcmToken || '';
                             const customerWallet = parseFloat(customerData.wallet_amount || 0);
                             await customerDoc.ref.update({
@@ -2519,7 +2568,7 @@
                     } else {
                         const customerDoc = await database.collection('users').doc(customerId).get();
                         if (customerDoc.exists) {
-                            customerFcm = customerDoc.data().fcmToken || '';
+                            customerFcm = getSafeFirestoreData(customerDoc).fcmToken || '';
                         }
                     }
                     
@@ -2528,7 +2577,7 @@
                             let newOrderRequestData = [];
                             let inProgressOrderID = [];
                             if (snapshot.exists) {
-                                var driverData = snapshot.data();
+                                var driverData = getSafeFirestoreData(snapshot);
                                 driverFcm = driverData.fcmToken;
                                 if (driverData.orderRequestData !== undefined) {
                                     newOrderRequestData = driverData.orderRequestData.filter(function(oid) {
@@ -2612,3 +2661,4 @@
     </script>
 
 @endsection
+
