@@ -106,6 +106,30 @@
     var ordersSectionField = getOrdersSectionField(service_type);
     
     var database = firebase.firestore();
+
+    /* TAX_REPORT_SAFE_TRACE */
+    function isTaxReportDebugEnabled() {
+        try {
+            return new URLSearchParams(window.location.search).get('debug_tax_report') === '1';
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function traceTaxReport(label, payload) {
+        if (!isTaxReportDebugEnabled()) {
+            return;
+        }
+        console.log('[TAX_REPORT_TRACE]', label, payload);
+    }
+
+    traceTaxReport('initial context', {
+        sectionIdPresent: !!section_id,
+        serviceType: service_type || null,
+        ordersCollection: ordersCollection || null,
+        ordersSectionField: ordersSectionField || null
+    });
+
     var refCurrency = database.collection('currencies').where('isActive', '==', true).limit('1');
     var refTaxes = database.collection('tax').where('enable', '==', true).where('sectionId','==',section_id);
 
