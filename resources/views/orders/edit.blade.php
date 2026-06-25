@@ -643,6 +643,69 @@
         -webkit-text-fill-color: #64748b !important;
         opacity: 1 !important;
     }
+
+    /* ORDER_EDIT_WHITE_BOX_TEXT_FIX */
+    .order-data-row .seprater span,
+    .order-totals-items .seprater span,
+    .order-payment-summary .seprater span,
+    #order_products_total .seprater span,
+    td.seprater span {
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+        background-color: #f8fafc !important;
+        border: 1px solid #cbd5e1 !important;
+        opacity: 1 !important;
+        text-shadow: none !important;
+        font-weight: 600 !important;
+    }
+
+    .order-data-row .seprater span *,
+    .order-totals-items .seprater span *,
+    .order-payment-summary .seprater span *,
+    #order_products_total .seprater span *,
+    td.seprater span * {
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+        opacity: 1 !important;
+        text-shadow: none !important;
+    }
+
+    .order-data-row input,
+    .order-data-row select,
+    .order-data-row textarea,
+    .order-data-row .form-control,
+    .order-totals-items input,
+    .order-totals-items select,
+    .order-totals-items textarea,
+    .order-totals-items .form-control,
+    #order_products_total input,
+    #order_products_total select,
+    #order_products_total textarea,
+    #order_products_total .form-control {
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+        background-color: #ffffff !important;
+        border-color: #cbd5e1 !important;
+        opacity: 1 !important;
+        text-shadow: none !important;
+    }
+
+    .order-data-row input *,
+    .order-data-row select *,
+    .order-data-row textarea *,
+    .order-data-row .form-control *,
+    .order-totals-items input *,
+    .order-totals-items select *,
+    .order-totals-items textarea *,
+    .order-totals-items .form-control *,
+    #order_products_total input *,
+    #order_products_total select *,
+    #order_products_total textarea *,
+    #order_products_total .form-control * {
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+        opacity: 1 !important;
+    }
 </style>
 @endsection
 
