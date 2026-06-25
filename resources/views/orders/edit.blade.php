@@ -706,6 +706,48 @@
         -webkit-text-fill-color: #111827 !important;
         opacity: 1 !important;
     }
+
+    /* ORDER_EDIT_TRANSPARENT_SEPARATOR_FIX */
+    #order_products_total .seprater,
+    .order-payment-summary .seprater,
+    .order-totals-items .seprater {
+        background: transparent !important;
+    }
+
+    #order_products_total .seprater hr,
+    .order-payment-summary .seprater hr,
+    .order-totals-items .seprater hr {
+        border-color: rgba(255,255,255,0.18) !important;
+        background: transparent !important;
+        opacity: 1 !important;
+    }
+
+    #order_products_total .seprater span,
+    .order-payment-summary .seprater span,
+    .order-totals-items .seprater span,
+    td.seprater span {
+        color: #e5f6ff !important;
+        -webkit-text-fill-color: #e5f6ff !important;
+        background: transparent !important;
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        opacity: 1 !important;
+        text-shadow: none !important;
+        font-weight: 700 !important;
+    }
+
+    #order_products_total .seprater span *,
+    .order-payment-summary .seprater span *,
+    .order-totals-items .seprater span *,
+    td.seprater span * {
+        color: #e5f6ff !important;
+        -webkit-text-fill-color: #e5f6ff !important;
+        background: transparent !important;
+        background-color: transparent !important;
+        opacity: 1 !important;
+        text-shadow: none !important;
+    }
 </style>
 @endsection
 
