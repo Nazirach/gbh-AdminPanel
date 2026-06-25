@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
     <?php
@@ -2027,7 +2027,7 @@
                 html = html + '</div></div></td>';
                 html = html + '<td class="d-btn" data-pid="' + product.id + '" style="display:none;"></td>';
                 html = html + '<td class="text-green text-center"><span class="item-price">' + price_val +
-                    '</span><br><span class="base-price-' + product_id + ' text-muted"></span></td><td> Ã— ' + val
+                    '</span><br><span class="base-price-' + product_id + ' text-muted"></span></td><td> × ' + val
                     .quantity + '</td><td class="text-green"> + ' + extras_price_val +
                     '</td><td class="text-green">  ' + totalProductPrice_val + '</td>';
                 html = html + '</tr>';
@@ -2690,4 +2690,3 @@
     </script>
 
 @endsection
-
