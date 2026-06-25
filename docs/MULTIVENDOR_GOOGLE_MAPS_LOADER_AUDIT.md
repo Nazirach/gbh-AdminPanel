@@ -117,3 +117,8 @@ Patch minimal yang paling aman untuk langkah berikutnya:
 - Script Google Maps **tidak dimuat dobel**.
 - Akar masalah paling mungkin adalah **loader readiness / race condition** antara `script.onload` dan availability constructor `google.maps.Map`.
 - Patch berikutnya sebaiknya fokus ke **global loader + readiness retry**, bukan ke Firestore atau marker logic.
+
+## Patch Catatan (Constructor Retry)
+- Patch added constructor-ready guard.
+- Patch wraps InitializeGodsEyeMap with waitForGoogleMapConstructor from the global loader path.
+- Patch prevents google.maps.Map constructor race from crashing multivendor map initialization.
