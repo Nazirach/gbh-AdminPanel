@@ -182,6 +182,21 @@
                 waitForMapReady(callback, retries - 1);
             }, 300);
         }
+        function safeInitializeGodsEyeMap() {
+            if (mapType == "OFFLINE") {
+                InitializeGodsEyeMap();
+                return;
+            }
+
+            if (typeof waitForGoogleMapConstructor === 'function') {
+                waitForGoogleMapConstructor(function () {
+                    InitializeGodsEyeMap();
+                });
+                return;
+            }
+
+            InitializeGodsEyeMap();
+        }
         var map_data = [];
         var base_url = '{!! asset('/images/') !!}';
         var mapType = 'ONLINE';
@@ -191,7 +206,7 @@
                 var data = snapshots.data();
                 if (data && data.selectedMapType && data.selectedMapType == "osm") {
                     mapType = "OFFLINE"
-                    InitializeGodsEyeMap();
+                    safeInitializeGodsEyeMap();
                 }
             });
             var orders = [];
@@ -307,6 +322,15 @@
                     mapElement.style.minHeight = '500px';
                 }
 
+                if (typeof isGoogleMapConstructorReady !== 'function' || !isGoogleMapConstructorReady()) {
+                    console.warn('Google Maps constructor unavailable inside InitializeGodsEyeMap.');
+                    if (typeof waitForGoogleMapConstructor === 'function') {
+                        waitForGoogleMapConstructor(function () {
+                            InitializeGodsEyeMap();
+                        });
+                    }
+                    return;
+                }
                 var myLatlng = toGoogleLatLngLiteral(default_lat, default_lng) || { lat: 0, lng: 0 };
                 var infowindow = createSafeInfoWindow();
                 var mapOptions = {
@@ -652,3 +676,7 @@
     </script>
 
     @endsection
+
+
+
+

@@ -1065,6 +1065,27 @@
             return resolvedKey;
         }
 
+        function isGoogleMapConstructorReady() {
+            return !!(window.google && google.maps && typeof google.maps.Map === 'function');
+        }
+
+        function waitForGoogleMapConstructor(callback, retries) {
+            retries = typeof retries === 'number' ? retries : 40;
+
+            if (isGoogleMapConstructorReady()) {
+                callback();
+                return;
+            }
+
+            if (retries <= 0) {
+                console.warn('Google Maps constructor is not ready; map initialization skipped.');
+                return;
+            }
+
+            setTimeout(function () {
+                waitForGoogleMapConstructor(callback, retries - 1);
+            }, 250);
+        }
         async function loadGoogleMapsScript() {
             if (googleMapsScriptLoadPromise) {
                 return googleMapsScriptLoadPromise;
@@ -1095,7 +1116,9 @@
                 script.onload = function () {
                     navigator.geolocation.getCurrentPosition(GeolocationSuccessCallback, GeolocationErrorCallback);
                     if (typeof window['InitializeGodsEyeMap'] === 'function') {
-                        InitializeGodsEyeMap();
+                        waitForGoogleMapConstructor(function () {
+                            InitializeGodsEyeMap();
+                        });
                     }
                 };
                 document.head.appendChild(script);
@@ -1539,6 +1562,8 @@
 
 </body>
 </html>
+
+
 
 
 
