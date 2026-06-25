@@ -656,6 +656,28 @@
             jQuery("#data-table_processing").hide();
         }
 
+        
+        function isOrderEditDebugEnabled() {
+            try {
+                return new URLSearchParams(window.location.search).get('debug_order_edit') === '1';
+            } catch (error) {
+                return false;
+            }
+        }
+
+        function getObjectKeysSafe(value) {
+            if (!value || typeof value !== 'object') {
+                return [];
+            }
+            return Object.keys(value).sort();
+        }
+
+        function traceOrderEdit(label, payload) {
+            if (!isOrderEditDebugEnabled()) {
+                return;
+            }
+            console.log('[ORDER_EDIT_TRACE]', label, payload);
+        }
         var subscriptionBusinessModel = database.collection('settings').doc("vendor");
         subscriptionBusinessModel.get().then(async function(snapshots) {
             var subscriptionSetting = getSafeFirestoreData(snapshots);
@@ -884,6 +906,10 @@
             jQuery("#data-table_processing").show();
 
             ref.get().then(async function(snapshots) {
+                traceOrderEdit('vendor_orders query result', {
+                    requestedOrderId: oid != '' ? oid : id,
+                    docsLength: snapshots && snapshots.docs ? snapshots.docs.length : 0
+                });
                 if (!snapshots || !snapshots.docs || !snapshots.docs.length) {
                     console.warn('Order edit data missing; section skipped safely.');
                     hideOrderEditLoader();
@@ -893,6 +919,26 @@
                 await getDeliverymanList(vendorOrder.vendorID);
                 getUserReview(vendorOrder);
                 var order = getSafeFirestoreData(snapshots.docs[0]);
+
+                traceOrderEdit('order shape', {
+                    firestoreDocId: snapshots.docs[0] ? snapshots.docs[0].id : null,
+                    keys: getObjectKeysSafe(order),
+                    hasAuthor: !!order.author,
+                    authorKeys: getObjectKeysSafe(order.author),
+                    hasAddress: !!order.address,
+                    addressKeys: getObjectKeysSafe(order.address),
+                    hasVendor: !!order.vendor,
+                    vendorKeys: getObjectKeysSafe(order.vendor),
+                    hasVendorID: !!order.vendorID,
+                    hasDriver: !!order.driver,
+                    driverKeys: getObjectKeysSafe(order.driver),
+                    hasProducts: !!order.products,
+                    productsIsArray: Array.isArray(order.products),
+                    productsLength: Array.isArray(order.products) ? order.products.length : 0,
+                    hasCreatedAt: !!order.createdAt,
+                    hasPaymentMethod: !!order.payment_method || !!order.paymentMethod,
+                    hasStatus: !!order.status
+                });
                 packagingChargeEnable = order.packagingChargeEnable;
                 orderCustomerId = order.authorID;
                 database.collection('zone').where('publish', '==', true)/* .where('sectionId', '==', order.vendor.section_id) */.orderBy('name', 'asc').get().then(async function(snapshots) {
