@@ -1010,6 +1010,40 @@
             sectionsContainer.innerHTML = await buildServiceSectionsHTML(sectionsSnapshot);
         }
         
+        function normalizeSectionServiceType(sectionData) {
+            /* SECTION_SELECTOR_SERVICE_TYPE_NORMALIZER */
+            var rawType = (
+                sectionData.serviceTypeFlag ||
+                sectionData.serviceType ||
+                sectionData.type ||
+                sectionData.slug ||
+                ''
+            ).toString().trim();
+
+            var key = rawType.toLowerCase();
+
+            if (key === 'delivery-service' || key.includes('multivendor')) {
+                return 'delivery-service';
+            }
+            if (key === 'ecommerce-service' || key.includes('ecommerce')) {
+                return 'ecommerce-service';
+            }
+            if (key === 'cab-service' || key.includes('cab')) {
+                return 'cab-service';
+            }
+            if (key === 'parcel_delivery' || key === 'parcel-delivery' || key.includes('parcel')) {
+                return 'parcel_delivery';
+            }
+            if (key === 'rental-service' || key.includes('rental')) {
+                return 'rental-service';
+            }
+            if (key === 'ondemand-service' || key.includes('ondemand')) {
+                return 'ondemand-service';
+            }
+
+            return rawType;
+        }
+
         async function buildServiceSectionsHTML(snapshot) {
             let html = '';
             var addSectionRoute = "{{ route('section.create') }}";
@@ -1022,7 +1056,7 @@
                 var sectionImage = data.sectionImage || placeholderImage;
                 /* SECTION_SELECTOR_FIELD_FALLBACK_FIX */
                 var sectionId = data.id || data.sectionId || doc.id;
-                var sectionType = data.serviceTypeFlag || data.serviceType || data.type || data.slug || '';
+                var sectionType = normalizeSectionServiceType(data);
                 var sectionRoute = `{{ route('dashboard') }}/${sectionId}/${sectionType}`;
                 var isSelected = (sectionId === idSecActive && sectionType === typeSecActive);
                 var selectedClass = isSelected ? 'selected-section' : '';
