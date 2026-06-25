@@ -910,6 +910,20 @@
                     requestedOrderId: oid != '' ? oid : id,
                     docsLength: snapshots && snapshots.docs ? snapshots.docs.length : 0
                 });
+
+                if ((!snapshots || !snapshots.docs || !snapshots.docs.length) && firebase.firestore.FieldPath) {
+                    var fallbackOrderId = oid != '' ? oid : id;
+
+                    snapshots = await database.collection('vendor_orders')
+                        .where(firebase.firestore.FieldPath.documentId(), '==', fallbackOrderId)
+                        .get();
+
+                    traceOrderEdit('vendor_orders document id fallback result', {
+                        requestedOrderId: fallbackOrderId,
+                        docsLength: snapshots && snapshots.docs ? snapshots.docs.length : 0
+                    });
+                }
+
                 if (!snapshots || !snapshots.docs || !snapshots.docs.length) {
                     console.warn('Order edit data missing; section skipped safely.');
                     hideOrderEditLoader();
