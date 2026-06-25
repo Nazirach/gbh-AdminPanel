@@ -144,16 +144,40 @@
             return 'roadmap';
         }
 
+        var pendingMapReadyCallbacks = [];
+
+        function flushMapReadyCallbacks() {
+            if (!map || !pendingMapReadyCallbacks.length) {
+                return;
+            }
+
+            var callbacks = pendingMapReadyCallbacks.slice();
+            pendingMapReadyCallbacks = [];
+
+            callbacks.forEach(function(callback) {
+                if (typeof callback === 'function') {
+                    callback();
+                }
+            });
+        }
+
         function waitForMapReady(callback, retries) {
-            retries = typeof retries === 'number' ? retries : 30;
+            retries = typeof retries === 'number' ? retries : 40;
+
             if (map) {
                 callback();
                 return;
             }
+
+            if (typeof callback === 'function' && pendingMapReadyCallbacks.indexOf(callback) === -1) {
+                pendingMapReadyCallbacks.push(callback);
+            }
+
             if (retries <= 0) {
-                console.warn('Map is not ready yet; deferred map action skipped.');
+                console.warn('Map is not ready yet; deferred map action queued.');
                 return;
             }
+
             setTimeout(function () {
                 waitForMapReady(callback, retries - 1);
             }, 300);
@@ -257,13 +281,32 @@
                     L.DomUtil.get('map')._leaflet_id = null; // reset internal Leaflet id
                 }
 
+                var mapElement = document.getElementById("map");
+                if (!mapElement) {
+                    console.warn('Map element #map not found; multivendor map initialization skipped.');
+                    return;
+                }
+                if (!mapElement.style.minHeight) {
+                    mapElement.style.minHeight = '500px';
+                }
+
                 map = L.map('map').setView([default_lat, default_lng], 10);
+                flushMapReadyCallbacks();
 
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 19,
                     attribution: '© OpenStreetMap'
                 }).addTo(map);
             } else{
+                var mapElement = document.getElementById("map");
+                if (!mapElement) {
+                    console.warn('Map element #map not found; multivendor map initialization skipped.');
+                    return;
+                }
+                if (!mapElement.style.minHeight) {
+                    mapElement.style.minHeight = '500px';
+                }
+
                 var myLatlng = toGoogleLatLngLiteral(default_lat, default_lng) || { lat: 0, lng: 0 };
                 var infowindow = createSafeInfoWindow();
                 var mapOptions = {
@@ -272,7 +315,8 @@
                     streetViewControl: false,
                     mapTypeId: getGoogleRoadmapTypeId()
                 };
-                map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                map = new google.maps.Map(mapElement, mapOptions);
+                flushMapReadyCallbacks();
             }
 
             var fliter_icons = {

@@ -127,3 +127,11 @@ Perilaku patch:
 - Klik tombol `+` sekarang akan mencoba DrawingManager dulu jika tersedia; jika tidak, otomatis pindah ke manual polygon mode
 - Manual mode mengubah cursor ke `crosshair`, menangkap klik titik di peta, dan membentuk polygon setelah titik cukup
 - Tombol hand akan mematikan mode gambar manual tanpa merusak peta dasar
+
+
+## Multivendor map init queue final check
+- Cloud final check menemukan aksi map tertunda dibuang permanen karena map belum ready saat data marker selesai diproses
+- Patch menambahkan `pendingMapReadyCallbacks` queue agar callback marker tidak hilang diam-diam
+- Patch menambahkan `flushMapReadyCallbacks()` segera setelah object map berhasil dibuat
+- Patch menambahkan guard `#map` element dan `minHeight` agar canvas peta tidak nol tinggi saat inisialisasi
+- Patch ini menjaga `loadData(mapdata)` dan `renderVendorMarkers()` tetap menunggu map siap, bukan ter-skip permanen
