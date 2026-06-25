@@ -904,10 +904,21 @@
                 let sectionUrl = $(this).data('section-url');
                 let sectionId = $(this).data('section-id');
                 let sectionType = $(this).data('section-type');
-                if(sectionId && sectionType){
+
+                /* SECTION_SELECTOR_SAFE_COOKIE_FIX */
+                if(sectionId){
                     setCookie('section_id', sectionId, 1);
+                }
+                if(sectionType){
                     setCookie('service_type', sectionType, 1);
                 }
+
+                console.log('[SECTION_SELECTOR_TRACE]', {
+                    sectionId: sectionId || null,
+                    sectionType: sectionType || null,
+                    sectionUrl: sectionUrl || null
+                });
+
                 window.location.href = sectionUrl;
                 /*window.location.reload();*/
             });
@@ -1019,7 +1030,7 @@
                 }
                 html += `
                 <div class="col-md-4">
-                    <div class="service-list-box ${selectedClass}" data-section-url="${sectionRoute}" data-section-id="${data.id}" data-section-type="${data.serviceTypeFlag}">
+                    <div class="service-list-box ${selectedClass}" data-section-url="${sectionRoute}" data-section-id="${sectionId}" data-section-type="${data.serviceTypeFlag || ''}">
                         <img src="${sectionImage}" onerror="this.onerror=null;this.src='${placeholderImage}'">
                         <h3>${sectionName}</h3>
                         <p>${sectionDescription}</p>
