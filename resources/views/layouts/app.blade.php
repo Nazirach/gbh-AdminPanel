@@ -1020,9 +1020,11 @@
                 var sectionName = data.name || 'Unnamed Section';
                 var sectionDescription = data.description || '';
                 var sectionImage = data.sectionImage || placeholderImage;
-                var sectionId = data.id || doc.id;
-                var sectionRoute = `{{ route('dashboard') }}/${sectionId}/${data.serviceTypeFlag}`;
-                var isSelected = (sectionId === idSecActive && (data.serviceTypeFlag || '') === typeSecActive);
+                /* SECTION_SELECTOR_FIELD_FALLBACK_FIX */
+                var sectionId = data.id || data.sectionId || doc.id;
+                var sectionType = data.serviceTypeFlag || data.serviceType || data.type || data.slug || '';
+                var sectionRoute = `{{ route('dashboard') }}/${sectionId}/${sectionType}`;
+                var isSelected = (sectionId === idSecActive && sectionType === typeSecActive);
                 var selectedClass = isSelected ? 'selected-section' : '';
                 if (isSelected) {
                     $('#activeSectionLogo').attr('src', `{{ asset('images/ghalbit-maritronix-icon.svg') }}`);
@@ -1030,7 +1032,7 @@
                 }
                 html += `
                 <div class="col-md-4">
-                    <div class="service-list-box ${selectedClass}" data-section-url="${sectionRoute}" data-section-id="${sectionId}" data-section-type="${data.serviceTypeFlag || ''}">
+                    <div class="service-list-box ${selectedClass}" data-section-url="${sectionRoute}" data-section-id="${sectionId}" data-section-type="${sectionType}">
                         <img src="${sectionImage}" onerror="this.onerror=null;this.src='${placeholderImage}'">
                         <h3>${sectionName}</h3>
                         <p>${sectionDescription}</p>
