@@ -598,6 +598,51 @@
         color: #64748b !important;
         -webkit-text-fill-color: #64748b !important;
     }
+
+    /* ORDER_EDIT_READABILITY_FORCE_PATCH */
+    #order_products_total .seprater span,
+    .order-payment-summary .seprater span,
+    #order_products_total input,
+    #order_products_total select,
+    #order_products_total textarea,
+    #order_products_total .form-control,
+    #order_products_total .btn-light,
+    #order_products_total .bg-white,
+    #order_products_total .badge,
+    .order-payment-summary input,
+    .order-payment-summary select,
+    .order-payment-summary textarea,
+    .order-payment-summary .form-control,
+    .order-payment-summary .btn-light,
+    .order-payment-summary .bg-white,
+    .order-payment-summary .badge {
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+        background-color: #ffffff !important;
+        opacity: 1 !important;
+        text-shadow: none !important;
+    }
+
+    #order_products_total .seprater span *,
+    .order-payment-summary .seprater span *,
+    #order_products_total .bg-white *,
+    .order-payment-summary .bg-white *,
+    #order_products_total .btn-light *,
+    .order-payment-summary .btn-light *,
+    #order_products_total .badge *,
+    .order-payment-summary .badge * {
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+        opacity: 1 !important;
+        text-shadow: none !important;
+    }
+
+    #order_products_total input::placeholder,
+    .order-payment-summary input::placeholder {
+        color: #64748b !important;
+        -webkit-text-fill-color: #64748b !important;
+        opacity: 1 !important;
+    }
 </style>
 @endsection
 
