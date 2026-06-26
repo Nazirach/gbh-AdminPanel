@@ -227,6 +227,14 @@
         return taxText;
     }
 
+    function normalizeCommissionType(value) {
+        const v = String(value || '').trim().toLowerCase();
+        if (['percent', 'percentage', '%'].includes(v)) return 'percent';
+        if (['fixed', 'fix', 'flat'].includes(v)) return 'fixed';
+        return v;
+    }
+
+
     refTaxes.where('scope','in',['admin_commission','vendor_subscription']).get()
     .then(async function (snapShots) {
         if (snapShots.docs.length > 0) {
@@ -497,26 +505,41 @@
             
             // Admin Commission
             let adminCommission = 0;
-            if (orderData.adminCommission && orderData.adminCommissionType) {
+            let adminCommissionTypeRaw = orderData.adminCommissionType;
+            let adminCommissionTypeNormalized = normalizeCommissionType(adminCommissionTypeRaw);
+
+            if (orderData.adminCommission && adminCommissionTypeRaw) {
                 let commissionValue = parseFloat(orderData.adminCommission);
 
-                if (orderData.isCommissionIncluded) {
-                    if (orderData.adminCommissionType === 'percentage') {
+                // intended calculation: commissionBase = max(0, subtotal - discount)
+                // percent: commissionBase * value / 100
+                // fixed: value
+                if (adminCommissionTypeNormalized === 'percent') {
+                    if (orderData.isCommissionIncluded) {
                         let basePrice = commissionBase / (1 + commissionValue / 100);
                         adminCommission = commissionBase - basePrice;
                     } else {
-                        adminCommission = commissionValue;
-                    }
-                } else {
-                    if (orderData.adminCommissionType === 'percentage') {
                         adminCommission = (commissionBase * commissionValue) / 100;
-                    } else {
-                        adminCommission = commissionValue;
                     }
+                } else if (adminCommissionTypeNormalized === 'fixed') {
+                    adminCommission = commissionValue;
                 }
             }
-            
+
             totals.adminCommission.amount += adminCommission;
+
+            traceTaxReport('admin commission calculation sample', {
+                orderId: order && order.id ? order.id : null,
+                subtotal: orderData.subtotal,
+                discount: orderData.discount,
+                commissionBase,
+                adminCommissionRaw: orderData.adminCommission,
+                adminCommissionTypeRaw,
+                adminCommissionTypeNormalized,
+                calculatedAdminCommission: adminCommission
+            });
+
+
 
             (allTaxes || []).forEach(tax => {
                 if (!tax.enable) return;
@@ -835,26 +858,37 @@
                 
                 // Admin Commission
                 let adminCommission = 0;
-                if (orderData.adminCommission && orderData.adminCommissionType) {
+                let adminCommissionTypeRaw = orderData.adminCommissionType;
+                let adminCommissionTypeNormalized = normalizeCommissionType(adminCommissionTypeRaw);
+
+                if (orderData.adminCommission && adminCommissionTypeRaw) {
                     let commissionValue = parseFloat(orderData.adminCommission);
 
-                    if (orderData.isCommissionIncluded) {
-                        if (orderData.adminCommissionType === 'percentage') {
+                    if (adminCommissionTypeNormalized === 'percent') {
+                        if (orderData.isCommissionIncluded) {
                             let basePrice = commissionBase / (1 + commissionValue / 100);
                             adminCommission = commissionBase - basePrice;
                         } else {
-                            adminCommission = commissionValue;
-                        }
-                    } else {
-                        if (orderData.adminCommissionType === 'percentage') {
                             adminCommission = (commissionBase * commissionValue) / 100;
-                        } else {
-                            adminCommission = commissionValue;
                         }
+                    } else if (adminCommissionTypeNormalized === 'fixed') {
+                        adminCommission = commissionValue;
                     }
                 }
-                
+
+                traceTaxReport('admin commission calculation sample', {
+                    orderId: order && order.id ? order.id : null,
+                    subtotal: orderData.subtotal,
+                    discount: orderData.discount,
+                    commissionBase,
+                    adminCommissionRaw: orderData.adminCommission,
+                    adminCommissionTypeRaw,
+                    adminCommissionTypeNormalized,
+                    calculatedAdminCommission: adminCommission
+                });
+
                 // TAX based on adminCommission as in main list
+
                 let taxes = {};
                 if (adminCommission > 0) {
                     (window.reportData.allTaxes || []).forEach(tax => {
