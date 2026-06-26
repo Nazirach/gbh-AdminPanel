@@ -234,8 +234,15 @@
         return v;
     }
 
+    function normalizeTaxScope(tax, fallbackScope) {
+        const rawScope = String(tax && tax.scope ? tax.scope : '').trim();
+        if (rawScope) return rawScope;
+        return fallbackScope || '';
+    }
+
 
     refTaxes.where('scope','in',['admin_commission','vendor_subscription']).get()
+
     .then(async function (snapShots) {
         if (snapShots.docs.length > 0) {
 
@@ -543,10 +550,37 @@
 
             (allTaxes || []).forEach(tax => {
                 if (!tax.enable) return;
-                if (tax.scope !== 'admin_commission') return;
+
+                const taxScope = normalizeTaxScope(tax, 'admin_commission');
+                if (taxScope !== 'admin_commission') {
+                    if (taxScope !== '' && isTaxReportDebugEnabled()) {
+                        traceTaxReport('adminCommission tax rejected (scope mismatch)', {
+                            source: 'adminCommission',
+                            taxId: tax.id || null,
+                            taxTitle: tax.title || tax.name || tax.taxTitle || null,
+                            rawScope: tax && tax.scope !== undefined ? String(tax.scope) : undefined,
+                            normalizedScope: taxScope,
+                            reason: 'legacy scope fallback did not result in admin_commission'
+                        });
+                    }
+                    return;
+                }
+
+                if (isTaxReportDebugEnabled()) {
+                    traceTaxReport('adminCommission tax applied/reason (scope)', {
+                        source: 'adminCommission',
+                        taxId: tax.id || null,
+                        taxTitle: tax.title || tax.name || tax.taxTitle || null,
+                        rawScope: tax && tax.scope !== undefined ? String(tax.scope) : undefined,
+                        normalizedScope: taxScope,
+                        reason: (tax && tax.scope ? 'scope already admin_commission' : 'legacy scope fallback applied for admin_commission')
+                    });
+                }
+
                 if (taxMethod === 'individual' && adminSelectedTaxes.length && !adminSelectedTaxes.includes(tax.id)) return;
                 applyTax(totals.adminCommission, adminCommission, tax);
             });
+
 
             // Platform Fee
             let platformAmount = parseFloat(orderData.platformFee || 0);
@@ -892,9 +926,37 @@
                 let taxes = {};
                 if (adminCommission > 0) {
                     (window.reportData.allTaxes || []).forEach(tax => {
-                        if (!tax.enable || tax.scope !== 'admin_commission') return;
+                        if (!tax.enable) return;
+
+                        const taxScope = normalizeTaxScope(tax, 'admin_commission');
+                        if (taxScope !== 'admin_commission') {
+                            if (taxScope !== '' && isTaxReportDebugEnabled()) {
+                                traceTaxReport('adminCommission detailed tax rejected (scope mismatch)', {
+                                    source: 'adminCommission',
+                                    taxId: tax.id || null,
+                                    taxTitle: tax.title || tax.name || tax.taxTitle || null,
+                                    rawScope: tax && tax.scope !== undefined ? String(tax.scope) : undefined,
+                                    normalizedScope: taxScope,
+                                    reason: 'legacy scope fallback did not result in admin_commission'
+                                });
+                            }
+                            return;
+                        }
+
+                        if (isTaxReportDebugEnabled()) {
+                            traceTaxReport('adminCommission detailed tax applied/reason (scope)', {
+                                source: 'adminCommission',
+                                taxId: tax.id || null,
+                                taxTitle: tax.title || tax.name || tax.taxTitle || null,
+                                rawScope: tax && tax.scope !== undefined ? String(tax.scope) : undefined,
+                                normalizedScope: taxScope,
+                                reason: (tax && tax.scope ? 'scope already admin_commission' : 'legacy scope fallback applied for admin_commission')
+                            });
+                        }
+
                         applyTax({ taxes }, adminCommission, tax);
                     });
+
                 }
 
                 html += `<tr>
