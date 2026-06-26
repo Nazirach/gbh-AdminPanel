@@ -237,18 +237,20 @@
         }
 
         /* TAX_DROPDOWN_SECTION_FALLBACK_FIX */
+        /* TAX_DROPDOWN_DEBUG_GUARD_FIX */
         if (!$('#all_taxes option').length) {
             let fallbackSnapshot = await database.collection('tax')
                 .where('enable', '==', true)
                 .where('sectionId', '==', section_id)
                 .get();
 
-            if (debugTaxReport) {
+            if (isTaxReportDebugEnabled()) {
                 traceTaxReport('tax dropdown fallback used', {
                     sectionId: section_id || null,
                     count: fallbackSnapshot.size
                 });
             }
+
 
             if (fallbackSnapshot.docs.length > 0) {
                 $('#all_taxes').empty();
