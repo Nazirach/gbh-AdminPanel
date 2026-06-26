@@ -179,8 +179,26 @@
         multiple: true,
     });
 
+    function buildTaxOptionText(data) {
+        var taxTitle = data.title || data.name || data.taxTitle || 'Tax';
+        var taxText = taxTitle + ' (';
+
+        if (data.type === 'percentage') {
+            taxText += data.tax + '%';
+        } else {
+            if (symbolAtRight) {
+                taxText += data.tax + ' ' + currentCurrency;
+            } else {
+                taxText += currentCurrency + data.tax;
+            }
+        }
+
+        taxText += ')';
+        return taxText;
+    }
+
     refTaxes.where('scope','in',['admin_commission','vendor_subscription']).get()
-    .then(function (snapShots) {
+    .then(async function (snapShots) {
         if (snapShots.docs.length > 0) {
 
             let adminTaxes = [];
@@ -188,21 +206,11 @@
 
             snapShots.docs.forEach((doc) => {
                 let data = doc.data();
-                let taxText = data.title + ' (';
-                if (data.type === 'percentage') {
-                    taxText += data.tax + '%';
-                } else {
-                    if (symbolAtRight) {
-                        taxText += data.tax + ' ' + currentCurrency;
-                    } else {
-                        taxText += currentCurrency + data.tax;
-                    }
-                }
-                taxText += ')';
+                let taxText = buildTaxOptionText(data);
 
                 // Push into correct scope array
-                if (data.scope === 'admin_commission') adminTaxes.push({id: data.id, text: taxText});
-                else if (data.scope === 'vendor_subscription') vendorTaxes.push({id: data.id, text: taxText});
+                if (data.scope === 'admin_commission') adminTaxes.push({id: data.id || doc.id, text: taxText});
+                else if (data.scope === 'vendor_subscription') vendorTaxes.push({id: data.id || doc.id, text: taxText});
             });
 
             $('#all_taxes').empty();
@@ -225,6 +233,35 @@
                     });
                     $('#all_taxes').append(optgroupVendor);
                 }
+            }
+        }
+
+        /* TAX_DROPDOWN_SECTION_FALLBACK_FIX */
+        if (!$('#all_taxes option').length) {
+            let fallbackSnapshot = await database.collection('tax')
+                .where('enable', '==', true)
+                .where('sectionId', '==', section_id)
+                .get();
+
+            if (debugTaxReport) {
+                traceTaxReport('tax dropdown fallback used', {
+                    sectionId: section_id || null,
+                    count: fallbackSnapshot.size
+                });
+            }
+
+            if (fallbackSnapshot.docs.length > 0) {
+                $('#all_taxes').empty();
+
+                fallbackSnapshot.docs.forEach(function (doc) {
+                    let data = doc.data() || {};
+                    let taxId = data.id || doc.id;
+                    let taxText = buildTaxOptionText(data);
+
+                    $('#all_taxes').append(
+                        $('<option></option>').attr('value', taxId).text(taxText)
+                    );
+                });
             }
         }
     });
