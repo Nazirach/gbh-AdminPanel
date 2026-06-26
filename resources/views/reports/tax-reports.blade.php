@@ -167,6 +167,36 @@
         }
     });
 
+    /* TAX_REPORT_DATE_RANGE_GUARD_FIX */
+    function getTaxReportPicker() {
+        try {
+            return $('#reportrange').data('daterangepicker') || null;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function getTaxReportStartEnd() {
+        let fallbackStart = moment().startOf('month');
+        let fallbackEnd = moment().endOf('month');
+
+        let picker = getTaxReportPicker();
+        if (!picker) {
+            return { startDate: fallbackStart, endDate: fallbackEnd };
+        }
+
+        let startDate = picker.startDate;
+        let endDate = picker.endDate;
+
+        // If daterangepicker didn't initialize with valid moment objects yet, fallback.
+        if (!startDate || !endDate || !moment(startDate).isValid() || !moment(endDate).isValid()) {
+            return { startDate: fallbackStart, endDate: fallbackEnd };
+        }
+
+        return { startDate: moment(startDate), endDate: moment(endDate) };
+    }
+
+
     $('#reportrange span').html('{{ trans("lang.select_date_range") }}');
     $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
         $('#reportrange span').html(
@@ -282,8 +312,11 @@
 
         let taxMethod = $("#tax_calculation_method").val();
         let selectedTaxes = $("#all_taxes").val() || [];
-        let start_date = moment($('#reportrange').data('daterangepicker').startDate).toDate();
-        let end_date = moment($('#reportrange').data('daterangepicker').endDate).toDate();
+        /* TAX_REPORT_DATE_RANGE_GUARD_FIX */
+        let { startDate, endDate } = getTaxReportStartEnd();
+        let start_date = startDate.toDate();
+        let end_date = endDate.toDate();
+
         let startTime = start_date.getTime();
         let endTime   = end_date.getTime();
         
@@ -623,9 +656,12 @@
     // CSV Download
     function downloadCSV() {
         let table = $('#tax_report_table_container table');
-        let startDate = $('#reportrange').data('daterangepicker').startDate.format('YYYY-MM-DD');
-        let endDate = $('#reportrange').data('daterangepicker').endDate.format('YYYY-MM-DD');
-        let displayRange = $('#reportrange').data('daterangepicker').startDate.format('MMMM D, YYYY') + ' - ' + $('#reportrange').data('daterangepicker').endDate.format('MMMM D, YYYY');
+        /* TAX_REPORT_DATE_RANGE_GUARD_FIX */
+        let { startDate: sd, endDate: ed } = getTaxReportStartEnd();
+        let startDate = sd.format('YYYY-MM-DD');
+        let endDate = ed.format('YYYY-MM-DD');
+        let displayRange = sd.format('MMMM D, YYYY') + ' - ' + ed.format('MMMM D, YYYY');
+
                         
         let csv = [];
         csv.push(`"Tax Report"`);
@@ -662,9 +698,12 @@
     // CSV Download for Detailed Report
     function downloadDetailedCSV() {
         let table = $('#taxDetailContent table');
-        let startDate = $('#reportrange').data('daterangepicker').startDate.format('YYYY-MM-DD');
-        let endDate = $('#reportrange').data('daterangepicker').endDate.format('YYYY-MM-DD');
-        let displayRange = $('#reportrange').data('daterangepicker').startDate.format('MMMM D, YYYY') + ' - ' + $('#reportrange').data('daterangepicker').endDate.format('MMMM D, YYYY');
+        /* TAX_REPORT_DATE_RANGE_GUARD_FIX */
+        let { startDate: sd, endDate: ed } = getTaxReportStartEnd();
+        let startDate = sd.format('YYYY-MM-DD');
+        let endDate = ed.format('YYYY-MM-DD');
+        let displayRange = sd.format('MMMM D, YYYY') + ' - ' + ed.format('MMMM D, YYYY');
+
 
         let csv = [];
         csv.push(`"Detailed Tax Report"`);
@@ -705,9 +744,12 @@
     // PDF Download
     async function downloadPDF() {
         let table = $('#tax_report_table_container table');
-        let startDate = $('#reportrange').data('daterangepicker').startDate.format('YYYY-MM-DD');
-        let endDate = $('#reportrange').data('daterangepicker').endDate.format('YYYY-MM-DD');
-        let displayRange = $('#reportrange').data('daterangepicker').startDate.format('MMMM D, YYYY') + ' - ' + $('#reportrange').data('daterangepicker').endDate.format('MMMM D, YYYY');
+        /* TAX_REPORT_DATE_RANGE_GUARD_FIX */
+        let { startDate: sd, endDate: ed } = getTaxReportStartEnd();
+        let startDate = sd.format('YYYY-MM-DD');
+        let endDate = ed.format('YYYY-MM-DD');
+        let displayRange = sd.format('MMMM D, YYYY') + ' - ' + ed.format('MMMM D, YYYY');
+
 
         let tableClone = table.clone();
         tableClone.find('th:last-child').remove();
@@ -736,9 +778,12 @@
     // PDF Download for Detailed Report
     async function downloadDetailedPDF() {
         let table = $('#taxDetailContent table');
-        let startDate = $('#reportrange').data('daterangepicker').startDate.format('YYYY-MM-DD');
-        let endDate = $('#reportrange').data('daterangepicker').endDate.format('YYYY-MM-DD');
-        let displayRange = $('#reportrange').data('daterangepicker').startDate.format('MMMM D, YYYY') + ' - ' + $('#reportrange').data('daterangepicker').endDate.format('MMMM D, YYYY');
+        /* TAX_REPORT_DATE_RANGE_GUARD_FIX */
+        let { startDate: sd, endDate: ed } = getTaxReportStartEnd();
+        let startDate = sd.format('YYYY-MM-DD');
+        let endDate = ed.format('YYYY-MM-DD');
+        let displayRange = sd.format('MMMM D, YYYY') + ' - ' + ed.format('MMMM D, YYYY');
+
 
         let tableClone = table.clone();
         tableClone.find('br').replaceWith('\n');
@@ -763,8 +808,11 @@
     $(document).on('click', '.history-view', function() {
 
         let source = $(this).data('source'); // adminCommission, vendorSubscription, platformFee
-        let startDate = $('#reportrange').data('daterangepicker').startDate.format('MMMM D, YYYY');
-        let endDate = $('#reportrange').data('daterangepicker').endDate.format('MMMM D, YYYY');
+        /* TAX_REPORT_DATE_RANGE_GUARD_FIX */
+        let { startDate: sd, endDate: ed } = getTaxReportStartEnd();
+        let startDate = sd.format('MMMM D, YYYY');
+        let endDate = ed.format('MMMM D, YYYY');
+
 
         // Show search criteria
         let filterHtml = `<strong>Date:</strong> ${startDate} - ${endDate}<br>
