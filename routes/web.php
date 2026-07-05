@@ -941,3 +941,11 @@ Route::withoutMiddleware([\App\Http\Middleware\CheckUserRoleMiddleware::class])
 Route::get('/website-panel/preview', function () {
     return view('website_panel.preview');
 })->name('ai4.website-panel.preview.public');
+
+
+// AI4-0038D_FIX_WEBSITE_PANEL_ROOT_ROUTE
+// Public root route redirect for GHALBIT MARITRONIX Website Panel.
+// /website-panel should open the cloud preview instead of server error.
+Route::get('/website-panel', function () {
+    return redirect('/website-panel/preview');
+})->name('ai4.website-panel.root.redirect');

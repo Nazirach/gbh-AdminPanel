@@ -718,3 +718,12 @@ SIAP LANJUT KE SAFE_TOUCH_MAP.
 - Hasil: GHALBIT=True, OPI=True, nilai bisnis=True, 404=False, 500=False, view error=False.
 - Kesimpulan: Website Panel Preview sudah dapat diakses dari cloud.
 - Output: docs/AI4_0038C_CLOUD_PREVIEW_FINAL_PASS_REPORT.md
+
+---
+
+### AI4-0038D — Fix Website Panel Root Route
+- Tanggal: 2026-07-06
+- Mode: HOTFIX_PUBLIC_ROUTE_REDIRECT
+- Masalah: /website-panel cloud masih 500, sementara /website-panel/preview sudah 200 OK.
+- Perbaikan: /website-panel redirect ke /website-panel/preview.
+- Output: docs/AI4_0038D_FIX_WEBSITE_PANEL_ROOT_ROUTE_REPORT.md
