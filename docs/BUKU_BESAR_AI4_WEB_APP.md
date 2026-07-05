@@ -687,3 +687,13 @@ SIAP LANJUT KE SAFE_TOUCH_MAP.
 - Perbaikan: Menambahkan route public read-only /website-panel/preview ke routes/web.php.
 - Output: docs/AI4_CLOUD_PREVIEW_ROUTE_PUBLISH_REPORT.md
 - Area tidak disentuh: Firebase, database, order, vendor, payment, tax, payout, wallet, cron, Flutter.
+
+---
+
+### AI4-0038B — Fix routes/web.php Headers Sent
+- Tanggal: 2026-07-06
+- Mode: HOTFIX_ROUTE_FILE
+- Masalah: Deploy Laravel Cloud gagal karena routes/web.php mengirim output sebelum header.
+- Penyebab: Blok AI4-0038 sempat berada sebelum <?php atau ada output/BOM di awal file.
+- Perbaikan: routes/web.php dibersihkan dan disimpan UTF-8 tanpa BOM.
+- Output: docs/AI4_0038B_FIX_ROUTES_WEB_HEADERS_SENT_REPORT.md

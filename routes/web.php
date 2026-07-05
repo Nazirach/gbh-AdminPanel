@@ -1,11 +1,3 @@
-﻿
-// AI4-0038_CLOUD_PREVIEW_ROUTE_PUBLISH
-// Public preview route for GHALBIT MARITRONIX Website Panel.
-// Safe read-only route. No Firebase write. No database write. No auth credential exposure.
-Route::get('/website-panel/preview', function () {
-    return view('website_panel.preview');
-})->name('ai4.website-panel.preview.public');
-
 <?php
 use Illuminate\Support\Facades\Route;
 /*
@@ -942,3 +934,10 @@ Route::withoutMiddleware([\App\Http\Middleware\CheckUserRoleMiddleware::class])
     ->get('/website-panel/legacy-map', [\App\Http\Controllers\WebsitePanelController::class, 'legacyMap'])
     ->name('website-panel.legacy-map');
 
+
+// AI4-0038_CLOUD_PREVIEW_ROUTE_PUBLISH
+// Public preview route for GHALBIT MARITRONIX Website Panel.
+// Safe read-only route. No Firebase write. No database write. No auth credential exposure.
+Route::get('/website-panel/preview', function () {
+    return view('website_panel.preview');
+})->name('ai4.website-panel.preview.public');
