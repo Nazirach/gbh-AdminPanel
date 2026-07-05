@@ -697,3 +697,13 @@ SIAP LANJUT KE SAFE_TOUCH_MAP.
 - Penyebab: Blok AI4-0038 sempat berada sebelum <?php atau ada output/BOM di awal file.
 - Perbaikan: routes/web.php dibersihkan dan disimpan UTF-8 tanpa BOM.
 - Output: docs/AI4_0038B_FIX_ROUTES_WEB_HEADERS_SENT_REPORT.md
+
+---
+
+### AI4-0038C — Fix Cloud Preview View Dependencies
+- Tanggal: 2026-07-06
+- Mode: HOTFIX_VIEW_DEPENDENCIES
+- Masalah: Cloud /website-panel/preview sudah route aktif tetapi 500.
+- Dugaan: View/layout/partial/asset Website Panel belum lengkap ikut deploy.
+- Perbaikan: Push dependency Website Panel ke Git.
+- Output: docs/AI4_0038C_FIX_CLOUD_PREVIEW_VIEW_DEPENDENCIES_REPORT.md
