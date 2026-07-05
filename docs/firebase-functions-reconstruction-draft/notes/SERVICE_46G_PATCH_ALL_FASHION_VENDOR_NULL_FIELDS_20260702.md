@@ -1,0 +1,261 @@
+# SERVICE 46G PATCH ALL FASHION VENDOR NULL FIELDS
+
+Generated: 2026-07-02T04:09:38.216Z
+Mode: FIRESTORE DATA PATCH.
+SectionId: 6285dd3281531
+ZoneId fallback: q8OOxNm1zgyVqggkCibX
+
+FASHION_VENDOR_COUNT: 60
+
+PATCHED_VENDOR: 05vPfo6g0mVhZZVlz6mB
+TITLE: eFashion
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: 0mkKJ5MWOLiGIGrMnV4c
+TITLE: Rumah Mode Syar"i
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: 3HoJiFJNRQsTyBchMdxH
+TITLE: Demo
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: 4bZg2TXp193BLBY214kp
+TITLE: My Fashion 
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: 55Y7n2RQiVTxdIgoFOfU
+TITLE: Clothes
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: 5K6Cs6wJONEKsEgNIx50
+TITLE: Rich look
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: 6SWKA69vczMu4ikTyQBT
+TITLE: WEDRR
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,photo,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: 87LYnSVsmQWThHLGOa7n
+TITLE: nody
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,photo,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: 8akcNIacIF7Nt4zLARpl
+TITLE: FASHION STREET
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: 959j8oMcvCHqnpoD7HqJ
+TITLE: Ti Soft
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: A51g8oAns0fr6Dn94SxH
+TITLE: WIXWIXSTORE 
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,photos,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: CydicJ6JtPcfKbNZh0u9
+TITLE: Style center
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: Eb3Qp7ljEE6qml4BVitZ
+TITLE: Fashion Choice
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: Fx2pEcWq7jlmP1M9EBad
+TITLE: Corrupti ex suscipi
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: Hq4VMWeiXNgMRRHaOUoS
+TITLE: The Gemstone Gallery
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: ITwOczaBK5XlrnSn4Xu6
+TITLE: e Fashion
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: JWYjZEtNlQKI46S48a6T
+TITLE: Durga store
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: K7VGLb7gfAalfuaPKjy2
+TITLE: ashkalalwan
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: KRrn88hZ4nLcKCLLD0PQ
+TITLE: Ladyhon
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: L4kMgV5WZUNex55grBSo
+TITLE: Shopping Hub
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: LzmPxhVXNsdNXpJ5ORtd
+TITLE: pen
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: MhWKfIzgP6SbFN3XX1dQ
+TITLE: Fashion Factory
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: N6vLt56wASa8LusWwEpl
+TITLE: Thakar store
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: OJDvahKSCZlzTV2kJOZO
+TITLE: bnhjg
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,photo,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: QWkU3qrSpoa68uMVlklE
+TITLE: Bag collection
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: QkybUs4mN89RsjsDwEub
+TITLE: andi
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: TuS8yBXxj3dTWuMrDoXZ
+TITLE: Shop zero 
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: UFNSUIjreWsW7qmLfXJU
+TITLE: HANSEMALL 
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: WAgpZTKoMKy6MWkjPKt7
+TITLE: Jancok Store
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: WgmIzDQdDF4QgJZxxzYE
+TITLE: UIO-store
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: XLG6a3b7v1MFTUBFhWb1
+TITLE: nemuwa
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB
+TITLE: eFashion
+PATCH_KEYS: logo,image,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: aceh_clone_6285dd3281531_0mkKJ5MWOLiGIGrMnV4c
+TITLE: Rumah Mode Syar"i
+PATCH_KEYS: logo,image,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: aceh_clone_6285dd3281531_3HoJiFJNRQsTyBchMdxH
+TITLE: Demo
+PATCH_KEYS: logo,image,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: b755bSHCW64pzhcl0FvF
+TITLE: Parth
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: bHUwyL7naUQe30OYkqRQ
+TITLE: g5thbtht
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: bwPnIO8wxBIFer9pIxFx
+TITLE: Classificados Locais
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: cYfCFRrNBZ12muVycsrp
+TITLE: Kat Shop
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: ciGVQOFz7nVsdFKeYlsc
+TITLE: Pizza
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: eJNr2tFGC2wGnVRkVlxN
+TITLE: Fashion Room
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,photo,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: gBYeSRXtuwfIha4rE20T
+TITLE: A23 Fashion
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,photo,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: kZdm33nCYeaFSTUXmLC8
+TITLE: Lookup zudio
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: lGgpTNbZwRXcMVMxUmLY
+TITLE: JO's Fashion Room
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: lMSSJEGJKLwjHdvkdmWS
+TITLE: Dharsha Res.
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: lnK4LRYGJ5GkEmYaKZ9m
+TITLE: MyStore
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: o5xe3oLlHFxYiY8IOmLa
+TITLE: The Fashion club
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: pTfwhdwMIMwbR21NdH4U
+TITLE: Multiplex zudio
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: pkt5oAGOoVSgxfu3LsZv
+TITLE: Beau
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: q3kMvq6DNBJ3rWbI8Lzy
+TITLE: tes
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: qjmkOiMJqQYRTk0c7xHz
+TITLE: teste
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: qrY05wReKt6PRlY3dZy2
+TITLE: Ecomm Store
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: uqUs7O7qeUaYuSU2wmkC
+TITLE: helo
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: vYy5sypYRnQXuRdZoTBM
+TITLE: WIXSTORE
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,photos,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: xXuojrORtok2n0Qi5jpt
+TITLE: test
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: xp0ZYocQLqudOkS1CbYo
+TITLE: Zoe Fashion 
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: xr4PMsfz4RXcWsiIcglm
+TITLE: Kunal Soni
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: yKPZbkrbedZjfmeSLKWi
+TITLE: Fashion Shop
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: yOOv3ZCdAQannjlQqvlo
+TITLE: jeevan handicraft 
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: z0ViSNHmQOdxSt4wWvfW
+TITLE: salh
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+PATCHED_VENDOR: zkOH6W9Gx6Vuj9IX4sjD
+TITLE: Shoppers
+PATCH_KEYS: zoneId,publish,isActive,categoryID,categoryId,categorys,logo,image,name,vendorName,address,step46gAllFashionVendorNullFieldPatch,step46gAllFashionVendorNullFieldPatchAt
+
+## Verify after patch
+
+## Totals
+SOURCE_VENDOR_COUNT: 57
+CLONE_VENDOR_COUNT: 3
+PATCHED_VENDOR_COUNT: 60
+ALREADY_SAFE_VENDOR_COUNT: 0
+VERIFY_VENDOR_COUNT: 60
+VERIFY_VENDOR_RISK_COUNT: 0
+
+## Final Status
+STATUS: SERVICE_46G_ALL_FASHION_VENDOR_NULL_FIELDS_PATCH_PASS

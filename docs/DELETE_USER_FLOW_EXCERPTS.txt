@@ -1,0 +1,287 @@
+﻿# DELETE USER FLOW EXCERPTS
+
+===== resources\views\employee\index.blade.php lines 620-675 =====
+621	                "data": {
+622	                    "uid": driverId
+623	                }
+624	            };
+625	            var projectId = '<?php echo env('FIREBASE_PROJECT_ID'); ?>';
+626	            jQuery.ajax({
+627	                url: 'https://us-central1-' + projectId + '.cloudfunctions.net/deleteUser',
+628	                method: 'POST',
+629	                contentType: "application/json; charset=utf-8",
+630	                data: JSON.stringify(dataObject),
+631	                success: function(data) {
+632	                    console.log('Delete user success:', data.result);
+633	                },
+634	                error: function(xhr, status, error) {
+635	                    var responseText = JSON.parse(xhr.responseText);
+636	                    console.log('Delete user error:', responseText.error);
+637	                }
+638	            });
+639	
+640	            //delete user from mysql
+641	            database.collection('settings').doc("Version").get().then(function(snapshot) {
+642	                var settingData = snapshot.data();
+643	                if (settingData && settingData.storeUrl) {
+644	                    var siteurl = settingData.storeUrl + "/api/delete-user";
+645	                    var dataObject = {
+646	                        "uuid": driverId
+647	                    };
+648	                    jQuery.ajax({
+649	                        url: siteurl,
+650	                        method: 'POST',
+651	                        contentType: "application/json; charset=utf-8",
+652	                        data: JSON.stringify(dataObject),
+653	                        success: function(data) {
+654	                            console.log('Delete user from sql success:', data);
+655	                        },
+656	                        error: function(error) {
+657	                            console.log('Delete user from sql error:', error.responseJSON.message);
+658	                        }
+659	                    });
+660	                }
+661	            });
+662	        }
+663	
+664	        async function getRestaurant(vendorid) {
+665	
+666	            const vendorRef = database.collection('vendors').where('id', '==', vendorid);
+667	            const vendorSnapshot = await vendorRef.get();
+668	
+669	            const vendor_userRef = database.collection('users').where('vendorID', '==', vendorid).where('role', '==', 'vendor');
+670	            const vendor_userSnapshot = await vendor_userRef.get();
+671	
+672	
+673	            if (vendorSnapshot.empty) {
+674	                return {
+675	                    title: "-"
+676	                }; // Default values if vendor not found
+
+===== resources\views\providers\index.blade.php lines 570-625 =====
+571	                for (const temData of snapshotsItem.docs) {
+572	                    await deleteDocumentWithImage('providers_services',temData.id,'authorProfilePic','photos');
+573	                }
+574	            }
+575	        });
+576	        await database.collection('providers_coupons').where('providerId', '==', userId).get().then(async function (snapshotsItem) {
+577	            if (snapshotsItem.docs.length > 0) {
+578	                for (const temData of snapshotsItem.docs) {
+579	                    await deleteDocumentWithImage('providers_coupons',temData.id,'image');
+580	                }
+581	            }
+582	        });
+583	        await database.collection('payouts').where('vendorID', '==', userId).get().then(async function (snapshotsItem) {
+584	            if (snapshotsItem.docs.length > 0) {
+585	                snapshotsItem.docs.forEach((temData) => {
+586	                    var item_data = temData.data();
+587	                    database.collection('payouts').doc(item_data.id).delete().then(function () {
+588	                    });
+589	                });
+590	            }
+591	        });
+592	           //delete provider from mysql
+593	           await database.collection('settings').doc("Version").get().then(function(snapshot) {
+594	                        var settingData=snapshot.data();
+595	                        if(settingData&&settingData.providerUrl) {
+596	                            var siteurl=settingData.providerUrl+"/api/delete-user";
+597	                            var dataObject={"uuid": userId};
+598	                            jQuery.ajax({
+599	                                url: siteurl,
+600	                                method: 'POST',
+601	                                contentType: "application/json; charset=utf-8",
+602	                                data: JSON.stringify(dataObject),
+603	                                success: function(data) {
+604	                                    console.log('Delete user from sql success:',data);
+605	                                },
+606	                                error: function(error) {
+607	                                    console.log('Delete user from sql error:',error.responseJSON.message);
+608	                                }
+609	                            });
+610	                        }
+611	                    });
+612	        //delete user from authentication    
+613	        var dataObject = {
+614	            "data": {
+615	                "uid": userId
+616	            }
+617	        };
+618	        var projectId = '<?php echo env('FIREBASE_PROJECT_ID') ?>';
+619	        jQuery.ajax({
+620	            url: 'https://us-central1-' + projectId + '.cloudfunctions.net/deleteUser',
+621	            method: 'POST',
+622	            contentType: "application/json; charset=utf-8",
+623	            data: JSON.stringify(dataObject),
+624	            success: function (data) {
+625	                console.log('Delete user success:', data.result);
+626	            },
+
+===== resources\views\stores\index.blade.php lines 675-725 =====
+676	                                    console.error('Error deleting document with image:', error);
+677	                                });
+678	                        }
+679	                    );
+680	                }
+681	            } else {
+682	                alert("{{ trans('lang.select_delete_alert') }}");
+683	            }
+684	        });
+685	        async function deleteStoreData(storeId) {
+686	            await database.collection('users').where('vendorID', '==', storeId).where('role', '==', 'vendor').get().then(async function(userssanpshots) {
+687	                if (userssanpshots.docs.length > 0) {
+688	                    var projectId = '<?php echo env('FIREBASE_PROJECT_ID'); ?>';
+689	                    var item_data = userssanpshots.docs[0].data();
+690	                    var dataObject = {
+691	                        "data": {
+692	                            "uid": item_data.id
+693	                        }
+694	                    };
+695	                    //delete vendor from mysql
+696	                    await database.collection('settings').doc("Version").get().then(function(snapshot) {
+697	                        var settingData = snapshot.data();
+698	                        if (settingData && settingData.storeUrl) {
+699	                            var siteurl = settingData.storeUrl + "/api/delete-user";
+700	                            var dataObject = {
+701	                                "uuid": item_data.id
+702	                            };
+703	                            jQuery.ajax({
+704	                                url: siteurl,
+705	                                method: 'POST',
+706	                                contentType: "application/json; charset=utf-8",
+707	                                data: JSON.stringify(dataObject),
+708	                                success: function(data) {
+709	                                    console.log('Delete user from sql success:', data);
+710	                                },
+711	                                error: function(error) {
+712	                                    console.log('Delete user from sql error:', error.responseJSON.message);
+713	                                }
+714	                            });
+715	                        }
+716	                    });
+717	                    jQuery.ajax({
+718	                        url: 'https://us-central1-' + projectId + '.cloudfunctions.net/deleteUser',
+719	                        method: 'POST',
+720	                        contentType: "application/json; charset=utf-8",
+721	                        data: JSON.stringify(dataObject),
+722	                        success: async function(data) {
+723	                            console.log('Delete user success:', data.result);
+724	                            await deleteDocumentWithImage('users', item_data.id, 'profilePictureURL');
+725	                        },
+726	                        error: function(xhr, status, error) {
+
+===== resources\views\users\index.blade.php lines 455-510 =====
+456	                    await deleteDocumentWithImage('users', dataId, 'profilePictureURL');
+457	                        const getStoreName = deleteUserData(dataId);
+458	                        setTimeout(function() {
+459	                            window.location.reload();
+460	                        }, 7000);
+461	                });
+462	            }
+463	        } else {
+464	            alert("{{trans('lang.select_delete_alert')}}");
+465	        }
+466	    });
+467	    async function deleteUserData(userId) {
+468	        await database.collection('wallet').where('user_id', '==', userId).get().then(async function(snapshotsItem) {
+469	            if (snapshotsItem.docs.length > 0) {
+470	                snapshotsItem.docs.forEach((temData) => {
+471	                    var item_data = temData.data();
+472	                    database.collection('wallet').doc(item_data.id).delete().then(function() {
+473	                    });
+474	                });
+475	            }
+476	        });
+477	          //delete user from mysql
+478	          await database.collection('settings').doc("Version").get().then(function (snapshot) {
+479	            var settingData = snapshot.data();
+480	            if (settingData && settingData.websiteUrl){
+481	                var siteurl = settingData.websiteUrl + "/api/delete-user"; 
+482	                var dataObject = { "uuid": userId };         
+483	                jQuery.ajax({
+484	                    url: siteurl, 
+485	                    method: 'POST',
+486	                    contentType: "application/json; charset=utf-8",
+487	                    data: JSON.stringify(dataObject),
+488	                    success: function (data) {
+489	                        console.log('Delete user from sql success:', data);
+490	                    },
+491	                    error: function (error) {
+492	                        console.log(error);
+493	                    }
+494	                });
+495	            }
+496	        });
+497	        //delete user from authentication    
+498	        var dataObject = {
+499	            "data": {
+500	                "uid": userId
+501	            }
+502	        };
+503	        var projectId = '<?php echo env('FIREBASE_PROJECT_ID') ?>';
+504	        jQuery.ajax({
+505	            url: 'https://us-central1-' + projectId + '.cloudfunctions.net/deleteUser',
+506	            method: 'POST',
+507	            contentType: "application/json; charset=utf-8",
+508	            data: JSON.stringify(dataObject),
+509	            success: function(data) {
+510	                console.log('Delete user success:', data.result);
+511	            },
+
+===== resources\views\vendors\index.blade.php lines 750-805 =====
+751	                if (snapshotsItem.docs.length > 0) {
+752	                    for (const temData of snapshotsItem.docs) {
+753	                        await deleteDocumentWithImage('story', temData.id,'videoThumbnail','videoUrl');
+754	                    }
+755	                }
+756	            });
+757	        await database.collection('favorite_vendor').where('store_id','==',vendorId).get().then(async function (snapshotsItem) {
+758	             if (snapshotsItem.docs.length > 0) {
+759	            snapshotsItem.docs.forEach((temData) => {
+760	                var item_data = temData.data();
+761	
+762	                database.collection('favorite_vendor').doc(item_data.id).delete().then(function () {
+763	
+764	                });
+765	            });
+766	        }
+767	        })
+768	    }
+769	
+770	      //delete vendor from mysql
+771	      database.collection('settings').doc("Version").get().then(function(snapshot) {
+772	            var settingData=snapshot.data();
+773	            if(settingData&&settingData.storeUrl) {
+774	                var siteurl=settingData.storeUrl+"/api/delete-user";
+775	                var dataObject={"uuid": userId};
+776	                jQuery.ajax({
+777	                    url: siteurl,
+778	                    method: 'POST',
+779	                    contentType: "application/json; charset=utf-8",
+780	                    data: JSON.stringify(dataObject),
+781	                    success: function(data) {
+782	                        console.log('Delete user from sql success:',data);
+783	                    },
+784	                    error: function(error) {
+785	                        console.log('Delete user from sql error:',error.responseJSON.message);
+786	                    }
+787	                });
+788	            }
+789	        });
+790	
+791	    //delete user from authentication
+792	    var dataObject = {"data": {"uid": userId}};
+793	    var projectId = '<?php echo env('FIREBASE_PROJECT_ID') ?>';
+794	    jQuery.ajax({
+795	        url: 'https://us-central1-' + projectId + '.cloudfunctions.net/deleteUser',
+796	        method: 'POST',
+797	        contentType: "application/json; charset=utf-8",
+798	        data: JSON.stringify(dataObject),
+799	        success: function (data) {
+800	            console.log('Delete user success:', data.result);
+801	        },
+802	        error: function (xhr, status, error) {
+803	            var responseText = JSON.parse(xhr.responseText);
+804	            console.log('Delete user error:', responseText.error);
+805	        }
+806	    });
+

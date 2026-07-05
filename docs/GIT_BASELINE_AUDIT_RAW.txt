@@ -1,0 +1,175 @@
+﻿=== GIT BASELINE AUDIT RAW ===
+Generated: 06/28/2026 03:59:26
+
+=== ADMIN PANEL ===
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   app/Providers/AppServiceProvider.php
+	modified:   resources/views/layouts/app.blade.php
+	modified:   resources/views/reports/tax-reports.blade.php
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	TODO.md
+	docs/ADMIN_DELETE_USER_CALLER_AUDIT_PROGRESS_REPORT.md
+	docs/ADMIN_STORE_WEBSITE_SAFE_DELETE_USER_CONNECTION_TEST_FINAL_REPORT.md
+	docs/DELETE_USER_ADMIN_STORE_WEBSITE_CONNECTION_MAP_FINAL_REPORT.md
+	docs/DELETE_USER_CLOUD_FUNCTION_HITS.csv
+	docs/DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md
+	docs/DELETE_USER_FLOW_EXCERPTS.txt
+	docs/DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv
+	docs/DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv
+	docs/DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md
+	docs/DELETE_USER_SECURITY_EXECUTIVE_SUMMARY.md
+	docs/DELETE_USER_SECURITY_PATCH_PLAN_FINAL.md
+	docs/DELETE_USER_URL_RECEIVER_MATCHING_REPORT.md
+	docs/FIRESTORE_SETTINGS_VERSION_URL_CHECKLIST.md
+	docs/FIRESTORE_USAGE_ADMIN_RAW.txt
+	docs/FIRESTORE_USAGE_STORE_RAW.txt
+	docs/GIT_BASELINE_AUDIT_RAW.txt
+	docs/GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt
+	docs/GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md
+	docs/LARAVEL_ROOT_CANDIDATES_FULL.txt
+	docs/MODULE_SELECTOR_DARK_THEME_FIX_REPORT.md
+	docs/MODULE_SELECTOR_ICON_FINAL_VERIFY_REPORT.md
+	docs/MODULE_SELECTOR_ICON_VISIBILITY_FIX_REPORT.md
+	docs/MODULE_SELECTOR_IMAGE_FALLBACK_FIX_REPORT.md
+	docs/MODULE_SELECTOR_IMAGE_FALLBACK_VERIFY_REPORT.md
+	docs/MODULE_SELECTOR_UI_VERIFY_REPORT.md
+	docs/POWER_SHELL_DELETE_USER_ENDPOINT_DISCOVERY.ps1
+	docs/RECOVERY_EXTRACT_STATUS_REPORT.txt
+	docs/STORE_PANEL_API_ROUTE_LOAD_REPORT.md
+	docs/STORE_PANEL_API_ROUTE_LOAD_REPORT_CORRECT_TARGET.md
+	docs/STORE_PANEL_DELETE_USER_ROUTE_VERIFIED_REPORT.md
+	docs/STORE_PANEL_FIRESTORE_BOOT_GUARD_CORRECT_TARGET_REPORT.md
+	docs/STORE_PANEL_FIRESTORE_BOOT_GUARD_REPORT.md
+	docs/STORE_WEBSITE_PANEL_AUDIT_START.md
+	docs/STORE_WEBSITE_PANEL_BUILD_READINESS_BASELINE_SAFE.ps1
+	docs/STORE_WEBSITE_PANEL_BUILD_READINESS_FINAL_REPORT.md
+	docs/STORE_WEBSITE_PANEL_BUILD_READINESS_REPORT.md
+	docs/STORE_WEBSITE_PANEL_GIT_MAPPING_REPORT.md
+	docs/STORE_WEBSITE_RUNTIME_FIREBASE_GUARD_AND_LOGIN_INIT_REPORT.md
+	docs/TAX_REPORT_DEBUG_FIX_REPORT.md
+	docs/TAX_REPORT_TABLE_AND_DATERANGEPICKER_FIX_REPORT.md
+	docs/TAX_REPORT_TABLE_HEADER_CONTRAST_REPORT.md
+	docs/TAX_REPORT_TABLE_HEADER_FINAL_VISUAL_FIX_REPORT.md
+	docs/TAX_REPORT_UI_DATE_INPUT_VERIFY_REPORT.md
+	docs/URL_VALUE_DISCOVERY_REPORT.md
+	docs/URL_VALUE_SEARCH_HITS.csv
+	docs/WEBSITE_PANEL_DELETE_USER_ENDPOINT_AUDIT_REPORT.md
+	docs/WEBSITE_PANEL_DELETE_USER_ROUTE_VERIFIED_REPORT.md
+	docs/WEBSITE_PANEL_FIREBASE_AND_PLACEHOLDER_IMAGE_RUNTIME_PATCH_REPORT.md
+	docs/WEBSITE_PANEL_LOCAL_FOLDER_DISCOVERY_ENDPOINT_HITS.csv
+	docs/WEBSITE_PANEL_LOCAL_FOLDER_DISCOVERY_REPORT.md
+	docs/WEBSITE_PANEL_PUBLIC_VENDOR_ASSET_RESTORE_REPORT.md
+	docs/WEBSITE_SETTINGS_FIELD_HITS.csv
+	docs/WEBSITE_SETTINGS_FIELD_MAPPING_REPORT.md
+	docs/WEBSITE_SETTINGS_GIT_STATUS.txt
+	docs/WEBSITE_STORE_URL_USAGE_HITS.csv
+	docs/_bb_tmp_candidates_full.ps1
+	docs/_bb_tmp_delete_user_flow_excerpt_audit.ps1
+	docs/_bb_tmp_final_copy_confirmed_roots.ps1
+	docs/_bb_tmp_find_url_values.ps1
+	docs/_bb_tmp_global_blade_excerpt_audit.ps1
+	docs/_bb_tmp_pwsh_wrapper.ps1
+	docs/_bb_tmp_quick_receiver_search.ps1
+	docs/_bb_tmp_quick_receiver_search_exec.ps1
+	docs/_bb_tmp_quick_receiver_search_findings.txt
+	docs/_bb_tmp_recover_extract_store_website.ps1
+	docs/_bb_tmp_recovery_extract_status.ps1
+	docs/_bb_tmp_robocopy_final_sync.ps1
+	docs/_bb_tmp_website_settings_audit_final.ps1
+	docs/_bb_tmp_website_settings_field_hits.ps1
+	docs/_bb_tmp_website_store_url_usage_hits.ps1
+
+no changes added to commit (use "git add" and/or "git commit -a")
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+origin	https://github.com/Nazirach/gbh-AdminPanel.git (fetch)
+origin	https://github.com/Nazirach/gbh-AdminPanel.git (push)
+0832f52 Support legacy tax scope in tax report
+d0cc874 Fix tax report commission type normalization
+52846bf Revert "Update TODO status"
+d95e4b0 Update TODO status
+5e6a08a Guard tax report date range picker
+9425dcc Guard tax dropdown debug trace
+e64947b Fallback tax dropdown to section tax records
+3ba82a4 Fallback section selector query without order
+795a680 Normalize section selector service types
+cae48a0 Add section selector field fallbacks
+45a80d4 Fix section selector cookie fallback
+7b5950e Guard tax report when section context is missing
+576c105 Add safe tax report runtime trace
+2b0434d Darken order edit summary separator labels
+c78224b Make order edit summary separators transparent
+ddfd2fe Revert "Replace order edit summary separators"
+8875fc0 Replace order edit summary separators
+c171f01 Fix order edit white box text contrast
+62eee8f Improve order edit payment text readability
+b27ffae Fallback order edit lookup to Firestore document id
+
+=== STORE PANEL ===
+git : fatal: not a git repository (or any of the parent directories): .git
+At line:1 char:1
++ git status 2>&1 | Out-File $out -Append -Encoding utf8
++ ~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: not a gi...ectories): .git:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+git : fatal: not a git repository (or any of the parent directories): .git
+At line:1 char:1
++ git branch -a 2>&1 | Out-File $out -Append -Encoding utf8
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: not a gi...ectories): .git:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+git : fatal: not a git repository (or any of the parent directories): .git
+At line:1 char:1
++ git remote -v 2>&1 | Out-File $out -Append -Encoding utf8
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: not a gi...ectories): .git:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+git : fatal: not a git repository (or any of the parent directories): .git
+At line:1 char:1
++ git log --oneline -n 20 2>&1 | Out-File $out -Append -Encoding utf8
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: not a gi...ectories): .git:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+
+=== WEBSITE PANEL ===
+git : fatal: not a git repository (or any of the parent directories): .git
+At line:1 char:1
++ git status 2>&1 | Out-File $out -Append -Encoding utf8
++ ~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: not a gi...ectories): .git:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+git : fatal: not a git repository (or any of the parent directories): .git
+At line:1 char:1
++ git branch -a 2>&1 | Out-File $out -Append -Encoding utf8
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: not a gi...ectories): .git:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+git : fatal: not a git repository (or any of the parent directories): .git
+At line:1 char:1
++ git remote -v 2>&1 | Out-File $out -Append -Encoding utf8
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: not a gi...ectories): .git:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+git : fatal: not a git repository (or any of the parent directories): .git
+At line:1 char:1
++ git log --oneline -n 20 2>&1 | Out-File $out -Append -Encoding utf8
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: not a gi...ectories): .git:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

@@ -1,0 +1,11 @@
+﻿# AI4-0024 GHALBIT MARITRONIX BRAND VERIFY
+
+## HTML Check
+```text
+homepage contains GHALBIT MARITRONIX:             Area ini untuk menyusun tampilan awal website publik Ghalbit Maritronix secara terkendali sebelum disambungkan ke konten resmi.                 <h2>Ghalbit Maritronix Homepage Draft</h2>                 <input type="text" value="GHALBIT MARITRONIX" readonly>                 <textarea rows="4" readonly>Website Panel ini disiapkan sebagai ruang kendali visual untuk membangun wajah publik Ghalbit Maritronix: teknologi maritim, AI, peta, drone, data center, dan integrasi operasional.</textarea>                 <span>GHALBIT MARITRONIX</span>                 <p>Website Panel ini disiapkan sebagai ruang kendali visual untuk membangun wajah publik Ghalbit Maritronix: teknologi maritim, AI, peta, drone, data center, dan integrasi operasional.</p>         <h3>Checklist Ghalbit Maritronix</h3>                             <li>Brand utama sudah dikoreksi menjadi GHALBIT MARITRONIX.</li>             profil Ghalbit Maritronix, arsitektur sistem, peta maritim, drone operation, dan landing page investor.
+homepage contains Maritime Control Center:                         <strong>Maritime Control Center</strong>
+footer contains Ghalbit Maritronix:             Area ini untuk menyusun struktur footer website publik Ghalbit Maritronix sebelum terhubung ke konten resmi.                 <h2>Ghalbit Maritronix Footer Draft</h2>                 <input type="text" value="Ghalbit Maritronix" readonly>                 <h2>Ghalbit Maritronix</h2>                 <span>© 2026 Ghalbit Maritronix. Preview only.</span>                             <li>Brand footer sudah dikoreksi menjadi Ghalbit Maritronix.</li>             Setelah footer Ghalbit Maritronix rapi, langkah berikutnya adalah menyempurnakan CMS:
+footer contains maritime intelligence:                 <textarea rows="3" readonly>Maritime intelligence, drone operation, AI control center, and digital ecosystem integration.</textarea>                 <p>Maritime intelligence, drone operation, AI control center, and digital ecosystem integration.</p>                             <li>Kolom footer diarahkan ke maritime intelligence dan digital ecosystem.</li>
+homepage still contains MITERA KELUARGA: 
+footer still contains Mitera Keluarga: 
+```

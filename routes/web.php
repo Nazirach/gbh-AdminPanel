@@ -1,3 +1,11 @@
+﻿
+// AI4-0038_CLOUD_PREVIEW_ROUTE_PUBLISH
+// Public preview route for GHALBIT MARITRONIX Website Panel.
+// Safe read-only route. No Firebase write. No database write. No auth credential exposure.
+Route::get('/website-panel/preview', function () {
+    return view('website_panel.preview');
+})->name('ai4.website-panel.preview.public');
+
 <?php
 use Illuminate\Support\Facades\Route;
 /*
@@ -915,3 +923,22 @@ Route::middleware(['permission:providers,providers.chat'])->group(function () {
 Route::middleware(['permission:ondemand-workers,ondemand.workers.chat'])->group(function () {
     Route::get('/worker/chat/{id}', [App\Http\Controllers\OnDemandServiceController::class, 'workerChat'])->name('ondemand.workers.chat');
 });
+// AI4_WEBSITE_PANEL_ROUTE
+// AI4 local scaffolding route: isolated from auth role middleware during development.
+Route::withoutMiddleware([\App\Http\Middleware\CheckUserRoleMiddleware::class])
+    ->prefix('website-panel')
+    ->name('website-panel.')
+    ->group(function () {
+        Route::get('/', [\App\Http\Controllers\WebsitePanelController::class, 'index'])->name('index');
+        Route::get('/homepage', [\App\Http\Controllers\WebsitePanelController::class, 'homepage'])->name('homepage');
+        Route::get('/footer', [\App\Http\Controllers\WebsitePanelController::class, 'footer'])->name('footer');
+        Route::get('/cms', [\App\Http\Controllers\WebsitePanelController::class, 'cms'])->name('cms');
+        Route::get('/preview', [\App\Http\Controllers\WebsitePanelController::class, 'preview'])->name('preview');
+    });
+
+
+// AI4_WEBSITE_PANEL_LEGACY_MAP_ROUTE
+Route::withoutMiddleware([\App\Http\Middleware\CheckUserRoleMiddleware::class])
+    ->get('/website-panel/legacy-map', [\App\Http\Controllers\WebsitePanelController::class, 'legacyMap'])
+    ->name('website-panel.legacy-map');
+

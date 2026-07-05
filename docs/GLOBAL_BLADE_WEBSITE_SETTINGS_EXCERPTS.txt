@@ -1,0 +1,191 @@
+﻿
+===== HTML fields 470-510 =====
+471	                        </div>
+472	                        <div class="form-group row width-100">
+473	                            <label class="col-3 control-label">{{ trans('lang.upload_json_file') }}</label>
+474	                            <input type="file" class="col-7 pb-2" onChange="handleUploadJsonFile(event)">
+475	                            <div id="uploding_json_file"></div>
+476	                            <div id="uploded_json_file" class="pl-3"></div>
+477	                            <div class="form-text pl-3 text-muted">
+478	                                {{ trans('lang.notification_json_file_help') }}
+479	                            </div>
+480	                        </div>
+481	                    </fieldset>
+482	                    <fieldset>
+483	                        <legend><i class="mr-3 fa fa-solid fa fa-android"></i>{{ trans('lang.version') }}</legend>
+484	                        <div class="form-group row width-50">
+485	                            <label class="col-5 control-label">{{ trans('lang.app_version') }}</label>
+486	                            <div class="col-7">
+487	                                <input type="text" class="form-control app_version">
+488	                            </div>
+489	                        </div>
+490	                        <div class="form-group row width-50">
+491	                            <label class="col-5 control-label">{{ trans('lang.web_version') }}</label>
+492	                            <div class="col-7">
+493	                                <input type="text" class="form-control" id="web_version">
+494	                            </div>
+495	                        </div>
+496	                        <div class="form-group row width-50">
+497	                            <label class="col-5 control-label">{{ trans('lang.setting_website_url') }}</label>
+498	                            <div class="col-7">
+499	                                <input type="text" class="form-control" id="website_url">
+500	                            </div>
+501	                        </div>
+502	                        <div class="form-group row width-50">
+503	                            <label class="col-5 control-label">{{ trans('lang.setting_store_url') }}</label>
+504	                            <div class="col-7">
+505	                                <input type="text" class="form-control" id="store_url">
+506	                            </div>
+507	                        </div>
+508	                        <div class="form-group row width-50">
+509	                            <label class="col-5 control-label">{{ trans('lang.setting_provider_url') }}</label>
+510	                            <div class="col-7">
+511	                                <input type="text" class="form-control" id="provider_url">
+
+===== Version var/load 535-550 =====
+536	        var database = firebase.firestore();
+537	        var ref = database.collection('settings').doc("globalSettings");
+538	        var mapKey = database.collection('settings').doc("googleMapKey");
+539	        var refPlaceholderImage = database.collection('settings').doc("placeHolderImage");
+540	        var contactUs = database.collection('settings').doc("ContactUs");
+541	        var version = database.collection('settings').doc("Version");
+542	        var story = database.collection('settings').doc("story");
+543	        var vendor = database.collection('settings').doc("vendor");
+544	        var provider = database.collection('settings').doc("provider");
+545	        var DriverNearByRef = database.collection('settings').doc("DriverNearBy");
+546	        var digitalProductRef = database.collection('settings').doc("digitalProduct");
+547	        var refCurrency = database.collection('currencies').where('isActive', '==', true);
+548	        var refEmailSetting = database.collection('settings').doc("emailSetting");
+549	        var refNotificationSetting = database.collection('settings').doc("notification_setting");
+550	        
+551	        var homepagethemeRef = database.collection('settings').doc("home_page_theme");
+
+===== Load version to UI 730-750 =====
+731	                var story_data = snapshots.data();
+732	                if (story_data.isEnabled) {
+733	                    $("#store_can_upload_story").prop('checked', true);
+734	                    $("#story_upload_time_div").show();
+735	                }
+736	                $("#story_upload_time").val(story_data.videoDuration);
+737	            });
+738	
+739	            version.get().then(async function(snapshots) {
+740	                var version_data = snapshots.exists ? snapshots.data() : {};
+741	
+742	                $('.app_version').val(version_data.app_version || "");
+743	                $('#web_version').val(version_data.web_version || "");
+744	                $('#store_url').val(version_data.storeUrl || "");
+745	                $('#website_url').val(version_data.websiteUrl || "");
+746	                $('#provider_url').val(version_data.providerUrl || "");
+747	            });
+748	
+749	            mapKey.get().then(async function(snapshots) {
+750	                var key = snapshots.exists ? snapshots.data() : {};
+751	                $('#map_key').val(key.key ? shortString(key.key) : "");
+
+===== Read input variables 805-830 =====
+806	                    serviceJsonFile = notificationData.serviceJson;
+807	                }
+808	                jQuery("#data-table_processing").hide();
+809	            });
+810	
+811	            $(".edit-setting-btn").click(async function() {
+812	                var website_color = $("#website_color").val();
+813	                var admin_color = $("#admin_color").val();
+814	                var store_color = $("#store_color").val();
+815	                var googleApiKey = $("#map_key").val();
+816	                var contact_us_address = $('.contact_us_address').val();
+817	                var contact_us_email = $('.contact_us_email').val();
+818	                var contact_us_phone = $('.contact_us_phone').val();
+819	                var defaultCountryCode = $('.defaultCountryCode').find(':selected').data('phonecode');
+820	                var app_version = $('.app_version').val();
+821	                var web_version = $('#web_version').val();
+822	                var website_url = $('#website_url').val();
+823	                var store_url = $('#store_url').val();
+824	                var provider_url = $('#provider_url').val();
+825	                var auto_approve_vendor = $("#auto_approve_vendor").is(":checked");
+826	                var isEmployeeManagement = $("#emaployee_detail_management").is(":checked");
+827	                var auto_approve_provider = $("#auto_approve_provider").is(":checked");
+828	                var emaployee_detail_management = $("#emaployee_detail_management").is(":checked");
+829	                var store_can_upload_story = $("#store_can_upload_story").is(":checked");
+830	                var story_upload_time = parseInt($('#story_upload_time').val());
+831	                var minimumDepositToRideAccept = $(".minimum_deposit_amount").val();
+
+===== Save payload 910-985 =====
+911	                    $(".error_top").show();
+912	                    $(".error_top").html("");
+913	                    $(".error_top").append("<p>Please enter default country</p>");
+914	                    window.scrollTo(0, 0);
+915	                } else if (api_secure_key == '') {
+916	                    $(".error_top").show();
+917	                    $(".error_top").html("");
+918	                    $(".error_top").append("<p>{{ trans('lang.setting_api_secure_key_error') }}</p>");
+919	                    window.scrollTo(0, 0);
+920	                } else {
+921	                    jQuery("#data-table_processing").show();
+922	                    await storeRingtone().then(ringtone => {
+923	                        database.collection('settings').doc("globalSettings").update({
+924	                            'website_color': website_color,
+925	                            'admin_panel_color': admin_color,
+926	                            'store_panel_color': store_color,
+927	                            'applicationName': applicationName,
+928	                            'appLogo': photo,
+929	                            'app_customer_color': customer_app_color,
+930	                            'app_driver_color': driver_app_color,
+931	                            'app_store_color': store_app_color,
+932	                            'provider_app_color': provider_app_color,
+933	                            'worker_app_color': worker_app_color,
+934	                            'provider_panel_color': provider_panel_color,
+935	                            'workerLogo': workerLogo,
+936	                            'providerLogo': providerLogo,
+937	                            'isEnableAdsFeature': enable_adv_feature,
+938	                            'isSelfDelivery': enable_self_delivery,
+939	                            'order_ringtone_url': ringtone,
+940	                            'apiBaseUrl': api_base_url,
+941	                            'apiSecureKey': api_secure_key,
+942	                            'taxScope': tax_scope,
+943	                            'defaultCountryCode': defaultCountryCode
+944	                        });
+945	                    }).catch(err => {
+946	                        jQuery("#data-table_processing").hide();
+947	                        $(".error_top").show();
+948	                        $(".error_top").html("");
+949	                        $(".error_top").append("<p>" + err + "</p>");
+950	                        window.scrollTo(0, 0);
+951	                    });
+952	                    database.collection('settings').doc('placeHolderImage').update({
+953	                        'image': placeholderphoto
+954	                    });
+955	                    database.collection('settings').doc("ContactUs").update({
+956	                        'Address': contact_us_address,
+957	                        'Email': contact_us_email,
+958	                        'Phone': contact_us_phone
+959	                    });
+960	                    database.collection('settings').doc("vendor").update({
+961	                        'auto_approve_vendor': auto_approve_vendor,
+962	                        'isEmployeeManagement': emaployee_detail_management,
+963	                    });
+964	                    database.collection('settings').doc("provider").update({
+965	                        'auto_approve_provider': auto_approve_provider,
+966	                    });
+967	                    database.collection('settings').doc("story").update({
+968	                        'isEnabled': store_can_upload_story,
+969	                        'videoDuration': story_upload_time,
+970	                    });
+971	                    database.collection('settings').doc("Version").update({
+972	                        'app_version': app_version,
+973	                        'web_version': web_version,
+974	                        'websiteUrl': website_url,
+975	                        'storeUrl': store_url,
+976	                        'providerUrl': provider_url,
+977	                    });
+978	                    database.collection('settings').doc("googleMapKey").update({
+979	                        'key': googleApiKey,
+980	                    });
+981	                    database.collection('settings').doc("DriverNearBy").update({
+982	                        'minimumDepositToRideAccept': minimumDepositToRideAccept,
+983	                        'ownerMinimumDepositToRideAccept': ownerMinimumDepositToRideAccept,
+984	                        'minimumAmountToWithdrawal': minimumAmountToWithdrawal,
+985	                        'selectedMapType': selectedMapType,
+986	                        'driverLocationUpdate': driver_location_update,
+

@@ -1,0 +1,10 @@
+file_or_context,match_type,pattern,found_text
+manual,cloudfunctions,deleteUser,cloudfunctions.net/deleteUser found in:
+- resources/views/employee/index.blade.php (url: https://us-central1-${projectId}.cloudfunctions.net/deleteUser)
+- resources/views/providers/index.blade.php (same)
+- resources/views/stores/index.blade.php (same)
+- resources/views/users/index.blade.php (same)
+- resources/views/vendors/index.blade.php (same)
+
+manual,firebase_auth_payload_fields,uid,deleteUser payload uses JSON: { "data": { "uid": <userId> } }
+

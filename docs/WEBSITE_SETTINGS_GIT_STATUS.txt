@@ -1,0 +1,28 @@
+﻿## main...origin/main [ahead 1]
+ M resources/views/layouts/app.blade.php
+ M resources/views/reports/tax-reports.blade.php
+?? TODO.md
+?? docs/MODULE_SELECTOR_DARK_THEME_FIX_REPORT.md
+?? docs/MODULE_SELECTOR_ICON_FINAL_VERIFY_REPORT.md
+?? docs/MODULE_SELECTOR_ICON_VISIBILITY_FIX_REPORT.md
+?? docs/MODULE_SELECTOR_IMAGE_FALLBACK_FIX_REPORT.md
+?? docs/MODULE_SELECTOR_IMAGE_FALLBACK_VERIFY_REPORT.md
+?? docs/MODULE_SELECTOR_UI_VERIFY_REPORT.md
+?? docs/POWER_SHELL_DELETE_USER_ENDPOINT_DISCOVERY.ps1
+?? docs/STORE_WEBSITE_PANEL_AUDIT_START.md
+?? docs/STORE_WEBSITE_PANEL_GIT_MAPPING_REPORT.md
+?? docs/TAX_REPORT_DEBUG_FIX_REPORT.md
+?? docs/TAX_REPORT_TABLE_AND_DATERANGEPICKER_FIX_REPORT.md
+?? docs/TAX_REPORT_TABLE_HEADER_CONTRAST_REPORT.md
+?? docs/TAX_REPORT_TABLE_HEADER_FINAL_VISUAL_FIX_REPORT.md
+?? docs/TAX_REPORT_UI_DATE_INPUT_VERIFY_REPORT.md
+?? docs/WEBSITE_PANEL_DELETE_USER_ENDPOINT_AUDIT_REPORT.md
+?? docs/WEBSITE_PANEL_LOCAL_FOLDER_DISCOVERY_REPORT.md
+?? docs/WEBSITE_SETTINGS_FIELD_HITS.csv
+?? docs/WEBSITE_SETTINGS_FIELD_MAPPING_REPORT.md
+?? docs/WEBSITE_SETTINGS_GIT_STATUS.txt
+?? docs/WEBSITE_STORE_URL_USAGE_HITS.csv
+?? docs/_bb_tmp_pwsh_wrapper.ps1
+?? docs/_bb_tmp_website_settings_audit_final.ps1
+?? docs/_bb_tmp_website_settings_field_hits.ps1
+?? docs/_bb_tmp_website_store_url_usage_hits.ps1

@@ -1,0 +1,403 @@
+﻿# URL_VALUE_DISCOVERY_REPORT
+
+## 1. Tujuan
+Mencari nilai nyata/base URL untuk:
+- settings/Version.storeUrl
+- settings/Version.websiteUrl
+- settings/Version.providerUrl
+
+Agar bisa mengetahui receiver backend untuk /api/delete-user.
+
+## 2. Mode
+Read-only. Tidak patch, tidak install, tidak migration, tidak commit/push, tidak ubah Firebase/database/env.
+
+## 3. Files scanned
+1028
+
+## 4. CSV output
+- docs/URL_VALUE_SEARCH_HITS.csv
+
+Total hits: 14330
+Important hits: 14330
+URL-looking lines: 12691
+
+## 5. storeUrl / store_url hits
+- C:\deploy\adminpanel\Admin Panel\resources\lang\ar\lang.php:995 => 'setting_store_url' => 'رابط لوحة المتجر',
+- C:\deploy\adminpanel\Admin Panel\resources\lang\en\lang.php:994 => 'setting_store_url' => 'Store Panel URL',
+- C:\deploy\adminpanel\Admin Panel\resources\views\employee\index.blade.php:643 => if (settingData && settingData.storeUrl) {
+- C:\deploy\adminpanel\Admin Panel\resources\views\employee\index.blade.php:644 => var siteurl = settingData.storeUrl + "/api/delete-user";
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:408 => <label class="col-5 control-label">{{ trans('lang.setting_store_url') }}</label>
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:410 => <input type="text" class="form-control" id="store_url">
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:614 => $('#store_url').val(version_data.storeUrl);
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:693 => var store_url = $('#store_url').val();
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:845 => 'storeUrl': store_url,
+- C:\deploy\adminpanel\Admin Panel\resources\views\stores\index.blade.php:669 => if (settingData && settingData.storeUrl) {
+- C:\deploy\adminpanel\Admin Panel\resources\views\stores\index.blade.php:670 => var siteurl = settingData.storeUrl + "/api/delete-user";
+- C:\deploy\adminpanel\Admin Panel\resources\views\vendors\index.blade.php:757 => if(settingData&&settingData.storeUrl) {
+- C:\deploy\adminpanel\Admin Panel\resources\views\vendors\index.blade.php:758 => var siteurl=settingData.storeUrl+"/api/delete-user";
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:13 => - base URL yang dipakai: `storeUrl` atau `websiteUrl`
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:63 => ?? docs/WEBSITE_STORE_URL_USAGE_HITS.csv
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:67 => ?? docs/_bb_tmp_website_store_url_usage_hits.ps1
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:87 => | employee | resources/views/employee/index.blade.php | `settings/Version.storeUrl` | `storeUrl + "/api/delete-user"` | `{"uuid": driverId}` | `driverId` (Firebase doc id untuk user role employee/driver) | dipanggil di `deleteDriverData(driverId)` setelah delete document users (checkbox/Trash) | Ya: `https://us-central1-${projectId}.cloudfunctions.net/deleteUser` payload `{"data":{"uid": driverId}}` | SQL endpoint: `error: console.log('...'+ error.responseJSON.message)`; Cloud Function: parse `xhr.responseText` lalu log `responseText.error` | Tidak ada fallback: request SQL hanya berjalan jika `settingData && settingData.storeUrl` |
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:89 => | stores | resources/views/stores/index.blade.php | `settings/Version.storeUrl` | `storeUrl + "/api/delete-user"` | `{"uuid": item_data.id}` | `item_data.id` (uid user role vendor yang terkait storeId) | dipanggil di `deleteStoreData(storeId)` setelah resolve vendor user (query users where vendorID/storeId role vendor) | Ya: Cloud Function deleteUser `{"data":{"uid": item_data.id}}` | SQL endpoint: `error.responseJSON.message` log; Cloud Function: parse `xhr.responseText` lalu log `responseText.error` | Tidak ada fallback jika `settingData.storeUrl` kosong |
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:91 => | vendors | resources/views/vendors/index.blade.php | `settings/Version.storeUrl` | `storeUrl + "/api/delete-user"` | `{"uuid": userId}` | `userId` (Firebase doc id untuk role vendor) | dipanggil di `deleteUserData(userId, VendorId)` setelah delete relasi wallet/favorite_vendor dan opsional vendor subdocs | Ya: Cloud Function deleteUser `{"data":{"uid": userId}}` | SQL endpoint: `error.responseJSON.message` log; Cloud Function: parse `xhr.responseText` lalu log `responseText.error` | Tidak ada fallback jika `settingData.storeUrl` kosong |
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:97 => - `storeUrl/websiteUrl/providerUrl + "/api/delete-user"`
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:114 => - SQL endpoint hanya dipanggil jika base URL tersedia (`storeUrl/websiteUrl/providerUrl`). Bila kosong, request SQL tidak terkirim.
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_EXCERPTS.txt:26 => 643	                if (settingData && settingData.storeUrl) {
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_EXCERPTS.txt:27 => 644	                    var siteurl = settingData.storeUrl + "/api/delete-user";
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_EXCERPTS.txt:142 => 698	                        if (settingData && settingData.storeUrl) {
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_EXCERPTS.txt:143 => 699	                            var siteurl = settingData.storeUrl + "/api/delete-user";
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_EXCERPTS.txt:253 => 773	            if(settingData&&settingData.storeUrl) {
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_EXCERPTS.txt:254 => 774	                var siteurl=settingData.storeUrl+"/api/delete-user";
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv:6 => "C:\deploy\adminpanel\Admin Panel\resources\views\employee\index.blade.php","644","var siteurl = settingData.storeUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv:13 => "C:\deploy\adminpanel\Admin Panel\resources\views\stores\index.blade.php","670","var siteurl = settingData.storeUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv:15 => "C:\deploy\adminpanel\Admin Panel\resources\views\vendors\index.blade.php","758","var siteurl=settingData.storeUrl+""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv:21 => "C:\deploy\adminpanel\resources\views\employee\index.blade.php","644","var siteurl = settingData.storeUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv:28 => "C:\deploy\adminpanel\resources\views\stores\index.blade.php","699","var siteurl = settingData.storeUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv:30 => "C:\deploy\adminpanel\resources\views\vendors\index.blade.php","774","var siteurl=settingData.storeUrl+""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv:4 => "C:\deploy\adminpanel\Admin Panel\resources\views\employee\index.blade.php","644","var siteurl = settingData.storeUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv:6 => "C:\deploy\adminpanel\Admin Panel\resources\views\stores\index.blade.php","670","var siteurl = settingData.storeUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv:8 => "C:\deploy\adminpanel\Admin Panel\resources\views\vendors\index.blade.php","758","var siteurl=settingData.storeUrl+""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv:12 => "C:\deploy\adminpanel\resources\views\employee\index.blade.php","644","var siteurl = settingData.storeUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv:14 => "C:\deploy\adminpanel\resources\views\stores\index.blade.php","699","var siteurl = settingData.storeUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv:16 => "C:\deploy\adminpanel\resources\views\vendors\index.blade.php","774","var siteurl=settingData.storeUrl+""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md:23 => - C:\deploy\adminpanel\Admin Panel\resources\views\employee\index.blade.php:644 => var siteurl = settingData.storeUrl + "/api/delete-user";
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md:25 => - C:\deploy\adminpanel\Admin Panel\resources\views\stores\index.blade.php:670 => var siteurl = settingData.storeUrl + "/api/delete-user";
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md:27 => - C:\deploy\adminpanel\Admin Panel\resources\views\vendors\index.blade.php:758 => var siteurl=settingData.storeUrl+"/api/delete-user";
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md:28 => - C:\deploy\adminpanel\resources\views\employee\index.blade.php:644 => var siteurl = settingData.storeUrl + "/api/delete-user";
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md:30 => - C:\deploy\adminpanel\resources\views\stores\index.blade.php:699 => var siteurl = settingData.storeUrl + "/api/delete-user";
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md:32 => - C:\deploy\adminpanel\resources\views\vendors\index.blade.php:774 => var siteurl=settingData.storeUrl+"/api/delete-user";
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:35 => 503	                            <label class="col-5 control-label">{{ trans('lang.setting_store_url') }}</label>
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:37 => 505	                                <input type="text" class="form-control" id="store_url">
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:77 => 744	                $('#store_url').val(version_data.storeUrl || "");
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:104 => 823	                var store_url = $('#store_url').val();
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:179 => 975	                        'storeUrl': store_url,
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:15 => 8) Koneksi `storeUrl/websiteUrl` dengan endpoint `/api/delete-user`.
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:56 => ?? docs/WEBSITE_STORE_URL_USAGE_HITS.csv
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:60 => ?? docs/_bb_tmp_website_store_url_usage_hits.ps1
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:81 => | `lang.setting_store_url` | (tidak ada attribute `name`) | `id="store_url"` | base URL store (disimpan ke Firestore sebagai `storeUrl`) |
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:97 => - `$('#store_url').val(version_data.storeUrl || "");`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:108 => - `var store_url = $('#store_url').val();`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:122 => - `'storeUrl': store_url,`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:141 => | `#store_url` / `store_url` | `store_url` | `storeUrl` |
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:150 => ## 10. Hubungan `storeUrl` dengan delete-user
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:151 => Berdasarkan `docs/WEBSITE_STORE_URL_USAGE_HITS.csv`:
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:153 => ### 10.1 File yang memakai `storeUrl`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:155 => - line 643: `if (settingData && settingData.storeUrl) {`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:156 => - line 644: `var siteurl = settingData.storeUrl + "/api/delete-user";`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:159 => - line 698: `if (settingData && settingData.storeUrl) {`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:160 => - line 699: `var siteurl = settingData.storeUrl + "/api/delete-user";`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:163 => - line 773: `if(settingData&&settingData.storeUrl) {`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:164 => - line 774: `var siteurl=settingData.storeUrl+"/api/delete-user";`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:174 => 1) **`storeUrl` kosong / salah**
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:192 => - Endpoint dibangun lintas panel menggunakan `storeUrl/websiteUrl`. Jika salah, dampak tersebar lintas module (employee/stores/vendors/users).
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:200 => - apakah `website_url/store_url` di-trim, dicek skema (http/https), atau ditolak bila kosong.
+- C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:134 => - delete men-trigger penghapusan Firestore documents + memanggil endpoint eksternal (storeUrl) dan Cloud Function deleteUser (detail ada di laporan delete-user sebelumnya)
+- C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:157 => - doc `settings/Version` berisi `storeUrl` (dipakai untuk `/api/delete-user`)
+- C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:161 => Untuk memenuhi bagian 3 tugas (audit global.blade.php dan field website_url/store_url/website_color/web_version/store_panel_color/app_store_color), langkah berikutnya adalah:
+- C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:162 => - Cari file Blade yang memuat string `website_url`/`store_url`/`web_version`/`website_color`.
+- C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:169 => - Dari temuan delete-user, admin panel menyimpan `settings/Version.storeUrl` dan memanggil endpoint eksternal `{storeUrl}/api/delete-user`.
+- C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:177 => - `website_url`, `store_url`, `web_version`, `website_color`, `store_panel_color`, `app_store_color`
+- C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:178 => 2. Verifikasi apakah `storeUrl` mengarah ke backend yang punya route:
+- C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:186 => 1. Audit “Website settings” via pencarian native (`Select-String`) untuk field `website_url/store_url/web_version/website_color/...`.
+- C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:187 => 2. Dari `settings/Version.storeUrl`, identifikasi repo/codbase Website Panel yang menerima endpoint.
+- C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_GIT_MAPPING_REPORT.md:13 => - Koneksi lintas panel via `storeUrl` / endpoint `.../api/delete-user`
+
+
+## 6. websiteUrl / website_url hits
+- C:\deploy\adminpanel\Admin Panel\resources\lang\ar\lang.php:994 => 'setting_website_url' => 'رابط لوحة المستخدم',
+- C:\deploy\adminpanel\Admin Panel\resources\lang\en\lang.php:993 => 'setting_website_url' => 'User Panel URL',
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:402 => <label class="col-5 control-label">{{ trans('lang.setting_website_url') }}</label>
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:404 => <input type="text" class="form-control" id="website_url">
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:615 => $('#website_url').val(version_data.websiteUrl);
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:692 => var website_url = $('#website_url').val();
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:844 => 'websiteUrl': website_url,
+- C:\deploy\adminpanel\Admin Panel\resources\views\users\index.blade.php:494 => if (settingData && settingData.websiteUrl){
+- C:\deploy\adminpanel\Admin Panel\resources\views\users\index.blade.php:495 => var siteurl = settingData.websiteUrl + "/api/delete-user";
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:13 => - base URL yang dipakai: `storeUrl` atau `websiteUrl`
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:90 => | users | resources/views/users/index.blade.php | `settings/Version.websiteUrl` | `websiteUrl + "/api/delete-user"` | `{"uuid": userId}` | `userId` (Firebase doc id untuk role customer) | dipanggil di `deleteUserData(userId)` setelah delete wallet docs | Ya: Cloud Function deleteUser `{"data":{"uid": userId}}` | SQL endpoint: `error: console.log(error)` (lebih lemah: tidak akses `responseJSON.message`); Cloud Function: parse `xhr.responseText` lalu log `error.responseJSON.message` | Tidak ada fallback jika `settingData.websiteUrl` kosong |
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:97 => - `storeUrl/websiteUrl/providerUrl + "/api/delete-user"`
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:114 => - SQL endpoint hanya dipanggil jika base URL tersedia (`storeUrl/websiteUrl/providerUrl`). Bila kosong, request SQL tidak terkirim.
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_EXCERPTS.txt:197 => 480	            if (settingData && settingData.websiteUrl){
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_EXCERPTS.txt:198 => 481	                var siteurl = settingData.websiteUrl + "/api/delete-user";
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv:14 => "C:\deploy\adminpanel\Admin Panel\resources\views\users\index.blade.php","495","var siteurl = settingData.websiteUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv:29 => "C:\deploy\adminpanel\resources\views\users\index.blade.php","481","var siteurl = settingData.websiteUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv:7 => "C:\deploy\adminpanel\Admin Panel\resources\views\users\index.blade.php","495","var siteurl = settingData.websiteUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv:15 => "C:\deploy\adminpanel\resources\views\users\index.blade.php","481","var siteurl = settingData.websiteUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md:26 => - C:\deploy\adminpanel\Admin Panel\resources\views\users\index.blade.php:495 => var siteurl = settingData.websiteUrl + "/api/delete-user";
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md:31 => - C:\deploy\adminpanel\resources\views\users\index.blade.php:481 => var siteurl = settingData.websiteUrl + "/api/delete-user";
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:29 => 497	                            <label class="col-5 control-label">{{ trans('lang.setting_website_url') }}</label>
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:31 => 499	                                <input type="text" class="form-control" id="website_url">
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:78 => 745	                $('#website_url').val(version_data.websiteUrl || "");
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:103 => 822	                var website_url = $('#website_url').val();
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:178 => 974	                        'websiteUrl': website_url,
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:15 => 8) Koneksi `storeUrl/websiteUrl` dengan endpoint `/api/delete-user`.
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:80 => | `lang.setting_website_url` | (tidak ada attribute `name`) | `id="website_url"` | base URL website (disimpan ke Firestore sebagai `websiteUrl`) |
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:98 => - `$('#website_url').val(version_data.websiteUrl || "");`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:107 => - `var website_url = $('#website_url').val();`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:121 => - `'websiteUrl': website_url,`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:140 => | `#website_url` / `website_url` | `website_url` | `websiteUrl` |
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:168 => ### 10.2 File yang memakai `websiteUrl` (untuk konteks delete-user)
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:170 => - line 480: `if (settingData && settingData.websiteUrl){`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:171 => - line 481: `var siteurl = settingData.websiteUrl + "/api/delete-user";`
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:178 => 2) **`websiteUrl` kosong / salah**
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:192 => - Endpoint dibangun lintas panel menggunakan `storeUrl/websiteUrl`. Jika salah, dampak tersebar lintas module (employee/stores/vendors/users).
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:200 => - apakah `website_url/store_url` di-trim, dicek skema (http/https), atau ditolak bila kosong.
+- C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:161 => Untuk memenuhi bagian 3 tugas (audit global.blade.php dan field website_url/store_url/website_color/web_version/store_panel_color/app_store_color), langkah berikutnya adalah:
+- C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:162 => - Cari file Blade yang memuat string `website_url`/`store_url`/`web_version`/`website_color`.
+- C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:177 => - `website_url`, `store_url`, `web_version`, `website_color`, `store_panel_color`, `app_store_color`
+- C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:186 => 1. Audit “Website settings” via pencarian native (`Select-String`) untuk field `website_url/store_url/web_version/website_color/...`.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:6 => - settings/Version.websiteUrl
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:38 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:13 => - base URL yang dipakai: `storeUrl` atau `websiteUrl`
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:44 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:97 => - `storeUrl/websiteUrl/providerUrl + "/api/delete-user"`
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:45 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:114 => - SQL endpoint hanya dipanggil jika base URL tersedia (`storeUrl/websiteUrl/providerUrl`). Bila kosong, request SQL tidak terkirim.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:75 => - C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:15 => 8) Koneksi `storeUrl/websiteUrl` dengan endpoint `/api/delete-user`.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:93 => - C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:192 => - Endpoint dibangun lintas panel menggunakan `storeUrl/websiteUrl`. Jika salah, dampak tersebar lintas module (employee/stores/vendors/users).
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:94 => - C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:200 => - apakah `website_url/store_url` di-trim, dicek skema (http/https), atau ditolak bila kosong.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:97 => - C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:161 => Untuk memenuhi bagian 3 tugas (audit global.blade.php dan field website_url/store_url/website_color/web_version/store_panel_color/app_store_color), langkah berikutnya adalah:
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:98 => - C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:162 => - Cari file Blade yang memuat string `website_url`/`store_url`/`web_version`/`website_color`.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:100 => - C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:177 => - `website_url`, `store_url`, `web_version`, `website_color`, `store_panel_color`, `app_store_color`
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:102 => - C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_AUDIT_START.md:186 => 1. Audit “Website settings” via pencarian native (`Select-String`) untuk field `website_url/store_url/web_version/website_color/...`.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:107 => ## 6. websiteUrl / website_url hits
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:108 => - C:\deploy\adminpanel\Admin Panel\resources\lang\ar\lang.php:994 => 'setting_website_url' => 'رابط لوحة المستخدم',
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:109 => - C:\deploy\adminpanel\Admin Panel\resources\lang\en\lang.php:993 => 'setting_website_url' => 'User Panel URL',
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:110 => - C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:402 => <label class="col-5 control-label">{{ trans('lang.setting_website_url') }}</label>
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:111 => - C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:404 => <input type="text" class="form-control" id="website_url">
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:112 => - C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:615 => $('#website_url').val(version_data.websiteUrl);
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:113 => - C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:692 => var website_url = $('#website_url').val();
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:114 => - C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:844 => 'websiteUrl': website_url,
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:115 => - C:\deploy\adminpanel\Admin Panel\resources\views\users\index.blade.php:494 => if (settingData && settingData.websiteUrl){
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:116 => - C:\deploy\adminpanel\Admin Panel\resources\views\users\index.blade.php:495 => var siteurl = settingData.websiteUrl + "/api/delete-user";
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:117 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:13 => - base URL yang dipakai: `storeUrl` atau `websiteUrl`
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:118 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:90 => | users | resources/views/users/index.blade.php | `settings/Version.websiteUrl` | `websiteUrl + "/api/delete-user"` | `{"uuid": userId}` | `userId` (Firebase doc id untuk role customer) | dipanggil di `deleteUserData(userId)` setelah delete wallet docs | Ya: Cloud Function deleteUser `{"data":{"uid": userId}}` | SQL endpoint: `error: console.log(error)` (lebih lemah: tidak akses `responseJSON.message`); Cloud Function: parse `xhr.responseText` lalu log `error.responseJSON.message` | Tidak ada fallback jika `settingData.websiteUrl` kosong |
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:119 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:97 => - `storeUrl/websiteUrl/providerUrl + "/api/delete-user"`
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:120 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:114 => - SQL endpoint hanya dipanggil jika base URL tersedia (`storeUrl/websiteUrl/providerUrl`). Bila kosong, request SQL tidak terkirim.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:121 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_EXCERPTS.txt:197 => 480	            if (settingData && settingData.websiteUrl){
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:122 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_EXCERPTS.txt:198 => 481	                var siteurl = settingData.websiteUrl + "/api/delete-user";
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:123 => - C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv:14 => "C:\deploy\adminpanel\Admin Panel\resources\views\users\index.blade.php","495","var siteurl = settingData.websiteUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:124 => - C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv:29 => "C:\deploy\adminpanel\resources\views\users\index.blade.php","481","var siteurl = settingData.websiteUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:125 => - C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv:7 => "C:\deploy\adminpanel\Admin Panel\resources\views\users\index.blade.php","495","var siteurl = settingData.websiteUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:126 => - C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv:15 => "C:\deploy\adminpanel\resources\views\users\index.blade.php","481","var siteurl = settingData.websiteUrl + ""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:127 => - C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md:26 => - C:\deploy\adminpanel\Admin Panel\resources\views\users\index.blade.php:495 => var siteurl = settingData.websiteUrl + "/api/delete-user";
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:128 => - C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md:31 => - C:\deploy\adminpanel\resources\views\users\index.blade.php:481 => var siteurl = settingData.websiteUrl + "/api/delete-user";
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:129 => - C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:29 => 497	                            <label class="col-5 control-label">{{ trans('lang.setting_website_url') }}</label>
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:130 => - C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:31 => 499	                                <input type="text" class="form-control" id="website_url">
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:131 => - C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:78 => 745	                $('#website_url').val(version_data.websiteUrl || "");
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:132 => - C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:103 => 822	                var website_url = $('#website_url').val();
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:133 => - C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:178 => 974	                        'websiteUrl': website_url,
+
+
+## 7. providerUrl / provider_url hits
+- C:\deploy\adminpanel\Admin Panel\resources\lang\ar\lang.php:996 => 'setting_provider_url' => 'رابط لوحة الموفر',
+- C:\deploy\adminpanel\Admin Panel\resources\lang\en\lang.php:995 => 'setting_provider_url' => 'Provider Panel URL',
+- C:\deploy\adminpanel\Admin Panel\resources\views\providers\index.blade.php:595 => if(settingData&&settingData.providerUrl) {
+- C:\deploy\adminpanel\Admin Panel\resources\views\providers\index.blade.php:596 => var siteurl=settingData.providerUrl+"/api/delete-user";
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:414 => <label class="col-5 control-label">{{ trans('lang.setting_provider_url') }}</label>
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:416 => <input type="text" class="form-control" id="provider_url">
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:616 => $('#provider_url').val(version_data.providerUrl);
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:694 => var provider_url = $('#provider_url').val();
+- C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:846 => 'providerUrl': provider_url,
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:88 => | providers | resources/views/providers/index.blade.php | `settings/Version.providerUrl` | `providerUrl + "/api/delete-user"` | `{"uuid": userId}` | `userId` (users doc id untuk role provider) | dipanggil di `deleteUserData(userId)` setelah delete subcollections + wallet/favorite_provider/etc. | Ya: Cloud Function deleteUser `{"data":{"uid": userId}}` | SQL endpoint: `error.responseJSON.message` log; Cloud Function: parse `xhr.responseText` lalu log `responseText.error` | Tidak ada fallback jika `providerUrl` kosong |
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:97 => - `storeUrl/websiteUrl/providerUrl + "/api/delete-user"`
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:114 => - SQL endpoint hanya dipanggil jika base URL tersedia (`storeUrl/websiteUrl/providerUrl`). Bila kosong, request SQL tidak terkirim.
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_EXCERPTS.txt:86 => 595	                        if(settingData&&settingData.providerUrl) {
+- C:\deploy\adminpanel\docs\DELETE_USER_FLOW_EXCERPTS.txt:87 => 596	                            var siteurl=settingData.providerUrl+"/api/delete-user";
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv:11 => "C:\deploy\adminpanel\Admin Panel\resources\views\providers\index.blade.php","596","var siteurl=settingData.providerUrl+""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv:26 => "C:\deploy\adminpanel\resources\views\providers\index.blade.php","596","var siteurl=settingData.providerUrl+""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv:5 => "C:\deploy\adminpanel\Admin Panel\resources\views\providers\index.blade.php","596","var siteurl=settingData.providerUrl+""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv:13 => "C:\deploy\adminpanel\resources\views\providers\index.blade.php","596","var siteurl=settingData.providerUrl+""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md:24 => - C:\deploy\adminpanel\Admin Panel\resources\views\providers\index.blade.php:596 => var siteurl=settingData.providerUrl+"/api/delete-user";
+- C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md:29 => - C:\deploy\adminpanel\resources\views\providers\index.blade.php:596 => var siteurl=settingData.providerUrl+"/api/delete-user";
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:41 => 509	                            <label class="col-5 control-label">{{ trans('lang.setting_provider_url') }}</label>
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:43 => 511	                                <input type="text" class="form-control" id="provider_url">
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:79 => 746	                $('#provider_url').val(version_data.providerUrl || "");
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:105 => 824	                var provider_url = $('#provider_url').val();
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:180 => 976	                        'providerUrl': provider_url,
+- C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:99 => - `$('#provider_url').val(version_data.providerUrl || "");` *(provider termasuk dalam snippet, namun fokus audit ini Website/Store settings)*
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:7 => - settings/Version.providerUrl
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:44 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:97 => - `storeUrl/websiteUrl/providerUrl + "/api/delete-user"`
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:45 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:114 => - SQL endpoint hanya dipanggil jika base URL tersedia (`storeUrl/websiteUrl/providerUrl`). Bila kosong, request SQL tidak terkirim.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:119 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:97 => - `storeUrl/websiteUrl/providerUrl + "/api/delete-user"`
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:120 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:114 => - SQL endpoint hanya dipanggil jika base URL tersedia (`storeUrl/websiteUrl/providerUrl`). Bila kosong, request SQL tidak terkirim.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:152 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:44 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:97 => - `storeUrl/websiteUrl/providerUrl + "/api/delete-user"`
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:153 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:45 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:114 => - SQL endpoint hanya dipanggil jika base URL tersedia (`storeUrl/websiteUrl/providerUrl`). Bila kosong, request SQL tidak terkirim.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:173 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:119 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:97 => - `storeUrl/websiteUrl/providerUrl + "/api/delete-user"`
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:174 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:120 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:114 => - SQL endpoint hanya dipanggil jika base URL tersedia (`storeUrl/websiteUrl/providerUrl`). Bila kosong, request SQL tidak terkirim.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:190 => ## 7. providerUrl / provider_url hits
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:191 => - C:\deploy\adminpanel\Admin Panel\resources\lang\ar\lang.php:996 => 'setting_provider_url' => 'رابط لوحة الموفر',
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:192 => - C:\deploy\adminpanel\Admin Panel\resources\lang\en\lang.php:995 => 'setting_provider_url' => 'Provider Panel URL',
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:193 => - C:\deploy\adminpanel\Admin Panel\resources\views\providers\index.blade.php:595 => if(settingData&&settingData.providerUrl) {
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:194 => - C:\deploy\adminpanel\Admin Panel\resources\views\providers\index.blade.php:596 => var siteurl=settingData.providerUrl+"/api/delete-user";
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:195 => - C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:414 => <label class="col-5 control-label">{{ trans('lang.setting_provider_url') }}</label>
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:196 => - C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:416 => <input type="text" class="form-control" id="provider_url">
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:197 => - C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:616 => $('#provider_url').val(version_data.providerUrl);
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:198 => - C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:694 => var provider_url = $('#provider_url').val();
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:199 => - C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:846 => 'providerUrl': provider_url,
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:200 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:88 => | providers | resources/views/providers/index.blade.php | `settings/Version.providerUrl` | `providerUrl + "/api/delete-user"` | `{"uuid": userId}` | `userId` (users doc id untuk role provider) | dipanggil di `deleteUserData(userId)` setelah delete subcollections + wallet/favorite_provider/etc. | Ya: Cloud Function deleteUser `{"data":{"uid": userId}}` | SQL endpoint: `error.responseJSON.message` log; Cloud Function: parse `xhr.responseText` lalu log `responseText.error` | Tidak ada fallback jika `providerUrl` kosong |
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:201 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:97 => - `storeUrl/websiteUrl/providerUrl + "/api/delete-user"`
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:202 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:114 => - SQL endpoint hanya dipanggil jika base URL tersedia (`storeUrl/websiteUrl/providerUrl`). Bila kosong, request SQL tidak terkirim.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:203 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_EXCERPTS.txt:86 => 595	                        if(settingData&&settingData.providerUrl) {
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:204 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_EXCERPTS.txt:87 => 596	                            var siteurl=settingData.providerUrl+"/api/delete-user";
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:205 => - C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv:11 => "C:\deploy\adminpanel\Admin Panel\resources\views\providers\index.blade.php","596","var siteurl=settingData.providerUrl+""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:206 => - C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv:26 => "C:\deploy\adminpanel\resources\views\providers\index.blade.php","596","var siteurl=settingData.providerUrl+""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:207 => - C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv:5 => "C:\deploy\adminpanel\Admin Panel\resources\views\providers\index.blade.php","596","var siteurl=settingData.providerUrl+""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:208 => - C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv:13 => "C:\deploy\adminpanel\resources\views\providers\index.blade.php","596","var siteurl=settingData.providerUrl+""/api/delete-user"";","delete-user"
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:209 => - C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md:24 => - C:\deploy\adminpanel\Admin Panel\resources\views\providers\index.blade.php:596 => var siteurl=settingData.providerUrl+"/api/delete-user";
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:210 => - C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md:29 => - C:\deploy\adminpanel\resources\views\providers\index.blade.php:596 => var siteurl=settingData.providerUrl+"/api/delete-user";
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:211 => - C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:41 => 509	                            <label class="col-5 control-label">{{ trans('lang.setting_provider_url') }}</label>
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:212 => - C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:43 => 511	                                <input type="text" class="form-control" id="provider_url">
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:213 => - C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:79 => 746	                $('#provider_url').val(version_data.providerUrl || "");
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:214 => - C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:105 => 824	                var provider_url = $('#provider_url').val();
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:215 => - C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt:180 => 976	                        'providerUrl': provider_url,
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:216 => - C:\deploy\adminpanel\docs\GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md:99 => - `$('#provider_url').val(version_data.providerUrl || "");` *(provider termasuk dalam snippet, namun fokus audit ini Website/Store settings)*
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:217 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:7 => - settings/Version.providerUrl
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:218 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:44 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:97 => - `storeUrl/websiteUrl/providerUrl + "/api/delete-user"`
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:219 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:45 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:114 => - SQL endpoint hanya dipanggil jika base URL tersedia (`storeUrl/websiteUrl/providerUrl`). Bila kosong, request SQL tidak terkirim.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:220 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:119 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:97 => - `storeUrl/websiteUrl/providerUrl + "/api/delete-user"`
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:221 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:120 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:114 => - SQL endpoint hanya dipanggil jika base URL tersedia (`storeUrl/websiteUrl/providerUrl`). Bila kosong, request SQL tidak terkirim.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:222 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:152 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:44 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:97 => - `storeUrl/websiteUrl/providerUrl + "/api/delete-user"`
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:223 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:153 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:45 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:114 => - SQL endpoint hanya dipanggil jika base URL tersedia (`storeUrl/websiteUrl/providerUrl`). Bila kosong, request SQL tidak terkirim.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:224 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:173 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:119 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:97 => - `storeUrl/websiteUrl/providerUrl + "/api/delete-user"`
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:225 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:174 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:120 => - C:\deploy\adminpanel\docs\DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md:114 => - SQL endpoint hanya dipanggil jika base URL tersedia (`storeUrl/websiteUrl/providerUrl`). Bila kosong, request SQL tidak terkirim.
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:226 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:190 => ## 7. providerUrl / provider_url hits
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:227 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:191 => - C:\deploy\adminpanel\Admin Panel\resources\lang\ar\lang.php:996 => 'setting_provider_url' => 'رابط لوحة الموفر',
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:228 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:192 => - C:\deploy\adminpanel\Admin Panel\resources\lang\en\lang.php:995 => 'setting_provider_url' => 'Provider Panel URL',
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:229 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:193 => - C:\deploy\adminpanel\Admin Panel\resources\views\providers\index.blade.php:595 => if(settingData&&settingData.providerUrl) {
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:230 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:194 => - C:\deploy\adminpanel\Admin Panel\resources\views\providers\index.blade.php:596 => var siteurl=settingData.providerUrl+"/api/delete-user";
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:231 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:195 => - C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:414 => <label class="col-5 control-label">{{ trans('lang.setting_provider_url') }}</label>
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:232 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:196 => - C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:416 => <input type="text" class="form-control" id="provider_url">
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:233 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:197 => - C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:616 => $('#provider_url').val(version_data.providerUrl);
+- C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:234 => - C:\deploy\adminpanel\docs\URL_VALUE_DISCOVERY_REPORT.md:198 => - C:\deploy\adminpanel\Admin Panel\resources\views\settings\app\global.blade.php:694 => var provider_url = $('#provider_url').val();
+
+
+## 8. URL-looking lines
+- C:\deploy\adminpanel\.env:5 => APP_URL=http://localhost
+- C:\deploy\adminpanel\.env:59 => FIREBASE_DATABASE_URL=https://erbete-putra-default-rtdb.asia-southeast1.firebasedatabase.app
+- C:\deploy\adminpanel\package-lock.json:24 => "resolved": "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:39 => "resolved": "https://registry.npmjs.org/@babel/compat-data/-/compat-data-7.28.4.tgz",
+- C:\deploy\adminpanel\package-lock.json:49 => "resolved": "https://registry.npmjs.org/@babel/core/-/core-7.28.4.tgz",
+- C:\deploy\adminpanel\package-lock.json:75 => "url": "https://opencollective.com/babel"
+- C:\deploy\adminpanel\package-lock.json:80 => "resolved": "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:90 => "resolved": "https://registry.npmjs.org/@babel/generator/-/generator-7.28.3.tgz",
+- C:\deploy\adminpanel\package-lock.json:107 => "resolved": "https://registry.npmjs.org/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.27.3.tgz",
+- C:\deploy\adminpanel\package-lock.json:120 => "resolved": "https://registry.npmjs.org/@babel/helper-compilation-targets/-/helper-compilation-targets-7.27.2.tgz",
+- C:\deploy\adminpanel\package-lock.json:137 => "resolved": "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:147 => "resolved": "https://registry.npmjs.org/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.28.3.tgz",
+- C:\deploy\adminpanel\package-lock.json:169 => "resolved": "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:179 => "resolved": "https://registry.npmjs.org/@babel/helper-create-regexp-features-plugin/-/helper-create-regexp-features-plugin-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:197 => "resolved": "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:207 => "resolved": "https://registry.npmjs.org/@babel/helper-define-polyfill-provider/-/helper-define-polyfill-provider-0.6.5.tgz",
+- C:\deploy\adminpanel\package-lock.json:224 => "resolved": "https://registry.npmjs.org/@babel/helper-globals/-/helper-globals-7.28.0.tgz",
+- C:\deploy\adminpanel\package-lock.json:234 => "resolved": "https://registry.npmjs.org/@babel/helper-member-expression-to-functions/-/helper-member-expression-to-functions-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:248 => "resolved": "https://registry.npmjs.org/@babel/helper-module-imports/-/helper-module-imports-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:262 => "resolved": "https://registry.npmjs.org/@babel/helper-module-transforms/-/helper-module-transforms-7.28.3.tgz",
+- C:\deploy\adminpanel\package-lock.json:280 => "resolved": "https://registry.npmjs.org/@babel/helper-optimise-call-expression/-/helper-optimise-call-expression-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:293 => "resolved": "https://registry.npmjs.org/@babel/helper-plugin-utils/-/helper-plugin-utils-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:303 => "resolved": "https://registry.npmjs.org/@babel/helper-remap-async-to-generator/-/helper-remap-async-to-generator-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:321 => "resolved": "https://registry.npmjs.org/@babel/helper-replace-supers/-/helper-replace-supers-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:339 => "resolved": "https://registry.npmjs.org/@babel/helper-skip-transparent-expression-wrappers/-/helper-skip-transparent-expression-wrappers-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:353 => "resolved": "https://registry.npmjs.org/@babel/helper-string-parser/-/helper-string-parser-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:363 => "resolved": "https://registry.npmjs.org/@babel/helper-validator-identifier/-/helper-validator-identifier-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:373 => "resolved": "https://registry.npmjs.org/@babel/helper-validator-option/-/helper-validator-option-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:383 => "resolved": "https://registry.npmjs.org/@babel/helper-wrap-function/-/helper-wrap-function-7.28.3.tgz",
+- C:\deploy\adminpanel\package-lock.json:398 => "resolved": "https://registry.npmjs.org/@babel/helpers/-/helpers-7.28.4.tgz",
+- C:\deploy\adminpanel\package-lock.json:412 => "resolved": "https://registry.npmjs.org/@babel/parser/-/parser-7.28.4.tgz",
+- C:\deploy\adminpanel\package-lock.json:428 => "resolved": "https://registry.npmjs.org/@babel/plugin-bugfix-firefox-class-in-computed-class-key/-/plugin-bugfix-firefox-class-in-computed-class-key-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:445 => "resolved": "https://registry.npmjs.org/@babel/plugin-bugfix-safari-class-field-initializer-scope/-/plugin-bugfix-safari-class-field-initializer-scope-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:461 => "resolved": "https://registry.npmjs.org/@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression/-/plugin-bugfix-safari-id-destructuring-collision-in-function-expression-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:477 => "resolved": "https://registry.npmjs.org/@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining/-/plugin-bugfix-v8-spread-parameters-in-optional-chaining-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:495 => "resolved": "https://registry.npmjs.org/@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly/-/plugin-bugfix-v8-static-class-fields-redefine-readonly-7.28.3.tgz",
+- C:\deploy\adminpanel\package-lock.json:512 => "resolved": "https://registry.npmjs.org/@babel/plugin-proposal-object-rest-spread/-/plugin-proposal-object-rest-spread-7.20.7.tgz",
+- C:\deploy\adminpanel\package-lock.json:533 => "resolved": "https://registry.npmjs.org/@babel/plugin-proposal-private-property-in-object/-/plugin-proposal-private-property-in-object-7.21.0-placeholder-for-preset-env.2.tgz",
+- C:\deploy\adminpanel\package-lock.json:546 => "resolved": "https://registry.npmjs.org/@babel/plugin-syntax-dynamic-import/-/plugin-syntax-dynamic-import-7.8.3.tgz",
+- C:\deploy\adminpanel\package-lock.json:559 => "resolved": "https://registry.npmjs.org/@babel/plugin-syntax-import-assertions/-/plugin-syntax-import-assertions-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:575 => "resolved": "https://registry.npmjs.org/@babel/plugin-syntax-import-attributes/-/plugin-syntax-import-attributes-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:591 => "resolved": "https://registry.npmjs.org/@babel/plugin-syntax-object-rest-spread/-/plugin-syntax-object-rest-spread-7.8.3.tgz",
+- C:\deploy\adminpanel\package-lock.json:604 => "resolved": "https://registry.npmjs.org/@babel/plugin-syntax-unicode-sets-regex/-/plugin-syntax-unicode-sets-regex-7.18.6.tgz",
+- C:\deploy\adminpanel\package-lock.json:621 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-arrow-functions/-/plugin-transform-arrow-functions-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:637 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-async-generator-functions/-/plugin-transform-async-generator-functions-7.28.0.tgz",
+- C:\deploy\adminpanel\package-lock.json:655 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-async-to-generator/-/plugin-transform-async-to-generator-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:673 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-block-scoped-functions/-/plugin-transform-block-scoped-functions-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:689 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-block-scoping/-/plugin-transform-block-scoping-7.28.4.tgz",
+- C:\deploy\adminpanel\package-lock.json:705 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-class-properties/-/plugin-transform-class-properties-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:722 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-class-static-block/-/plugin-transform-class-static-block-7.28.3.tgz",
+- C:\deploy\adminpanel\package-lock.json:739 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-classes/-/plugin-transform-classes-7.28.4.tgz",
+- C:\deploy\adminpanel\package-lock.json:760 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-computed-properties/-/plugin-transform-computed-properties-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:777 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-destructuring/-/plugin-transform-destructuring-7.28.0.tgz",
+- C:\deploy\adminpanel\package-lock.json:794 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-dotall-regex/-/plugin-transform-dotall-regex-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:811 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-duplicate-keys/-/plugin-transform-duplicate-keys-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:827 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-duplicate-named-capturing-groups-regex/-/plugin-transform-duplicate-named-capturing-groups-regex-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:844 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-dynamic-import/-/plugin-transform-dynamic-import-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:860 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-explicit-resource-management/-/plugin-transform-explicit-resource-management-7.28.0.tgz",
+- C:\deploy\adminpanel\package-lock.json:877 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-exponentiation-operator/-/plugin-transform-exponentiation-operator-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:893 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-export-namespace-from/-/plugin-transform-export-namespace-from-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:909 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-for-of/-/plugin-transform-for-of-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:926 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-function-name/-/plugin-transform-function-name-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:944 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-json-strings/-/plugin-transform-json-strings-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:960 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-literals/-/plugin-transform-literals-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:976 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-logical-assignment-operators/-/plugin-transform-logical-assignment-operators-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:992 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-member-expression-literals/-/plugin-transform-member-expression-literals-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1008 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-modules-amd/-/plugin-transform-modules-amd-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1025 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-modules-commonjs/-/plugin-transform-modules-commonjs-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1042 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-modules-systemjs/-/plugin-transform-modules-systemjs-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1061 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-modules-umd/-/plugin-transform-modules-umd-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1078 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-named-capturing-groups-regex/-/plugin-transform-named-capturing-groups-regex-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1095 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-new-target/-/plugin-transform-new-target-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1111 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-nullish-coalescing-operator/-/plugin-transform-nullish-coalescing-operator-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1127 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-numeric-separator/-/plugin-transform-numeric-separator-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1143 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-object-rest-spread/-/plugin-transform-object-rest-spread-7.28.4.tgz",
+- C:\deploy\adminpanel\package-lock.json:1163 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-object-super/-/plugin-transform-object-super-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1180 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-optional-catch-binding/-/plugin-transform-optional-catch-binding-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1196 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-optional-chaining/-/plugin-transform-optional-chaining-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1213 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-parameters/-/plugin-transform-parameters-7.27.7.tgz",
+- C:\deploy\adminpanel\package-lock.json:1229 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-private-methods/-/plugin-transform-private-methods-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1246 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-private-property-in-object/-/plugin-transform-private-property-in-object-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1264 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-property-literals/-/plugin-transform-property-literals-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1280 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-regenerator/-/plugin-transform-regenerator-7.28.4.tgz",
+- C:\deploy\adminpanel\package-lock.json:1296 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-regexp-modifiers/-/plugin-transform-regexp-modifiers-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1313 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-reserved-words/-/plugin-transform-reserved-words-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1329 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.28.3.tgz",
+- C:\deploy\adminpanel\package-lock.json:1350 => "resolved": "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1360 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-shorthand-properties/-/plugin-transform-shorthand-properties-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1376 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-spread/-/plugin-transform-spread-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1393 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-sticky-regex/-/plugin-transform-sticky-regex-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1409 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-template-literals/-/plugin-transform-template-literals-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1425 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-typeof-symbol/-/plugin-transform-typeof-symbol-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1441 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-unicode-escapes/-/plugin-transform-unicode-escapes-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1457 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-unicode-property-regex/-/plugin-transform-unicode-property-regex-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1474 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-unicode-regex/-/plugin-transform-unicode-regex-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1491 => "resolved": "https://registry.npmjs.org/@babel/plugin-transform-unicode-sets-regex/-/plugin-transform-unicode-sets-regex-7.27.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1508 => "resolved": "https://registry.npmjs.org/@babel/preset-env/-/preset-env-7.28.3.tgz",
+- C:\deploy\adminpanel\package-lock.json:1593 => "resolved": "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz",
+- C:\deploy\adminpanel\package-lock.json:1603 => "resolved": "https://registry.npmjs.org/@babel/preset-modules/-/preset-modules-0.1.6-no-external-plugins.tgz",
+- C:\deploy\adminpanel\package-lock.json:1618 => "resolved": "https://registry.npmjs.org/@babel/runtime/-/runtime-7.28.4.tgz",
+- C:\deploy\adminpanel\package-lock.json:1628 => "resolved": "https://registry.npmjs.org/@babel/template/-/template-7.27.2.tgz",
+- C:\deploy\adminpanel\package-lock.json:1643 => "resolved": "https://registry.npmjs.org/@babel/traverse/-/traverse-7.28.4.tgz",
+- C:\deploy\adminpanel\package-lock.json:1662 => "resolved": "https://registry.npmjs.org/@babel/types/-/types-7.28.4.tgz",
+- C:\deploy\adminpanel\package-lock.json:1676 => "resolved": "https://registry.npmjs.org/@colors/colors/-/colors-1.5.0.tgz",
+- C:\deploy\adminpanel\package-lock.json:1687 => "resolved": "https://registry.npmjs.org/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz",
+- C:\deploy\adminpanel\package-lock.json:1697 => "resolved": "https://registry.npmjs.org/@fastify/busboy/-/busboy-3.2.0.tgz",
+- C:\deploy\adminpanel\package-lock.json:1703 => "resolved": "https://registry.npmjs.org/@firebase/app-check-interop-types/-/app-check-interop-types-0.3.2.tgz",
+- C:\deploy\adminpanel\package-lock.json:1709 => "resolved": "https://registry.npmjs.org/@firebase/app-types/-/app-types-0.9.2.tgz",
+- C:\deploy\adminpanel\package-lock.json:1715 => "resolved": "https://registry.npmjs.org/@firebase/auth-interop-types/-/auth-interop-types-0.2.3.tgz",
+- C:\deploy\adminpanel\package-lock.json:1721 => "resolved": "https://registry.npmjs.org/@firebase/component/-/component-0.6.9.tgz",
+- C:\deploy\adminpanel\package-lock.json:1731 => "resolved": "https://registry.npmjs.org/@firebase/database/-/database-1.0.8.tgz",
+- C:\deploy\adminpanel\package-lock.json:1746 => "resolved": "https://registry.npmjs.org/@firebase/database-compat/-/database-compat-1.0.8.tgz",
+- C:\deploy\adminpanel\package-lock.json:1760 => "resolved": "https://registry.npmjs.org/@firebase/database-types/-/database-types-1.0.5.tgz",
+- C:\deploy\adminpanel\package-lock.json:1770 => "resolved": "https://registry.npmjs.org/@firebase/logger/-/logger-0.4.2.tgz",
+- C:\deploy\adminpanel\package-lock.json:1779 => "resolved": "https://registry.npmjs.org/@firebase/util/-/util-1.10.0.tgz",
+- C:\deploy\adminpanel\package-lock.json:1788 => "resolved": "https://registry.npmjs.org/@google-cloud/firestore/-/firestore-7.11.3.tgz",
+- C:\deploy\adminpanel\package-lock.json:1805 => "resolved": "https://registry.npmjs.org/@google-cloud/paginator/-/paginator-5.0.2.tgz",
+- C:\deploy\adminpanel\package-lock.json:1819 => "resolved": "https://registry.npmjs.org/@google-cloud/projectify/-/projectify-4.0.0.tgz",
+- C:\deploy\adminpanel\package-lock.json:1829 => "resolved": "https://registry.npmjs.org/@google-cloud/promisify/-/promisify-4.0.0.tgz",
+- C:\deploy\adminpanel\package-lock.json:1839 => "resolved": "https://registry.npmjs.org/@google-cloud/storage/-/storage-7.17.0.tgz",
+
+
+## 9. Kesimpulan awal
+Jika nilai URL nyata tidak ditemukan di file lokal, maka nilai tersebut kemungkinan hanya tersimpan di Firestore document settings/Version.
+
+## 10. Rekomendasi
+1. Jika URL ditemukan, cocokkan domain dengan repo/backend lokal atau GitHub.
+2. Jika URL tidak ditemukan, baca manual Firestore settings/Version dari Firebase Console.
+3. Setelah domain diketahui, cari repo/deploy target yang sesuai.
+4. Baru audit receiver /api/delete-user pada repo tersebut.

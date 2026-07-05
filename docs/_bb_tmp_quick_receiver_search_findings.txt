@@ -1,0 +1,2 @@
+﻿[INFO] Files scanned: 772
+[OK] Report: C:\deploy\adminpanel\docs\DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md

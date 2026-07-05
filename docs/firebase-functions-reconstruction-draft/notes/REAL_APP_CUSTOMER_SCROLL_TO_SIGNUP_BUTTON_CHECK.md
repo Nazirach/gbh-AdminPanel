@@ -1,0 +1,121 @@
+# CUSTOMER SCROLL TO SIGNUP BUTTON CHECK
+
+Generated: 06/28/2026 19:43:43
+
+Mode: navigation/check only. No patch. No deploy. No Firebase manual write. No account creation.
+
+## Confirmed Form State
+
+- First Name: Audit
+- Last Name: Customer
+- Email: auditc20260628@gmail.com
+- Mobile: 8000000001
+- Password: filled
+- Confirm Password: filled
+- Referral Code: empty
+
+## Action
+
+- Hide keyboard
+- Scroll down to expose Sign up button
+- Capture XML and screenshot
+
+## Rule
+
+- Do not tap Sign up yet.
+- Only find button position and verify screen.
+
+## Status
+
+STATUS: CUSTOMER_SCROLL_TO_SIGNUP_BUTTON_STARTED
+
+## Screen Check After Action
+
+- XML dump: C:\deploy\adminpanel\docs\firebase-functions-reconstruction-draft\notes\customer_scroll_to_signup_button_dump.xml
+- Screenshot: C:\deploy\adminpanel\docs\firebase-functions-reconstruction-draft\notes\customer_scroll_to_signup_button.png
+
+```text
+
+C:\deploy\adminpanel\docs\firebase-functions-reconstruction-draft\notes\customer_scroll_to_signup_button_dump.xml:1:<?xml 
+version='1.0' encoding='UTF-8' standalone='yes' ?><hierarchy rotation="0"><node index="0" text="" resource-id="" 
+class="android.widget.FrameLayout" package="com.erbete.customer" content-desc="" checkable="false" checked="false" 
+clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" 
+selected="false" bounds="[0,0][1080,2436]"><node index="0" text="" resource-id="" class="android.widget.LinearLayout" 
+package="com.erbete.customer" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" 
+focused="false" scrollable="false" long-clickable="false" password="false" selected="false" bounds="[0,0][1080,2436]"><node 
+index="0" text="" resource-id="android:id/content" class="android.widget.FrameLayout" package="com.erbete.customer" content-desc="" 
+checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" 
+long-clickable="false" password="false" selected="false" bounds="[0,0][1080,2436]"><node index="0" text="" resource-id="" 
+class="android.widget.FrameLayout" package="com.erbete.customer" content-desc="" checkable="false" checked="false" 
+clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" 
+selected="false" bounds="[0,0][1080,2436]"><node index="0" text="" resource-id="" class="android.widget.FrameLayout" 
+package="com.erbete.customer" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="true" 
+focused="true" scrollable="false" long-clickable="false" password="false" selected="false" bounds="[0,0][1080,2436]"><node 
+index="0" text="" resource-id="" class="android.view.View" package="com.erbete.customer" content-desc="" checkable="false" 
+checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" 
+password="false" selected="false" bounds="[0,0][1080,2436]"><node index="0" text="" resource-id="" class="android.view.View" 
+package="com.erbete.customer" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" 
+focused="false" scrollable="false" long-clickable="false" password="false" selected="false" bounds="[0,0][1080,2436]"><node 
+index="0" text="" resource-id="" class="android.view.View" package="com.erbete.customer" content-desc="" checkable="false" 
+checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" 
+password="false" selected="false" bounds="[0,0][1080,2436]"><node index="0" text="" resource-id="" class="android.view.View" 
+package="com.erbete.customer" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" 
+focused="false" scrollable="false" long-clickable="false" password="false" selected="false" bounds="[0,0][1080,2436]"><node 
+index="0" text="" resource-id="" class="android.view.View" package="com.erbete.customer" content-desc="" checkable="false" 
+checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" 
+password="false" selected="false" bounds="[0,0][1080,276]"><node index="0" text="" resource-id="" class="android.widget.Button" 
+package="com.erbete.customer" content-desc="Skip" checkable="false" checked="false" clickable="true" enabled="true" 
+focusable="true" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" 
+bounds="[882,132][1080,252]" /></node><node index="1" text="" resource-id="" class="android.widget.ScrollView" 
+package="com.erbete.customer" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="true" 
+focused="false" scrollable="true" long-clickable="false" password="false" selected="false" bounds="[45,306][1035,1549]"><node 
+NAF="true" index="0" text="" resource-id="" class="android.widget.ImageView" package="com.erbete.customer" content-desc="" 
+checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" scrollable="false" 
+long-clickable="false" password="false" selected="false" bounds="[933,107][999,173]" /><node index="1" text="" resource-id="" 
+class="android.view.View" package="com.erbete.customer" content-desc="Confirm Password*" checkable="false" checked="false" 
+clickable="false" enabled="true" focusable="true" focused="false" scrollable="false" long-clickable="false" password="false" 
+selected="false" bounds="[45,306][413,317]" /><node index="2" text="●●●●●●●●●●●●●" resource-id="" class="android.widget.EditText" 
+package="com.erbete.customer" content-desc="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" 
+focused="true" scrollable="false" long-clickable="false" password="true" selected="false" bounds="[45,332][1035,476]" /><node 
+NAF="true" index="3" text="" resource-id="" class="android.widget.ImageView" package="com.erbete.customer" content-desc="" 
+checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" scrollable="false" 
+long-clickable="false" password="false" selected="false" bounds="[933,371][999,437]" /><node index="4" text="" resource-id="" 
+class="android.view.View" package="com.erbete.customer" content-desc="Referral Code" checkable="false" checked="false" 
+clickable="false" enabled="true" focusable="true" focused="false" scrollable="false" long-clickable="false" password="false" 
+selected="false" bounds="[45,521][307,581]" /><node NAF="true" index="5" text="" resource-id="" class="android.widget.EditText" 
+package="com.erbete.customer" content-desc="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" 
+focused="false" scrollable="false" long-clickable="false" password="false" selected="false" bounds="[45,596][1035,740]" /><node 
+index="6" text="" resource-id="" class="android.view.View" package="com.erbete.customer" content-desc="Sign up" checkable="false" 
+checked="false" clickable="true" enabled="true" focusable="true" focused="false" scrollable="false" long-clickable="false" 
+password="false" selected="false" bounds="[45,860][1035,1006]" /><node index="7" text="" resource-id="" class="android.view.View" 
+package="com.erbete.customer" content-desc="or continue with" checkable="false" checked="false" clickable="false" enabled="true" 
+focusable="true" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" 
+bounds="[389,1081][691,1141]" /><node index="8" text="" resource-id="" class="android.view.View" package="com.erbete.customer" 
+content-desc="Mobile number" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" 
+scrollable="false" long-clickable="false" password="false" selected="false" bounds="[45,1216][1035,1363]" /><node index="9" text="" 
+resource-id="" class="android.view.View" package="com.erbete.customer" content-desc="" checkable="false" checked="false" 
+clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" 
+selected="false" bounds="[234,1438][846,1498]"><node index="0" text="" resource-id="" class="android.view.View" 
+package="com.erbete.customer" content-desc="Already have an account?" checkable="false" checked="false" clickable="false" 
+enabled="true" focusable="true" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" 
+bounds="[222,1429][744,1507]" /><node index="1" text="" resource-id="" class="android.view.View" package="com.erbete.customer" 
+content-desc="Log in" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" 
+scrollable="false" long-clickable="false" password="false" selected="false" bounds="[717,1429][861,1507]" 
+/></node></node></node></node></node></node></node></node></node></node><node index="1" text="" 
+resource-id="android:id/navigationBarBackground" class="android.view.View" package="com.erbete.customer" content-desc="" 
+checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" 
+long-clickable="false" password="false" selected="false" bounds="[0,2316][1080,2436]" /></node></hierarchy>
+
+
+
+```
+
+## Expected Result
+
+- Sign up button should be visible or closer to visible.
+- No data should be submitted.
+- If Sign up button is visible, next step is submit with immediate post-submit screen check.
+
+## Final Status
+
+STATUS: CUSTOMER_SIGNUP_BUTTON_POSITION_SCREEN_CHECKED

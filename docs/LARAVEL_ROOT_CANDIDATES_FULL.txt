@@ -1,0 +1,4 @@
+﻿=== LARAVEL ROOT CANDIDATES FULL ===
+C:\deploy\_baseline_extract_panels_recover\Landing Page - Admin Panel - Store Panel - Website Panel\Admin Panel
+C:\deploy\_baseline_extract_panels_recover\Landing Page - Admin Panel - Store Panel - Website Panel\Store Panel
+C:\deploy\_baseline_extract_panels_recover\Landing Page - Admin Panel - Store Panel - Website Panel\Website Panel

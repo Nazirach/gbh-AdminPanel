@@ -1,0 +1,3963 @@
+﻿=== LOCAL GIT REPOSITORY DISCOVERY REPORT ===
+Generated: 06/28/2026 04:11:38
+
+=== ROOT: C:\deploy ===
+
+REPO: C:\deploy\adminpanel
+BRANCH:
+main
+REMOTE:
+origin	https://github.com/Nazirach/gbh-AdminPanel.git (fetch)
+origin	https://github.com/Nazirach/gbh-AdminPanel.git (push)
+STATUS SHORT:
+ M app/Providers/AppServiceProvider.php
+ M resources/views/layouts/app.blade.php
+ M resources/views/reports/tax-reports.blade.php
+?? TODO.md
+?? docs/ADMIN_DELETE_USER_CALLER_AUDIT_PROGRESS_REPORT.md
+?? docs/ADMIN_STORE_WEBSITE_DELETE_USER_DB_SYNC_FINAL_REPORT.md
+?? docs/ADMIN_STORE_WEBSITE_SAFE_DELETE_USER_CONNECTION_TEST_FINAL_REPORT.md
+?? docs/DELETE_USER_ADMIN_STORE_WEBSITE_CONNECTION_MAP_FINAL_REPORT.md
+?? docs/DELETE_USER_CLOUD_FUNCTION_HITS.csv
+?? docs/DELETE_USER_FLOW_CROSS_MODULE_AUDIT_REPORT.md
+?? docs/DELETE_USER_FLOW_EXCERPTS.txt
+?? docs/DELETE_USER_RECEIVER_QUICK_SEARCH_HITS.csv
+?? docs/DELETE_USER_RECEIVER_QUICK_SEARCH_IMPORTANT_HITS.csv
+?? docs/DELETE_USER_RECEIVER_QUICK_SEARCH_REPORT.md
+?? docs/DELETE_USER_SECURITY_EXECUTIVE_SUMMARY.md
+?? docs/DELETE_USER_SECURITY_PATCH_PLAN_FINAL.md
+?? docs/DELETE_USER_URL_RECEIVER_MATCHING_REPORT.md
+?? docs/ERBETE_APP_PACKAGE_DISCOVERY_REPORT.txt
+?? docs/FIRESTORE_SETTINGS_VERSION_URL_CHECKLIST.md
+?? docs/FIRESTORE_USAGE_ADMIN_RAW.txt
+?? docs/FIRESTORE_USAGE_STORE_RAW.txt
+?? docs/GIT_BASELINE_AUDIT_RAW.txt
+?? docs/GLOBAL_BLADE_WEBSITE_SETTINGS_EXCERPTS.txt
+?? docs/GLOBAL_BLADE_WEBSITE_STORE_SETTINGS_DETAIL_REPORT.md
+?? docs/LARAVEL_ROOT_CANDIDATES_FULL.txt
+?? docs/LOCAL_GIT_REPOSITORY_DISCOVERY_REPORT.txt
+?? docs/MODULE_SELECTOR_DARK_THEME_FIX_REPORT.md
+?? docs/MODULE_SELECTOR_ICON_FINAL_VERIFY_REPORT.md
+?? docs/MODULE_SELECTOR_ICON_VISIBILITY_FIX_REPORT.md
+?? docs/MODULE_SELECTOR_IMAGE_FALLBACK_FIX_REPORT.md
+?? docs/MODULE_SELECTOR_IMAGE_FALLBACK_VERIFY_REPORT.md
+?? docs/MODULE_SELECTOR_UI_VERIFY_REPORT.md
+?? docs/POWER_SHELL_DELETE_USER_ENDPOINT_DISCOVERY.ps1
+?? docs/RECOVERY_EXTRACT_STATUS_REPORT.txt
+?? docs/STORE_PANEL_API_ROUTE_LOAD_REPORT.md
+?? docs/STORE_PANEL_API_ROUTE_LOAD_REPORT_CORRECT_TARGET.md
+?? docs/STORE_PANEL_DELETE_USER_ROUTE_VERIFIED_REPORT.md
+?? docs/STORE_PANEL_FIRESTORE_BOOT_GUARD_CORRECT_TARGET_REPORT.md
+?? docs/STORE_PANEL_FIRESTORE_BOOT_GUARD_REPORT.md
+?? docs/STORE_WEBSITE_PANEL_AUDIT_START.md
+?? docs/STORE_WEBSITE_PANEL_BUILD_READINESS_BASELINE_SAFE.ps1
+?? docs/STORE_WEBSITE_PANEL_BUILD_READINESS_FINAL_REPORT.md
+?? docs/STORE_WEBSITE_PANEL_BUILD_READINESS_REPORT.md
+?? docs/STORE_WEBSITE_PANEL_GIT_MAPPING_REPORT.md
+?? docs/STORE_WEBSITE_RUNTIME_FIREBASE_GUARD_AND_LOGIN_INIT_REPORT.md
+?? docs/TAX_REPORT_DEBUG_FIX_REPORT.md
+?? docs/TAX_REPORT_TABLE_AND_DATERANGEPICKER_FIX_REPORT.md
+?? docs/TAX_REPORT_TABLE_HEADER_CONTRAST_REPORT.md
+?? docs/TAX_REPORT_TABLE_HEADER_FINAL_VISUAL_FIX_REPORT.md
+?? docs/TAX_REPORT_UI_DATE_INPUT_VERIFY_REPORT.md
+?? docs/URL_VALUE_DISCOVERY_REPORT.md
+?? docs/URL_VALUE_SEARCH_HITS.csv
+?? docs/WEBSITE_PANEL_DELETE_USER_ENDPOINT_AUDIT_REPORT.md
+?? docs/WEBSITE_PANEL_DELETE_USER_ROUTE_VERIFIED_REPORT.md
+?? docs/WEBSITE_PANEL_FIREBASE_AND_PLACEHOLDER_IMAGE_RUNTIME_PATCH_REPORT.md
+?? docs/WEBSITE_PANEL_LOCAL_FOLDER_DISCOVERY_ENDPOINT_HITS.csv
+?? docs/WEBSITE_PANEL_LOCAL_FOLDER_DISCOVERY_REPORT.md
+?? docs/WEBSITE_PANEL_PUBLIC_VENDOR_ASSET_RESTORE_REPORT.md
+?? docs/WEBSITE_SETTINGS_FIELD_HITS.csv
+?? docs/WEBSITE_SETTINGS_FIELD_MAPPING_REPORT.md
+?? docs/WEBSITE_SETTINGS_GIT_STATUS.txt
+?? docs/WEBSITE_STORE_URL_USAGE_HITS.csv
+?? docs/_bb_tmp_candidates_full.ps1
+?? docs/_bb_tmp_delete_user_flow_excerpt_audit.ps1
+?? docs/_bb_tmp_final_copy_confirmed_roots.ps1
+?? docs/_bb_tmp_find_url_values.ps1
+?? docs/_bb_tmp_global_blade_excerpt_audit.ps1
+?? docs/_bb_tmp_pwsh_wrapper.ps1
+?? docs/_bb_tmp_quick_receiver_search.ps1
+?? docs/_bb_tmp_quick_receiver_search_exec.ps1
+?? docs/_bb_tmp_quick_receiver_search_findings.txt
+?? docs/_bb_tmp_recover_extract_store_website.ps1
+?? docs/_bb_tmp_recovery_extract_status.ps1
+?? docs/_bb_tmp_robocopy_final_sync.ps1
+?? docs/_bb_tmp_website_settings_audit_final.ps1
+?? docs/_bb_tmp_website_settings_field_hits.ps1
+?? docs/_bb_tmp_website_store_url_usage_hits.ps1
+LAST COMMITS:
+0832f52 Support legacy tax scope in tax report
+d0cc874 Fix tax report commission type normalization
+52846bf Revert "Update TODO status"
+d95e4b0 Update TODO status
+5e6a08a Guard tax report date range picker
+
+REPO: C:\deploy\adminpanel\vendor\braintree\braintree_php
+BRANCH:
+REMOTE:
+composer	https://github.com/braintree/braintree_php.git (fetch)
+composer	https://github.com/braintree/braintree_php.git (push)
+origin	https://github.com/braintree/braintree_php.git (fetch)
+origin	git@github.com:braintree/braintree_php.git (push)
+STATUS SHORT:
+LAST COMMITS:
+8b5b966 6.24.0
+f50b8b9 6.23.0
+418ff0a 6.22.0
+d94339d 6.21.0
+f46d6d5 6.20.0
+
+REPO: C:\deploy\adminpanel\vendor\brick\math
+BRANCH:
+REMOTE:
+composer	https://github.com/brick/math.git (fetch)
+composer	https://github.com/brick/math.git (push)
+origin	https://github.com/brick/math.git (fetch)
+origin	git@github.com:brick/math.git (push)
+STATUS SHORT:
+LAST COMMITS:
+866551d Prepare for release
+1c2ac49 Implement BigDecimal::getPrecision()
+901eddb Prepare for release
+44b438f Fix ImplicitToStringCast
+6e9ffc2 Add #[Override] attributes
+
+REPO: C:\deploy\adminpanel\vendor\carbonphp\carbon-doctrine-types
+BRANCH:
+REMOTE:
+composer	https://github.com/CarbonPHP/carbon-doctrine-types.git (fetch)
+composer	https://github.com/CarbonPHP/carbon-doctrine-types.git (push)
+origin	https://github.com/CarbonPHP/carbon-doctrine-types.git (fetch)
+origin	git@github.com:CarbonPHP/carbon-doctrine-types.git (push)
+STATUS SHORT:
+LAST COMMITS:
+99f76ff Cap precision depending on maximum per platform
+67a7797 Merge pull request #5 from CarbonPHP/fix/unsupport-dbal-4
+bf449f8 Unsupport doctrine/dbal >= 4
+c4626dd Merge pull request #4 from CarbonPHP/feature/dbal-3.7
+a6eac2f Drop secondPrecision work-around
+
+REPO: C:\deploy\adminpanel\vendor\dflydev\dot-access-data
+BRANCH:
+REMOTE:
+composer	https://github.com/dflydev/dflydev-dot-access-data.git (fetch)
+composer	https://github.com/dflydev/dflydev-dot-access-data.git (push)
+origin	https://github.com/dflydev/dflydev-dot-access-data.git (fetch)
+origin	git@github.com:dflydev/dflydev-dot-access-data.git (push)
+STATUS SHORT:
+LAST COMMITS:
+a23a2bf Update CHANGELOG.md
+22dd1f7 Merge pull request #49 from dflydev/colinodell-patch-1
+b48c86d Test on newer PHP versions
+6488cfc Merge pull request #47 from smnandre/patch-1
+bba15f3 [Fix] PHP 8.4 compatibility
+
+REPO: C:\deploy\adminpanel\vendor\doctrine\inflector
+BRANCH:
+REMOTE:
+composer	https://github.com/doctrine/inflector.git (fetch)
+composer	https://github.com/doctrine/inflector.git (push)
+origin	https://github.com/doctrine/inflector.git (fetch)
+origin	git@github.com:doctrine/inflector.git (push)
+STATUS SHORT:
+LAST COMMITS:
+5817d06 Merge pull request #243 from discern/2.0.x
+226fc22 Add one more regatta assertion
+1ad66b2 Singularize regattas to regatta. Test a few similar words.
+2930cd5 Merge pull request #241 from iurciuc/2.0.x
+c2b0320 Correct pluralization of axis
+
+REPO: C:\deploy\adminpanel\vendor\doctrine\instantiator
+BRANCH:
+REMOTE:
+composer	https://github.com/doctrine/instantiator.git (fetch)
+composer	https://github.com/doctrine/instantiator.git (push)
+origin	https://github.com/doctrine/instantiator.git (fetch)
+origin	git@github.com:doctrine/instantiator.git (push)
+STATUS SHORT:
+LAST COMMITS:
+c622228 Migrate codebase to PHP 8.1 (#94)
+0a0fa97 Deprecate internal constants (#96)
+b289625 Simplify composer command line (#95)
+6f1e0c4 Bump dev tools and CI workflows (#93)
+6e6ce1e Fix tests on PHP 8.2 (#91)
+
+REPO: C:\deploy\adminpanel\vendor\doctrine\lexer
+BRANCH:
+REMOTE:
+composer	https://github.com/doctrine/lexer.git (fetch)
+composer	https://github.com/doctrine/lexer.git (push)
+origin	https://github.com/doctrine/lexer.git (fetch)
+origin	git@github.com:doctrine/lexer.git (push)
+STATUS SHORT:
+LAST COMMITS:
+31ad66a PHPUnit 10 (#117)
+9a3516d Merge branch '2.1.x' into 3.0.x
+861c870 Bump CI workflows (#113)
+2bf8034 Make data providers static (#114)
+b1031f0 Update branch metadata (#112)
+
+REPO: C:\deploy\adminpanel\vendor\dragonmantank\cron-expression
+BRANCH:
+REMOTE:
+composer	https://github.com/dragonmantank/cron-expression.git (fetch)
+composer	https://github.com/dragonmantank/cron-expression.git (push)
+origin	https://github.com/dragonmantank/cron-expression.git (fetch)
+origin	git@github.com:dragonmantank/cron-expression.git (push)
+STATUS SHORT:
+LAST COMMITS:
+8c784d0 Docs: new integrations (#183)
+9632571 Docs: full syntax overview (#184)
+ac0925a Remove phpstan/phpstan-webmozart-assert dependency (#187)
+ab30d1d Add PHP 8.4 Support (#190)
+e418256 Add branch-alias to composer.json (#182)
+
+REPO: C:\deploy\adminpanel\vendor\egulias\email-validator
+BRANCH:
+REMOTE:
+composer	https://github.com/egulias/EmailValidator.git (fetch)
+composer	https://github.com/egulias/EmailValidator.git (push)
+origin	https://github.com/egulias/EmailValidator.git (fetch)
+origin	git@github.com:egulias/EmailValidator.git (push)
+STATUS SHORT:
+LAST COMMITS:
+d42c873 Fix issue that local part parser uses remaining code from lexer (#409)
+5153460 Different strategy
+4fc3f5c Different strategy
+7dc3b8d Coverage path (#401)
+3bd9c8c Update NoDNSRecord.php (#395)
+
+REPO: C:\deploy\adminpanel\vendor\fakerphp\faker
+BRANCH:
+REMOTE:
+composer	https://github.com/FakerPHP/Faker.git (fetch)
+composer	https://github.com/FakerPHP/Faker.git (push)
+origin	https://github.com/FakerPHP/Faker.git (fetch)
+origin	git@github.com:FakerPHP/Faker.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e0ee18eb Fix internal deprecations in Faker\Guesser\Name (#912)
+faeb8b30 remove gmail.com.au from free email domains and updated CHANGELOG (#911)
+8d75fae1 Changelog 1.24 (#908)
+a136842a PHP 8.4 Support (#904)
+5c89067b Fix mobile phone number pattern for France (#859)
+
+REPO: C:\deploy\adminpanel\vendor\filp\whoops
+BRANCH:
+REMOTE:
+composer	https://github.com/filp/whoops.git (fetch)
+composer	https://github.com/filp/whoops.git (push)
+origin	https://github.com/filp/whoops.git (fetch)
+origin	git@github.com:filp/whoops.git (push)
+STATUS SHORT:
+LAST COMMITS:
+a7de6c3 changelog 2.18.0
+8f1557d Merge pull request #768 from erikn69/patch-3
+ef51080 Open editor from code block rows numbers
+075bc0c changelog: 2.17.0
+7775a3f Merge pull request #766 from tuxfamily/patch-1
+
+REPO: C:\deploy\adminpanel\vendor\firebase\php-jwt
+BRANCH:
+REMOTE:
+composer	https://github.com/firebase/php-jwt.git (fetch)
+composer	https://github.com/firebase/php-jwt.git (push)
+origin	https://github.com/firebase/php-jwt.git (fetch)
+origin	git@github.com:firebase/php-jwt.git (push)
+STATUS SHORT:
+LAST COMMITS:
+8f718f4 chore(main): release 6.11.0 (#586)
+7cb8a26 feat: support octet typed JWK (#587)
+d9a140a docs: fix example to avoid fatal error (#590)
+29fa2ce fix: refactor constructor Key to use PHP 8.0 syntax (#577)
+30c19ed chore(main): release 6.10.2 (#585)
+
+REPO: C:\deploy\adminpanel\vendor\fruitcake\php-cors
+BRANCH:
+REMOTE:
+composer	https://github.com/fruitcake/php-cors.git (fetch)
+composer	https://github.com/fruitcake/php-cors.git (push)
+origin	https://github.com/fruitcake/php-cors.git (fetch)
+origin	git@github.com:fruitcake/php-cors.git (push)
+STATUS SHORT:
+LAST COMMITS:
+3d158f3 Merge pull request #19 from laravel-labs/symfony7
+d8e621e wip
+5bc51a7 wip
+bb96f02 Merge pull request #14 from fruitcake/test-8.2
+548289b Test on 8.2
+
+REPO: C:\deploy\adminpanel\vendor\google\apiclient
+BRANCH:
+REMOTE:
+composer	https://github.com/googleapis/google-api-php-client.git (fetch)
+composer	https://github.com/googleapis/google-api-php-client.git (push)
+origin	https://github.com/googleapis/google-api-php-client.git (fetch)
+origin	git@github.com:googleapis/google-api-php-client.git (push)
+STATUS SHORT:
+LAST COMMITS:
+d8d201ba chore(main): release 2.18.2 (#2649)
+31a9861a fix: correct type for jwt constructor arg (#2648)
+8142a3e5 chore: add php 8.4 to test matrix (#2643)
+3f6cb1a9 chore(main): release 2.18.1 (#2639)
+de57db2f fix: Implicitly marking parameter  as nullable is deprecated (#2638)
+
+REPO: C:\deploy\adminpanel\vendor\google\apiclient-services
+BRANCH:
+REMOTE:
+composer	https://github.com/googleapis/google-api-php-client-services.git (fetch)
+composer	https://github.com/googleapis/google-api-php-client-services.git (push)
+origin	https://github.com/googleapis/google-api-php-client-services.git (fetch)
+origin	git@github.com:googleapis/google-api-php-client-services.git (push)
+STATUS SHORT:
+LAST COMMITS:
+ceb2e432e4 Regenerate vmwareengine client (#6266)
+e5b744c91c Regenerate securitycenter client (#6265)
+085f2a0697 Regenerate gkebackup client (#6263)
+c639883a88 Regenerate analyticshub client (#6264)
+2d8053d1af Regenerate displayvideo client (#6262)
+
+REPO: C:\deploy\adminpanel\vendor\google\auth
+BRANCH:
+REMOTE:
+composer	https://github.com/googleapis/google-auth-library-php.git (fetch)
+composer	https://github.com/googleapis/google-auth-library-php.git (push)
+origin	https://github.com/googleapis/google-auth-library-php.git (fetch)
+origin	git@github.com:googleapis/google-auth-library-php.git (push)
+STATUS SHORT:
+LAST COMMITS:
+7fafae99a chore(main): release 1.46.0 (#611)
+66db27c67 feat: add support for Impersonating ID Tokens (#580)
+c70b987a3 chore(main): release 1.45.4 (#609)
+dde95761f chore(main): release 1.45.3 (#608)
+9ca44cae7 docs: remove docs generation, update urls to new ref docs (#607)
+
+REPO: C:\deploy\adminpanel\vendor\graham-campbell\result-type
+BRANCH:
+REMOTE:
+composer	https://github.com/GrahamCampbell/Result-Type.git (fetch)
+composer	https://github.com/GrahamCampbell/Result-Type.git (push)
+origin	https://github.com/GrahamCampbell/Result-Type.git (fetch)
+origin	git@github.com:GrahamCampbell/Result-Type.git (push)
+STATUS SHORT:
+LAST COMMITS:
+3ba905c Release 1.1.3
+366f781 Merge pull request #6 from GrahamCampbell/php-84
+8b2aa24 Add support for PHP 8.4
+fbd48bc Release 1.1.2
+cdab7c9 Merge pull request #4 from GrahamCampbell/analysis-KokpQ2
+
+REPO: C:\deploy\adminpanel\vendor\guzzlehttp\guzzle
+BRANCH:
+REMOTE:
+composer	https://github.com/guzzle/guzzle.git (fetch)
+composer	https://github.com/guzzle/guzzle.git (push)
+origin	https://github.com/guzzle/guzzle.git (fetch)
+origin	git@github.com:guzzle/guzzle.git (push)
+STATUS SHORT:
+LAST COMMITS:
+7b2f29fe Release 7.9.3
+8f68d9f2 Improve compatibility with bad servers for boolean cookie values (#3281)
+234747f2 Remove explicit content-length header for GET requests (#3278)
+d28a0729 `testHandlesGarbageHttpServerGracefully`: Split test between PHP <= 8.1 and > 8.1 (#3280)
+41f5ce75 CS fixes
+
+REPO: C:\deploy\adminpanel\vendor\guzzlehttp\promises
+BRANCH:
+REMOTE:
+composer	https://github.com/guzzle/promises.git (fetch)
+composer	https://github.com/guzzle/promises.git (push)
+origin	https://github.com/guzzle/promises.git (fetch)
+origin	git@github.com:guzzle/promises.git (push)
+STATUS SHORT:
+LAST COMMITS:
+7c69f28 Release 2.2.0
+a9f2daf Revert "Allow an empty EachPromise to be resolved by running the queue (#178)" (#180)
+2bbd393 Release 2.1.0
+be70a65 Allow an empty EachPromise to be resolved by running the queue (#178)
+90c5be4 SA upgrades
+
+REPO: C:\deploy\adminpanel\vendor\guzzlehttp\psr7
+BRANCH:
+REMOTE:
+composer	https://github.com/guzzle/psr7.git (fetch)
+composer	https://github.com/guzzle/psr7.git (push)
+origin	https://github.com/guzzle/psr7.git (fetch)
+origin	git@github.com:guzzle/psr7.git (push)
+STATUS SHORT:
+LAST COMMITS:
+c2270ca Release 2.7.1
+0cfd892 Support uppercase IPv6 addresses in URI (#620)
+a2474ad [2.7] Improve uploaded file error message (#621)
+ca06f23 SA upgrades
+a70f5c9 Release 2.7.0 (#615)
+
+REPO: C:\deploy\adminpanel\vendor\guzzlehttp\uri-template
+BRANCH:
+REMOTE:
+composer	https://github.com/guzzle/uri-template.git (fetch)
+composer	https://github.com/guzzle/uri-template.git (push)
+origin	https://github.com/guzzle/uri-template.git (fetch)
+origin	git@github.com:guzzle/uri-template.git (push)
+STATUS SHORT:
+LAST COMMITS:
+30e2865 Release 1.0.4
+69df52d Update phpstan.neon.dist
+0def803 PHP 8.4 support
+cbc8960 Fixes for PHP 8.4 deprecation (#26)
+3600fe9 Update .php-cs-fixer.dist.php
+
+REPO: C:\deploy\adminpanel\vendor\hamcrest\hamcrest-php
+BRANCH:
+REMOTE:
+composer	https://github.com/hamcrest/hamcrest-php.git (fetch)
+composer	https://github.com/hamcrest/hamcrest-php.git (push)
+origin	https://github.com/hamcrest/hamcrest-php.git (fetch)
+origin	git@github.com:hamcrest/hamcrest-php.git (push)
+STATUS SHORT:
+LAST COMMITS:
+8c3d0a3 Merge pull request #67 from GrahamCampbell/patch-1
+55b680a Updated release date
+261cae8 Release 2.0.1
+459c788 Merge pull request #65 from GrahamCampbell/patch-1
+10a627d Fixed generator on PHP 5
+
+REPO: C:\deploy\adminpanel\vendor\laravel\framework
+BRANCH:
+REMOTE:
+composer	https://github.com/laravel/framework.git (fetch)
+composer	https://github.com/laravel/framework.git (push)
+origin	https://github.com/laravel/framework.git (fetch)
+origin	git@github.com:laravel/framework.git (push)
+STATUS SHORT:
+LAST COMMITS:
+8f7f9247cb version
+a4f7a8f9b8 [10.x] Fix attribute name used on `Validator` instance within certain rule classes (#54943)
+fc47dcac92 backport emulate prepares
+dd5c90d39a Update CHANGELOG
+e714e7e0c1 Update version to v10.48.28
+
+REPO: C:\deploy\adminpanel\vendor\laravel\prompts
+BRANCH:
+REMOTE:
+composer	https://github.com/laravel/prompts.git (fetch)
+composer	https://github.com/laravel/prompts.git (push)
+origin	https://github.com/laravel/prompts.git (fetch)
+origin	git@github.com:laravel/prompts.git (push)
+STATUS SHORT:
+LAST COMMITS:
+7b4029a Fix textarea helper method signature. (#159)
+72e5035 Add transformation support (#156)
+a86e8d2 Fix code styling
+a6df46a Replace dead link in Security Policy (#157)
+7cc92f2 Update CHANGELOG
+
+REPO: C:\deploy\adminpanel\vendor\laravel\sail
+BRANCH:
+REMOTE:
+composer	https://github.com/laravel/sail.git (fetch)
+composer	https://github.com/laravel/sail.git (push)
+origin	https://github.com/laravel/sail.git (fetch)
+origin	git@github.com:laravel/sail.git (push)
+STATUS SHORT:
+LAST COMMITS:
+fe1a4ad Add `sail run` command (#770)
+a910e2d Update composer.json (#771)
+87cff7a Update CHANGELOG
+237e706 Update Ondrej PPA key (#768)
+f77164c Add Valkey support (#767)
+
+REPO: C:\deploy\adminpanel\vendor\laravel\sanctum
+BRANCH:
+REMOTE:
+composer	https://github.com/laravel/sanctum.git (fetch)
+composer	https://github.com/laravel/sanctum.git (push)
+origin	https://github.com/laravel/sanctum.git (fetch)
+origin	git@github.com:laravel/sanctum.git (push)
+STATUS SHORT:
+LAST COMMITS:
+8c10436 Extract generate token method (#488)
+4fc91ed Updated CsrfCookieController to use named arguments (#487)
+700ce11 Update CHANGELOG
+e1a2728 Accept null as a parameter for `Sanctum@getAccessTokenFromRequestUsing()` (#477)
+b3853da Uses `actions/checkout@v4`
+
+REPO: C:\deploy\adminpanel\vendor\laravel\serializable-closure
+BRANCH:
+REMOTE:
+composer	https://github.com/laravel/serializable-closure.git (fetch)
+composer	https://github.com/laravel/serializable-closure.git (push)
+origin	https://github.com/laravel/serializable-closure.git (fetch)
+origin	git@github.com:laravel/serializable-closure.git (push)
+STATUS SHORT:
+LAST COMMITS:
+4f48ade Fix for readonly properties that declared in parent (#96)
+d49075c Update CHANGELOG
+f865a58 Merge pull request #98 from caendesilva/patch-1
+f280e0f Fix repeated word "the" in code comment
+43244bf Update CHANGELOG
+
+REPO: C:\deploy\adminpanel\vendor\laravel\tinker
+BRANCH:
+REMOTE:
+composer	https://github.com/laravel/tinker.git (fetch)
+composer	https://github.com/laravel/tinker.git (push)
+origin	https://github.com/laravel/tinker.git (fetch)
+origin	git@github.com:laravel/tinker.git (push)
+STATUS SHORT:
+LAST COMMITS:
+22177cc [2.x] Supports Laravel 12 (#185)
+9f5dde0 Update logo to support dark/light theme (#183)
+8aa2522 Update CHANGELOG
+ba4d51e [2.x] Supports PHP 8.4 (#182)
+a3e5213 Delete .github/ISSUE_TEMPLATE/2_Feature_request.md
+
+REPO: C:\deploy\adminpanel\vendor\laravel\ui
+BRANCH:
+REMOTE:
+composer	https://github.com/laravel/ui.git (fetch)
+composer	https://github.com/laravel/ui.git (push)
+origin	https://github.com/laravel/ui.git (fetch)
+origin	git@github.com:laravel/ui.git (push)
+STATUS SHORT:
+LAST COMMITS:
+7d6ffa3 Supports Laravel 12 (#277)
+0c38f3a Update CHANGELOG
+a34609b [4.x] Supports PHP 8.4 (#276)
+d05f8f3 Delete .github/ISSUE_TEMPLATE/2_Feature_request.md
+761b867 Update config.yml
+
+REPO: C:\deploy\adminpanel\vendor\league\commonmark
+BRANCH:
+REMOTE:
+composer	https://github.com/thephpleague/commonmark.git (fetch)
+composer	https://github.com/thephpleague/commonmark.git (push)
+origin	https://github.com/thephpleague/commonmark.git (fetch)
+origin	git@github.com:thephpleague/commonmark.git (push)
+STATUS SHORT:
+LAST COMMITS:
+d990688c Prepare to release 2.6.1
+a35bdc99 Always compare just the HTML
+81d3ba2a Test against PHP 8.4 (stable) and 8.5 (nightly)
+ab3f3ae7 Merge pull request #1061 from thephpleague/fix-list-item-newlines
+73e129e9 Rendered list items should only add newlines around block-level children
+
+REPO: C:\deploy\adminpanel\vendor\league\config
+BRANCH:
+REMOTE:
+composer	https://github.com/thephpleague/config.git (fetch)
+composer	https://github.com/thephpleague/config.git (push)
+origin	https://github.com/thephpleague/config.git (fetch)
+origin	git@github.com:thephpleague/config.git (push)
+STATUS SHORT:
+LAST COMMITS:
+754b360 Prepare to release v1.2.0
+7f83d8b Merge pull request #13 from thephpleague/validate-relevant-schema-only
+9188249 Remove dead 'catch' block
+799f320 Improve lazy schema validation
+c9e139a Merge pull request #11 from thephpleague/renovate/actions-checkout-3.x
+
+REPO: C:\deploy\adminpanel\vendor\league\flysystem
+BRANCH:
+REMOTE:
+composer	https://github.com/thephpleague/flysystem.git (fetch)
+composer	https://github.com/thephpleague/flysystem.git (push)
+origin	https://github.com/thephpleague/flysystem.git (fetch)
+origin	git@github.com:thephpleague/flysystem.git (push)
+STATUS SHORT:
+LAST COMMITS:
+edc1bb7c Prep changelog
+e58b8a78 Fixes #1820: Normalise paths for checksum calls.
+0adc0d9a Prep changelog
+2b6b74af Merge pull request #1819 from glaubinix/async-s3-exceptions
+67bfd18a AsyncS3: throw FilesystemOperationFailed exceptions in case upload or listContent fails
+
+REPO: C:\deploy\adminpanel\vendor\league\flysystem-local
+BRANCH:
+REMOTE:
+composer	https://github.com/thephpleague/flysystem-local.git (fetch)
+composer	https://github.com/thephpleague/flysystem-local.git (push)
+origin	https://github.com/thephpleague/flysystem-local.git (fetch)
+origin	git@github.com:thephpleague/flysystem-local.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e0e8d52 feat: add dedicated test cases to ensure copy and move methods to always overwrite target
+13f22ea Chore
+61a6a90 [PHP 8.4] Fixes for implicit nullability deprecation
+b884d2b Updated license year.
+5cf046b Make falling back to inconclusive mime-type configurable.
+
+REPO: C:\deploy\adminpanel\vendor\league\mime-type-detection
+BRANCH:
+REMOTE:
+composer	https://github.com/thephpleague/mime-type-detection.git (fetch)
+composer	https://github.com/thephpleague/mime-type-detection.git (push)
+origin	https://github.com/thephpleague/mime-type-detection.git (fetch)
+origin	git@github.com:thephpleague/mime-type-detection.git (push)
+STATUS SHORT:
+LAST COMMITS:
+2d6702f prep changelog
+6c2e35e re-generate mime-types for mime-db
+0d155d7 Merge pull request #33 from Slamdunk/php_84_compat
+6e61ff6 Add PHP 8.4 compatibility
+ce0f4d1 Set correct date.
+
+REPO: C:\deploy\adminpanel\vendor\mockery\mockery
+BRANCH:
+REMOTE:
+composer	https://github.com/mockery/mockery.git (fetch)
+composer	https://github.com/mockery/mockery.git (push)
+origin	https://github.com/mockery/mockery.git (fetch)
+origin	git@github.com:mockery/mockery.git (push)
+STATUS SHORT:
+LAST COMMITS:
+1f4efdd7 Changelog v1.6.12 (#1418)
+bff36e85 Update `psalm-baseline.xml`  (#1420)
+de5f9f1d Update e2e-test.sh (#1419)
+c731bf33 Fix PHP Doc Comments (#1410)
+a7c20010 Bump `Jinja2` from `3.1.3` to `3.1.4` - Fix CVE-2024-34064 (#1417)
+
+REPO: C:\deploy\adminpanel\vendor\monolog\monolog
+BRANCH:
+REMOTE:
+composer	https://github.com/Seldaek/monolog.git (fetch)
+composer	https://github.com/Seldaek/monolog.git (push)
+origin	https://github.com/Seldaek/monolog.git (fetch)
+origin	git@github.com:Seldaek/monolog.git (push)
+STATUS SHORT:
+LAST COMMITS:
+10d85740 Update changelog
+2b8777df SendGrid V3 API (#1952)
+5d0da0a7 Updating while loops to have boolean conditions. (#1956)
+62946513 Remove deprecated setType method call in ElasticaFormatter (#1955)
+467e764f Fix gelf message formatter failing to handle context/extra numeric keys, fixes #1932
+
+REPO: C:\deploy\adminpanel\vendor\myclabs\deep-copy
+BRANCH:
+REMOTE:
+composer	https://github.com/myclabs/DeepCopy.git (fetch)
+composer	https://github.com/myclabs/DeepCopy.git (push)
+origin	https://github.com/myclabs/DeepCopy.git (fetch)
+origin	git@github.com:myclabs/DeepCopy.git (push)
+STATUS SHORT:
+LAST COMMITS:
+024473a Merge pull request #202 from alexz707/add-prepend-type-filter
+2356a16 Add PrependTypeFilter method
+4764e04 Merge pull request #198 from alamirault/feature/add-tests-php-84
+67ebab1 Run tests on PHP 8.4
+123267b Merge pull request #197 from michalananapps/copy-DatePeriod
+
+REPO: C:\deploy\adminpanel\vendor\nesbot\carbon
+BRANCH:
+REMOTE:
+composer	https://github.com/CarbonPHP/carbon.git (fetch)
+composer	https://github.com/CarbonPHP/carbon.git (push)
+origin	https://github.com/CarbonPHP/carbon.git (fetch)
+origin	git@github.com:CarbonPHP/carbon.git (push)
+STATUS SHORT:
+LAST COMMITS:
+9228ce90 Merge pull request #13 from thecaliskan/2.x
+142f0f5c changed CS rule
+dc278043 changed CS rule
+8910c511 changed expected result for PHP 8.4
+d1e695f7 Added PHP 8.3 and PHP 8.4 test for laravel and removed PHP 8.4 lowest test matrix
+
+REPO: C:\deploy\adminpanel\vendor\nette\schema
+BRANCH:
+REMOTE:
+composer	https://github.com/nette/schema.git (fetch)
+composer	https://github.com/nette/schema.git (push)
+origin	https://github.com/nette/schema.git (fetch)
+origin	git@github.com:nette/schema.git (push)
+STATUS SHORT:
+LAST COMMITS:
+da801d5 Expect::array(shape) returns Structure
+f441aec Structure::merge() without otherItems it merges by overwriting
+d00e944 Structure::merge() refactoring
+8de8c4e added Structure::getShape() [Closes #35]
+0ef091e added Structure::extend() [Closes #66]
+
+REPO: C:\deploy\adminpanel\vendor\nette\utils
+BRANCH:
+REMOTE:
+composer	https://github.com/nette/utils.git (fetch)
+composer	https://github.com/nette/utils.git (push)
+origin	https://github.com/nette/utils.git (fetch)
+origin	git@github.com:nette/utils.git (push)
+STATUS SHORT:
+LAST COMMITS:
+ce70865 Image: catches all errors during saving
+574a2d1 added Helpers::IsWindows
+f695262 added ShouldNotHappenException
+259c2bf added FileSystem::resolvePath() [Closes #308]
+13130bb tests: improved descriptions
+
+REPO: C:\deploy\adminpanel\vendor\nikic\php-parser
+BRANCH:
+REMOTE:
+composer	https://github.com/nikic/PHP-Parser.git (fetch)
+composer	https://github.com/nikic/PHP-Parser.git (push)
+origin	https://github.com/nikic/PHP-Parser.git (fetch)
+origin	git@github.com:nikic/PHP-Parser.git (push)
+STATUS SHORT:
+LAST COMMITS:
+447a020a Release PHP-Parser 5.4.0
+45f70ed8 Simplify NodeTraverser->traverseNode()
+74a36181 Simplify NodeTraverser->traverseArray()
+6478c5ac Fix PropertyHook::getStmts() for set hook
+8bb41590 Fix cs
+
+REPO: C:\deploy\adminpanel\vendor\nunomaduro\collision
+BRANCH:
+REMOTE:
+composer	https://github.com/nunomaduro/collision.git (fetch)
+composer	https://github.com/nunomaduro/collision.git (push)
+origin	https://github.com/nunomaduro/collision.git (fetch)
+origin	git@github.com:nunomaduro/collision.git (push)
+STATUS SHORT:
+LAST COMMITS:
+9952454 Bumps dependencies
+336ed2b Uses stable version of pest and termwind
+994ea93 wip
+627c5cf fixes ci
+68fc8ea style
+
+REPO: C:\deploy\adminpanel\vendor\nunomaduro\termwind
+BRANCH:
+REMOTE:
+composer	https://github.com/nunomaduro/termwind.git (fetch)
+composer	https://github.com/nunomaduro/termwind.git (push)
+origin	https://github.com/nunomaduro/termwind.git (fetch)
+origin	git@github.com:nunomaduro/termwind.git (push)
+STATUS SHORT:
+LAST COMMITS:
+5369ef8 Uses latest version of dependencies
+167270e Uses stable version of pest
+dcf1ec3 fixes ci
+20122c2 feat: adds php 8.4 support
+642f96d chore: fixes styles
+
+REPO: C:\deploy\adminpanel\vendor\nwidart\laravel-modules
+BRANCH:
+REMOTE:
+composer	https://github.com/nWidart/laravel-modules.git (fetch)
+composer	https://github.com/nWidart/laravel-modules.git (push)
+origin	https://github.com/nWidart/laravel-modules.git (fetch)
+origin	git@github.com:nWidart/laravel-modules.git (push)
+STATUS SHORT:
+LAST COMMITS:
+a6f2c8b updated CHANGELOG.md
+3644322 Merge pull request #1723 from alissn/AddCommandModulePrune
+99cbe59 [feat] update laravel.framework version
+23c1751 [feat] add ModelPruneCommand to command list
+99f22b2 [feat] add command
+
+REPO: C:\deploy\adminpanel\vendor\openai-php\client
+BRANCH:
+REMOTE:
+composer	https://github.com/openai-php/client.git (fetch)
+composer	https://github.com/openai-php/client.git (push)
+origin	https://github.com/openai-php/client.git (fetch)
+origin	git@github.com:openai-php/client.git (push)
+STATUS SHORT:
+LAST COMMITS:
+4a565d1 update annotations after merging change on ThreadMessageResponse
+c9e4fa9 Merge pull request #471 from datashaman/attachments-error
+5bfb908 fix wrong annotation
+e6d4099 Merge pull request #482 from charescape/patch-2
+1283cc1 update annotations after merging change on AssistantResponseToolFunctionFunction
+
+REPO: C:\deploy\adminpanel\vendor\openai-php\laravel
+BRANCH:
+REMOTE:
+composer	https://github.com/openai-php/laravel.git (fetch)
+composer	https://github.com/openai-php/laravel.git (push)
+origin	https://github.com/openai-php/laravel.git (fetch)
+origin	git@github.com:openai-php/laravel.git (push)
+STATUS SHORT:
+LAST COMMITS:
+a8a22ab Run formats CI pipeline on PHP 8.4
+98b7817 Do not run tests against PHP 8.1 with Laravel 12
+70169a6 Do not run tests against PHP 8.1 with Laravel 12
+8596fbd Do not run tests against PHP 8.1 with Laravel 12
+7ba487f Run CI tests against Laravel 12
+
+REPO: C:\deploy\adminpanel\vendor\paragonie\constant_time_encoding
+BRANCH:
+REMOTE:
+composer	https://github.com/paragonie/constant_time_encoding.git (fetch)
+composer	https://github.com/paragonie/constant_time_encoding.git (push)
+origin	https://github.com/paragonie/constant_time_encoding.git (fetch)
+origin	git@github.com:paragonie/constant_time_encoding.git (push)
+STATUS SHORT:
+LAST COMMITS:
+df1e7fd Update ramsey/composer-install to v3
+4f03317 Tolerate Psalm 4
+b9736ba Attempt to fix GHA
+7ca93af Update guidance
+dd2e689 Update Psalm to 5 instead of 4
+
+REPO: C:\deploy\adminpanel\vendor\paragonie\random_compat
+BRANCH:
+REMOTE:
+composer	https://github.com/paragonie/random_compat.git (fetch)
+composer	https://github.com/paragonie/random_compat.git (push)
+origin	https://github.com/paragonie/random_compat.git (fetch)
+origin	git@github.com:paragonie/random_compat.git (push)
+STATUS SHORT:
+LAST COMMITS:
+996434e PHP >7 allowed for 9.99.99
+84b4dfb Remove autoload from v9.99.99
+7dd806d 2.99.99 -> 9.99.99
+3546924 Add v2.99.99 branch
+cbe0b11 I'm tired of wrestling with this.
+
+REPO: C:\deploy\adminpanel\vendor\paypal\paypal-payouts-sdk
+BRANCH:
+REMOTE:
+composer	https://github.com/paypal/Payouts-PHP-SDK.git (fetch)
+composer	https://github.com/paypal/Payouts-PHP-SDK.git (push)
+origin	https://github.com/paypal/Payouts-PHP-SDK.git (fetch)
+origin	git@github.com:paypal/Payouts-PHP-SDK.git (push)
+STATUS SHORT:
+LAST COMMITS:
+3bdafe3 Merge pull request #16 from HDLahlou/HDL_285_Update_HTTP_Package
+2a5ea6f updated sdk version
+3cb7267 updated paypalhttp to v1.0.1 and ran integration tests
+bfdc8de Adding samples for parsing errors (#11)
+1deb294 Merge pull request #5 from rajkumarpalani/master
+
+REPO: C:\deploy\adminpanel\vendor\paypal\paypalhttp
+BRANCH:
+REMOTE:
+composer	https://github.com/paypal/paypalhttp_php.git (fetch)
+composer	https://github.com/paypal/paypalhttp_php.git (push)
+origin	https://github.com/paypal/paypalhttp_php.git (fetch)
+origin	git@github.com:paypal/paypalhttp_php.git (push)
+STATUS SHORT:
+LAST COMMITS:
+7b09c89 Fix type hinting in HttpResponse (#5)
+19959db Fix some phpdoc (#7)
+6462ea1 Hdl 285 paypal sdk header: Fixing Case Sensitivity (#9)
+1ad9b84 Merge pull request #4 from tiffanyrzhou/master
+850cb81 CHANGELOG update
+
+REPO: C:\deploy\adminpanel\vendor\paytm\paytmchecksum
+BRANCH:
+REMOTE:
+composer	https://github.com/paytm/Paytm_PHP_Checksum.git (fetch)
+composer	https://github.com/paytm/Paytm_PHP_Checksum.git (push)
+origin	https://github.com/paytm/Paytm_PHP_Checksum.git (fetch)
+origin	git@github.com:paytm/Paytm_PHP_Checksum.git (push)
+STATUS SHORT:
+LAST COMMITS:
+a032d3c remove monolog from composer
+c181b6f minor change in unpad method
+a8cf04d create composer installer
+aae256f update new checksum version
+dd49cfe create composer installer
+
+REPO: C:\deploy\adminpanel\vendor\phar-io\manifest
+BRANCH:
+REMOTE:
+composer	https://github.com/phar-io/manifest.git (fetch)
+composer	https://github.com/phar-io/manifest.git (push)
+origin	https://github.com/phar-io/manifest.git (fetch)
+origin	git@github.com:phar-io/manifest.git (push)
+STATUS SHORT:
+LAST COMMITS:
+54750ef Update psalm baseline
+8ce2e9c Revert "Avoid "use" for Attribute usage not supported in PHP < 8.0"
+28352aa Run CS Fixer
+91f34f1 Include 7.2 back into CI
+8a60f13 Fix Exception handling in Mapper
+
+REPO: C:\deploy\adminpanel\vendor\phar-io\version
+BRANCH:
+REMOTE:
+composer	https://github.com/phar-io/version.git (fetch)
+composer	https://github.com/phar-io/version.git (push)
+origin	https://github.com/phar-io/version.git (fetch)
+origin	git@github.com:phar-io/version.git (push)
+STATUS SHORT:
+LAST COMMITS:
+4f7fd78 Update changelog
+963aac7 Update psalm and make it happy
+11446c1 Run CS-Fixer
+333da69 Make ExactVersionConstraint honor build meta data
+ace330f Enhance Tests
+
+REPO: C:\deploy\adminpanel\vendor\php-http\discovery
+BRANCH:
+REMOTE:
+composer	https://github.com/php-http/discovery.git (fetch)
+composer	https://github.com/php-http/discovery.git (push)
+origin	https://github.com/php-http/discovery.git (fetch)
+origin	git@github.com:php-http/discovery.git (push)
+STATUS SHORT:
+LAST COMMITS:
+82fe4c7 prepare release
+215a71f Merge pull request #267 from GrahamCampbell/patch-1
+443b33d adjust cs fixer to avoid PHP 7 syntax errors
+4bb66d1 Revert "adjust to latest cs fixer rules"
+59dd865 Merge pull request #268 from Seldaek/patch-1
+
+REPO: C:\deploy\adminpanel\vendor\php-http\multipart-stream-builder
+BRANCH:
+REMOTE:
+composer	https://github.com/php-http/multipart-stream-builder.git (fetch)
+composer	https://github.com/php-http/multipart-stream-builder.git (push)
+origin	https://github.com/php-http/multipart-stream-builder.git (fetch)
+origin	git@github.com:php-http/multipart-stream-builder.git (push)
+STATUS SHORT:
+LAST COMMITS:
+10086e6 prepare release
+825153b Unquote array shape field names (#67)
+dbaa2d3 prepare release
+276eb91 Make options optional again (#66)
+02a0e13 Merge pull request #65 from php-http/array-shape-doc
+
+REPO: C:\deploy\adminpanel\vendor\phpoption\phpoption
+BRANCH:
+REMOTE:
+composer	https://github.com/schmittjoh/php-option.git (fetch)
+composer	https://github.com/schmittjoh/php-option.git (push)
+origin	https://github.com/schmittjoh/php-option.git (fetch)
+origin	git@github.com:schmittjoh/php-option.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e3fac8b Allow `int` and `null` as possible types for `$key` in `Option::fromArraysValue` (#74)
+647f42e PHP 8.4 support (#75)
+416ca2a Update composer.json
+38121dd Update phpunit.xml.dist
+80735db PHP 8.3 support
+
+REPO: C:\deploy\adminpanel\vendor\phpseclib\phpseclib
+BRANCH:
+REMOTE:
+composer	https://github.com/phpseclib/phpseclib.git (fetch)
+composer	https://github.com/phpseclib/phpseclib.git (push)
+origin	https://github.com/phpseclib/phpseclib.git (fetch)
+origin	git@github.com:phpseclib/phpseclib.git (push)
+STATUS SHORT:
+LAST COMMITS:
+709ec107 Merge branch '2.0' into 3.0
+eaa7be70 CHANGELOG: add 2.0.48 release
+b59d7be9 Merge branch '2.0' into 3.0
+0a142733 Merge branch '1.0' into 2.0
+2fe0eabe SSH2: ignore kex-strict-s-v00@openssh.com in key re-exchanges
+
+REPO: C:\deploy\adminpanel\vendor\phpunit\php-code-coverage
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/php-code-coverage.git (fetch)
+composer	https://github.com/sebastianbergmann/php-code-coverage.git (push)
+origin	https://github.com/sebastianbergmann/php-code-coverage.git (fetch)
+origin	git@github.com:sebastianbergmann/php-code-coverage.git (push)
+STATUS SHORT:
+LAST COMMITS:
+85402a82 Prepare release
+2681df11 Bump dependencies (so that users that install using Composer's --prefer-lowest CLI option also get recent versions)
+328a747f Include package name in release name
+40ad9fed Allow write operations
+2d0e0eb7 Create release when tag is pushed
+
+REPO: C:\deploy\adminpanel\vendor\phpunit\php-file-iterator
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/php-file-iterator.git (fetch)
+composer	https://github.com/sebastianbergmann/php-file-iterator.git (push)
+origin	https://github.com/sebastianbergmann/php-file-iterator.git (fetch)
+origin	git@github.com:sebastianbergmann/php-file-iterator.git (push)
+STATUS SHORT:
+LAST COMMITS:
+cf1c2e7 Prepare release
+1d8f5dc Merge branch '2.0' into 3.0
+42c5ba5 Prepare release
+4eb32f8 Fixed deprecation notice with PHP 7.4 and PHPUnit 8
+d7e633e Update Psalm baseline
+
+REPO: C:\deploy\adminpanel\vendor\phpunit\php-invoker
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/php-invoker.git (fetch)
+composer	https://github.com/sebastianbergmann/php-invoker.git (push)
+origin	https://github.com/sebastianbergmann/php-invoker.git (fetch)
+origin	git@github.com:sebastianbergmann/php-invoker.git (push)
+STATUS SHORT:
+LAST COMMITS:
+5a10147 Prepare release
+2ec9466 Update tools
+62fd65a Update tools
+621e216 Use >= operator instead of ^ operator for PHP version constraint
+edc1256 Ignore .gitattributes and .gitignore for exports
+
+REPO: C:\deploy\adminpanel\vendor\phpunit\php-text-template
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/php-text-template.git (fetch)
+composer	https://github.com/sebastianbergmann/php-text-template.git (push)
+origin	https://github.com/sebastianbergmann/php-text-template.git (fetch)
+origin	git@github.com:sebastianbergmann/php-text-template.git (push)
+STATUS SHORT:
+LAST COMMITS:
+5da5f67 Prepare release
+be4e91a Extend Throwable
+d20c547 Update tools
+53f18a3 Test against PHP 8.1
+4b4962c Update to Psalm 4
+
+REPO: C:\deploy\adminpanel\vendor\phpunit\php-timer
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/php-timer.git (fetch)
+composer	https://github.com/sebastianbergmann/php-timer.git (push)
+origin	https://github.com/sebastianbergmann/php-timer.git (fetch)
+origin	git@github.com:sebastianbergmann/php-timer.git (push)
+STATUS SHORT:
+LAST COMMITS:
+5a63ce2 Prepare release
+dbb91db Extend Throwable
+fbe4cb8 Update tools
+3cc2b2a Use PHP 7.4 for tools
+a47e85f Test against PHP 8.1
+
+REPO: C:\deploy\adminpanel\vendor\phpunit\phpunit
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/phpunit.git (fetch)
+composer	https://github.com/sebastianbergmann/phpunit.git (push)
+origin	https://github.com/sebastianbergmann/phpunit.git (fetch)
+origin	git@github.com:sebastianbergmann/phpunit.git (push)
+STATUS SHORT:
+LAST COMMITS:
+f80235cb4 Prepare release
+40e7f1700 Merge branch '8.5' into 9.6
+d843cb5bc Prepare release
+5e58fee65 Fix CS/WS issues
+ad262152e Merge branch '8.5' into 9.6
+
+REPO: C:\deploy\adminpanel\vendor\psr\cache
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/cache.git (fetch)
+composer	https://github.com/php-fig/cache.git (push)
+origin	https://github.com/php-fig/cache.git (fetch)
+origin	git@github.com:php-fig/cache.git (push)
+STATUS SHORT:
+LAST COMMITS:
+aa5030c Merge pull request #24 from Crell/v3
+69df303 Add return types.
+213f9db Merge pull request #23 from Crell/v2
+ab4007c Update to PHP 8.0 and PHP 8-compatible types.
+b7f3937 Merge pull request #21 from J0WI/patch-1
+
+REPO: C:\deploy\adminpanel\vendor\psr\clock
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/clock.git (fetch)
+composer	https://github.com/php-fig/clock.git (push)
+origin	https://github.com/php-fig/clock.git (fetch)
+origin	git@github.com:php-fig/clock.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e41a247 Merge pull request #11 from php-fig/psr-20-acceptance
+3146f5b Remove WIP from the composer.json description
+58f5113 Update CHANGELOG.md
+d85863e Remove WIP warning from README
+2612901 Merge pull request #10 from localheinz/fix/extra
+
+REPO: C:\deploy\adminpanel\vendor\psr\container
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/container.git (fetch)
+composer	https://github.com/php-fig/container.git (push)
+origin	https://github.com/php-fig/container.git (fetch)
+origin	git@github.com:php-fig/container.git (push)
+STATUS SHORT:
+LAST COMMITS:
+c71ecc5 Merge pull request #32 from weierophinney/fix/bump-php-version-to-fix-dependency-issues
+6009776 revert: re-instate extension of Throwable in supplied exception interfaces
+18d0016 fix: bump minimum supported PHP version to 7.4
+2ae3732 Partially revert 19764b1
+19764b1 Remove Throwable interface from exceptions (port of #31 to 2.x)
+
+REPO: C:\deploy\adminpanel\vendor\psr\event-dispatcher
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/event-dispatcher.git (fetch)
+composer	https://github.com/php-fig/event-dispatcher.git (push)
+origin	https://github.com/php-fig/event-dispatcher.git (fetch)
+origin	git@github.com:php-fig/event-dispatcher.git (push)
+STATUS SHORT:
+LAST COMMITS:
+dbefd12 Minor formatting and language tweaks to stay consistent with the spec.
+8380006 Merge pull request #19 from php-fig/revision
+9676b0a Missed a rename.
+c9c46af Bump composer PHP requirement to PHP 7.2.
+52388ab Remove split of messages and tasks, so fold the repositories back together.
+
+REPO: C:\deploy\adminpanel\vendor\psr\http-client
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/http-client.git (fetch)
+composer	https://github.com/php-fig/http-client.git (push)
+origin	https://github.com/php-fig/http-client.git (fetch)
+origin	git@github.com:php-fig/http-client.git (push)
+STATUS SHORT:
+LAST COMMITS:
+bb5906e prepare release
+fc528df Merge pull request #18 from localheinz/feature/source
+b68cc8a Enhancement: Add link to source to composer.json
+0955afe Merge pull request #17 from ghostwriter/feature/http-message-v2
+d3825b3 Support `psr/http-message` v2
+
+REPO: C:\deploy\adminpanel\vendor\psr\http-factory
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/http-factory.git (fetch)
+composer	https://github.com/php-fig/http-factory.git (push)
+origin	https://github.com/php-fig/http-factory.git (fetch)
+origin	git@github.com:php-fig/http-factory.git (push)
+STATUS SHORT:
+LAST COMMITS:
+2b4765f Merge pull request #17 from alexandre-daubois/explicit-nullable-type
+2e735aa Add explicit nullable type and bump minimal PHP version to 7.1
+7037f4b Merge pull request #15 from localheinz/feature/source
+0d1c639 Enhancement: Add link to source to composer.json
+6d70f40 Merge pull request #14 from dbu/patch-1
+
+REPO: C:\deploy\adminpanel\vendor\psr\http-message
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/http-message.git (fetch)
+composer	https://github.com/php-fig/http-message.git (push)
+origin	https://github.com/php-fig/http-message.git (fetch)
+origin	git@github.com:php-fig/http-message.git (push)
+STATUS SHORT:
+LAST COMMITS:
+402d35b Merge pull request #95 from Stilch/add-param-and-return-type-hints
+947607b Merge branch 'master' into add-param-and-return-type-hints
+cb6ce48 Merge pull request #94 from Stilch/add-param-hints
+3def521 Added void as return types
+520dd0e Added string as return types for __toString
+
+REPO: C:\deploy\adminpanel\vendor\psr\log
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/log.git (fetch)
+composer	https://github.com/php-fig/log.git (push)
+origin	https://github.com/php-fig/log.git (fetch)
+origin	git@github.com:php-fig/log.git (push)
+STATUS SHORT:
+LAST COMMITS:
+f16e1d5 Merge pull request #84 from phily245/log-level-return-type
+1a37735 Restore a phpdoc
+79dff0b Merge pull request #80 from lyrixx/return
+33208d4 Drop useless phpdoc, already covered by PHP
+fe5ea30 Merge pull request #77 from Crell/v3
+
+REPO: C:\deploy\adminpanel\vendor\psr\simple-cache
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/simple-cache.git (fetch)
+composer	https://github.com/php-fig/simple-cache.git (push)
+origin	https://github.com/php-fig/simple-cache.git (fetch)
+origin	git@github.com:php-fig/simple-cache.git (push)
+STATUS SHORT:
+LAST COMMITS:
+764e0b3 Merge pull request #24 from navarr/return-types
+8707bf3 Merge pull request #25 from php-fig/param-types
+dd145de Make CacheException extend Throwable
+66e27ef Merge pull request #21 from J0WI/patch-1
+19a4d7c Add return types
+
+REPO: C:\deploy\adminpanel\vendor\psy\psysh
+BRANCH:
+REMOTE:
+composer	https://github.com/bobthecow/psysh.git (fetch)
+composer	https://github.com/bobthecow/psysh.git (push)
+origin	https://github.com/bobthecow/psysh.git (fetch)
+origin	git@github.com:bobthecow/psysh.git (push)
+STATUS SHORT:
+LAST COMMITS:
+85057cee Merge branch 'release/0.12.8'
+b8df2abe Bump to v0.12.8
+8433db1c Bump box deps.
+a742b069 Merge pull request #854 from bobthecow/dependabot/github_actions/actions/download-artifact-4.1.9
+e02141fe Merge pull request #853 from bobthecow/dependabot/github_actions/actions/upload-artifact-4.6.1
+
+REPO: C:\deploy\adminpanel\vendor\ralouphie\getallheaders
+BRANCH:
+REMOTE:
+composer	https://github.com/ralouphie/getallheaders.git (fetch)
+composer	https://github.com/ralouphie/getallheaders.git (push)
+origin	https://github.com/ralouphie/getallheaders.git (fetch)
+origin	git@github.com:ralouphie/getallheaders.git (push)
+STATUS SHORT:
+LAST COMMITS:
+120b605 Merge pull request #9 from peter279k/test_enhancement
+5f4ed11 Test enhancement
+beb49b9 Merge pull request #8 from ralouphie/hotfix/composer-install
+aad26b2 Remove composer.json from .gitattributes
+cd148e0 Merge pull request #6 from GrahamCampbell/patch-1
+
+REPO: C:\deploy\adminpanel\vendor\ramsey\collection
+BRANCH:
+REMOTE:
+composer	https://github.com/ramsey/collection.git (fetch)
+composer	https://github.com/ramsey/collection.git (push)
+origin	https://github.com/ramsey/collection.git (fetch)
+origin	git@github.com:ramsey/collection.git (push)
+STATUS SHORT:
+LAST COMMITS:
+3445729 chore: prepare for version 2.1.1
+ab2a51e fix: return list<mixed> from CollectionInterface::column
+1d131cf chore(deps): bump actions/checkout from 3 to 4
+3c5990b chore: prepare for version 2.1.0
+af2c4a7 fix: improve performance of AbstractSet::add() method
+
+REPO: C:\deploy\adminpanel\vendor\ramsey\uuid
+BRANCH:
+REMOTE:
+composer	https://github.com/ramsey/uuid.git (fetch)
+composer	https://github.com/ramsey/uuid.git (push)
+origin	https://github.com/ramsey/uuid.git (fetch)
+origin	git@github.com:ramsey/uuid.git (push)
+STATUS SHORT:
+LAST COMMITS:
+91039bc chore: prepare version 4.7.6
+3caf795 feat: Support brick/math v0.12 (#526)
+3baa7ce chore: upgrade the Python environment for documentation
+f6376dd chore: upgrade Sphinx to fix documentation builds
+68e4e37 chore(deps): bump codecov/codecov-action from 4.1.1 to 4.3.0
+
+REPO: C:\deploy\adminpanel\vendor\razorpay\razorpay
+BRANCH:
+REMOTE:
+composer	https://github.com/razorpay/razorpay-php.git (fetch)
+composer	https://github.com/razorpay/razorpay-php.git (push)
+origin	https://github.com/razorpay/razorpay-php.git (fetch)
+origin	git@github.com:razorpay/razorpay-php.git (push)
+STATUS SHORT:
+LAST COMMITS:
+d5e49ef Version bump 2.9.1 (#388)
+3728ad2 added aouth implementation (#386)
+32eb825 Add updated workflow file
+aa2aef6 Merge pull request #374 from razorpay/remove-semgrep
+93fe02d removed semgrep workflow
+
+REPO: C:\deploy\adminpanel\vendor\rmccue\requests
+BRANCH:
+REMOTE:
+composer	https://github.com/WordPress/Requests.git (fetch)
+composer	https://github.com/WordPress/Requests.git (push)
+origin	https://github.com/WordPress/Requests.git (fetch)
+origin	git@github.com:WordPress/Requests.git (push)
+STATUS SHORT:
+LAST COMMITS:
+877cd66 Merge pull request #921 from WordPress/release/2.0.15
+af61b46 Changelog for release 2.0.15
+ae94ef8 :lock_with_ink_pen: Update certificate bundle
+6feda5a GH Actions: update Python version to 3.13
+9b228ee Merge pull request #911 from WordPress/release/2.0.14
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\cli-parser
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/cli-parser.git (fetch)
+composer	https://github.com/sebastianbergmann/cli-parser.git (push)
+origin	https://github.com/sebastianbergmann/cli-parser.git (fetch)
+origin	git@github.com:sebastianbergmann/cli-parser.git (push)
+STATUS SHORT:
+LAST COMMITS:
+2b56bea Do not use implicitly nullable parameters and prepare release
+442e7c7 Prepare release
+9037ff0 Fix minor typo in infection.json
+bb1a596 Update tools
+3c88f1b Update tools
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\code-unit
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/code-unit.git (fetch)
+composer	https://github.com/sebastianbergmann/code-unit.git (push)
+origin	https://github.com/sebastianbergmann/code-unit.git (fetch)
+origin	git@github.com:sebastianbergmann/code-unit.git (push)
+STATUS SHORT:
+LAST COMMITS:
+1fc9f64 Prepare release
+eee3722 Extend Throwable
+6a1beb1 Update tools
+a915c33 Use PHP 7.4 for tools
+dcf23f3 Test against PHP 8.1
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\code-unit-reverse-lookup
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/code-unit-reverse-lookup.git (fetch)
+composer	https://github.com/sebastianbergmann/code-unit-reverse-lookup.git (push)
+origin	https://github.com/sebastianbergmann/code-unit-reverse-lookup.git (fetch)
+origin	git@github.com:sebastianbergmann/code-unit-reverse-lookup.git (push)
+STATUS SHORT:
+LAST COMMITS:
+ac91f01 Prepare release
+fe9befb Update tools
+8bb2429 Update tools
+469e84d Use >= operator instead of ^ operator for PHP version constraint
+d3b7f93 Ignore .gitattributes and .gitignore for exports
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\comparator
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/comparator.git (fetch)
+composer	https://github.com/sebastianbergmann/comparator.git (push)
+origin	https://github.com/sebastianbergmann/comparator.git (fetch)
+origin	git@github.com:sebastianbergmann/comparator.git (push)
+STATUS SHORT:
+LAST COMMITS:
+fa0f136 Prepare release
+801aad8 Merge branch '3.0' into 4.0
+1dc7ceb Prepare release
+1b2f432 There is no point in deprecating a test class
+762a1d1 Add .gitattributes
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\complexity
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/complexity.git (fetch)
+composer	https://github.com/sebastianbergmann/complexity.git (push)
+origin	https://github.com/sebastianbergmann/complexity.git (fetch)
+origin	git@github.com:sebastianbergmann/complexity.git (push)
+STATUS SHORT:
+LAST COMMITS:
+25f207c Prepare release
+cd059e1 Support nikic/php-parser ^5.0
+477838e Allow nikic/php-parser ^5.0
+ac87c30 Update tools
+739b35e Prepare release
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\diff
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/diff.git (fetch)
+composer	https://github.com/sebastianbergmann/diff.git (push)
+origin	https://github.com/sebastianbergmann/diff.git (fetch)
+origin	git@github.com:sebastianbergmann/diff.git (push)
+STATUS SHORT:
+LAST COMMITS:
+ba01945 Do not use implicitly nullable parameters and prepare release
+74be170 Prepare release
+7058022 Backport b0a1aadeaa7e20988bfa01a1a2467b958ae7231e
+0806e02 Backport 792812ddc157fa153b24e62e731786bf82192d1c
+3461e3f Prepare release
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\environment
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/environment.git (fetch)
+composer	https://github.com/sebastianbergmann/environment.git (push)
+origin	https://github.com/sebastianbergmann/environment.git (fetch)
+origin	git@github.com:sebastianbergmann/environment.git (push)
+STATUS SHORT:
+LAST COMMITS:
+830c43a Prepare release
+3fade0c Simplify
+f28a9ed Remove superfluous comment
+2d22113 Closes #59
+1b5dff7 Prepare release
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\exporter
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/exporter.git (fetch)
+composer	https://github.com/sebastianbergmann/exporter.git (push)
+origin	https://github.com/sebastianbergmann/exporter.git (fetch)
+origin	git@github.com:sebastianbergmann/exporter.git (push)
+STATUS SHORT:
+LAST COMMITS:
+78c00df Do not use implicitly nullable parameters and prepare release
+ac230ed Prepare release
+8097ec9 Merge branch '3.1' into 4.0
+73a9676 Update ChangeLog
+ee1ea57 Do not use ternary operator
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\global-state
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/global-state.git (fetch)
+composer	https://github.com/sebastianbergmann/global-state.git (push)
+origin	https://github.com/sebastianbergmann/global-state.git (fetch)
+origin	git@github.com:sebastianbergmann/global-state.git (push)
+STATUS SHORT:
+LAST COMMITS:
+bca7df1 Do not use implicitly nullable parameters and prepare release
+bde739e Backport c57acacdba5b303b5db84eff6d4067be108af911
+0ca8db5 Prepare release
+095f542 Fix CS/WS issues
+393f27d Update tools
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\lines-of-code
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/lines-of-code.git (fetch)
+composer	https://github.com/sebastianbergmann/lines-of-code.git (push)
+origin	https://github.com/sebastianbergmann/lines-of-code.git (fetch)
+origin	git@github.com:sebastianbergmann/lines-of-code.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e1e4a17 Prepare release
+48c2937 Support nikic/php-parser ^5.0
+d86bd3d Allow nikic/php-parser ^5.0
+9cdfa5d Update tools
+c1c2e99 Prepare release
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\object-enumerator
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/object-enumerator.git (fetch)
+composer	https://github.com/sebastianbergmann/object-enumerator.git (push)
+origin	https://github.com/sebastianbergmann/object-enumerator.git (fetch)
+origin	git@github.com:sebastianbergmann/object-enumerator.git (push)
+STATUS SHORT:
+LAST COMMITS:
+5c9eeac Prepare release
+c516ce9 Extend Throwable
+91846cf Update tools
+89c3b96 Use PHP 7.4 for tools
+2df4765 Test against PHP 8.1
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\object-reflector
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/object-reflector.git (fetch)
+composer	https://github.com/sebastianbergmann/object-reflector.git (push)
+origin	https://github.com/sebastianbergmann/object-reflector.git (fetch)
+origin	git@github.com:sebastianbergmann/object-reflector.git (push)
+STATUS SHORT:
+LAST COMMITS:
+b4f479e Prepare release
+ea341c4 Extend Throwable
+4fe47a6 Update tools
+b74acf4 Use PHP 7.4 for tools
+3d61fa6 Test against PHP 8.1
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\recursion-context
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/recursion-context.git (fetch)
+composer	https://github.com/sebastianbergmann/recursion-context.git (push)
+origin	https://github.com/sebastianbergmann/recursion-context.git (fetch)
+origin	git@github.com:sebastianbergmann/recursion-context.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e75bd0f Prepare release
+e3a6144 Update ChangeLog
+159dd10 Fix CS/WS issues
+2328424 Don't clobber null values if array_key_exists(PHP_INT_MAX, $array)
+a71bc36 Backport changes from main branch
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\resource-operations
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/resource-operations.git (fetch)
+composer	https://github.com/sebastianbergmann/resource-operations.git (push)
+origin	https://github.com/sebastianbergmann/resource-operations.git (fetch)
+origin	git@github.com:sebastianbergmann/resource-operations.git (push)
+STATUS SHORT:
+LAST COMMITS:
+05d5692 Prepare release
+692ecda Follow suggestion by @Seldaek in https://github.com/sebastianbergmann/phpunit/issues/4828#issuecomment-977913355
+20bdda8 Tweak
+e1157ea Update security policy
+f7adbde Add Security Policy
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\type
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/type.git (fetch)
+composer	https://github.com/sebastianbergmann/type.git (push)
+origin	https://github.com/sebastianbergmann/type.git (fetch)
+origin	git@github.com:sebastianbergmann/type.git (push)
+STATUS SHORT:
+LAST COMMITS:
+75e2c2a Prepare release
+dd52163 Set COMPOSER_ROOT_VERSION so that pipeline works for pull requests
+4d34b23 Fix
+69870a7 Update ChangeLog
+1687411 Avoiding a potential undefined offset warning/notice.
+
+REPO: C:\deploy\adminpanel\vendor\sebastian\version
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/version.git (fetch)
+composer	https://github.com/sebastianbergmann/version.git (push)
+origin	https://github.com/sebastianbergmann/version.git (fetch)
+origin	git@github.com:sebastianbergmann/version.git (push)
+STATUS SHORT:
+LAST COMMITS:
+c6c1022 Prepare release
+c56083d Use >= operator instead of ^ operator for PHP version constraint
+6265861 Support PHP 8 for https://github.com/sebastianbergmann/phpunit/issues/4325
+e5e5468 Ignore tests etc. from archive exports
+0411bde Drop support for PHP 7.1 and PHP 7.2
+
+REPO: C:\deploy\adminpanel\vendor\spatie\backtrace
+BRANCH:
+REMOTE:
+composer	https://github.com/spatie/backtrace.git (fetch)
+composer	https://github.com/spatie/backtrace.git (push)
+origin	https://github.com/spatie/backtrace.git (fetch)
+origin	git@github.com:spatie/backtrace.git (push)
+STATUS SHORT:
+LAST COMMITS:
+0f2477c fix deprecation
+c7e3909 Update CHANGELOG
+ca8be54 Merge pull request #27 from sweptsquash/main
+d21ea77 Merge branch 'main' of github.com:sweptsquash/backtrace-php84
+e78fd4b fix: deprecated warnings
+
+REPO: C:\deploy\adminpanel\vendor\spatie\error-solutions
+BRANCH:
+REMOTE:
+composer	https://github.com/spatie/error-solutions.git (fetch)
+composer	https://github.com/spatie/error-solutions.git (push)
+origin	https://github.com/spatie/error-solutions.git (fetch)
+origin	git@github.com:spatie/error-solutions.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e495d71 Merge pull request #28 from duncanmcclean/laravel-12
+154b093 wip
+288bc4d wip
+4b08ce9 wip
+a2acf34 wip
+
+REPO: C:\deploy\adminpanel\vendor\spatie\flare-client-php
+BRANCH:
+REMOTE:
+composer	https://github.com/spatie/flare-client-php.git (fetch)
+composer	https://github.com/spatie/flare-client-php.git (push)
+origin	https://github.com/spatie/flare-client-php.git (fetch)
+origin	git@github.com:spatie/flare-client-php.git (push)
+STATUS SHORT:
+LAST COMMITS:
+bf1716e Merge pull request #38 from duncanmcclean/laravel-12
+bd50717 Support Laravel 12
+92db3c3 Move docs
+68021f1 Move docs
+23ae20b Update CHANGELOG
+
+REPO: C:\deploy\adminpanel\vendor\spatie\ignition
+BRANCH:
+REMOTE:
+composer	https://github.com/spatie/ignition.git (fetch)
+composer	https://github.com/spatie/ignition.git (push)
+origin	https://github.com/spatie/ignition.git (fetch)
+origin	git@github.com:spatie/ignition.git (push)
+STATUS SHORT:
+LAST COMMITS:
+31f3141 Merge pull request #790 from duncanmcclean/laravel-12
+018fa13 Empty commit
+8b56a0b Supports Laravel 12
+fe458f1 Merge pull request #785 from spatie/dependabot/github_actions/dependabot/fetch-metadata-2.3.0
+f9a18dc Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0
+
+REPO: C:\deploy\adminpanel\vendor\spatie\laravel-ignition
+BRANCH:
+REMOTE:
+composer	https://github.com/spatie/laravel-ignition.git (fetch)
+composer	https://github.com/spatie/laravel-ignition.git (push)
+origin	https://github.com/spatie/laravel-ignition.git (fetch)
+origin	git@github.com:spatie/laravel-ignition.git (push)
+STATUS SHORT:
+LAST COMMITS:
+1baee07 correct namespace
+e720084 Merge pull request #218 from laravel-shift/l12-compatibility
+cb8bfcd Update run-tests.yml
+5996a8c Update GitHub Actions for Laravel 12
+2890073 Bump dependencies for Laravel 12
+
+REPO: C:\deploy\adminpanel\vendor\stripe\stripe-php
+BRANCH:
+REMOTE:
+composer	https://github.com/stripe/stripe-php.git (fetch)
+composer	https://github.com/stripe/stripe-php.git (push)
+origin	https://github.com/stripe/stripe-php.git (fetch)
+origin	git@github.com:stripe/stripe-php.git (push)
+STATUS SHORT:
+LAST COMMITS:
+c704949c Bump version to 7.128.0
+e849dad6 API Updates (#1282)
+c6416c99 Bump version to 7.127.0
+e29cc511 API Updates (#1281)
+4158d88d Pin setup-php action version. (#1278)
+
+REPO: C:\deploy\adminpanel\vendor\symfony\console
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/console.git (fetch)
+composer	https://github.com/symfony/console.git (push)
+origin	https://github.com/symfony/console.git (fetch)
+origin	git@github.com:symfony/console.git (push)
+STATUS SHORT:
+LAST COMMITS:
+2e4af9c9 fix(console): fix progress bar messing output in section when there is an EOL
+799445db fix risky test that doesn't perform any assertions
+67191f7f [Console] Fix division by 0 error
+f1fc6f47 Merge branch '5.4' into 6.4
+c4ba980c skip autocomplete test when stty is not available
+
+REPO: C:\deploy\adminpanel\vendor\symfony\css-selector
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/css-selector.git (fetch)
+composer	https://github.com/symfony/css-selector.git (push)
+origin	https://github.com/symfony/css-selector.git (fetch)
+origin	git@github.com:symfony/css-selector.git (push)
+STATUS SHORT:
+LAST COMMITS:
+601a5ce Merge branch '7.1' into 7.2
+4aa4f6b Merge branch '6.4' into 7.1
+cb23e97 Merge branch '5.4' into 6.4
+4f7f3c3 Add PR template and auto-close PR on subtree split repositories
+8198536 Update .gitattributes
+
+REPO: C:\deploy\adminpanel\vendor\symfony\deprecation-contracts
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/deprecation-contracts.git (fetch)
+composer	https://github.com/symfony/deprecation-contracts.git (push)
+origin	https://github.com/symfony/deprecation-contracts.git (fetch)
+origin	git@github.com:symfony/deprecation-contracts.git (push)
+STATUS SHORT:
+LAST COMMITS:
+74c71c9 Merge branch '6.4' into 7.1
+fae4ea6 Merge branch '5.4' into 6.4
+605389f Add PR template and auto-close PR on subtree split repositories
+d995a73 Merge branch '7.0' into 7.1
+e49f212 Merge branch '5.4' into 6.4
+
+REPO: C:\deploy\adminpanel\vendor\symfony\error-handler
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/error-handler.git (fetch)
+composer	https://github.com/symfony/error-handler.git (push)
+origin	https://github.com/symfony/error-handler.git (fetch)
+origin	git@github.com:symfony/error-handler.git (push)
+STATUS SHORT:
+LAST COMMITS:
+aa3bcf4 don't trigger "internal" deprecations for PHPUnit Stub objects
+3d4e55c relax expected format for PHP 8.5 compatibility
+e8d3b5b bug #59292 [WebProfilerBundle] Fix event delegation on links inside toggles (MatTheCat)
+87d26c2 [ErrorHandler] Don't trigger "internal" deprecations for anonymous LazyClosure instances
+bf44d80 Update exception.css
+
+REPO: C:\deploy\adminpanel\vendor\symfony\event-dispatcher
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/event-dispatcher.git (fetch)
+composer	https://github.com/symfony/event-dispatcher.git (push)
+origin	https://github.com/symfony/event-dispatcher.git (fetch)
+origin	git@github.com:symfony/event-dispatcher.git (push)
+STATUS SHORT:
+LAST COMMITS:
+910c5db Merge branch '7.1' into 7.2
+87254c7 Merge branch '6.4' into 7.1
+0ffc480 Merge branch '5.4' into 6.4
+72982eb Add PR template and auto-close PR on subtree split repositories
+1b5d04e Code style change in `@PER-CS2.0` affecting `@Symfony` (parentheses for anonymous classes)
+
+REPO: C:\deploy\adminpanel\vendor\symfony\event-dispatcher-contracts
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/event-dispatcher-contracts.git (fetch)
+composer	https://github.com/symfony/event-dispatcher-contracts.git (push)
+origin	https://github.com/symfony/event-dispatcher-contracts.git (fetch)
+origin	git@github.com:symfony/event-dispatcher-contracts.git (push)
+STATUS SHORT:
+LAST COMMITS:
+7642f5e Merge branch '6.4' into 7.1
+7c6c9a5 Merge branch '5.4' into 6.4
+e0fe3d7 Add PR template and auto-close PR on subtree split repositories
+9ab1b69 Merge branch '7.0' into 7.1
+c34b83f Merge branch '5.4' into 6.4
+
+REPO: C:\deploy\adminpanel\vendor\symfony\finder
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/finder.git (fetch)
+composer	https://github.com/symfony/finder.git (push)
+origin	https://github.com/symfony/finder.git (fetch)
+origin	git@github.com:symfony/finder.git (push)
+STATUS SHORT:
+LAST COMMITS:
+1d0e826 [Finder] Fix using `==` as default operator in `DateComparator`
+daea9ec Merge branch '5.4' into 6.4
+6374178 do not use assertCount() with generators
+573f1f8 Merge branch '5.4' into 6.4
+0412e29 Add PR template and auto-close PR on subtree split repositories
+
+REPO: C:\deploy\adminpanel\vendor\symfony\http-foundation
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/http-foundation.git (fetch)
+composer	https://github.com/symfony/http-foundation.git (push)
+origin	https://github.com/symfony/http-foundation.git (fetch)
+origin	git@github.com:symfony/http-foundation.git (push)
+STATUS SHORT:
+LAST COMMITS:
+d0492d62 [HttpFoundation][FrameworkBundle] Reset Request's formats using the service resetter
+e8fdc476 [HttpFoundation] Fixed `IpUtils::anonymize` exception when using IPv6 link-local addresses with RFC4007 scoping
+431771b7 Merge branch '5.4' into 6.4
+3f38b8af [HttpFoundation] Fix test
+40e6615d bug #58862 [Notifier] Fix GoIpTransport (nicolas-grekas)
+
+REPO: C:\deploy\adminpanel\vendor\symfony\http-kernel
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/http-kernel.git (fetch)
+composer	https://github.com/symfony/http-kernel.git (push)
+origin	https://github.com/symfony/http-kernel.git (fetch)
+origin	git@github.com:symfony/http-kernel.git (push)
+STATUS SHORT:
+LAST COMMITS:
+6be6db31 Update VERSION for 6.4.20
+714764ff [HttpKernel] Fix TraceableEventDispatcher when the StopWatch service has been reset
+1e97a511 Only remove E_WARNING from error level
+7c41c5a9 Bump Symfony version to 6.4.20
+88f2c9f7 Update VERSION for 6.4.19
+
+REPO: C:\deploy\adminpanel\vendor\symfony\mailer
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/mailer.git (fetch)
+composer	https://github.com/symfony/mailer.git (push)
+origin	https://github.com/symfony/mailer.git (fetch)
+origin	git@github.com:symfony/mailer.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e93a6ae Ensure TransportExceptionInterface populates stream debug data
+f8a50c1 [Mailer] Fix SMTP stream EOF handling on Windows by using feof()
+48db05b fix_50486 - memory leak
+c2f7e0d Merge branch '5.4' into 6.4
+f732e1f Add PR template and auto-close PR on subtree split repositories
+
+REPO: C:\deploy\adminpanel\vendor\symfony\mime
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/mime.git (fetch)
+composer	https://github.com/symfony/mime.git (push)
+origin	https://github.com/symfony/mime.git (fetch)
+origin	git@github.com:symfony/mime.git (push)
+STATUS SHORT:
+LAST COMMITS:
+ac537b6 [MIME] use address for body at PathHeader
+917d779 [Mime] Fix body validity check in `Email` when using `Message::setBody()`
+ea87c88 [Mime] Fix wrong PHPDoc in `FormDataPart` constructor
+1de1cf1 Merge branch '5.4' into 6.4
+8c1b9b3 [Mime] fix encoding issue with UTF-8 addresses containing doubles spaces
+
+REPO: C:\deploy\adminpanel\vendor\symfony\polyfill-ctype
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-ctype.git (fetch)
+composer	https://github.com/symfony/polyfill-ctype.git (push)
+origin	https://github.com/symfony/polyfill-ctype.git (fetch)
+origin	git@github.com:symfony/polyfill-ctype.git (push)
+STATUS SHORT:
+LAST COMMITS:
+a3cc8b0 Bump to PHP 7.2, stick to phpunit 8.5
+0424dff Revert "minor #477 Auto-close PRs on subtree-splits (kbond)"
+c9e59de Auto-close PRs on subtree-splits
+ef4d7e4 Remove branch-alias from composer.json
+ea208ce Bump for 1.28
+
+REPO: C:\deploy\adminpanel\vendor\symfony\polyfill-intl-grapheme
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-intl-grapheme.git (fetch)
+composer	https://github.com/symfony/polyfill-intl-grapheme.git (push)
+origin	https://github.com/symfony/polyfill-intl-grapheme.git (fetch)
+origin	git@github.com:symfony/polyfill-intl-grapheme.git (push)
+STATUS SHORT:
+LAST COMMITS:
+b912392 Bump to PHP 7.2, stick to phpunit 8.5
+64647a7 Revert "minor #477 Auto-close PRs on subtree-splits (kbond)"
+0a1df74 Auto-close PRs on subtree-splits
+32a9da8 Remove branch-alias from composer.json
+875e90a Bump for 1.28
+
+REPO: C:\deploy\adminpanel\vendor\symfony\polyfill-intl-idn
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-intl-idn.git (fetch)
+composer	https://github.com/symfony/polyfill-intl-idn.git (push)
+origin	https://github.com/symfony/polyfill-intl-idn.git (fetch)
+origin	git@github.com:symfony/polyfill-intl-idn.git (push)
+STATUS SHORT:
+LAST COMMITS:
+c36586d Bump to PHP 7.2, stick to phpunit 8.5
+a6e83bd Revert "minor #477 Auto-close PRs on subtree-splits (kbond)"
+872bf45 Auto-close PRs on subtree-splits
+412b0a6 Conform to IDNA version 15.1.0 revision 31
+a287ed7 Remove branch-alias from composer.json
+
+REPO: C:\deploy\adminpanel\vendor\symfony\polyfill-intl-normalizer
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-intl-normalizer.git (fetch)
+composer	https://github.com/symfony/polyfill-intl-normalizer.git (push)
+origin	https://github.com/symfony/polyfill-intl-normalizer.git (fetch)
+origin	git@github.com:symfony/polyfill-intl-normalizer.git (push)
+STATUS SHORT:
+LAST COMMITS:
+3833d72 Bump to PHP 7.2, stick to phpunit 8.5
+a95281b Revert "minor #477 Auto-close PRs on subtree-splits (kbond)"
+2a090dc Auto-close PRs on subtree-splits
+bc45c39 Remove branch-alias from composer.json
+8c4ad05 Bump for 1.28
+
+REPO: C:\deploy\adminpanel\vendor\symfony\polyfill-mbstring
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-mbstring.git (fetch)
+composer	https://github.com/symfony/polyfill-mbstring.git (push)
+origin	https://github.com/symfony/polyfill-mbstring.git (fetch)
+origin	git@github.com:symfony/polyfill-mbstring.git (push)
+STATUS SHORT:
+LAST COMMITS:
+85181ba Bump to PHP 7.2, stick to phpunit 8.5
+2bf2520 fix function signature tests
+8740a07 Improve mb_*trim polyfills
+74b87a0 Mb trim functions
+fd22ab5 Fix CS
+
+REPO: C:\deploy\adminpanel\vendor\symfony\polyfill-php80
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-php80.git (fetch)
+composer	https://github.com/symfony/polyfill-php80.git (push)
+origin	https://github.com/symfony/polyfill-php80.git (fetch)
+origin	git@github.com:symfony/polyfill-php80.git (push)
+STATUS SHORT:
+LAST COMMITS:
+60328e3 Bump to PHP 7.2, stick to phpunit 8.5
+77fa799 Revert "minor #477 Auto-close PRs on subtree-splits (kbond)"
+7d191eb Auto-close PRs on subtree-splits
+87b6820 Remove branch-alias from composer.json
+6caa573 Bump for 1.28
+
+REPO: C:\deploy\adminpanel\vendor\symfony\polyfill-php83
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-php83.git (fetch)
+composer	https://github.com/symfony/polyfill-php83.git (push)
+origin	https://github.com/symfony/polyfill-php83.git (fetch)
+origin	git@github.com:symfony/polyfill-php83.git (push)
+STATUS SHORT:
+LAST COMMITS:
+2fb86d6 Bump to PHP 7.2, stick to phpunit 8.5
+2954fcf Improve mb_*trim polyfills
+dbdcdf1 Add `#[Deprecated]` to the PHP 8.4 polyfill
+f4058fd Fix CS
+4647bfa Revert "minor #477 Auto-close PRs on subtree-splits (kbond)"
+
+REPO: C:\deploy\adminpanel\vendor\symfony\polyfill-uuid
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-uuid.git (fetch)
+composer	https://github.com/symfony/polyfill-uuid.git (push)
+origin	https://github.com/symfony/polyfill-uuid.git (fetch)
+origin	git@github.com:symfony/polyfill-uuid.git (push)
+STATUS SHORT:
+LAST COMMITS:
+21533be Bump to PHP 7.2, stick to phpunit 8.5
+2ba1f33 Revert "minor #477 Auto-close PRs on subtree-splits (kbond)"
+92525de Auto-close PRs on subtree-splits
+3abdd21 Remove branch-alias from composer.json
+9c44518 Bump for 1.28
+
+REPO: C:\deploy\adminpanel\vendor\symfony\process
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/process.git (fetch)
+composer	https://github.com/symfony/process.git (push)
+origin	https://github.com/symfony/process.git (fetch)
+origin	git@github.com:symfony/process.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e2a61c1 fix(process): use a pipe for stderr in pty mode to avoid mixed output between stdout and stderr
+7a1c12e [Process] Fix process status tracking
+3cb242f Merge branch '5.4' into 6.4
+5d1662f normalize paths to avoid failures if a path is referenced by different names
+25214ad Merge branch '5.4' into 6.4
+
+REPO: C:\deploy\adminpanel\vendor\symfony\routing
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/routing.git (fetch)
+composer	https://github.com/symfony/routing.git (push)
+origin	https://github.com/symfony/routing.git (fetch)
+origin	git@github.com:symfony/routing.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e9bfc949 [Routing] Fix configuring a single routeΓÇÖ hosts
+91e02e60 fix merge
+99a4c492 Merge branch '5.4' into 6.4
+dd08c198 [Routing] Fix: lost priority when defining hosts in configuration
+640a7425 Merge branch '5.4' into 6.4
+
+REPO: C:\deploy\adminpanel\vendor\symfony\service-contracts
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/service-contracts.git (fetch)
+composer	https://github.com/symfony/service-contracts.git (push)
+origin	https://github.com/symfony/service-contracts.git (fetch)
+origin	git@github.com:symfony/service-contracts.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e53260a Merge branch '6.4' into 7.1
+465bd9d Merge branch '5.4' into 6.4
+f37b419 Add PR template and auto-close PR on subtree split repositories
+2e21beb Merge branch '7.0' into 7.1
+c345d73 Merge branch '5.4' into 6.4
+
+REPO: C:\deploy\adminpanel\vendor\symfony\string
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/string.git (fetch)
+composer	https://github.com/symfony/string.git (push)
+origin	https://github.com/symfony/string.git (fetch)
+origin	git@github.com:symfony/string.git (push)
+STATUS SHORT:
+LAST COMMITS:
+446e0d1 Merge branch '7.1' into 7.2
+591ebd4 Merge branch '6.4' into 7.1
+73a5e66 Merge branch '5.4' into 6.4
+136ca7d [String] Fix some spellings in `EnglishInflector`
+2055806 Remove always true/false occurrences
+
+REPO: C:\deploy\adminpanel\vendor\symfony\translation
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/translation.git (fetch)
+composer	https://github.com/symfony/translation.git (push)
+origin	https://github.com/symfony/translation.git (fetch)
+origin	git@github.com:symfony/translation.git (push)
+STATUS SHORT:
+LAST COMMITS:
+3b9bf9f Fixes XliffFileDumperTest for 6.4
+b867b35 [Translation] check empty notes
+bee9bfa Fix extracting of message from ->trans() method with named params
+34b6518 Merge branch '5.4' into 6.4
+98f26ac Add PR template and auto-close PR on subtree split repositories
+
+REPO: C:\deploy\adminpanel\vendor\symfony\translation-contracts
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/translation-contracts.git (fetch)
+composer	https://github.com/symfony/translation-contracts.git (push)
+origin	https://github.com/symfony/translation-contracts.git (fetch)
+origin	git@github.com:symfony/translation-contracts.git (push)
+STATUS SHORT:
+LAST COMMITS:
+4667ff3 Merge branch '6.4' into 7.1
+6e864bb Merge branch '5.4' into 6.4
+450d417 Add PR template and auto-close PR on subtree split repositories
+40f0eb1 Merge branch '7.0' into 7.1
+f975cc6 Merge branch '5.4' into 6.4
+
+REPO: C:\deploy\adminpanel\vendor\symfony\uid
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/uid.git (fetch)
+composer	https://github.com/symfony/uid.git (push)
+origin	https://github.com/symfony/uid.git (fetch)
+origin	git@github.com:symfony/uid.git (push)
+STATUS SHORT:
+LAST COMMITS:
+18eb207 Merge branch '5.4' into 6.4
+512de78 Add PR template and auto-close PR on subtree split repositories
+2f16054 [6.4][Routing][Uid] Mention RFC 9562
+31b08ba Merge branch '5.4' into 6.4
+b36c894 [Uid][Serializer][Validator] Mention RFC 9562
+
+REPO: C:\deploy\adminpanel\vendor\symfony\var-dumper
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/var-dumper.git (fetch)
+composer	https://github.com/symfony/var-dumper.git (push)
+origin	https://github.com/symfony/var-dumper.git (fetch)
+origin	git@github.com:symfony/var-dumper.git (push)
+STATUS SHORT:
+LAST COMMITS:
+4ad10cf fix dumped markup
+60de0f3 bug #59390 [VarDumper] Fix blank strings display (MatTheCat)
+1bdb84b [VarDumper] Fix blank strings display
+75480ee Update old Appveyor skip conditions
+ebaf88b [VarDumper] Fix displaying closure's "this" from anonymous classes
+
+REPO: C:\deploy\adminpanel\vendor\symfony\yaml
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/yaml.git (fetch)
+composer	https://github.com/symfony/yaml.git (push)
+origin	https://github.com/symfony/yaml.git (fetch)
+origin	git@github.com:symfony/yaml.git (push)
+STATUS SHORT:
+LAST COMMITS:
+4c4b6f4 Merge branch '6.4' into 7.2
+28ee818 drop comments while lexing unquoted strings
+ac238f1 Merge branch '7.1' into 7.2
+4921b8c Merge branch '6.4' into 7.1
+bf598c9 [Yaml] fix inline notation with inline comment
+
+REPO: C:\deploy\adminpanel\vendor\theseer\tokenizer
+BRANCH:
+REMOTE:
+composer	https://github.com/theseer/tokenizer.git (fetch)
+composer	https://github.com/theseer/tokenizer.git (push)
+origin	https://github.com/theseer/tokenizer.git (fetch)
+origin	git@github.com:theseer/tokenizer.git (push)
+STATUS SHORT:
+LAST COMMITS:
+737eda6 Update changelog for release
+28d34b9 Merge pull request #20 from sebastianbergmann/master
+7c69ad9 Do not use implicitly nullable parameters
+77b59c0 Add missing links
+6bc8a4c Merge pull request #19 from Ayesh/minor/deadcode-elm
+
+REPO: C:\deploy\adminpanel\vendor\tijsverkoyen\css-to-inline-styles
+BRANCH:
+REMOTE:
+composer	https://github.com/tijsverkoyen/CssToInlineStyles.git (fetch)
+composer	https://github.com/tijsverkoyen/CssToInlineStyles.git (push)
+origin	https://github.com/tijsverkoyen/CssToInlineStyles.git (fetch)
+origin	git@github.com:tijsverkoyen/CssToInlineStyles.git (push)
+STATUS SHORT:
+LAST COMMITS:
+0d72ac1 Merge pull request #251 from stof/static_analysis
+9e85e72 Add a phpstan job in the CI setup
+777f8df Assert that the fixture CSS file is readable
+0b47df1 Remove unnecessary cleanup method in tests
+0c2befd Handle DOM failure cases in tests
+
+REPO: C:\deploy\adminpanel\vendor\vlucas\phpdotenv
+BRANCH:
+REMOTE:
+composer	https://github.com/vlucas/phpdotenv.git (fetch)
+composer	https://github.com/vlucas/phpdotenv.git (push)
+origin	https://github.com/vlucas/phpdotenv.git (fetch)
+origin	git@github.com:vlucas/phpdotenv.git (push)
+STATUS SHORT:
+LAST COMMITS:
+a59a137 Upgrade deps
+d31de17 Prepare for PHP 8.4 (#572)
+334f495 Update composer.json
+2cf9fb6 Document why superglobals can appear empty (#558)
+2f323be Fixed handling of array keys in the tests
+
+REPO: C:\deploy\adminpanel\vendor\voku\portable-ascii
+BRANCH:
+REMOTE:
+composer	https://github.com/voku/portable-ascii.git (fetch)
+composer	https://github.com/voku/portable-ascii.git (push)
+origin	https://github.com/voku/portable-ascii.git (fetch)
+origin	git@github.com:voku/portable-ascii.git (push)
+STATUS SHORT:
+LAST COMMITS:
+b1d923f [*]: update the changelog
+7175772 [*]: optimize phpdocs only
+16c1767 [*]: update the changelog
+beb7480 [*]: ci stuff ...
+caf6da4 Merge pull request #104 from voku/renovate/codecov-codecov-action-5.x
+
+REPO: C:\deploy\adminpanel\vendor\webmozart\assert
+BRANCH:
+REMOTE:
+composer	https://github.com/webmozarts/assert.git (fetch)
+composer	https://github.com/webmozarts/assert.git (push)
+origin	https://github.com/webmozarts/assert.git (fetch)
+origin	git@github.com:webmozarts/assert.git (push)
+STATUS SHORT:
+LAST COMMITS:
+11cb219 Add 1.11.0 to the changelog (#272)
+af18046 Fix deprecated use of 'static' literal string in callable (#260)
+4e22b65 Introduce allNullOr methods (#263)
+dc96b67 Deal with lists that have been modified that have (#247)
+7b05571 Update ci.yaml (#253)
+
+=== ROOT: C:\Users\Hp\Documents ===
+
+REPO: C:\Users\Hp\Documents\Codex\2026-06-12\files-mentioned-by-the-user-documentation
+BRANCH:
+main
+REMOTE:
+origin	https://github.com/Nazirach/emart-panel-safe.git (fetch)
+origin	https://github.com/Nazirach/emart-panel-safe.git (push)
+STATUS SHORT:
+ M "work/landing-panels-extract/Landing Page - Admin Panel - Store Panel - Website Panel/Admin Panel/app/Providers/AppServiceProvider.php"
+ M "work/landing-panels-extract/Landing Page - Admin Panel - Store Panel - Website Panel/Admin Panel/resources/views/drivers/index.blade.php"
+ M "work/landing-panels-extract/Landing Page - Admin Panel - Store Panel - Website Panel/Admin Panel/resources/views/orders/index.blade.php"
+ M "work/landing-panels-extract/Landing Page - Admin Panel - Store Panel - Website Panel/Admin Panel/resources/views/role/save.blade.php"
+?? README_LARAVEL_CLOUD_DEPLOY.md
+?? backups/
+?? docs/ADVANCED_FIREBASE_RECOVERY_MAP.md
+?? docs/DRIVERS_APPROVAL_FILTER_AUDIT.md
+?? docs/DRIVERS_CLIENT_SIDE_FILTER_TRACE.md
+?? docs/DRIVERS_FIRESTORE_INDEX_REQUIREMENTS.md
+?? docs/DRIVERS_FIRESTORE_TRACE.md
+?? docs/DRIVERS_LEGACY_COMPAT_VERIFY_REPORT.md
+?? docs/DRIVERS_LEGACY_DATA_COMPAT_PATCH_REPORT.md
+?? docs/DRIVERS_PIPELINE_COUNT_TRACE_REPORT.md
+?? docs/DRIVERS_REAL_FIRESTORE_DATA_AUDIT.md
+?? docs/DRIVERS_SECTION_ID_RUNTIME_TRACE.md
+?? docs/DRIVERS_SECTION_QUERY_PATCH_REPORT.md
+?? docs/DRIVERS_SERVICE_TYPE_NORMALIZER_PATCH_REPORT.md
+?? docs/EMART_DATABASE_CONNECTION_COMMANDS.md
+?? docs/EMART_DATABASE_SOURCE_OF_TRUTH_AUDIT.md
+?? docs/EMART_EXISTING_DATABASE_DUMP_PLAN.md
+?? docs/EMART_EXISTING_DATABASE_RECOVERY_AUDIT.md
+?? docs/EMART_FINAL_GITIGNORE_PATCH_REPORT.md
+?? docs/EMART_GITHUB_LARAVEL_CLOUD_FIREBASE_PREP.md
+?? docs/EMART_GITHUB_SAFE_TEMPLATE_PATCH_REPORT.md
+?? docs/EMART_GIT_PRE_PUSH_AUDIT.md
+?? docs/EMART_LIMITED_GIT_ADD_PLAN.md
+?? docs/EMART_METAACEHPACIFIC_DEPLOYMENT_READINESS.md
+?? docs/EMART_METAACEHPACIFIC_PRODUCTION_ACCESS_CHECK.md
+?? docs/EMART_METAACEHPACIFIC_VPS_DEPLOY_RUNBOOK.md
+?? docs/EMART_TARGETED_PRE_PUSH_CLEANUP_AUDIT.md
+?? docs/FIREBASE_COLLECTIONS_BY_APP.md
+?? docs/FIREBASE_COLLECTION_STATUS_CHECKLIST.md
+?? docs/FIREBASE_DATA_FIX_PLAN.md
+?? docs/FIREBASE_ENV_FINAL_INPUT_CHECK.md
+?? docs/FIREBASE_FIELD_TRUTH_MAP.md
+?? docs/FIREBASE_FRONTEND_CONFIG_TRACE.md
+?? docs/FIREBASE_LARAVEL_CLOUD_VALUE_SOURCE_MAP.md
+?? docs/FIREBASE_ONE_PAGE_AUDIT_SHEET.md
+?? docs/FIREBASE_PRIORITY1_PRELIM_AUDIT.md
+?? docs/FIREBASE_PRODUCTION_READINESS_FINAL.md
+?? docs/FIREBASE_REPAIR_DRY_RUN_REPORT.md
+?? docs/FIREBASE_RUNTIME_FINAL_VERIFY.md
+?? docs/FIREBASE_SAFE_EXECUTION_REPORT.md
+?? docs/FIREBASE_SAFE_EXECUTION_SCRIPT_SPEC.md
+?? docs/FIREBASE_SYNC_BLUEPRINT.md
+?? docs/FIREBASE_SYSTEM_BASE_FINALIZATION.md
+?? docs/FIREBASE_TODAY_PRIORITY_TABLE.md
+?? docs/FIREBASE_USERS_VENDORS_VALIDATION_CHECKLIST.md
+?? docs/FIREBASE_WEB_CONFIG_RECOVERY_REPORT.md
+?? docs/FIRESTORE_SCHEMA_MAP.md
+?? docs/GITHUB_POST_PUSH_AUDIT.md
+?? docs/LARAVEL_CLOUD_BLOCKER_RESOLUTION_PLAN.md
+?? docs/LARAVEL_CLOUD_DEPLOY_LOG_REVIEW.md
+?? docs/LARAVEL_CLOUD_DEPLOY_READINESS_FINAL.md
+?? docs/LARAVEL_CLOUD_ENV_FINAL_FILL_GUIDE.md
+?? docs/LARAVEL_CLOUD_ENV_INPUT_CHECKLIST.md
+?? docs/LARAVEL_CLOUD_FINAL_PREDEPLOY_VERIFICATION.md
+?? docs/LARAVEL_CLOUD_PRODUCTION_ENV_SECRET_PLAN.md
+?? docs/LARAVEL_CLOUD_ROOT_REPORT.md
+?? docs/MINIMUM_READY_SMOKE_CHECK.md
+?? docs/NEXT_PRIORITY_AUDIT_QUEUE.md
+?? docs/ORDERS_DATA_NORMALIZER_PATCH_REPORT.md
+?? docs/PATCH_HISTORY_FIREBASE_RECOVERY.md
+?? docs/PROJECT_BASELINE_STATUS.md
+?? docs/WEB_ADMIN_INTERACTION_SWEEP.md
+?? docs/WEB_ADMIN_MIN_SCHEMA_MAP.md
+?? docs/WEB_ADMIN_PANEL_DB_SOURCE_REPORT.md
+?? docs/WEB_ADMIN_PANEL_RUNTIME_CHECK.md
+?? docs/WEB_ADMIN_POST_DASHBOARD_RUNTIME_SWEEP.md
+?? docs/WEB_ADMIN_SAFE_WRITE_PILOT.md
+?? docs/WEB_ADMIN_SAFE_WRITE_PILOT_2.md
+?? docs/WEB_DATABASE_BOOTSTRAP_REPORT.md
+?? docs/WEB_EMART_DATABASE_AUDIT.md
+?? docs/WEB_FIREBASE_READ_SYNC_CHECK.md
+?? docs/WEB_FIREBASE_VISUAL_CONSOLE_CHECK.md
+?? docs/WEB_LOCAL_ADMIN_SCHEMA_PATCH_EXECUTION_REPORT.md
+?? docs/WEB_LOCAL_ADMIN_SCHEMA_PATCH_PLAN.md
+?? docs/WEB_ROLE_SAVE_VIEW_PATCH_REPORT.md
+?? docs/WEB_TEMP_EMART_LOGIN_TEST.md
+?? tmp_exact_map_patch.py
+?? tmp_infowindow_guard_patch.py
+?? tmp_infowindow_string_cleanup.py
+?? tmp_multivendor_cloud_ready_patch.py
+?? tmp_zone_google_guard_patch.py
+?? tools/
+?? work/adminpanel-env-example.txt
+?? work/adminpanel-gitignore-final.txt
+?? work/adminpanel-gitignore.txt
+?? work/browser-check/
+?? work/firebase_repair_dry_run_report.json
+?? work/paymentcontroller_indicator_scan.ps1
+?? work/run_browser_visual_check.ps1
+?? work/secret_indicator_scan.ps1
+?? work/web_admin_runtime_sweep.ps1
+LAST COMMITS:
+68a618a Add GitHub init safety report
+43c09c3 Initial safe project import
+
+=== ROOT: C:\Users\Hp\Desktop ===
+
+=== ROOT: C:\project ===
+
+REPO: C:\project\Ghalbitnet\ghalbitMesx2
+BRANCH:
+restore-ui-from-codex
+REMOTE:
+origin	https://github.com/goomevision/ghalbitMesx2.git (fetch)
+origin	https://github.com/goomevision/ghalbitMesx2.git (push)
+STATUS SHORT:
+ M app/src/debug/AndroidManifest.xml
+ M app/src/main/AndroidManifest.xml
+ M app/src/main/assets/diagnostics/server_app_sync_readiness.md
+ M app/src/main/assets/diagnostics/virtual_peer_call_server_proof.md
+ M app/src/main/java/com/ghalbitnet/meshx2/GhalbitMeshApp.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/call/AudioPlaybackWorker.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/call/CallManager.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/call/CallSessionActivity.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/call/CallSignalParser.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/call/FullDuplexCallEngine.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/call/GhalbitCallManager.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/chat/ChatDeliveryManager.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/chat/ConversationKeepAliveManager.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/chat/HumanEventFormatter.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/chat/InternalSignalFilter.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/diagnostics/VirtualPeerOutboundCallProbe.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/diagnostics/debug/DiagnosticDebugReceiver.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/online/OnlineFallbackTransport.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/online/OnlinePresenceManager.kt
+ M app/src/main/java/com/ghalbitnet/meshx2/security/NodeSigningIdentityManager.kt
+ M functions/index.js
+?? .blackboxcli/
+?? AGENTS.md
+?? app/src/debug/res/
+?? app/src/main/assets/diagnostics/audio_lab_auto_runner_contract_report.md
+?? app/src/main/assets/diagnostics/audio_lab_auto_runner_report.md
+?? app/src/main/assets/diagnostics/audio_lab_direct_a_b_report.md
+?? app/src/main/assets/diagnostics/audio_lab_interaction_report.md
+?? app/src/main/assets/diagnostics/audio_lab_validation_report.md
+?? app/src/main/assets/diagnostics/direct_presence_handler_report.md
+?? app/src/main/assets/diagnostics/emulator_stability_report.md
+?? app/src/main/assets/diagnostics/environment_identity.json
+?? app/src/main/assets/diagnostics/environment_identity.md
+?? app/src/main/assets/diagnostics/environment_identity_latest_report.md
+?? app/src/main/assets/diagnostics/final_virtual_audio_lab_report.md
+?? app/src/main/assets/diagnostics/full_duplex_pcm_auto_runner_002_report.md
+?? app/src/main/assets/diagnostics/full_duplex_pcm_auto_runner_report.md
+?? app/src/main/assets/diagnostics/node_c_audio_lab_topology_report.md
+?? app/src/main/assets/diagnostics/opus_delay_certification_report.md
+?? app/src/main/assets/diagnostics/opus_enablement_report.md
+?? app/src/main/assets/diagnostics/runtime_logs/
+?? app/src/main/assets/diagnostics/server_presence_guard_report.md
+?? app/src/main/assets/diagnostics/virtual_node_latest_report.md
+?? app/src/main/assets/diagnostics/voice_reference_certification_report.md
+?? app/src/main/java/com/ghalbitnet/meshx2/call/VirtualPeerAudioFileStreamer.kt
+?? app/src/main/java/com/ghalbitnet/meshx2/labs/
+?? call_diff.txt
+?? "e appsrcmainresraw"
+?? functions/package-lock.json
+?? tools/
+LAST COMMITS:
+2eb49da Auto-accept inbound virtual server calls for analysis
+99e9e49 Auto-arm tone lab for outbound virtual server calls
+d883ad6 Add full-flow outbound virtual peer server call
+83bd5af Add outbound virtual peer server-call auto-accept
+36931f5 Add outbound virtual peer server-call trigger
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\google\auth
+BRANCH:
+REMOTE:
+composer	https://github.com/googleapis/google-auth-library-php.git (fetch)
+composer	https://github.com/googleapis/google-auth-library-php.git (push)
+origin	https://github.com/googleapis/google-auth-library-php.git (fetch)
+origin	git@github.com:googleapis/google-auth-library-php.git (push)
+STATUS SHORT:
+LAST COMMITS:
+7fafae99a chore(main): release 1.46.0 (#611)
+66db27c67 feat: add support for Impersonating ID Tokens (#580)
+c70b987a3 chore(main): release 1.45.4 (#609)
+dde95761f chore(main): release 1.45.3 (#608)
+9ca44cae7 docs: remove docs generation, update urls to new ref docs (#607)
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\graham-campbell\result-type
+BRANCH:
+REMOTE:
+composer	https://github.com/GrahamCampbell/Result-Type.git (fetch)
+composer	https://github.com/GrahamCampbell/Result-Type.git (push)
+origin	https://github.com/GrahamCampbell/Result-Type.git (fetch)
+origin	git@github.com:GrahamCampbell/Result-Type.git (push)
+STATUS SHORT:
+LAST COMMITS:
+3ba905c Release 1.1.3
+366f781 Merge pull request #6 from GrahamCampbell/php-84
+8b2aa24 Add support for PHP 8.4
+fbd48bc Release 1.1.2
+cdab7c9 Merge pull request #4 from GrahamCampbell/analysis-KokpQ2
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\guzzlehttp\guzzle
+BRANCH:
+REMOTE:
+composer	https://github.com/guzzle/guzzle.git (fetch)
+composer	https://github.com/guzzle/guzzle.git (push)
+origin	https://github.com/guzzle/guzzle.git (fetch)
+origin	git@github.com:guzzle/guzzle.git (push)
+STATUS SHORT:
+LAST COMMITS:
+7b2f29fe Release 7.9.3
+8f68d9f2 Improve compatibility with bad servers for boolean cookie values (#3281)
+234747f2 Remove explicit content-length header for GET requests (#3278)
+d28a0729 `testHandlesGarbageHttpServerGracefully`: Split test between PHP <= 8.1 and > 8.1 (#3280)
+41f5ce75 CS fixes
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\guzzlehttp\promises
+BRANCH:
+REMOTE:
+composer	https://github.com/guzzle/promises.git (fetch)
+composer	https://github.com/guzzle/promises.git (push)
+origin	https://github.com/guzzle/promises.git (fetch)
+origin	git@github.com:guzzle/promises.git (push)
+STATUS SHORT:
+LAST COMMITS:
+7c69f28 Release 2.2.0
+a9f2daf Revert "Allow an empty EachPromise to be resolved by running the queue (#178)" (#180)
+2bbd393 Release 2.1.0
+be70a65 Allow an empty EachPromise to be resolved by running the queue (#178)
+90c5be4 SA upgrades
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\guzzlehttp\psr7
+BRANCH:
+REMOTE:
+composer	https://github.com/guzzle/psr7.git (fetch)
+composer	https://github.com/guzzle/psr7.git (push)
+origin	https://github.com/guzzle/psr7.git (fetch)
+origin	git@github.com:guzzle/psr7.git (push)
+STATUS SHORT:
+LAST COMMITS:
+c2270ca Release 2.7.1
+0cfd892 Support uppercase IPv6 addresses in URI (#620)
+a2474ad [2.7] Improve uploaded file error message (#621)
+ca06f23 SA upgrades
+a70f5c9 Release 2.7.0 (#615)
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\guzzlehttp\uri-template
+BRANCH:
+REMOTE:
+composer	https://github.com/guzzle/uri-template.git (fetch)
+composer	https://github.com/guzzle/uri-template.git (push)
+origin	https://github.com/guzzle/uri-template.git (fetch)
+origin	git@github.com:guzzle/uri-template.git (push)
+STATUS SHORT:
+LAST COMMITS:
+30e2865 Release 1.0.4
+69df52d Update phpstan.neon.dist
+0def803 PHP 8.4 support
+cbc8960 Fixes for PHP 8.4 deprecation (#26)
+3600fe9 Update .php-cs-fixer.dist.php
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\hamcrest\hamcrest-php
+BRANCH:
+REMOTE:
+composer	https://github.com/hamcrest/hamcrest-php.git (fetch)
+composer	https://github.com/hamcrest/hamcrest-php.git (push)
+origin	https://github.com/hamcrest/hamcrest-php.git (fetch)
+origin	git@github.com:hamcrest/hamcrest-php.git (push)
+STATUS SHORT:
+LAST COMMITS:
+8c3d0a3 Merge pull request #67 from GrahamCampbell/patch-1
+55b680a Updated release date
+261cae8 Release 2.0.1
+459c788 Merge pull request #65 from GrahamCampbell/patch-1
+10a627d Fixed generator on PHP 5
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\laravel\framework
+BRANCH:
+REMOTE:
+composer	https://github.com/laravel/framework.git (fetch)
+composer	https://github.com/laravel/framework.git (push)
+origin	https://github.com/laravel/framework.git (fetch)
+origin	git@github.com:laravel/framework.git (push)
+STATUS SHORT:
+LAST COMMITS:
+8f7f9247cb version
+a4f7a8f9b8 [10.x] Fix attribute name used on `Validator` instance within certain rule classes (#54943)
+fc47dcac92 backport emulate prepares
+dd5c90d39a Update CHANGELOG
+e714e7e0c1 Update version to v10.48.28
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\laravel\prompts
+BRANCH:
+REMOTE:
+composer	https://github.com/laravel/prompts.git (fetch)
+composer	https://github.com/laravel/prompts.git (push)
+origin	https://github.com/laravel/prompts.git (fetch)
+origin	git@github.com:laravel/prompts.git (push)
+STATUS SHORT:
+LAST COMMITS:
+7b4029a Fix textarea helper method signature. (#159)
+72e5035 Add transformation support (#156)
+a86e8d2 Fix code styling
+a6df46a Replace dead link in Security Policy (#157)
+7cc92f2 Update CHANGELOG
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\laravel\sail
+BRANCH:
+REMOTE:
+composer	https://github.com/laravel/sail.git (fetch)
+composer	https://github.com/laravel/sail.git (push)
+origin	https://github.com/laravel/sail.git (fetch)
+origin	git@github.com:laravel/sail.git (push)
+STATUS SHORT:
+LAST COMMITS:
+fe1a4ad Add `sail run` command (#770)
+a910e2d Update composer.json (#771)
+87cff7a Update CHANGELOG
+237e706 Update Ondrej PPA key (#768)
+f77164c Add Valkey support (#767)
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\laravel\sanctum
+BRANCH:
+REMOTE:
+composer	https://github.com/laravel/sanctum.git (fetch)
+composer	https://github.com/laravel/sanctum.git (push)
+origin	https://github.com/laravel/sanctum.git (fetch)
+origin	git@github.com:laravel/sanctum.git (push)
+STATUS SHORT:
+LAST COMMITS:
+8c10436 Extract generate token method (#488)
+4fc91ed Updated CsrfCookieController to use named arguments (#487)
+700ce11 Update CHANGELOG
+e1a2728 Accept null as a parameter for `Sanctum@getAccessTokenFromRequestUsing()` (#477)
+b3853da Uses `actions/checkout@v4`
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\laravel\serializable-closure
+BRANCH:
+REMOTE:
+composer	https://github.com/laravel/serializable-closure.git (fetch)
+composer	https://github.com/laravel/serializable-closure.git (push)
+origin	https://github.com/laravel/serializable-closure.git (fetch)
+origin	git@github.com:laravel/serializable-closure.git (push)
+STATUS SHORT:
+LAST COMMITS:
+4f48ade Fix for readonly properties that declared in parent (#96)
+d49075c Update CHANGELOG
+f865a58 Merge pull request #98 from caendesilva/patch-1
+f280e0f Fix repeated word "the" in code comment
+43244bf Update CHANGELOG
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\laravel\tinker
+BRANCH:
+REMOTE:
+composer	https://github.com/laravel/tinker.git (fetch)
+composer	https://github.com/laravel/tinker.git (push)
+origin	https://github.com/laravel/tinker.git (fetch)
+origin	git@github.com:laravel/tinker.git (push)
+STATUS SHORT:
+LAST COMMITS:
+22177cc [2.x] Supports Laravel 12 (#185)
+9f5dde0 Update logo to support dark/light theme (#183)
+8aa2522 Update CHANGELOG
+ba4d51e [2.x] Supports PHP 8.4 (#182)
+a3e5213 Delete .github/ISSUE_TEMPLATE/2_Feature_request.md
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\laravel\ui
+BRANCH:
+REMOTE:
+composer	https://github.com/laravel/ui.git (fetch)
+composer	https://github.com/laravel/ui.git (push)
+origin	https://github.com/laravel/ui.git (fetch)
+origin	git@github.com:laravel/ui.git (push)
+STATUS SHORT:
+LAST COMMITS:
+7d6ffa3 Supports Laravel 12 (#277)
+0c38f3a Update CHANGELOG
+a34609b [4.x] Supports PHP 8.4 (#276)
+d05f8f3 Delete .github/ISSUE_TEMPLATE/2_Feature_request.md
+761b867 Update config.yml
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\league\commonmark
+BRANCH:
+REMOTE:
+composer	https://github.com/thephpleague/commonmark.git (fetch)
+composer	https://github.com/thephpleague/commonmark.git (push)
+origin	https://github.com/thephpleague/commonmark.git (fetch)
+origin	git@github.com:thephpleague/commonmark.git (push)
+STATUS SHORT:
+LAST COMMITS:
+d990688c Prepare to release 2.6.1
+a35bdc99 Always compare just the HTML
+81d3ba2a Test against PHP 8.4 (stable) and 8.5 (nightly)
+ab3f3ae7 Merge pull request #1061 from thephpleague/fix-list-item-newlines
+73e129e9 Rendered list items should only add newlines around block-level children
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\league\config
+BRANCH:
+REMOTE:
+composer	https://github.com/thephpleague/config.git (fetch)
+composer	https://github.com/thephpleague/config.git (push)
+origin	https://github.com/thephpleague/config.git (fetch)
+origin	git@github.com:thephpleague/config.git (push)
+STATUS SHORT:
+LAST COMMITS:
+754b360 Prepare to release v1.2.0
+7f83d8b Merge pull request #13 from thephpleague/validate-relevant-schema-only
+9188249 Remove dead 'catch' block
+799f320 Improve lazy schema validation
+c9e139a Merge pull request #11 from thephpleague/renovate/actions-checkout-3.x
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\league\flysystem
+BRANCH:
+REMOTE:
+composer	https://github.com/thephpleague/flysystem.git (fetch)
+composer	https://github.com/thephpleague/flysystem.git (push)
+origin	https://github.com/thephpleague/flysystem.git (fetch)
+origin	git@github.com:thephpleague/flysystem.git (push)
+STATUS SHORT:
+LAST COMMITS:
+edc1bb7c Prep changelog
+e58b8a78 Fixes #1820: Normalise paths for checksum calls.
+0adc0d9a Prep changelog
+2b6b74af Merge pull request #1819 from glaubinix/async-s3-exceptions
+67bfd18a AsyncS3: throw FilesystemOperationFailed exceptions in case upload or listContent fails
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\league\flysystem-local
+BRANCH:
+REMOTE:
+composer	https://github.com/thephpleague/flysystem-local.git (fetch)
+composer	https://github.com/thephpleague/flysystem-local.git (push)
+origin	https://github.com/thephpleague/flysystem-local.git (fetch)
+origin	git@github.com:thephpleague/flysystem-local.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e0e8d52 feat: add dedicated test cases to ensure copy and move methods to always overwrite target
+13f22ea Chore
+61a6a90 [PHP 8.4] Fixes for implicit nullability deprecation
+b884d2b Updated license year.
+5cf046b Make falling back to inconclusive mime-type configurable.
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\league\mime-type-detection
+BRANCH:
+REMOTE:
+composer	https://github.com/thephpleague/mime-type-detection.git (fetch)
+composer	https://github.com/thephpleague/mime-type-detection.git (push)
+origin	https://github.com/thephpleague/mime-type-detection.git (fetch)
+origin	git@github.com:thephpleague/mime-type-detection.git (push)
+STATUS SHORT:
+LAST COMMITS:
+2d6702f prep changelog
+6c2e35e re-generate mime-types for mime-db
+0d155d7 Merge pull request #33 from Slamdunk/php_84_compat
+6e61ff6 Add PHP 8.4 compatibility
+ce0f4d1 Set correct date.
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\mockery\mockery
+BRANCH:
+REMOTE:
+composer	https://github.com/mockery/mockery.git (fetch)
+composer	https://github.com/mockery/mockery.git (push)
+origin	https://github.com/mockery/mockery.git (fetch)
+origin	git@github.com:mockery/mockery.git (push)
+STATUS SHORT:
+LAST COMMITS:
+1f4efdd7 Changelog v1.6.12 (#1418)
+bff36e85 Update `psalm-baseline.xml`  (#1420)
+de5f9f1d Update e2e-test.sh (#1419)
+c731bf33 Fix PHP Doc Comments (#1410)
+a7c20010 Bump `Jinja2` from `3.1.3` to `3.1.4` - Fix CVE-2024-34064 (#1417)
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\monolog\monolog
+BRANCH:
+REMOTE:
+composer	https://github.com/Seldaek/monolog.git (fetch)
+composer	https://github.com/Seldaek/monolog.git (push)
+origin	https://github.com/Seldaek/monolog.git (fetch)
+origin	git@github.com:Seldaek/monolog.git (push)
+STATUS SHORT:
+LAST COMMITS:
+10d85740 Update changelog
+2b8777df SendGrid V3 API (#1952)
+5d0da0a7 Updating while loops to have boolean conditions. (#1956)
+62946513 Remove deprecated setType method call in ElasticaFormatter (#1955)
+467e764f Fix gelf message formatter failing to handle context/extra numeric keys, fixes #1932
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\myclabs\deep-copy
+BRANCH:
+REMOTE:
+composer	https://github.com/myclabs/DeepCopy.git (fetch)
+composer	https://github.com/myclabs/DeepCopy.git (push)
+origin	https://github.com/myclabs/DeepCopy.git (fetch)
+origin	git@github.com:myclabs/DeepCopy.git (push)
+STATUS SHORT:
+LAST COMMITS:
+024473a Merge pull request #202 from alexz707/add-prepend-type-filter
+2356a16 Add PrependTypeFilter method
+4764e04 Merge pull request #198 from alamirault/feature/add-tests-php-84
+67ebab1 Run tests on PHP 8.4
+123267b Merge pull request #197 from michalananapps/copy-DatePeriod
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\nesbot\carbon
+BRANCH:
+REMOTE:
+composer	https://github.com/CarbonPHP/carbon.git (fetch)
+composer	https://github.com/CarbonPHP/carbon.git (push)
+origin	https://github.com/CarbonPHP/carbon.git (fetch)
+origin	git@github.com:CarbonPHP/carbon.git (push)
+STATUS SHORT:
+LAST COMMITS:
+9228ce90 Merge pull request #13 from thecaliskan/2.x
+142f0f5c changed CS rule
+dc278043 changed CS rule
+8910c511 changed expected result for PHP 8.4
+d1e695f7 Added PHP 8.3 and PHP 8.4 test for laravel and removed PHP 8.4 lowest test matrix
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\nette\schema
+BRANCH:
+REMOTE:
+composer	https://github.com/nette/schema.git (fetch)
+composer	https://github.com/nette/schema.git (push)
+origin	https://github.com/nette/schema.git (fetch)
+origin	git@github.com:nette/schema.git (push)
+STATUS SHORT:
+LAST COMMITS:
+da801d5 Expect::array(shape) returns Structure
+f441aec Structure::merge() without otherItems it merges by overwriting
+d00e944 Structure::merge() refactoring
+8de8c4e added Structure::getShape() [Closes #35]
+0ef091e added Structure::extend() [Closes #66]
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\nette\utils
+BRANCH:
+REMOTE:
+composer	https://github.com/nette/utils.git (fetch)
+composer	https://github.com/nette/utils.git (push)
+origin	https://github.com/nette/utils.git (fetch)
+origin	git@github.com:nette/utils.git (push)
+STATUS SHORT:
+LAST COMMITS:
+ce70865 Image: catches all errors during saving
+574a2d1 added Helpers::IsWindows
+f695262 added ShouldNotHappenException
+259c2bf added FileSystem::resolvePath() [Closes #308]
+13130bb tests: improved descriptions
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\nikic\php-parser
+BRANCH:
+REMOTE:
+composer	https://github.com/nikic/PHP-Parser.git (fetch)
+composer	https://github.com/nikic/PHP-Parser.git (push)
+origin	https://github.com/nikic/PHP-Parser.git (fetch)
+origin	git@github.com:nikic/PHP-Parser.git (push)
+STATUS SHORT:
+LAST COMMITS:
+447a020a Release PHP-Parser 5.4.0
+45f70ed8 Simplify NodeTraverser->traverseNode()
+74a36181 Simplify NodeTraverser->traverseArray()
+6478c5ac Fix PropertyHook::getStmts() for set hook
+8bb41590 Fix cs
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\nunomaduro\collision
+BRANCH:
+REMOTE:
+composer	https://github.com/nunomaduro/collision.git (fetch)
+composer	https://github.com/nunomaduro/collision.git (push)
+origin	https://github.com/nunomaduro/collision.git (fetch)
+origin	git@github.com:nunomaduro/collision.git (push)
+STATUS SHORT:
+LAST COMMITS:
+9952454 Bumps dependencies
+336ed2b Uses stable version of pest and termwind
+994ea93 wip
+627c5cf fixes ci
+68fc8ea style
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\nunomaduro\termwind
+BRANCH:
+REMOTE:
+composer	https://github.com/nunomaduro/termwind.git (fetch)
+composer	https://github.com/nunomaduro/termwind.git (push)
+origin	https://github.com/nunomaduro/termwind.git (fetch)
+origin	git@github.com:nunomaduro/termwind.git (push)
+STATUS SHORT:
+LAST COMMITS:
+5369ef8 Uses latest version of dependencies
+167270e Uses stable version of pest
+dcf1ec3 fixes ci
+20122c2 feat: adds php 8.4 support
+642f96d chore: fixes styles
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\paragonie\constant_time_encoding
+BRANCH:
+REMOTE:
+composer	https://github.com/paragonie/constant_time_encoding.git (fetch)
+composer	https://github.com/paragonie/constant_time_encoding.git (push)
+origin	https://github.com/paragonie/constant_time_encoding.git (fetch)
+origin	git@github.com:paragonie/constant_time_encoding.git (push)
+STATUS SHORT:
+LAST COMMITS:
+df1e7fd Update ramsey/composer-install to v3
+4f03317 Tolerate Psalm 4
+b9736ba Attempt to fix GHA
+7ca93af Update guidance
+dd2e689 Update Psalm to 5 instead of 4
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\paragonie\random_compat
+BRANCH:
+REMOTE:
+composer	https://github.com/paragonie/random_compat.git (fetch)
+composer	https://github.com/paragonie/random_compat.git (push)
+origin	https://github.com/paragonie/random_compat.git (fetch)
+origin	git@github.com:paragonie/random_compat.git (push)
+STATUS SHORT:
+LAST COMMITS:
+996434e PHP >7 allowed for 9.99.99
+84b4dfb Remove autoload from v9.99.99
+7dd806d 2.99.99 -> 9.99.99
+3546924 Add v2.99.99 branch
+cbe0b11 I'm tired of wrestling with this.
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\paypal\paypal-payouts-sdk
+BRANCH:
+REMOTE:
+composer	https://github.com/paypal/Payouts-PHP-SDK.git (fetch)
+composer	https://github.com/paypal/Payouts-PHP-SDK.git (push)
+origin	https://github.com/paypal/Payouts-PHP-SDK.git (fetch)
+origin	git@github.com:paypal/Payouts-PHP-SDK.git (push)
+STATUS SHORT:
+LAST COMMITS:
+3bdafe3 Merge pull request #16 from HDLahlou/HDL_285_Update_HTTP_Package
+2a5ea6f updated sdk version
+3cb7267 updated paypalhttp to v1.0.1 and ran integration tests
+bfdc8de Adding samples for parsing errors (#11)
+1deb294 Merge pull request #5 from rajkumarpalani/master
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\paypal\paypalhttp
+BRANCH:
+REMOTE:
+composer	https://github.com/paypal/paypalhttp_php.git (fetch)
+composer	https://github.com/paypal/paypalhttp_php.git (push)
+origin	https://github.com/paypal/paypalhttp_php.git (fetch)
+origin	git@github.com:paypal/paypalhttp_php.git (push)
+STATUS SHORT:
+LAST COMMITS:
+7b09c89 Fix type hinting in HttpResponse (#5)
+19959db Fix some phpdoc (#7)
+6462ea1 Hdl 285 paypal sdk header: Fixing Case Sensitivity (#9)
+1ad9b84 Merge pull request #4 from tiffanyrzhou/master
+850cb81 CHANGELOG update
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\paytm\paytmchecksum
+BRANCH:
+REMOTE:
+composer	https://github.com/paytm/Paytm_PHP_Checksum.git (fetch)
+composer	https://github.com/paytm/Paytm_PHP_Checksum.git (push)
+origin	https://github.com/paytm/Paytm_PHP_Checksum.git (fetch)
+origin	git@github.com:paytm/Paytm_PHP_Checksum.git (push)
+STATUS SHORT:
+LAST COMMITS:
+a032d3c remove monolog from composer
+c181b6f minor change in unpad method
+a8cf04d create composer installer
+aae256f update new checksum version
+dd49cfe create composer installer
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\phar-io\manifest
+BRANCH:
+REMOTE:
+composer	https://github.com/phar-io/manifest.git (fetch)
+composer	https://github.com/phar-io/manifest.git (push)
+origin	https://github.com/phar-io/manifest.git (fetch)
+origin	git@github.com:phar-io/manifest.git (push)
+STATUS SHORT:
+LAST COMMITS:
+54750ef Update psalm baseline
+8ce2e9c Revert "Avoid "use" for Attribute usage not supported in PHP < 8.0"
+28352aa Run CS Fixer
+91f34f1 Include 7.2 back into CI
+8a60f13 Fix Exception handling in Mapper
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\phar-io\version
+BRANCH:
+REMOTE:
+composer	https://github.com/phar-io/version.git (fetch)
+composer	https://github.com/phar-io/version.git (push)
+origin	https://github.com/phar-io/version.git (fetch)
+origin	git@github.com:phar-io/version.git (push)
+STATUS SHORT:
+LAST COMMITS:
+4f7fd78 Update changelog
+963aac7 Update psalm and make it happy
+11446c1 Run CS-Fixer
+333da69 Make ExactVersionConstraint honor build meta data
+ace330f Enhance Tests
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\phpoption\phpoption
+BRANCH:
+REMOTE:
+composer	https://github.com/schmittjoh/php-option.git (fetch)
+composer	https://github.com/schmittjoh/php-option.git (push)
+origin	https://github.com/schmittjoh/php-option.git (fetch)
+origin	git@github.com:schmittjoh/php-option.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e3fac8b Allow `int` and `null` as possible types for `$key` in `Option::fromArraysValue` (#74)
+647f42e PHP 8.4 support (#75)
+416ca2a Update composer.json
+38121dd Update phpunit.xml.dist
+80735db PHP 8.3 support
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\phpseclib\phpseclib
+BRANCH:
+REMOTE:
+composer	https://github.com/phpseclib/phpseclib.git (fetch)
+composer	https://github.com/phpseclib/phpseclib.git (push)
+origin	https://github.com/phpseclib/phpseclib.git (fetch)
+origin	git@github.com:phpseclib/phpseclib.git (push)
+STATUS SHORT:
+LAST COMMITS:
+709ec107 Merge branch '2.0' into 3.0
+eaa7be70 CHANGELOG: add 2.0.48 release
+b59d7be9 Merge branch '2.0' into 3.0
+0a142733 Merge branch '1.0' into 2.0
+2fe0eabe SSH2: ignore kex-strict-s-v00@openssh.com in key re-exchanges
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\phpunit\php-code-coverage
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/php-code-coverage.git (fetch)
+composer	https://github.com/sebastianbergmann/php-code-coverage.git (push)
+origin	https://github.com/sebastianbergmann/php-code-coverage.git (fetch)
+origin	git@github.com:sebastianbergmann/php-code-coverage.git (push)
+STATUS SHORT:
+LAST COMMITS:
+85402a82 Prepare release
+2681df11 Bump dependencies (so that users that install using Composer's --prefer-lowest CLI option also get recent versions)
+328a747f Include package name in release name
+40ad9fed Allow write operations
+2d0e0eb7 Create release when tag is pushed
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\phpunit\php-file-iterator
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/php-file-iterator.git (fetch)
+composer	https://github.com/sebastianbergmann/php-file-iterator.git (push)
+origin	https://github.com/sebastianbergmann/php-file-iterator.git (fetch)
+origin	git@github.com:sebastianbergmann/php-file-iterator.git (push)
+STATUS SHORT:
+LAST COMMITS:
+cf1c2e7 Prepare release
+1d8f5dc Merge branch '2.0' into 3.0
+42c5ba5 Prepare release
+4eb32f8 Fixed deprecation notice with PHP 7.4 and PHPUnit 8
+d7e633e Update Psalm baseline
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\phpunit\php-invoker
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/php-invoker.git (fetch)
+composer	https://github.com/sebastianbergmann/php-invoker.git (push)
+origin	https://github.com/sebastianbergmann/php-invoker.git (fetch)
+origin	git@github.com:sebastianbergmann/php-invoker.git (push)
+STATUS SHORT:
+LAST COMMITS:
+5a10147 Prepare release
+2ec9466 Update tools
+62fd65a Update tools
+621e216 Use >= operator instead of ^ operator for PHP version constraint
+edc1256 Ignore .gitattributes and .gitignore for exports
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\phpunit\php-text-template
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/php-text-template.git (fetch)
+composer	https://github.com/sebastianbergmann/php-text-template.git (push)
+origin	https://github.com/sebastianbergmann/php-text-template.git (fetch)
+origin	git@github.com:sebastianbergmann/php-text-template.git (push)
+STATUS SHORT:
+LAST COMMITS:
+5da5f67 Prepare release
+be4e91a Extend Throwable
+d20c547 Update tools
+53f18a3 Test against PHP 8.1
+4b4962c Update to Psalm 4
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\phpunit\php-timer
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/php-timer.git (fetch)
+composer	https://github.com/sebastianbergmann/php-timer.git (push)
+origin	https://github.com/sebastianbergmann/php-timer.git (fetch)
+origin	git@github.com:sebastianbergmann/php-timer.git (push)
+STATUS SHORT:
+LAST COMMITS:
+5a63ce2 Prepare release
+dbb91db Extend Throwable
+fbe4cb8 Update tools
+3cc2b2a Use PHP 7.4 for tools
+a47e85f Test against PHP 8.1
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\phpunit\phpunit
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/phpunit.git (fetch)
+composer	https://github.com/sebastianbergmann/phpunit.git (push)
+origin	https://github.com/sebastianbergmann/phpunit.git (fetch)
+origin	git@github.com:sebastianbergmann/phpunit.git (push)
+STATUS SHORT:
+LAST COMMITS:
+f80235cb4 Prepare release
+40e7f1700 Merge branch '8.5' into 9.6
+d843cb5bc Prepare release
+5e58fee65 Fix CS/WS issues
+ad262152e Merge branch '8.5' into 9.6
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\psr\cache
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/cache.git (fetch)
+composer	https://github.com/php-fig/cache.git (push)
+origin	https://github.com/php-fig/cache.git (fetch)
+origin	git@github.com:php-fig/cache.git (push)
+STATUS SHORT:
+LAST COMMITS:
+aa5030c Merge pull request #24 from Crell/v3
+69df303 Add return types.
+213f9db Merge pull request #23 from Crell/v2
+ab4007c Update to PHP 8.0 and PHP 8-compatible types.
+b7f3937 Merge pull request #21 from J0WI/patch-1
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\psr\clock
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/clock.git (fetch)
+composer	https://github.com/php-fig/clock.git (push)
+origin	https://github.com/php-fig/clock.git (fetch)
+origin	git@github.com:php-fig/clock.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e41a247 Merge pull request #11 from php-fig/psr-20-acceptance
+3146f5b Remove WIP from the composer.json description
+58f5113 Update CHANGELOG.md
+d85863e Remove WIP warning from README
+2612901 Merge pull request #10 from localheinz/fix/extra
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\psr\container
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/container.git (fetch)
+composer	https://github.com/php-fig/container.git (push)
+origin	https://github.com/php-fig/container.git (fetch)
+origin	git@github.com:php-fig/container.git (push)
+STATUS SHORT:
+LAST COMMITS:
+c71ecc5 Merge pull request #32 from weierophinney/fix/bump-php-version-to-fix-dependency-issues
+6009776 revert: re-instate extension of Throwable in supplied exception interfaces
+18d0016 fix: bump minimum supported PHP version to 7.4
+2ae3732 Partially revert 19764b1
+19764b1 Remove Throwable interface from exceptions (port of #31 to 2.x)
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\psr\event-dispatcher
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/event-dispatcher.git (fetch)
+composer	https://github.com/php-fig/event-dispatcher.git (push)
+origin	https://github.com/php-fig/event-dispatcher.git (fetch)
+origin	git@github.com:php-fig/event-dispatcher.git (push)
+STATUS SHORT:
+LAST COMMITS:
+dbefd12 Minor formatting and language tweaks to stay consistent with the spec.
+8380006 Merge pull request #19 from php-fig/revision
+9676b0a Missed a rename.
+c9c46af Bump composer PHP requirement to PHP 7.2.
+52388ab Remove split of messages and tasks, so fold the repositories back together.
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\psr\http-client
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/http-client.git (fetch)
+composer	https://github.com/php-fig/http-client.git (push)
+origin	https://github.com/php-fig/http-client.git (fetch)
+origin	git@github.com:php-fig/http-client.git (push)
+STATUS SHORT:
+LAST COMMITS:
+bb5906e prepare release
+fc528df Merge pull request #18 from localheinz/feature/source
+b68cc8a Enhancement: Add link to source to composer.json
+0955afe Merge pull request #17 from ghostwriter/feature/http-message-v2
+d3825b3 Support `psr/http-message` v2
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\psr\http-factory
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/http-factory.git (fetch)
+composer	https://github.com/php-fig/http-factory.git (push)
+origin	https://github.com/php-fig/http-factory.git (fetch)
+origin	git@github.com:php-fig/http-factory.git (push)
+STATUS SHORT:
+LAST COMMITS:
+2b4765f Merge pull request #17 from alexandre-daubois/explicit-nullable-type
+2e735aa Add explicit nullable type and bump minimal PHP version to 7.1
+7037f4b Merge pull request #15 from localheinz/feature/source
+0d1c639 Enhancement: Add link to source to composer.json
+6d70f40 Merge pull request #14 from dbu/patch-1
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\psr\http-message
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/http-message.git (fetch)
+composer	https://github.com/php-fig/http-message.git (push)
+origin	https://github.com/php-fig/http-message.git (fetch)
+origin	git@github.com:php-fig/http-message.git (push)
+STATUS SHORT:
+LAST COMMITS:
+402d35b Merge pull request #95 from Stilch/add-param-and-return-type-hints
+947607b Merge branch 'master' into add-param-and-return-type-hints
+cb6ce48 Merge pull request #94 from Stilch/add-param-hints
+3def521 Added void as return types
+520dd0e Added string as return types for __toString
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\psr\log
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/log.git (fetch)
+composer	https://github.com/php-fig/log.git (push)
+origin	https://github.com/php-fig/log.git (fetch)
+origin	git@github.com:php-fig/log.git (push)
+STATUS SHORT:
+LAST COMMITS:
+f16e1d5 Merge pull request #84 from phily245/log-level-return-type
+1a37735 Restore a phpdoc
+79dff0b Merge pull request #80 from lyrixx/return
+33208d4 Drop useless phpdoc, already covered by PHP
+fe5ea30 Merge pull request #77 from Crell/v3
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\psr\simple-cache
+BRANCH:
+REMOTE:
+composer	https://github.com/php-fig/simple-cache.git (fetch)
+composer	https://github.com/php-fig/simple-cache.git (push)
+origin	https://github.com/php-fig/simple-cache.git (fetch)
+origin	git@github.com:php-fig/simple-cache.git (push)
+STATUS SHORT:
+LAST COMMITS:
+764e0b3 Merge pull request #24 from navarr/return-types
+8707bf3 Merge pull request #25 from php-fig/param-types
+dd145de Make CacheException extend Throwable
+66e27ef Merge pull request #21 from J0WI/patch-1
+19a4d7c Add return types
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\psy\psysh
+BRANCH:
+REMOTE:
+composer	https://github.com/bobthecow/psysh.git (fetch)
+composer	https://github.com/bobthecow/psysh.git (push)
+origin	https://github.com/bobthecow/psysh.git (fetch)
+origin	git@github.com:bobthecow/psysh.git (push)
+STATUS SHORT:
+LAST COMMITS:
+85057cee Merge branch 'release/0.12.8'
+b8df2abe Bump to v0.12.8
+8433db1c Bump box deps.
+a742b069 Merge pull request #854 from bobthecow/dependabot/github_actions/actions/download-artifact-4.1.9
+e02141fe Merge pull request #853 from bobthecow/dependabot/github_actions/actions/upload-artifact-4.6.1
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\ralouphie\getallheaders
+BRANCH:
+REMOTE:
+composer	https://github.com/ralouphie/getallheaders.git (fetch)
+composer	https://github.com/ralouphie/getallheaders.git (push)
+origin	https://github.com/ralouphie/getallheaders.git (fetch)
+origin	git@github.com:ralouphie/getallheaders.git (push)
+STATUS SHORT:
+LAST COMMITS:
+120b605 Merge pull request #9 from peter279k/test_enhancement
+5f4ed11 Test enhancement
+beb49b9 Merge pull request #8 from ralouphie/hotfix/composer-install
+aad26b2 Remove composer.json from .gitattributes
+cd148e0 Merge pull request #6 from GrahamCampbell/patch-1
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\ramsey\collection
+BRANCH:
+REMOTE:
+composer	https://github.com/ramsey/collection.git (fetch)
+composer	https://github.com/ramsey/collection.git (push)
+origin	https://github.com/ramsey/collection.git (fetch)
+origin	git@github.com:ramsey/collection.git (push)
+STATUS SHORT:
+LAST COMMITS:
+3445729 chore: prepare for version 2.1.1
+ab2a51e fix: return list<mixed> from CollectionInterface::column
+1d131cf chore(deps): bump actions/checkout from 3 to 4
+3c5990b chore: prepare for version 2.1.0
+af2c4a7 fix: improve performance of AbstractSet::add() method
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\ramsey\uuid
+BRANCH:
+REMOTE:
+composer	https://github.com/ramsey/uuid.git (fetch)
+composer	https://github.com/ramsey/uuid.git (push)
+origin	https://github.com/ramsey/uuid.git (fetch)
+origin	git@github.com:ramsey/uuid.git (push)
+STATUS SHORT:
+LAST COMMITS:
+91039bc chore: prepare version 4.7.6
+3caf795 feat: Support brick/math v0.12 (#526)
+3baa7ce chore: upgrade the Python environment for documentation
+f6376dd chore: upgrade Sphinx to fix documentation builds
+68e4e37 chore(deps): bump codecov/codecov-action from 4.1.1 to 4.3.0
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\razorpay\razorpay
+BRANCH:
+REMOTE:
+composer	https://github.com/razorpay/razorpay-php.git (fetch)
+composer	https://github.com/razorpay/razorpay-php.git (push)
+origin	https://github.com/razorpay/razorpay-php.git (fetch)
+origin	git@github.com:razorpay/razorpay-php.git (push)
+STATUS SHORT:
+LAST COMMITS:
+d5e49ef Version bump 2.9.1 (#388)
+3728ad2 added aouth implementation (#386)
+32eb825 Add updated workflow file
+aa2aef6 Merge pull request #374 from razorpay/remove-semgrep
+93fe02d removed semgrep workflow
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\rmccue\requests
+BRANCH:
+REMOTE:
+composer	https://github.com/WordPress/Requests.git (fetch)
+composer	https://github.com/WordPress/Requests.git (push)
+origin	https://github.com/WordPress/Requests.git (fetch)
+origin	git@github.com:WordPress/Requests.git (push)
+STATUS SHORT:
+LAST COMMITS:
+877cd66 Merge pull request #921 from WordPress/release/2.0.15
+af61b46 Changelog for release 2.0.15
+ae94ef8 :lock_with_ink_pen: Update certificate bundle
+6feda5a GH Actions: update Python version to 3.13
+9b228ee Merge pull request #911 from WordPress/release/2.0.14
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\cli-parser
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/cli-parser.git (fetch)
+composer	https://github.com/sebastianbergmann/cli-parser.git (push)
+origin	https://github.com/sebastianbergmann/cli-parser.git (fetch)
+origin	git@github.com:sebastianbergmann/cli-parser.git (push)
+STATUS SHORT:
+LAST COMMITS:
+2b56bea Do not use implicitly nullable parameters and prepare release
+442e7c7 Prepare release
+9037ff0 Fix minor typo in infection.json
+bb1a596 Update tools
+3c88f1b Update tools
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\code-unit
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/code-unit.git (fetch)
+composer	https://github.com/sebastianbergmann/code-unit.git (push)
+origin	https://github.com/sebastianbergmann/code-unit.git (fetch)
+origin	git@github.com:sebastianbergmann/code-unit.git (push)
+STATUS SHORT:
+LAST COMMITS:
+1fc9f64 Prepare release
+eee3722 Extend Throwable
+6a1beb1 Update tools
+a915c33 Use PHP 7.4 for tools
+dcf23f3 Test against PHP 8.1
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\code-unit-reverse-lookup
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/code-unit-reverse-lookup.git (fetch)
+composer	https://github.com/sebastianbergmann/code-unit-reverse-lookup.git (push)
+origin	https://github.com/sebastianbergmann/code-unit-reverse-lookup.git (fetch)
+origin	git@github.com:sebastianbergmann/code-unit-reverse-lookup.git (push)
+STATUS SHORT:
+LAST COMMITS:
+ac91f01 Prepare release
+fe9befb Update tools
+8bb2429 Update tools
+469e84d Use >= operator instead of ^ operator for PHP version constraint
+d3b7f93 Ignore .gitattributes and .gitignore for exports
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\comparator
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/comparator.git (fetch)
+composer	https://github.com/sebastianbergmann/comparator.git (push)
+origin	https://github.com/sebastianbergmann/comparator.git (fetch)
+origin	git@github.com:sebastianbergmann/comparator.git (push)
+STATUS SHORT:
+LAST COMMITS:
+fa0f136 Prepare release
+801aad8 Merge branch '3.0' into 4.0
+1dc7ceb Prepare release
+1b2f432 There is no point in deprecating a test class
+762a1d1 Add .gitattributes
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\complexity
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/complexity.git (fetch)
+composer	https://github.com/sebastianbergmann/complexity.git (push)
+origin	https://github.com/sebastianbergmann/complexity.git (fetch)
+origin	git@github.com:sebastianbergmann/complexity.git (push)
+STATUS SHORT:
+LAST COMMITS:
+25f207c Prepare release
+cd059e1 Support nikic/php-parser ^5.0
+477838e Allow nikic/php-parser ^5.0
+ac87c30 Update tools
+739b35e Prepare release
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\diff
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/diff.git (fetch)
+composer	https://github.com/sebastianbergmann/diff.git (push)
+origin	https://github.com/sebastianbergmann/diff.git (fetch)
+origin	git@github.com:sebastianbergmann/diff.git (push)
+STATUS SHORT:
+LAST COMMITS:
+ba01945 Do not use implicitly nullable parameters and prepare release
+74be170 Prepare release
+7058022 Backport b0a1aadeaa7e20988bfa01a1a2467b958ae7231e
+0806e02 Backport 792812ddc157fa153b24e62e731786bf82192d1c
+3461e3f Prepare release
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\environment
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/environment.git (fetch)
+composer	https://github.com/sebastianbergmann/environment.git (push)
+origin	https://github.com/sebastianbergmann/environment.git (fetch)
+origin	git@github.com:sebastianbergmann/environment.git (push)
+STATUS SHORT:
+LAST COMMITS:
+830c43a Prepare release
+3fade0c Simplify
+f28a9ed Remove superfluous comment
+2d22113 Closes #59
+1b5dff7 Prepare release
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\exporter
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/exporter.git (fetch)
+composer	https://github.com/sebastianbergmann/exporter.git (push)
+origin	https://github.com/sebastianbergmann/exporter.git (fetch)
+origin	git@github.com:sebastianbergmann/exporter.git (push)
+STATUS SHORT:
+LAST COMMITS:
+78c00df Do not use implicitly nullable parameters and prepare release
+ac230ed Prepare release
+8097ec9 Merge branch '3.1' into 4.0
+73a9676 Update ChangeLog
+ee1ea57 Do not use ternary operator
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\global-state
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/global-state.git (fetch)
+composer	https://github.com/sebastianbergmann/global-state.git (push)
+origin	https://github.com/sebastianbergmann/global-state.git (fetch)
+origin	git@github.com:sebastianbergmann/global-state.git (push)
+STATUS SHORT:
+LAST COMMITS:
+bca7df1 Do not use implicitly nullable parameters and prepare release
+bde739e Backport c57acacdba5b303b5db84eff6d4067be108af911
+0ca8db5 Prepare release
+095f542 Fix CS/WS issues
+393f27d Update tools
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\lines-of-code
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/lines-of-code.git (fetch)
+composer	https://github.com/sebastianbergmann/lines-of-code.git (push)
+origin	https://github.com/sebastianbergmann/lines-of-code.git (fetch)
+origin	git@github.com:sebastianbergmann/lines-of-code.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e1e4a17 Prepare release
+48c2937 Support nikic/php-parser ^5.0
+d86bd3d Allow nikic/php-parser ^5.0
+9cdfa5d Update tools
+c1c2e99 Prepare release
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\object-enumerator
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/object-enumerator.git (fetch)
+composer	https://github.com/sebastianbergmann/object-enumerator.git (push)
+origin	https://github.com/sebastianbergmann/object-enumerator.git (fetch)
+origin	git@github.com:sebastianbergmann/object-enumerator.git (push)
+STATUS SHORT:
+LAST COMMITS:
+5c9eeac Prepare release
+c516ce9 Extend Throwable
+91846cf Update tools
+89c3b96 Use PHP 7.4 for tools
+2df4765 Test against PHP 8.1
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\object-reflector
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/object-reflector.git (fetch)
+composer	https://github.com/sebastianbergmann/object-reflector.git (push)
+origin	https://github.com/sebastianbergmann/object-reflector.git (fetch)
+origin	git@github.com:sebastianbergmann/object-reflector.git (push)
+STATUS SHORT:
+LAST COMMITS:
+b4f479e Prepare release
+ea341c4 Extend Throwable
+4fe47a6 Update tools
+b74acf4 Use PHP 7.4 for tools
+3d61fa6 Test against PHP 8.1
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\recursion-context
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/recursion-context.git (fetch)
+composer	https://github.com/sebastianbergmann/recursion-context.git (push)
+origin	https://github.com/sebastianbergmann/recursion-context.git (fetch)
+origin	git@github.com:sebastianbergmann/recursion-context.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e75bd0f Prepare release
+e3a6144 Update ChangeLog
+159dd10 Fix CS/WS issues
+2328424 Don't clobber null values if array_key_exists(PHP_INT_MAX, $array)
+a71bc36 Backport changes from main branch
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\resource-operations
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/resource-operations.git (fetch)
+composer	https://github.com/sebastianbergmann/resource-operations.git (push)
+origin	https://github.com/sebastianbergmann/resource-operations.git (fetch)
+origin	git@github.com:sebastianbergmann/resource-operations.git (push)
+STATUS SHORT:
+LAST COMMITS:
+05d5692 Prepare release
+692ecda Follow suggestion by @Seldaek in https://github.com/sebastianbergmann/phpunit/issues/4828#issuecomment-977913355
+20bdda8 Tweak
+e1157ea Update security policy
+f7adbde Add Security Policy
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\type
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/type.git (fetch)
+composer	https://github.com/sebastianbergmann/type.git (push)
+origin	https://github.com/sebastianbergmann/type.git (fetch)
+origin	git@github.com:sebastianbergmann/type.git (push)
+STATUS SHORT:
+LAST COMMITS:
+75e2c2a Prepare release
+dd52163 Set COMPOSER_ROOT_VERSION so that pipeline works for pull requests
+4d34b23 Fix
+69870a7 Update ChangeLog
+1687411 Avoiding a potential undefined offset warning/notice.
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\sebastian\version
+BRANCH:
+REMOTE:
+composer	https://github.com/sebastianbergmann/version.git (fetch)
+composer	https://github.com/sebastianbergmann/version.git (push)
+origin	https://github.com/sebastianbergmann/version.git (fetch)
+origin	git@github.com:sebastianbergmann/version.git (push)
+STATUS SHORT:
+LAST COMMITS:
+c6c1022 Prepare release
+c56083d Use >= operator instead of ^ operator for PHP version constraint
+6265861 Support PHP 8 for https://github.com/sebastianbergmann/phpunit/issues/4325
+e5e5468 Ignore tests etc. from archive exports
+0411bde Drop support for PHP 7.1 and PHP 7.2
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\spatie\backtrace
+BRANCH:
+REMOTE:
+composer	https://github.com/spatie/backtrace.git (fetch)
+composer	https://github.com/spatie/backtrace.git (push)
+origin	https://github.com/spatie/backtrace.git (fetch)
+origin	git@github.com:spatie/backtrace.git (push)
+STATUS SHORT:
+LAST COMMITS:
+0f2477c fix deprecation
+c7e3909 Update CHANGELOG
+ca8be54 Merge pull request #27 from sweptsquash/main
+d21ea77 Merge branch 'main' of github.com:sweptsquash/backtrace-php84
+e78fd4b fix: deprecated warnings
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\spatie\error-solutions
+BRANCH:
+REMOTE:
+composer	https://github.com/spatie/error-solutions.git (fetch)
+composer	https://github.com/spatie/error-solutions.git (push)
+origin	https://github.com/spatie/error-solutions.git (fetch)
+origin	git@github.com:spatie/error-solutions.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e495d71 Merge pull request #28 from duncanmcclean/laravel-12
+154b093 wip
+288bc4d wip
+4b08ce9 wip
+a2acf34 wip
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\spatie\flare-client-php
+BRANCH:
+REMOTE:
+composer	https://github.com/spatie/flare-client-php.git (fetch)
+composer	https://github.com/spatie/flare-client-php.git (push)
+origin	https://github.com/spatie/flare-client-php.git (fetch)
+origin	git@github.com:spatie/flare-client-php.git (push)
+STATUS SHORT:
+LAST COMMITS:
+bf1716e Merge pull request #38 from duncanmcclean/laravel-12
+bd50717 Support Laravel 12
+92db3c3 Move docs
+68021f1 Move docs
+23ae20b Update CHANGELOG
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\spatie\ignition
+BRANCH:
+REMOTE:
+composer	https://github.com/spatie/ignition.git (fetch)
+composer	https://github.com/spatie/ignition.git (push)
+origin	https://github.com/spatie/ignition.git (fetch)
+origin	git@github.com:spatie/ignition.git (push)
+STATUS SHORT:
+LAST COMMITS:
+31f3141 Merge pull request #790 from duncanmcclean/laravel-12
+018fa13 Empty commit
+8b56a0b Supports Laravel 12
+fe458f1 Merge pull request #785 from spatie/dependabot/github_actions/dependabot/fetch-metadata-2.3.0
+f9a18dc Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\spatie\laravel-ignition
+BRANCH:
+REMOTE:
+composer	https://github.com/spatie/laravel-ignition.git (fetch)
+composer	https://github.com/spatie/laravel-ignition.git (push)
+origin	https://github.com/spatie/laravel-ignition.git (fetch)
+origin	git@github.com:spatie/laravel-ignition.git (push)
+STATUS SHORT:
+LAST COMMITS:
+1baee07 correct namespace
+e720084 Merge pull request #218 from laravel-shift/l12-compatibility
+cb8bfcd Update run-tests.yml
+5996a8c Update GitHub Actions for Laravel 12
+2890073 Bump dependencies for Laravel 12
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\stripe\stripe-php
+BRANCH:
+REMOTE:
+composer	https://github.com/stripe/stripe-php.git (fetch)
+composer	https://github.com/stripe/stripe-php.git (push)
+origin	https://github.com/stripe/stripe-php.git (fetch)
+origin	git@github.com:stripe/stripe-php.git (push)
+STATUS SHORT:
+LAST COMMITS:
+c704949c Bump version to 7.128.0
+e849dad6 API Updates (#1282)
+c6416c99 Bump version to 7.127.0
+e29cc511 API Updates (#1281)
+4158d88d Pin setup-php action version. (#1278)
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\console
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/console.git (fetch)
+composer	https://github.com/symfony/console.git (push)
+origin	https://github.com/symfony/console.git (fetch)
+origin	git@github.com:symfony/console.git (push)
+STATUS SHORT:
+LAST COMMITS:
+2e4af9c9 fix(console): fix progress bar messing output in section when there is an EOL
+799445db fix risky test that doesn't perform any assertions
+67191f7f [Console] Fix division by 0 error
+f1fc6f47 Merge branch '5.4' into 6.4
+c4ba980c skip autocomplete test when stty is not available
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\css-selector
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/css-selector.git (fetch)
+composer	https://github.com/symfony/css-selector.git (push)
+origin	https://github.com/symfony/css-selector.git (fetch)
+origin	git@github.com:symfony/css-selector.git (push)
+STATUS SHORT:
+LAST COMMITS:
+601a5ce Merge branch '7.1' into 7.2
+4aa4f6b Merge branch '6.4' into 7.1
+cb23e97 Merge branch '5.4' into 6.4
+4f7f3c3 Add PR template and auto-close PR on subtree split repositories
+8198536 Update .gitattributes
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\deprecation-contracts
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/deprecation-contracts.git (fetch)
+composer	https://github.com/symfony/deprecation-contracts.git (push)
+origin	https://github.com/symfony/deprecation-contracts.git (fetch)
+origin	git@github.com:symfony/deprecation-contracts.git (push)
+STATUS SHORT:
+LAST COMMITS:
+74c71c9 Merge branch '6.4' into 7.1
+fae4ea6 Merge branch '5.4' into 6.4
+605389f Add PR template and auto-close PR on subtree split repositories
+d995a73 Merge branch '7.0' into 7.1
+e49f212 Merge branch '5.4' into 6.4
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\error-handler
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/error-handler.git (fetch)
+composer	https://github.com/symfony/error-handler.git (push)
+origin	https://github.com/symfony/error-handler.git (fetch)
+origin	git@github.com:symfony/error-handler.git (push)
+STATUS SHORT:
+LAST COMMITS:
+aa3bcf4 don't trigger "internal" deprecations for PHPUnit Stub objects
+3d4e55c relax expected format for PHP 8.5 compatibility
+e8d3b5b bug #59292 [WebProfilerBundle] Fix event delegation on links inside toggles (MatTheCat)
+87d26c2 [ErrorHandler] Don't trigger "internal" deprecations for anonymous LazyClosure instances
+bf44d80 Update exception.css
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\event-dispatcher
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/event-dispatcher.git (fetch)
+composer	https://github.com/symfony/event-dispatcher.git (push)
+origin	https://github.com/symfony/event-dispatcher.git (fetch)
+origin	git@github.com:symfony/event-dispatcher.git (push)
+STATUS SHORT:
+LAST COMMITS:
+910c5db Merge branch '7.1' into 7.2
+87254c7 Merge branch '6.4' into 7.1
+0ffc480 Merge branch '5.4' into 6.4
+72982eb Add PR template and auto-close PR on subtree split repositories
+1b5d04e Code style change in `@PER-CS2.0` affecting `@Symfony` (parentheses for anonymous classes)
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\event-dispatcher-contracts
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/event-dispatcher-contracts.git (fetch)
+composer	https://github.com/symfony/event-dispatcher-contracts.git (push)
+origin	https://github.com/symfony/event-dispatcher-contracts.git (fetch)
+origin	git@github.com:symfony/event-dispatcher-contracts.git (push)
+STATUS SHORT:
+LAST COMMITS:
+7642f5e Merge branch '6.4' into 7.1
+7c6c9a5 Merge branch '5.4' into 6.4
+e0fe3d7 Add PR template and auto-close PR on subtree split repositories
+9ab1b69 Merge branch '7.0' into 7.1
+c34b83f Merge branch '5.4' into 6.4
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\finder
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/finder.git (fetch)
+composer	https://github.com/symfony/finder.git (push)
+origin	https://github.com/symfony/finder.git (fetch)
+origin	git@github.com:symfony/finder.git (push)
+STATUS SHORT:
+LAST COMMITS:
+1d0e826 [Finder] Fix using `==` as default operator in `DateComparator`
+daea9ec Merge branch '5.4' into 6.4
+6374178 do not use assertCount() with generators
+573f1f8 Merge branch '5.4' into 6.4
+0412e29 Add PR template and auto-close PR on subtree split repositories
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\http-foundation
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/http-foundation.git (fetch)
+composer	https://github.com/symfony/http-foundation.git (push)
+origin	https://github.com/symfony/http-foundation.git (fetch)
+origin	git@github.com:symfony/http-foundation.git (push)
+STATUS SHORT:
+LAST COMMITS:
+d0492d62 [HttpFoundation][FrameworkBundle] Reset Request's formats using the service resetter
+e8fdc476 [HttpFoundation] Fixed `IpUtils::anonymize` exception when using IPv6 link-local addresses with RFC4007 scoping
+431771b7 Merge branch '5.4' into 6.4
+3f38b8af [HttpFoundation] Fix test
+40e6615d bug #58862 [Notifier] Fix GoIpTransport (nicolas-grekas)
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\http-kernel
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/http-kernel.git (fetch)
+composer	https://github.com/symfony/http-kernel.git (push)
+origin	https://github.com/symfony/http-kernel.git (fetch)
+origin	git@github.com:symfony/http-kernel.git (push)
+STATUS SHORT:
+LAST COMMITS:
+6be6db31 Update VERSION for 6.4.20
+714764ff [HttpKernel] Fix TraceableEventDispatcher when the StopWatch service has been reset
+1e97a511 Only remove E_WARNING from error level
+7c41c5a9 Bump Symfony version to 6.4.20
+88f2c9f7 Update VERSION for 6.4.19
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\mailer
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/mailer.git (fetch)
+composer	https://github.com/symfony/mailer.git (push)
+origin	https://github.com/symfony/mailer.git (fetch)
+origin	git@github.com:symfony/mailer.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e93a6ae Ensure TransportExceptionInterface populates stream debug data
+f8a50c1 [Mailer] Fix SMTP stream EOF handling on Windows by using feof()
+48db05b fix_50486 - memory leak
+c2f7e0d Merge branch '5.4' into 6.4
+f732e1f Add PR template and auto-close PR on subtree split repositories
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\mime
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/mime.git (fetch)
+composer	https://github.com/symfony/mime.git (push)
+origin	https://github.com/symfony/mime.git (fetch)
+origin	git@github.com:symfony/mime.git (push)
+STATUS SHORT:
+LAST COMMITS:
+ac537b6 [MIME] use address for body at PathHeader
+917d779 [Mime] Fix body validity check in `Email` when using `Message::setBody()`
+ea87c88 [Mime] Fix wrong PHPDoc in `FormDataPart` constructor
+1de1cf1 Merge branch '5.4' into 6.4
+8c1b9b3 [Mime] fix encoding issue with UTF-8 addresses containing doubles spaces
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\polyfill-ctype
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-ctype.git (fetch)
+composer	https://github.com/symfony/polyfill-ctype.git (push)
+origin	https://github.com/symfony/polyfill-ctype.git (fetch)
+origin	git@github.com:symfony/polyfill-ctype.git (push)
+STATUS SHORT:
+LAST COMMITS:
+a3cc8b0 Bump to PHP 7.2, stick to phpunit 8.5
+0424dff Revert "minor #477 Auto-close PRs on subtree-splits (kbond)"
+c9e59de Auto-close PRs on subtree-splits
+ef4d7e4 Remove branch-alias from composer.json
+ea208ce Bump for 1.28
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\polyfill-intl-grapheme
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-intl-grapheme.git (fetch)
+composer	https://github.com/symfony/polyfill-intl-grapheme.git (push)
+origin	https://github.com/symfony/polyfill-intl-grapheme.git (fetch)
+origin	git@github.com:symfony/polyfill-intl-grapheme.git (push)
+STATUS SHORT:
+LAST COMMITS:
+b912392 Bump to PHP 7.2, stick to phpunit 8.5
+64647a7 Revert "minor #477 Auto-close PRs on subtree-splits (kbond)"
+0a1df74 Auto-close PRs on subtree-splits
+32a9da8 Remove branch-alias from composer.json
+875e90a Bump for 1.28
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\polyfill-intl-idn
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-intl-idn.git (fetch)
+composer	https://github.com/symfony/polyfill-intl-idn.git (push)
+origin	https://github.com/symfony/polyfill-intl-idn.git (fetch)
+origin	git@github.com:symfony/polyfill-intl-idn.git (push)
+STATUS SHORT:
+LAST COMMITS:
+c36586d Bump to PHP 7.2, stick to phpunit 8.5
+a6e83bd Revert "minor #477 Auto-close PRs on subtree-splits (kbond)"
+872bf45 Auto-close PRs on subtree-splits
+412b0a6 Conform to IDNA version 15.1.0 revision 31
+a287ed7 Remove branch-alias from composer.json
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\polyfill-intl-normalizer
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-intl-normalizer.git (fetch)
+composer	https://github.com/symfony/polyfill-intl-normalizer.git (push)
+origin	https://github.com/symfony/polyfill-intl-normalizer.git (fetch)
+origin	git@github.com:symfony/polyfill-intl-normalizer.git (push)
+STATUS SHORT:
+LAST COMMITS:
+3833d72 Bump to PHP 7.2, stick to phpunit 8.5
+a95281b Revert "minor #477 Auto-close PRs on subtree-splits (kbond)"
+2a090dc Auto-close PRs on subtree-splits
+bc45c39 Remove branch-alias from composer.json
+8c4ad05 Bump for 1.28
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\polyfill-mbstring
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-mbstring.git (fetch)
+composer	https://github.com/symfony/polyfill-mbstring.git (push)
+origin	https://github.com/symfony/polyfill-mbstring.git (fetch)
+origin	git@github.com:symfony/polyfill-mbstring.git (push)
+STATUS SHORT:
+LAST COMMITS:
+85181ba Bump to PHP 7.2, stick to phpunit 8.5
+2bf2520 fix function signature tests
+8740a07 Improve mb_*trim polyfills
+74b87a0 Mb trim functions
+fd22ab5 Fix CS
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\polyfill-php80
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-php80.git (fetch)
+composer	https://github.com/symfony/polyfill-php80.git (push)
+origin	https://github.com/symfony/polyfill-php80.git (fetch)
+origin	git@github.com:symfony/polyfill-php80.git (push)
+STATUS SHORT:
+LAST COMMITS:
+60328e3 Bump to PHP 7.2, stick to phpunit 8.5
+77fa799 Revert "minor #477 Auto-close PRs on subtree-splits (kbond)"
+7d191eb Auto-close PRs on subtree-splits
+87b6820 Remove branch-alias from composer.json
+6caa573 Bump for 1.28
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\polyfill-php83
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-php83.git (fetch)
+composer	https://github.com/symfony/polyfill-php83.git (push)
+origin	https://github.com/symfony/polyfill-php83.git (fetch)
+origin	git@github.com:symfony/polyfill-php83.git (push)
+STATUS SHORT:
+LAST COMMITS:
+2fb86d6 Bump to PHP 7.2, stick to phpunit 8.5
+2954fcf Improve mb_*trim polyfills
+dbdcdf1 Add `#[Deprecated]` to the PHP 8.4 polyfill
+f4058fd Fix CS
+4647bfa Revert "minor #477 Auto-close PRs on subtree-splits (kbond)"
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\polyfill-uuid
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/polyfill-uuid.git (fetch)
+composer	https://github.com/symfony/polyfill-uuid.git (push)
+origin	https://github.com/symfony/polyfill-uuid.git (fetch)
+origin	git@github.com:symfony/polyfill-uuid.git (push)
+STATUS SHORT:
+LAST COMMITS:
+21533be Bump to PHP 7.2, stick to phpunit 8.5
+2ba1f33 Revert "minor #477 Auto-close PRs on subtree-splits (kbond)"
+92525de Auto-close PRs on subtree-splits
+3abdd21 Remove branch-alias from composer.json
+9c44518 Bump for 1.28
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\process
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/process.git (fetch)
+composer	https://github.com/symfony/process.git (push)
+origin	https://github.com/symfony/process.git (fetch)
+origin	git@github.com:symfony/process.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e2a61c1 fix(process): use a pipe for stderr in pty mode to avoid mixed output between stdout and stderr
+7a1c12e [Process] Fix process status tracking
+3cb242f Merge branch '5.4' into 6.4
+5d1662f normalize paths to avoid failures if a path is referenced by different names
+25214ad Merge branch '5.4' into 6.4
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\routing
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/routing.git (fetch)
+composer	https://github.com/symfony/routing.git (push)
+origin	https://github.com/symfony/routing.git (fetch)
+origin	git@github.com:symfony/routing.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e9bfc949 [Routing] Fix configuring a single routeΓÇÖ hosts
+91e02e60 fix merge
+99a4c492 Merge branch '5.4' into 6.4
+dd08c198 [Routing] Fix: lost priority when defining hosts in configuration
+640a7425 Merge branch '5.4' into 6.4
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\service-contracts
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/service-contracts.git (fetch)
+composer	https://github.com/symfony/service-contracts.git (push)
+origin	https://github.com/symfony/service-contracts.git (fetch)
+origin	git@github.com:symfony/service-contracts.git (push)
+STATUS SHORT:
+LAST COMMITS:
+e53260a Merge branch '6.4' into 7.1
+465bd9d Merge branch '5.4' into 6.4
+f37b419 Add PR template and auto-close PR on subtree split repositories
+2e21beb Merge branch '7.0' into 7.1
+c345d73 Merge branch '5.4' into 6.4
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\string
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/string.git (fetch)
+composer	https://github.com/symfony/string.git (push)
+origin	https://github.com/symfony/string.git (fetch)
+origin	git@github.com:symfony/string.git (push)
+STATUS SHORT:
+LAST COMMITS:
+446e0d1 Merge branch '7.1' into 7.2
+591ebd4 Merge branch '6.4' into 7.1
+73a5e66 Merge branch '5.4' into 6.4
+136ca7d [String] Fix some spellings in `EnglishInflector`
+2055806 Remove always true/false occurrences
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\translation
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/translation.git (fetch)
+composer	https://github.com/symfony/translation.git (push)
+origin	https://github.com/symfony/translation.git (fetch)
+origin	git@github.com:symfony/translation.git (push)
+STATUS SHORT:
+LAST COMMITS:
+3b9bf9f Fixes XliffFileDumperTest for 6.4
+b867b35 [Translation] check empty notes
+bee9bfa Fix extracting of message from ->trans() method with named params
+34b6518 Merge branch '5.4' into 6.4
+98f26ac Add PR template and auto-close PR on subtree split repositories
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\translation-contracts
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/translation-contracts.git (fetch)
+composer	https://github.com/symfony/translation-contracts.git (push)
+origin	https://github.com/symfony/translation-contracts.git (fetch)
+origin	git@github.com:symfony/translation-contracts.git (push)
+STATUS SHORT:
+LAST COMMITS:
+4667ff3 Merge branch '6.4' into 7.1
+6e864bb Merge branch '5.4' into 6.4
+450d417 Add PR template and auto-close PR on subtree split repositories
+40f0eb1 Merge branch '7.0' into 7.1
+f975cc6 Merge branch '5.4' into 6.4
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\uid
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/uid.git (fetch)
+composer	https://github.com/symfony/uid.git (push)
+origin	https://github.com/symfony/uid.git (fetch)
+origin	git@github.com:symfony/uid.git (push)
+STATUS SHORT:
+LAST COMMITS:
+18eb207 Merge branch '5.4' into 6.4
+512de78 Add PR template and auto-close PR on subtree split repositories
+2f16054 [6.4][Routing][Uid] Mention RFC 9562
+31b08ba Merge branch '5.4' into 6.4
+b36c894 [Uid][Serializer][Validator] Mention RFC 9562
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\var-dumper
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/var-dumper.git (fetch)
+composer	https://github.com/symfony/var-dumper.git (push)
+origin	https://github.com/symfony/var-dumper.git (fetch)
+origin	git@github.com:symfony/var-dumper.git (push)
+STATUS SHORT:
+LAST COMMITS:
+4ad10cf fix dumped markup
+60de0f3 bug #59390 [VarDumper] Fix blank strings display (MatTheCat)
+1bdb84b [VarDumper] Fix blank strings display
+75480ee Update old Appveyor skip conditions
+ebaf88b [VarDumper] Fix displaying closure's "this" from anonymous classes
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\symfony\yaml
+BRANCH:
+REMOTE:
+composer	https://github.com/symfony/yaml.git (fetch)
+composer	https://github.com/symfony/yaml.git (push)
+origin	https://github.com/symfony/yaml.git (fetch)
+origin	git@github.com:symfony/yaml.git (push)
+STATUS SHORT:
+LAST COMMITS:
+4c4b6f4 Merge branch '6.4' into 7.2
+28ee818 drop comments while lexing unquoted strings
+ac238f1 Merge branch '7.1' into 7.2
+4921b8c Merge branch '6.4' into 7.1
+bf598c9 [Yaml] fix inline notation with inline comment
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\theseer\tokenizer
+BRANCH:
+REMOTE:
+composer	https://github.com/theseer/tokenizer.git (fetch)
+composer	https://github.com/theseer/tokenizer.git (push)
+origin	https://github.com/theseer/tokenizer.git (fetch)
+origin	git@github.com:theseer/tokenizer.git (push)
+STATUS SHORT:
+LAST COMMITS:
+737eda6 Update changelog for release
+28d34b9 Merge pull request #20 from sebastianbergmann/master
+7c69ad9 Do not use implicitly nullable parameters
+77b59c0 Add missing links
+6bc8a4c Merge pull request #19 from Ayesh/minor/deadcode-elm
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\tijsverkoyen\css-to-inline-styles
+BRANCH:
+REMOTE:
+composer	https://github.com/tijsverkoyen/CssToInlineStyles.git (fetch)
+composer	https://github.com/tijsverkoyen/CssToInlineStyles.git (push)
+origin	https://github.com/tijsverkoyen/CssToInlineStyles.git (fetch)
+origin	git@github.com:tijsverkoyen/CssToInlineStyles.git (push)
+STATUS SHORT:
+LAST COMMITS:
+0d72ac1 Merge pull request #251 from stof/static_analysis
+9e85e72 Add a phpstan job in the CI setup
+777f8df Assert that the fixture CSS file is readable
+0b47df1 Remove unnecessary cleanup method in tests
+0c2befd Handle DOM failure cases in tests
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\vlucas\phpdotenv
+BRANCH:
+REMOTE:
+composer	https://github.com/vlucas/phpdotenv.git (fetch)
+composer	https://github.com/vlucas/phpdotenv.git (push)
+origin	https://github.com/vlucas/phpdotenv.git (fetch)
+origin	git@github.com:vlucas/phpdotenv.git (push)
+STATUS SHORT:
+LAST COMMITS:
+a59a137 Upgrade deps
+d31de17 Prepare for PHP 8.4 (#572)
+334f495 Update composer.json
+2cf9fb6 Document why superglobals can appear empty (#558)
+2f323be Fixed handling of array keys in the tests
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\voku\portable-ascii
+BRANCH:
+REMOTE:
+composer	https://github.com/voku/portable-ascii.git (fetch)
+composer	https://github.com/voku/portable-ascii.git (push)
+origin	https://github.com/voku/portable-ascii.git (fetch)
+origin	git@github.com:voku/portable-ascii.git (push)
+STATUS SHORT:
+LAST COMMITS:
+b1d923f [*]: update the changelog
+7175772 [*]: optimize phpdocs only
+16c1767 [*]: update the changelog
+beb7480 [*]: ci stuff ...
+caf6da4 Merge pull request #104 from voku/renovate/codecov-codecov-action-5.x
+
+REPO: C:\project\mitera_keluarga\eMart_V6.6\mitrajasa\public_html\vendor\webmozart\assert
+BRANCH:
+REMOTE:
+composer	https://github.com/webmozarts/assert.git (fetch)
+composer	https://github.com/webmozarts/assert.git (push)
+origin	https://github.com/webmozarts/assert.git (fetch)
+origin	git@github.com:webmozarts/assert.git (push)
+STATUS SHORT:
+LAST COMMITS:
+11cb219 Add 1.11.0 to the changelog (#272)
+af18046 Fix deprecated use of 'static' literal string in callable (#260)
+4e22b65 Introduce allNullOr methods (#263)
+dc96b67 Deal with lists that have been modified that have (#247)
+7b05571 Update ci.yaml (#253)
+
+=== ROOT: C:\xampp\htdocs ===

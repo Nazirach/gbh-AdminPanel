@@ -1,0 +1,44 @@
+﻿=== RECOVERY EXTRACT STATUS ===
+Extract path: C:\deploy\_baseline_extract_panels_recover
+Exists: True
+
+=== TOP LEVEL ===
+
+Name                                                     FullName                          
+----                                                     --------                          
+Landing Page - Admin Panel - Store Panel - Website Panel C:\deploy\_baseline_extract_pan...
+
+
+
+
+=== PANEL FOLDER SEARCH ===
+
+Name          FullName                                                                     
+----          --------                                                                     
+Admin Panel   C:\deploy\_baseline_extract_panels_recover\Landing Page - Admin Panel - St...
+Landing Panel C:\deploy\_baseline_extract_panels_recover\Landing Page - Admin Panel - St...
+Store Panel   C:\deploy\_baseline_extract_panels_recover\Landing Page - Admin Panel - St...
+Website Panel C:\deploy\_baseline_extract_panels_recover\Landing Page - Admin Panel - St...
+
+
+
+
+=== LARAVEL ROOT CANDIDATES ===
+
+FullName                                                                                   
+--------                                                                                   
+C:\deploy\_baseline_extract_panels_recover\Landing Page - Admin Panel - Store Panel - We...
+C:\deploy\_baseline_extract_panels_recover\Landing Page - Admin Panel - Store Panel - We...
+C:\deploy\_baseline_extract_panels_recover\Landing Page - Admin Panel - Store Panel - We...
+
+
+
+
+=== TARGET CHECK ===
+C:\deploy\storepanel\artisan = False
+C:\deploy\storepanel\routes\api.php = True
+C:\deploy\storepanel\app\Http\Controllers\ApiController.php = True
+C:\deploy\websitepanel\artisan = False
+C:\deploy\websitepanel\routes\api.php = False
+C:\deploy\websitepanel\app\Http\Controllers\ApiController.php = False
+C:\deploy\adminpanel\docs\STORE_WEBSITE_PANEL_BUILD_READINESS_FINAL_REPORT.md = False

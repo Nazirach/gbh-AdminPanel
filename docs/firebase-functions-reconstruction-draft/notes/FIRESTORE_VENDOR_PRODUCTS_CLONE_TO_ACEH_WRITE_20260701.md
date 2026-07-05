@@ -1,0 +1,114 @@
+# FIRESTORE vendor_products CLONE TO ACEH WRITE
+
+Generated: 2026-06-30T20:55:48.264Z
+Mode: CONTROLLED FIREBASE WRITE.
+Collection: vendor_products
+Relation field changed: vendorID
+Old products are not mutated.
+
+## Clone Results
+TEXT_START
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6285dcf511651_68LwNdERg7wVG04r9Qd4 | title=test | sourceVendorId=68LwNdERg7wVG04r9Qd4 | sourceProductCount=0
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6285dcf511651_9qkoARkRrtrxkHNNJ136 | title=HairCare store | sourceVendorId=9qkoARkRrtrxkHNNJ136 | sourceProductCount=3
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dcf511651_9qkoARkRrtrxkHNNJ136_WM2RtgYnkir4rwBofXCM | sourceProductId=WM2RtgYnkir4rwBofXCM | cloneVendorId=aceh_clone_6285dcf511651_9qkoARkRrtrxkHNNJ136 | sourceVendorId=9qkoARkRrtrxkHNNJ136 | name=Hairfall shampoo | photo=true | categoryID=62ecf35007e34 | vendorID=aceh_clone_6285dcf511651_9qkoARkRrtrxkHNNJ136
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dcf511651_9qkoARkRrtrxkHNNJ136_hm6R1j33sqTt3mSRT4di | sourceProductId=hm6R1j33sqTt3mSRT4di | cloneVendorId=aceh_clone_6285dcf511651_9qkoARkRrtrxkHNNJ136 | sourceVendorId=9qkoARkRrtrxkHNNJ136 | name=Hair oil | photo=true | categoryID=62ecf35007e34 | vendorID=aceh_clone_6285dcf511651_9qkoARkRrtrxkHNNJ136
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dcf511651_9qkoARkRrtrxkHNNJ136_iKHx0PHZqA0tgbcrVs4t | sourceProductId=iKHx0PHZqA0tgbcrVs4t | cloneVendorId=aceh_clone_6285dcf511651_9qkoARkRrtrxkHNNJ136 | sourceVendorId=9qkoARkRrtrxkHNNJ136 | name=Aua Shampoo | photo=true | categoryID=62ecf35007e34 | vendorID=aceh_clone_6285dcf511651_9qkoARkRrtrxkHNNJ136
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv | title=Glowing skin | sourceVendorId=Brtp5RD5VOdyGxA8c6vv | sourceProductCount=6
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv_633fc886c16f6 | sourceProductId=633fc886c16f6 | cloneVendorId=aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv | sourceVendorId=Brtp5RD5VOdyGxA8c6vv | name=test | photo=false | categoryID=62ecf35007e34 | vendorID=aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv_63a9760fd52fc | sourceProductId=63a9760fd52fc | cloneVendorId=aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv | sourceVendorId=Brtp5RD5VOdyGxA8c6vv | name=Eternity Cream | photo=true | categoryID=62ecfa2615a59 | vendorID=aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv_VRSDXfpNz6GmHvxK4A0B | sourceProductId=VRSDXfpNz6GmHvxK4A0B | cloneVendorId=aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv | sourceVendorId=Brtp5RD5VOdyGxA8c6vv | name=Green Face Mask | photo=true | categoryID=62ecfa2615a59 | vendorID=aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv_n8ulR0OWd5j9Ykr03Ic2 | sourceProductId=n8ulR0OWd5j9Ykr03Ic2 | cloneVendorId=aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv | sourceVendorId=Brtp5RD5VOdyGxA8c6vv | name=Beauty Cream | photo=true | categoryID=62ecfa2615a59 | vendorID=aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv_rrWUuAc9MVTzwa3H8XcA | sourceProductId=rrWUuAc9MVTzwa3H8XcA | cloneVendorId=aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv | sourceVendorId=Brtp5RD5VOdyGxA8c6vv | name=Face Wash | photo=true | categoryID=62ecfa2615a59 | vendorID=aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv_vqDzqe7BoZ0rzsh8uFHF | sourceProductId=vqDzqe7BoZ0rzsh8uFHF | cloneVendorId=aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv | sourceVendorId=Brtp5RD5VOdyGxA8c6vv | name=Red Onion Shampoo | photo=true | categoryID=62ecf35007e34 | vendorID=aceh_clone_6285dcf511651_Brtp5RD5VOdyGxA8c6vv
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB | title=eFashion | sourceVendorId=05vPfo6g0mVhZZVlz6mB | sourceProductCount=5
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB_25Fx1fdZRTcYDNmYRUfd | sourceProductId=25Fx1fdZRTcYDNmYRUfd | cloneVendorId=aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB | sourceVendorId=05vPfo6g0mVhZZVlz6mB | name=Casual Shirt | photo=true | categoryID=62ecfdfb02b2a | vendorID=aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB_6479eee26d445 | sourceProductId=6479eee26d445 | cloneVendorId=aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB | sourceVendorId=05vPfo6g0mVhZZVlz6mB | name=boat smartwatch | photo=true | categoryID=6478464d29935 | vendorID=aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB_ABAJY27mPmyKGulRVSMh | sourceProductId=ABAJY27mPmyKGulRVSMh | cloneVendorId=aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB | sourceVendorId=05vPfo6g0mVhZZVlz6mB | name=Stylish Watch | photo=true | categoryID=636b70cc5a600 | vendorID=aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB_JjZlMIZtNl4jo6LpzXgi | sourceProductId=JjZlMIZtNl4jo6LpzXgi | cloneVendorId=aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB | sourceVendorId=05vPfo6g0mVhZZVlz6mB | name=Digi Watch | photo=true | categoryID=6478464d29935 | vendorID=aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB_a8bzUjeolN2KUvVvuVXg | sourceProductId=a8bzUjeolN2KUvVvuVXg | cloneVendorId=aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB | sourceVendorId=05vPfo6g0mVhZZVlz6mB | name=Digital Watch | photo=true | categoryID=6478464d29935 | vendorID=aceh_clone_6285dd3281531_05vPfo6g0mVhZZVlz6mB
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6285dd3281531_0mkKJ5MWOLiGIGrMnV4c | title=Rumah Mode Syar"i | sourceVendorId=0mkKJ5MWOLiGIGrMnV4c | sourceProductCount=1
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dd3281531_0mkKJ5MWOLiGIGrMnV4c_YEmN1AhO6tWL2K0XULmM | sourceProductId=YEmN1AhO6tWL2K0XULmM | cloneVendorId=aceh_clone_6285dd3281531_0mkKJ5MWOLiGIGrMnV4c | sourceVendorId=0mkKJ5MWOLiGIGrMnV4c | name=Hikmat Fashion  | photo=true | categoryID=wxHH0kJnCExOI6sHaXvX | vendorID=aceh_clone_6285dd3281531_0mkKJ5MWOLiGIGrMnV4c
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6285dd3281531_3HoJiFJNRQsTyBchMdxH | title=Demo | sourceVendorId=3HoJiFJNRQsTyBchMdxH | sourceProductCount=0
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL | title=Flower Basket store | sourceVendorId=2eo51PsBz8HvNlki6yFL | sourceProductCount=6
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL_74fBsr1RC1U1ITmht3jP | sourceProductId=74fBsr1RC1U1ITmht3jP | cloneVendorId=aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL | sourceVendorId=2eo51PsBz8HvNlki6yFL | name=Pink Flowers Basket | photo=true | categoryID=62ecff6b9816b | vendorID=aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL_Cj0iAH3u2CmwuMq4LgQ4 | sourceProductId=Cj0iAH3u2CmwuMq4LgQ4 | cloneVendorId=aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL | sourceVendorId=2eo51PsBz8HvNlki6yFL | name=Multi Color Rose Basket | photo=true | categoryID=62ecff6b9816b | vendorID=aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL_VVn9rqmxlv3TqHR29nbN | sourceProductId=VVn9rqmxlv3TqHR29nbN | cloneVendorId=aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL | sourceVendorId=2eo51PsBz8HvNlki6yFL | name=Multi Flower Basket | photo=true | categoryID=62ecff6b9816b | vendorID=aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL_lEGCSPCUeLKWCzNybX3P | sourceProductId=lEGCSPCUeLKWCzNybX3P | cloneVendorId=aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL | sourceVendorId=2eo51PsBz8HvNlki6yFL | name=White Lilies | photo=true | categoryID=62ecff6b401f7 | vendorID=aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL_o62uDL4MZqEpp8vrwMIA | sourceProductId=o62uDL4MZqEpp8vrwMIA | cloneVendorId=aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL | sourceVendorId=2eo51PsBz8HvNlki6yFL | name=Lilies Orchids Basket | photo=true | categoryID=62ecff6af068d | vendorID=aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL_vkbL8U841U5wSZHI6po1 | sourceProductId=vkbL8U841U5wSZHI6po1 | cloneVendorId=aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL | sourceVendorId=2eo51PsBz8HvNlki6yFL | name=Pink Rose Basket | photo=true | categoryID=62ecff6b9816b | vendorID=aceh_clone_6285dd7b50f32_2eo51PsBz8HvNlki6yFL
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6285dd7b50f32_2jnVAu4xy28EdPy9E3z8 | title=testflower | sourceVendorId=2jnVAu4xy28EdPy9E3z8 | sourceProductCount=1
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285dd7b50f32_2jnVAu4xy28EdPy9E3z8_QFByFrAViRfEsP9biDx3 | sourceProductId=QFByFrAViRfEsP9biDx3 | cloneVendorId=aceh_clone_6285dd7b50f32_2jnVAu4xy28EdPy9E3z8 | sourceVendorId=2jnVAu4xy28EdPy9E3z8 | name=Flower | photo=true | categoryID=62ecff6a8c983 | vendorID=aceh_clone_6285dd7b50f32_2jnVAu4xy28EdPy9E3z8
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6285dd7b50f32_CuovNUZH6OjCYSYlCdUB | title=bak | sourceVendorId=CuovNUZH6OjCYSYlCdUB | sourceProductCount=0
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6285ddbfd9598_0hB8mx1z1DeNR9CAzXfh | title=LA Parrilla | sourceVendorId=0hB8mx1z1DeNR9CAzXfh | sourceProductCount=4
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285ddbfd9598_0hB8mx1z1DeNR9CAzXfh_646ec79605f08 | sourceProductId=646ec79605f08 | cloneVendorId=aceh_clone_6285ddbfd9598_0hB8mx1z1DeNR9CAzXfh | sourceVendorId=0hB8mx1z1DeNR9CAzXfh | name=asdfasdf | photo=true | categoryID=62cd5926d5186 | vendorID=aceh_clone_6285ddbfd9598_0hB8mx1z1DeNR9CAzXfh
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285ddbfd9598_0hB8mx1z1DeNR9CAzXfh_646ed3e6ab55f | sourceProductId=646ed3e6ab55f | cloneVendorId=aceh_clone_6285ddbfd9598_0hB8mx1z1DeNR9CAzXfh | sourceVendorId=0hB8mx1z1DeNR9CAzXfh | name=Combo 5 | photo=true | categoryID=646ed350d0543 | vendorID=aceh_clone_6285ddbfd9598_0hB8mx1z1DeNR9CAzXfh
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285ddbfd9598_0hB8mx1z1DeNR9CAzXfh_YTePbEnm5AxAa8SlGy0d | sourceProductId=YTePbEnm5AxAa8SlGy0d | cloneVendorId=aceh_clone_6285ddbfd9598_0hB8mx1z1DeNR9CAzXfh | sourceVendorId=0hB8mx1z1DeNR9CAzXfh | name=Pollo A La Leña | photo=true | categoryID=62ecef57887cb | vendorID=aceh_clone_6285ddbfd9598_0hB8mx1z1DeNR9CAzXfh
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285ddbfd9598_0hB8mx1z1DeNR9CAzXfh_xM1iyTGJqM1WuDmAiPJ1 | sourceProductId=xM1iyTGJqM1WuDmAiPJ1 | cloneVendorId=aceh_clone_6285ddbfd9598_0hB8mx1z1DeNR9CAzXfh | sourceVendorId=0hB8mx1z1DeNR9CAzXfh | name=POLLO PIZZA | photo=true | categoryID=63aaf0142902b | vendorID=aceh_clone_6285ddbfd9598_0hB8mx1z1DeNR9CAzXfh
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6285ddbfd9598_1ZrcQ4ysrrheSVguUkFF | title=Koobilo Eats | sourceVendorId=1ZrcQ4ysrrheSVguUkFF | sourceProductCount=1
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285ddbfd9598_1ZrcQ4ysrrheSVguUkFF_GhX9nYN5XYRY9LQYceBO | sourceProductId=GhX9nYN5XYRY9LQYceBO | cloneVendorId=aceh_clone_6285ddbfd9598_1ZrcQ4ysrrheSVguUkFF | sourceVendorId=1ZrcQ4ysrrheSVguUkFF | name=Durum | photo=true | categoryID=62ecf0f1c144b | vendorID=aceh_clone_6285ddbfd9598_1ZrcQ4ysrrheSVguUkFF
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6285ddbfd9598_1vMlKPiniUrzybKkWiS1 | title=ahmed store | sourceVendorId=1vMlKPiniUrzybKkWiS1 | sourceProductCount=2
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285ddbfd9598_1vMlKPiniUrzybKkWiS1_FOrI1vYtiK9BeUYyH9rL | sourceProductId=FOrI1vYtiK9BeUYyH9rL | cloneVendorId=aceh_clone_6285ddbfd9598_1vMlKPiniUrzybKkWiS1 | sourceVendorId=1vMlKPiniUrzybKkWiS1 | name=Pasta  | photo=true | categoryID=63aaf0142902b | vendorID=aceh_clone_6285ddbfd9598_1vMlKPiniUrzybKkWiS1
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6285ddbfd9598_1vMlKPiniUrzybKkWiS1_WEmcSAN6PKzvHnU87bbj | sourceProductId=WEmcSAN6PKzvHnU87bbj | cloneVendorId=aceh_clone_6285ddbfd9598_1vMlKPiniUrzybKkWiS1 | sourceVendorId=1vMlKPiniUrzybKkWiS1 | name=Burgers Test | photo=true | categoryID=62ecef0780589 | vendorID=aceh_clone_6285ddbfd9598_1vMlKPiniUrzybKkWiS1
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE | title=Food Grocery store | sourceVendorId=07RFZCxogqVjkbVTt9HE | sourceProductCount=5
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE_CeXrjmrha9h5FUmXfpFs | sourceProductId=CeXrjmrha9h5FUmXfpFs | cloneVendorId=aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE | sourceVendorId=07RFZCxogqVjkbVTt9HE | name=Mengo | photo=true | categoryID=636e30433dd7e | vendorID=aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE_chn9QbA7UVCnzfO74jtk | sourceProductId=chn9QbA7UVCnzfO74jtk | cloneVendorId=aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE | sourceVendorId=07RFZCxogqVjkbVTt9HE | name=Cookies | photo=true | categoryID=zzq4LngLd8PWzYJfsvnjfV | vendorID=aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE_qtlemSKirYyIgfaQLIJX | sourceProductId=qtlemSKirYyIgfaQLIJX | cloneVendorId=aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE | sourceVendorId=07RFZCxogqVjkbVTt9HE | name=Meggi | photo=true | categoryID=zzq4LngLd8PWzYJfsvnjfV | vendorID=aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE_st8IsI550HxB1809QtqE | sourceProductId=st8IsI550HxB1809QtqE | cloneVendorId=aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE | sourceVendorId=07RFZCxogqVjkbVTt9HE | name=Orange | photo=true | categoryID=636e30433dd7e | vendorID=aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE_x0nBdWe5CDp3eCavZr9P | sourceProductId=x0nBdWe5CDp3eCavZr9P | cloneVendorId=aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE | sourceVendorId=07RFZCxogqVjkbVTt9HE | name=Apple | photo=true | categoryID=636e30433dd7e | vendorID=aceh_clone_6319dc53314ee_07RFZCxogqVjkbVTt9HE
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS | title=Simo Market | sourceVendorId=10KPhdPgfOUpkHtzT3oS | sourceProductCount=12
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS_V1SpZUEw203BJwGvbnaG | sourceProductId=V1SpZUEw203BJwGvbnaG | cloneVendorId=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS | sourceVendorId=10KPhdPgfOUpkHtzT3oS | name=Graps | photo=true | categoryID=636e30433dd7e | vendorID=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS_b2r8Hp8MYio4LyH8Z1mR | sourceProductId=b2r8Hp8MYio4LyH8Z1mR | cloneVendorId=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS | sourceVendorId=10KPhdPgfOUpkHtzT3oS | name=Fish Meat | photo=true | categoryID=OvjEAidyRSeuoH81pK4O | vendorID=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS_gDps07zUOi7IEVKmbTOg | sourceProductId=gDps07zUOi7IEVKmbTOg | cloneVendorId=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS | sourceVendorId=10KPhdPgfOUpkHtzT3oS | name=Onion | photo=true | categoryID=88pNxhccktxkSgIndZ8e | vendorID=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS_iJf6IJggFCBJG3xhsTd1 | sourceProductId=iJf6IJggFCBJG3xhsTd1 | cloneVendorId=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS | sourceVendorId=10KPhdPgfOUpkHtzT3oS | name=Test | photo=true | categoryID=636e30433dd7e | vendorID=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS_k0cHUxOLfJvQn3pn74vm | sourceProductId=k0cHUxOLfJvQn3pn74vm | cloneVendorId=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS | sourceVendorId=10KPhdPgfOUpkHtzT3oS | name=Cookies | photo=true | categoryID=zzq4LngLd8PWzYJfsvnjfV | vendorID=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS_oGPyFHXL3uJHIPwA4ktM | sourceProductId=oGPyFHXL3uJHIPwA4ktM | cloneVendorId=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS | sourceVendorId=10KPhdPgfOUpkHtzT3oS | name=Masala Meggi | photo=true | categoryID=zzq4LngLd8PWzYJfsvnjfV | vendorID=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS_r1WBqciM3iyIOvvjBvDE | sourceProductId=r1WBqciM3iyIOvvjBvDE | cloneVendorId=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS | sourceVendorId=10KPhdPgfOUpkHtzT3oS | name=Chicken Meat | photo=true | categoryID=OvjEAidyRSeuoH81pK4O | vendorID=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS_rMNaVr9UOshrt6Tpr3Rw | sourceProductId=rMNaVr9UOshrt6Tpr3Rw | cloneVendorId=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS | sourceVendorId=10KPhdPgfOUpkHtzT3oS | name=Biscuits | photo=true | categoryID=zzq4LngLd8PWzYJfsvnjfV | vendorID=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS_rvH1e0yXrSHnMetXACHU | sourceProductId=rvH1e0yXrSHnMetXACHU | cloneVendorId=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS | sourceVendorId=10KPhdPgfOUpkHtzT3oS | name=Broccoli | photo=true | categoryID=88pNxhccktxkSgIndZ8e | vendorID=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS_tJoQSqNMDGvRWLEaTVgA | sourceProductId=tJoQSqNMDGvRWLEaTVgA | cloneVendorId=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS | sourceVendorId=10KPhdPgfOUpkHtzT3oS | name=Apple | photo=true | categoryID=636e30433dd7e | vendorID=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS_tSqVXFKISP05jDRZy8VJ | sourceProductId=tSqVXFKISP05jDRZy8VJ | cloneVendorId=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS | sourceVendorId=10KPhdPgfOUpkHtzT3oS | name=Orange | photo=true | categoryID=636e30433dd7e | vendorID=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS_tjoJjD7WFoipvBD5WaPr | sourceProductId=tjoJjD7WFoipvBD5WaPr | cloneVendorId=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS | sourceVendorId=10KPhdPgfOUpkHtzT3oS | name=Kiwi | photo=true | categoryID=636e30433dd7e | vendorID=aceh_clone_6319dc53314ee_10KPhdPgfOUpkHtzT3oS
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_6319dc53314ee_1BlB62hfbg7mX0MTIUeo | title=D-Mart | sourceVendorId=1BlB62hfbg7mX0MTIUeo | sourceProductCount=0
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_63368fb2beabb_ctcUMFPFpzTyaWUcEcjV | title=Kleitzee | sourceVendorId=ctcUMFPFpzTyaWUcEcjV | sourceProductCount=1
+PRODUCT_CLONED_OK | newProductId=aceh_product_aceh_clone_63368fb2beabb_ctcUMFPFpzTyaWUcEcjV_6461a26d1e096 | sourceProductId=6461a26d1e096 | cloneVendorId=aceh_clone_63368fb2beabb_ctcUMFPFpzTyaWUcEcjV | sourceVendorId=ctcUMFPFpzTyaWUcEcjV | name=sdasda | photo=true | categoryID=636e30433dd7e | vendorID=aceh_clone_63368fb2beabb_ctcUMFPFpzTyaWUcEcjV
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_custom_akap_ticket_custom_akap_vendor_aceh_jakarta | title=AKAP Aceh - Jakarta | sourceVendorId=custom_akap_vendor_aceh_jakarta | sourceProductCount=0
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_custom_akap_ticket_custom_akap_vendor_lhokseumawe_medan | title=AKAP Lhokseumawe - Medan | sourceVendorId=custom_akap_vendor_lhokseumawe_medan | sourceProductCount=0
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_custom_akap_ticket_custom_akap_vendor_sumatra_express | title=Sumatra Express Ticket | sourceVendorId=custom_akap_vendor_sumatra_express | sourceProductCount=0
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_custom_laundry_service_custom_laundry_vendor_express_care | title=Express Care Laundry | sourceVendorId=custom_laundry_vendor_express_care | sourceProductCount=0
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_custom_laundry_service_custom_laundry_vendor_fresh_wash | title=Fresh Wash Laundry | sourceVendorId=custom_laundry_vendor_fresh_wash | sourceProductCount=0
+
+VENDOR_PRODUCT_CLONE_GROUP | cloneVendorId=aceh_clone_custom_laundry_service_custom_laundry_vendor_gota_clean | title=Gota Clean Laundry | sourceVendorId=custom_laundry_vendor_gota_clean | sourceProductCount=0
+TEXT_END
+
+## Counters
+TEXT_START
+TOTAL_CLONE_VENDORS_CHECKED: 22
+SOURCE_PRODUCTS_FOUND: 47
+PRODUCTS_WRITTEN_OR_UPDATED: 47
+VENDORS_WITHOUT_SOURCE_PRODUCTS: 10
+RISK: 0
+TEXT_END
+
+## Final Status
+STATUS: FIRESTORE_VENDOR_PRODUCTS_CLONE_TO_ACEH_WRITE_PASS
