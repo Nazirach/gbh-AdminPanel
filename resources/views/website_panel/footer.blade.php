@@ -15,7 +15,7 @@
     $company = [
         'brand' => 'Ghalbit Maritronix',
         'tagline' => 'Maritime intelligence, drone operation, AI control center, and digital ecosystem integration.',
-        'address' => 'Aceh - Selat Malaka - Indonesia',
+        'address' => 'Nusantara - Selat Malaka - Indonesia - Global Maritime Corridor',
         'email' => 'contact@ghalbit-maritronix.local',
         'phone' => '+62 000 0000 0000',
     ];
@@ -155,3 +155,4 @@
     </div>
 </div>
 @endsection
+

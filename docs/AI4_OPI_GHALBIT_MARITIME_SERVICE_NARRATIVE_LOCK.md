@@ -15,7 +15,7 @@ Narasi wajib tetap kembali kepada:
 
 - OPI / PT Ocean Pasific International sebagai operator strategis dan mitra industri.
 - GHALBIT MARITRONIX sebagai platform teknologi, control center, data center, AI, drone, peta, dan sistem integrasi.
-- Selat Malaka, Aceh, Indonesia, dan koridor pelayaran global sebagai target pengembangan.
+- Selat Malaka, Nusantara, Indonesia, dan koridor pelayaran global sebagai target pengembangan.
 - Pelayanan pelayaran dan kebutuhan kapal sebagai dasar bisnis.
 - Integrasi laut-darat sebagai arah sistem.
 - Admin Web, Firebase, APK/Web, vendor, driver/operator, order, status, data, peta, dan laporan sebagai struktur operasional.
@@ -24,7 +24,7 @@ Narasi wajib tetap kembali kepada:
 
 ## 2. Narasi Inti yang Dikunci
 
-GHALBIT MARITRONIX adalah platform teknologi maritim dan daratan terpadu yang dikembangkan untuk mendukung pelayanan pelayaran, logistik, drone operation, monitoring, data intelligence, dan koordinasi layanan di Selat Malaka, Aceh, Indonesia, serta koridor maritim global.
+GHALBIT MARITRONIX adalah platform teknologi maritim dan daratan terpadu yang dikembangkan untuk mendukung pelayanan pelayaran, logistik, drone operation, monitoring, data intelligence, dan koordinasi layanan di Selat Malaka, Nusantara, Indonesia, serta koridor maritim global.
 
 PT Ocean Pasific International (OPI) menjadi operator strategis dan mitra industri utama yang menghubungkan kebutuhan kapal di laut dengan jaringan pelayanan darat.
 
@@ -101,7 +101,7 @@ OPI harus diposisikan sebagai:
 3. Penghubung kebutuhan kapal di laut dengan pelayanan darat.
 4. Pengelola jaringan mitra, vendor, operator, dan field team.
 5. Penyedia data operasional, fasilitas lapangan, infrastruktur teknologi, lokasi pilot, tenaga ahli, dan dukungan teknis.
-6. Entitas pengembangan layanan dari Aceh dan Selat Malaka menuju Indonesia dan dunia.
+6. Entitas pengembangan layanan dari Nusantara dan Selat Malaka menuju Indonesia dan dunia.
 
 OPI bukan hanya nama perusahaan pada footer.
 
@@ -127,7 +127,7 @@ Pelayanan yang menjadi dasar narasi:
 12. Maritime monitoring dan peta operasi.
 13. Field operation dan armada darat pendukung.
 14. Data, laporan, compliance, dan risk monitoring.
-15. Pilot project teknologi maritim di Selat Malaka, Aceh, Sabang, Batam, dan wilayah strategis lain.
+15. Pilot project teknologi maritim di Selat Malaka, Nusantara, Sabang, Batam, dan wilayah strategis lain.
 16. Ekspansi layanan ke koridor pelayaran global.
 
 ---
@@ -171,7 +171,7 @@ OPI dapat diposisikan sebagai mitra industri yang mendukung:
 
 ## 8. Narasi Website yang Disetujui
 
-GHALBIT MARITRONIX adalah platform teknologi maritim dan daratan terpadu yang dikembangkan untuk mendukung pelayanan pelayaran, logistik, drone operation, monitoring, data intelligence, dan koordinasi layanan di Selat Malaka, Aceh, Indonesia, serta koridor maritim global.
+GHALBIT MARITRONIX adalah platform teknologi maritim dan daratan terpadu yang dikembangkan untuk mendukung pelayanan pelayaran, logistik, drone operation, monitoring, data intelligence, dan koordinasi layanan di Selat Malaka, Nusantara, Indonesia, serta koridor maritim global.
 
 PT Ocean Pasific International (OPI) menjadi operator strategis dan mitra industri utama yang menghubungkan kebutuhan kapal di laut dengan jaringan pelayanan darat: ship agency, STS support, bunker coordination, crew change, chandlery, spare part, fresh water, port coordination, drone survey, armada lapangan, dan dukungan operasional lainnya.
 
@@ -226,7 +226,7 @@ Narasi tidak boleh:
 2. Menjelaskan GHALBIT MARITRONIX hanya sebagai e-commerce umum.
 3. Menjelaskan website sebagai landing page promosi tanpa sistem operasional.
 4. Mengabaikan OPI sebagai operator strategis.
-5. Mengabaikan Selat Malaka, Aceh, dan layanan pelayaran.
+5. Mengabaikan Selat Malaka, Nusantara, dan layanan pelayaran.
 6. Membuat klaim finansial tanpa service khusus estimasi.
 7. Membuat struktur Firebase/field baru tanpa kontrak.
 8. Membuat cabang layanan baru tanpa dicatat di Buku Besar.
@@ -258,4 +258,5 @@ Audit narasi agar tidak ada lagi Mitera Keluarga atau narasi e-commerce umum.
 ## 12. Status
 
 STATUS: AI4_OPI_GHALBIT_MARITIME_SERVICE_NARRATIVE_LOCK_CREATED
+
 
