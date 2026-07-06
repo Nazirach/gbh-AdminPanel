@@ -433,6 +433,8 @@ foreach ($countries as $keycountry => $valuecountry) {
                             'phoneNumber': userPhone,
                             'profilePictureURL': IMG.ownerImage,
                             'active': vendor_active,
+                            'isActive': vendor_active,
+                            'updatedAt': firebase.firestore.FieldValue.serverTimestamp(),
                             'userBankDetails': userBankDetails
                         }).then(async function (result) {
                             if (store_id != null) {
@@ -440,6 +442,7 @@ foreach ($countries as $keycountry => $valuecountry) {
                                     'authorName': userFirstName +' ' +userLastName,
                                     'authorProfilePic': IMG.ownerImage,
                                     'subscriptionExpiryDate': subscriptionPlanExpiryDate,
+                                    'updatedAt': firebase.firestore.FieldValue.serverTimestamp(),
                                 });
                             }            
                             jQuery("#data-table_processing").hide();

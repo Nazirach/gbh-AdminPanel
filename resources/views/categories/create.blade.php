@@ -192,7 +192,9 @@
                             'section_id': section_id,
                             'review_attributes': review_attributes,
                             'publish': itemPublish,
-                            'show_in_homepage': show_in_homepage
+                            'show_in_homepage': show_in_homepage,
+                            'createdAt': firebase.firestore.FieldValue.serverTimestamp(),
+                            'updatedAt': firebase.firestore.FieldValue.serverTimestamp()
                         }).then(function (result) {
                             window.location.href = '{{ route("categories")}}';
                         });

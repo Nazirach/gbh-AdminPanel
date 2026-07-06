@@ -1004,6 +1004,8 @@
                                 'isDigitalProduct': is_digital_product,
                                 'digitalProduct': DigitalImg ? DigitalImg : '',
                                 'taxSetting': selectedTaxes,
+                                // SERVICE49B_PRODUCT_EDIT_UPDATEDAT_NORMALIZER
+                                'updatedAt': firebase.firestore.FieldValue.serverTimestamp(),
                             };
                             database.collection('vendor_products').doc(vendor_id).update(objects).then(function(result) {
                                 <?php if (isset($_GET['eid']) && $_GET['eid'] != '') { ?>

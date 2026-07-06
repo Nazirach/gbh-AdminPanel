@@ -217,6 +217,7 @@
                             'publish': itemPublish,
                             'show_in_homepage': show_in_homepage,
                             'order': parseInt(order),
+                            'updatedAt': firebase.firestore.FieldValue.serverTimestamp(),
                         }).then(function (result) {
                             window.location.href = '{{ route("categories")}}';
                         });

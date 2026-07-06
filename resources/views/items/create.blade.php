@@ -929,6 +929,7 @@
                                 'isDigitalProduct': is_digital_product,
                                 'digitalProduct': DigitalImg,
                                 'createdAt': firebase.firestore.FieldValue.serverTimestamp(),
+                                'updatedAt': firebase.firestore.FieldValue.serverTimestamp(),
                                 'taxSetting': selectedTaxes,
                             };
                             database.collection('vendor_products').doc(id)
