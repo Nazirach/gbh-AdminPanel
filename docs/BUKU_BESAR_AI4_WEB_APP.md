@@ -759,3 +759,12 @@ SIAP LANJUT KE SAFE_TOUCH_MAP.
 - Hasil: Nusantara=True, global=True, GHALBIT=True, OPI=True, Aceh=False, 500=False, 404=False.
 - Kesimpulan: Model bisnis sudah menjadi Nusantara Global Maritime Business Model.
 - Output: docs/AI4_0039B_NUSANTARA_GLOBAL_FINAL_CLOUD_PASS_REPORT.md
+
+---
+
+### AI4-0041A — AppServiceProvider Boot Guard
+- Tanggal: 2026-07-06
+- Mode: ISOLATED_BOOT_GUARD
+- File: app/Providers/AppServiceProvider.php
+- Tujuan: boot Laravel tetap aman saat Firebase/Firestore read gagal.
+- Output: docs/AI4_0041A_APPSERVICEPROVIDER_BOOT_GUARD_REPORT.md

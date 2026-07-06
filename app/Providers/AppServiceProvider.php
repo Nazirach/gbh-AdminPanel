@@ -44,10 +44,14 @@ class AppServiceProvider extends ServiceProvider
     {
         $openai_settings = [];
 
-        if (!empty(env('FIREBASE_PROJECT_ID'))) {
+        $projectId = trim((string) env('FIREBASE_PROJECT_ID'));
+
+        // Boot guard: if Firebase project id is missing/invalid, skip Firestore read.
+        if (!empty($projectId)) {
             try {
                 $openai_settings = FirestoreHelper::getDocument('settings/openai_settings') ?? [];
             } catch (Throwable $e) {
+                // Boot must be resilient to cURL/SSL/Firestore errors.
                 $openai_settings = [];
             }
         }
@@ -65,4 +69,5 @@ class AppServiceProvider extends ServiceProvider
             $view->with('openai_settings', $openai_settings);
         });
     }
+
 }
