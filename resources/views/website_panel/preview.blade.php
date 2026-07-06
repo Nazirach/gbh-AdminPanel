@@ -1,4 +1,4 @@
-﻿@extends('layouts.website_panel')
+@extends('layouts.website_panel')
 
 @section('title', 'Preview Website')
 
@@ -203,6 +203,36 @@
     </div>
 </section>
 @include('website_panel.partials.opi_business_services')
+
+{{-- AI4-0043_PREVIEW_VENDOR_SUPPLIER_WEB_LINK --}}
+<section class="gm-revenue-section" style="margin-top: 24px;">
+    <div class="gm-revenue-head">
+        <span>VENDOR & SUPPLIER ACCESS</span>
+        <h2>Web Vendor / Pemasok</h2>
+        <p>
+            Akses khusus untuk vendor, pemasok, dan mitra operasional yang mendukung layanan
+            GHALBIT MARITRONIX dan OPI dalam ekosistem maritim Nusantara.
+        </p>
+    </div>
+
+    <div class="gm-revenue-grid">
+        <article class="gm-revenue-card">
+            <h3>Store Panel Vendor / Pemasok</h3>
+            <p>
+                Portal ini digunakan sebagai pintu masuk vendor dan pemasok untuk pengelolaan
+                produk, layanan, suplai, dan dukungan operasional.
+            </p>
+            <a href="https://gbh-store-panel-online-production-yvsizk.laravel.cloud/login"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn btn-primary"
+               style="margin-top: 10px;">
+                Buka Web Vendor / Pemasok
+            </a>
+        </article>
+    </div>
+</section>
+
 
 @include('website_panel.partials.nusantara_global_model')
 
