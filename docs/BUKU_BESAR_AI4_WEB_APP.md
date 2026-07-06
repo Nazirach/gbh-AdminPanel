@@ -786,3 +786,12 @@ SIAP LANJUT KE SAFE_TOUCH_MAP.
 - Status: KEEP_PATCH_ISOLATED
 - File: resources/views/reports/tax-reports.blade.php
 - Output: docs/AI4_0041D_TAX_REPORT_PATCH_ISOLATION_REPORT.md
+
+---
+
+### AI4-0041E — Module Selector Dark Theme & Image Fallback
+- Tanggal: 2026-07-06
+- Mode: ISOLATED_MODULE_SELECTOR_PATCH
+- Status: KEEP_PATCH_ISOLATED
+- File: resources/views/layouts/app.blade.php
+- Output: docs/AI4_0041E_MODULE_SELECTOR_DARK_THEME_IMAGE_FALLBACK_REPORT.md

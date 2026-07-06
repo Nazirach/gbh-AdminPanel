@@ -693,6 +693,70 @@
                 padding: 14px 16px;
             }
         }
+
+        /* MODULE_SELECTOR_DARK_THEME_FIX */
+        .gm-service-switcher__menu.dropdown-menu,
+        .dropdown-service,
+        .dropdown-service_inner {
+            background-color: #061b2a !important;
+            color: #ffffff !important;
+            border: 1px solid #164b68 !important;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45) !important;
+        }
+
+        .gm-service-switcher__menu h2,
+        .gm-service-switcher__menu h3,
+        .gm-service-switcher__menu p,
+        .dropdown-service_inner h2,
+        .dropdown-service_inner h3,
+        .dropdown-service_inner p {
+            color: #ffffff !important;
+        }
+
+        .gm-service-switcher__menu .service-list-box,
+        .dropdown-service_inner .service-list-box,
+        #sections_header .service-list-box {
+            background-color: #08263a !important;
+            color: #ffffff !important;
+            border: 1px solid #164b68 !important;
+            border-radius: 8px !important;
+            box-shadow: none !important;
+        }
+
+        .gm-service-switcher__menu .service-list-box:hover,
+        .dropdown-service_inner .service-list-box:hover,
+        #sections_header .service-list-box:hover {
+            background-color: #0b3550 !important;
+            border-color: #0ea5e9 !important;
+        }
+
+        .gm-service-switcher__menu .service-list-box h3,
+        .gm-service-switcher__menu .service-list-box p,
+        #sections_header .service-list-box h3,
+        #sections_header .service-list-box p {
+            color: #ffffff !important;
+        }
+
+.gm-service-switcher__menu .service-list-box img,
+        #sections_header .service-list-box img {
+            width: 42px !important;
+            height: 42px !important;
+            max-width: 42px !important;
+            max-height: 42px !important;
+            object-fit: contain !important;
+            opacity: 1 !important;
+            background-color: rgba(255, 255, 255, 0.92) !important;
+            padding: 6px !important;
+            border-radius: 8px !important;
+            display: inline-block !important;
+        }
+
+        .gm-service-switcher__menu .selected-section,
+        #sections_header .selected-section {
+            background-color: #123a55 !important;
+            border-color: #0ea5e9 !important;
+        }
+
     </style>
 </head>
 
@@ -891,14 +955,10 @@
             }
         });
         
-        var placeholderImage = '';
-        var placeholder = database.collection('settings').doc('placeHolderImage');
-        placeholder.get().then(async function (snapshotsimage) {
-            var placeholderImageData = snapshotsimage.data();
-            placeholderImage = placeholderImageData.image;
-        })
-        
+        var placeholderImage = "{{ asset('images/section_image.png') }}"; // MODULE_SELECTOR_IMAGE_FALLBACK_FIX
+
         $(document).ready(async function () {
+
             getServiceSections();
             $(document).on('click', '.service-list-box', function() {
                 let sectionUrl = $(this).data('section-url');
@@ -1069,9 +1129,10 @@
                 var data = doc.data();
                 var sectionName = data.name || 'Unnamed Section';
                 var sectionDescription = data.description || '';
-                var sectionImage = data.sectionImage || placeholderImage;
+                var sectionImage = (data.sectionImage && String(data.sectionImage).trim() !== '') ? data.sectionImage : placeholderImage; // MODULE_SELECTOR_IMAGE_FALLBACK_FIX
                 /* SECTION_SELECTOR_FIELD_FALLBACK_FIX */
                 var sectionId = data.id || data.sectionId || doc.id;
+
                 var sectionType = normalizeSectionServiceType(data);
                 var sectionRoute = `{{ route('dashboard') }}/${sectionId}/${sectionType}`;
                 var isSelected = (sectionId === idSecActive && sectionType === typeSecActive);
