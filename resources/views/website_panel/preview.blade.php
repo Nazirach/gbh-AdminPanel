@@ -39,7 +39,7 @@
     ];
 
     $investorPoints = [
-        'Nilai strategis Selat Malaka dan Aceh sebagai poros maritim.',
+        'Nilai strategis Selat Malaka dan Nusantara sebagai poros maritim.',
         'Kebutuhan teknologi kendali, peta, drone, dan data maritim.',
         'Potensi kerja sama pemerintah daerah, pelabuhan, energi, dan investor.',
         'Aset digital: panel, dashboard, mapping, AI workflow, dan operation evidence.',
@@ -204,10 +204,12 @@
 </section>
 @include('website_panel.partials.opi_business_services')
 
+@include('website_panel.partials.nusantara_global_model')
+
 <section class="gm-preview-footer">
     <div>
         <h2>Ghalbit Maritronix</h2>
-        <p>Aceh - Selat Malaka - Indonesia</p>
+        <p>Nusantara - Selat Malaka - Indonesia</p>
     </div>
     <div>
         <span>Maritime Control Center</span>
@@ -233,7 +235,7 @@
         <article>
             <strong>01</strong>
             <h3>Strategic Maritime Position</h3>
-            <p>Menempatkan Aceh dan Selat Malaka sebagai ruang strategis untuk pemetaan, monitoring, dan koordinasi maritim.</p>
+            <p>Menempatkan Nusantara dan Selat Malaka sebagai ruang strategis untuk pemetaan, monitoring, dan koordinasi maritim.</p>
         </article>
 
         <article>
@@ -291,6 +293,8 @@
     </div>
 </div>
 @endsection
+
+
 
 
 

@@ -727,3 +727,23 @@ SIAP LANJUT KE SAFE_TOUCH_MAP.
 - Masalah: /website-panel cloud masih 500, sementara /website-panel/preview sudah 200 OK.
 - Perbaikan: /website-panel redirect ke /website-panel/preview.
 - Output: docs/AI4_0038D_FIX_WEBSITE_PANEL_ROOT_ROUTE_REPORT.md
+
+---
+
+### AI4-0039 — Nusantara Global Business Narrative
+- Tanggal: 2026-07-06
+- Mode: WEBSITE_PANEL_AND_DOCS_ONLY
+- Keputusan: Narasi Aceh dinaikkan menjadi Nusantara agar model bisnis OPI + GHALBIT MARITRONIX menjadi model bisnis maritim nasional-global.
+- Prinsip: Selat Malaka, Sabang, Batam, pelabuhan, dan rute darat tetap menjadi node operasi strategis.
+- Target: koridor pelayaran global.
+- Output: docs/AI4_0039_NUSANTARA_GLOBAL_BUSINESS_NARRATIVE_REPORT.md
+- Lock: docs/AI4_NUSANTARA_GLOBAL_BUSINESS_NARRATIVE_LOCK.md
+
+---
+
+### AI4-0039B — Nusantara Global Keyword Visibility Fix
+- Tanggal: 2026-07-06
+- Mode: WEBSITE_PANEL_ONLY
+- Masalah: Nusantara sudah tampil, Aceh hilang, tetapi kata global belum tampil di HTML preview.
+- Perbaikan: Menambahkan blok Nusantara Global Maritime Model.
+- Output: docs/AI4_0039B_NUSANTARA_GLOBAL_KEYWORD_VISIBILITY_FIX_REPORT.md

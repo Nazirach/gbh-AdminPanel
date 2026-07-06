@@ -163,6 +163,8 @@
 </div>
 @include('website_panel.partials.opi_business_services')
 
+@include('website_panel.partials.nusantara_global_model')
+
 <div class="wp-grid-2">
     <div class="wp-card">
         <h3>Checklist Ghalbit Maritronix</h3>
@@ -187,6 +189,8 @@
     </div>
 </div>
 @endsection
+
+
 
 
 
