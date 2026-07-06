@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('content')
 
@@ -536,7 +536,7 @@ $(document).ready(function () {
 async function getDocumentStatusIcon(driverId) {
     const docSnap = await database.collection('documents_verify').doc(driverId).get();
 
-    if (!docSnap.exists) return '';                     // no verification record → no icon
+    if (!docSnap.exists) return '';                     // no verification record â†’ no icon
 
     const docs = docSnap.data().documents || [];
 
@@ -555,7 +555,7 @@ async function getDocumentStatusIcon(driverId) {
         return '<i class="mdi mdi-close-circle unverified-icon" data-toggle="tooltip" data-bs-original-title="{{trans('lang.rejected')}}" style="color:red;"></i>';
     }
 
-    // Both uploaded (or pending) → no icon
+    // Both uploaded (or pending) â†’ no icon
     return '';
 }
 async function buildHTML(val) {
@@ -678,7 +678,9 @@ async function buildHTML(val) {
 async function getUserStoreInfo(vendorId) {
     let vendorRef = await database.collection('vendors').doc(vendorId).get();
     if (vendorRef.exists) {
-        return vendorRef.data();
+        let vendorData = vendorRef.data();
+        vendorData.id = vendorRef.id;
+        return vendorData;
     }
 
     let vendorQuery = await database.collection('vendors').where('author', '==', vendorId).limit(1).get();
@@ -841,7 +843,4 @@ $(document).on("click", "input[name='isActive']", function (e) {
     }
 </script>
 @endsection
-
-
-
 
