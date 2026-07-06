@@ -1,5 +1,96 @@
 @extends('layouts.app')
 @section('content')
+
+    <style>
+        /* TAX_REPORT_TABLE_HEADER_CONTRAST */
+        /* More specific selectors to avoid being overridden by global/table CSS */
+        #tax_report_table_container table thead,
+        #tax_report_table_container table thead tr,
+        #tax_report_table_container table thead th,
+        #taxDetailContent table thead,
+        #taxDetailContent table thead tr,
+        #taxDetailContent table thead th,
+        #tax_report_table_container table.table-bordered thead th,
+        #tax_report_table_container table.table-bordered thead tr th,
+        table.table-bordered thead th {
+            background-color: #061b2a !important;
+            color: #ffffff !important;
+            border-color: #164b68 !important;
+            white-space: nowrap;
+        }
+
+        #tax_report_table_container table tbody td,
+        #tax_report_table_container table tbody th,
+        #taxDetailContent table tbody td,
+        #taxDetailContent table tbody th {
+            color: inherit;
+            border-color: #164b68 !important;
+        }
+
+        /* End TAX_REPORT_TABLE_HEADER_CONTRAST */
+
+        #reportrange {
+            background: #061b2a !important;
+            color: #ffffff !important;
+            border: 1px solid #164b68 !important;
+            border-radius: 6px;
+            min-height: 38px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #reportrange span,
+        #reportrange i {
+            color: #ffffff !important;
+        }
+
+        .daterangepicker {
+            background-color: #061b2a !important;
+            color: #ffffff !important;
+            border: 1px solid #164b68 !important;
+        }
+
+        .daterangepicker .calendar-table {
+            background-color: #061b2a !important;
+            border-color: #164b68 !important;
+        }
+
+        .daterangepicker td,
+        .daterangepicker th,
+        .daterangepicker .ranges li {
+            color: #ffffff !important;
+        }
+
+        .daterangepicker td.off,
+        .daterangepicker td.off.in-range,
+        .daterangepicker td.off.start-date,
+        .daterangepicker td.off.end-date {
+            background-color: #0b2638 !important;
+            color: #7f9bad !important;
+        }
+
+        .daterangepicker td.available:hover,
+        .daterangepicker th.available:hover,
+        .daterangepicker .ranges li:hover {
+            background-color: #123a55 !important;
+            color: #ffffff !important;
+        }
+
+        .daterangepicker td.active,
+        .daterangepicker td.active:hover {
+            background-color: #0ea5e9 !important;
+            color: #ffffff !important;
+        }
+
+        .daterangepicker .drp-buttons {
+            border-top: 1px solid #164b68 !important;
+        }
+
+        .daterangepicker .drp-selected {
+            color: #ffffff !important;
+        }
+    </style>
     <div class="page-wrapper">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
@@ -26,7 +117,7 @@
                                     <label class="col-3 control-label">{{trans('lang.select_date_range')}}</label>
                                     <div class="col-7">
                                         <div id="reportrange"
-                                             style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                                             style="background: #061b2a; color: #ffffff; cursor: pointer; padding: 5px 10px; border: 1px solid #164b68; width: 100%">
                                             <i class="fa fa-calendar"></i>&nbsp;
                                             <span></span> <i class="fa fa-caret-down"></i>
                                         </div>
@@ -152,6 +243,8 @@
         linkedCalendars: false,
         autoApply: false,
         autoUpdateInput: false,
+        /* TAX_REPORT_DATERANGEPICKER_RANGES_GUARD_FIX */
+        /* Ensure ranges is always valid (each range => [startMoment, endMoment]) */
         ranges: {
             'Today': [moment(), moment()],
             'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -160,10 +253,10 @@
             'This Month': [moment().startOf('month'), moment().endOf('month')],
             'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')],
             'This Year': [moment().startOf('year'), moment().endOf('year')],
-            'Last Year': [
-                moment().subtract(1, 'year').startOf('year'),
-                moment().subtract(1, 'year').endOf('year')
-            ]
+            'Last Year': [moment().subtract(1, 'year').startOf('year'), moment().subtract(1, 'year').endOf('year')]
+        },
+        locale: {
+            format: 'YYYY-MM-DD'
         }
     });
 
@@ -435,8 +528,18 @@
                     html += '<button id="download_report" class="btn btn-primary">Download Report</button>';
             html += '</div>';
 
-            html += '<table class="table table-bordered">';
-            html += '<tr><th>No</th><th>Income Source</th><th>Total Income</th><th>Total Tax</th><th>Action</th></tr>';
+            html += '<table class="table table-bordered" id="tax_report_main_table">';
+            html += '<thead style="background-color:#061b2a !important;color:#ffffff !important;">' +
+                '<tr style="background-color:#061b2a !important;color:#ffffff !important;">' +
+                    '<th style="background-color:#061b2a !important;color:#ffffff !important;border-color:#164b68 !important;">No</th>' +
+                    '<th style="background-color:#061b2a !important;color:#ffffff !important;border-color:#164b68 !important;">Income Source</th>' +
+                    '<th style="background-color:#061b2a !important;color:#ffffff !important;border-color:#164b68 !important;">Total Income</th>' +
+                    '<th style="background-color:#061b2a !important;color:#ffffff !important;border-color:#164b68 !important;">Total Tax</th>' +
+                    '<th style="background-color:#061b2a !important;color:#ffffff !important;border-color:#164b68 !important;">Action</th>' +
+                '</tr>' +
+            '</thead>';
+            html += '<tbody>';
+
 
             let rows = [];
             if(service_type == "delivery-service" || service_type == "ecommerce-service" || service_type == "ondemand-service"){

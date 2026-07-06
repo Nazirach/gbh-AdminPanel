@@ -777,3 +777,12 @@ SIAP LANJUT KE SAFE_TOUCH_MAP.
 - Status: KEEP_PATCH
 - Tujuan: normalisasi createdAt/updatedAt dan kompatibilitas field isActive/section_id.
 - Output: docs/AI4_0041B_CATEGORY_ITEM_VENDOR_TIMESTAMP_COMPAT_REPORT.md
+
+---
+
+### AI4-0041D — Tax Report Patch Isolation
+- Tanggal: 2026-07-06
+- Mode: ISOLATED_TAX_REPORT_PATCH
+- Status: KEEP_PATCH_ISOLATED
+- File: resources/views/reports/tax-reports.blade.php
+- Output: docs/AI4_0041D_TAX_REPORT_PATCH_ISOLATION_REPORT.md
