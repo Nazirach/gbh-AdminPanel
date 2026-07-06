@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('content')
 
@@ -291,6 +291,33 @@
         $('#itemTable').DataTable().ajax.reload(); 
     });
 
+        // SERVICE_62G_B_ADMIN_ITEM_READ_COMPATIBILITY
+        function resolveAdminItemImage(val) {
+            if (!val) return placeholderImage;
+            if (val.photo) return val.photo;
+            if (Array.isArray(val.photos) && val.photos.length > 0) return val.photos[0];
+            return placeholderImage;
+        }
+
+        function resolveAdminItemCategoryID(val) {
+            if (!val) return '';
+            if (Array.isArray(val.categoryID)) return val.categoryID.length > 0 ? val.categoryID[0] : '';
+            return val.categoryID || '';
+        }
+
+        function resolveAdminItemSectionID(val) {
+            if (!val) return '';
+            return val.section_id || val.sectionId || '';
+        }
+
+        function normalizeAdminItemPrice(value) {
+            if (value === '' || value === null || value === undefined) return 0;
+            if (typeof value === 'number') return value;
+            var cleaned = String(value).replace(/,/g, '').trim();
+            var parsed = Number(cleaned);
+            return Number.isFinite(parsed) ? parsed : 0;
+        }
+
     $(document).ready(async function () {
 
         if (section_id) {
@@ -526,7 +553,7 @@
 
                         childData.foodName = childData.name;
 
-                        childData.finalPrice = parseInt(finalPrice);
+                        childData.finalPrice = normalizeAdminItemPrice(finalPrice);
 
                         childData.store = storeNames[childData.vendorID] || '';
 
@@ -803,8 +830,9 @@ async function buildHTML(val) {
 
     }
 
-    if (val.photo != '') {
-        html.push('<img class="rounded" style="width:50px" src="' + val.photo + '" alt="image" onerror="this.onerror=null;this.src=\'' + placeholderImage + '\'"> ' + ' <a href="' + route1 + '" class="redirecttopage left_space"> ' + val.name + tax_titles + '</a>');
+    var itemImage = resolveAdminItemImage(val);
+    if (itemImage != '') {
+        html.push('<img class="rounded" style="width:50px" src="' + itemImage + '" alt="image" onerror="this.onerror=null;this.src=\'' + placeholderImage + '\'"> ' + ' <a href="' + route1 + '" class="redirecttopage left_space"> ' + val.name + tax_titles + '</a>');
 
     } else {
         html.push('<img class="rounded" style="width:50px" src="' + placeholderImage + '" alt="image"> ' + ' <a href="' + route1 + '" class="redirecttopage left_space">' + val.name + tax_titles + '</a>');
@@ -1209,4 +1237,3 @@ async function deleteProductData(productId) {
     }
 </script>
 @endsection
-
