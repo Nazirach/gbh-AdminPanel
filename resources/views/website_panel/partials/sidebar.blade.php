@@ -1,4 +1,4 @@
-﻿{{-- AI4-0027_GHALBIT_WEBSITE_PANEL_NAVIGATION_REFINEMENT --}}
+{{-- AI4-0027_GHALBIT_WEBSITE_PANEL_NAVIGATION_REFINEMENT --}}
 <aside class="wp-sidebar gm-sidebar">
     <div class="gm-sidebar-brand">
         <div class="gm-brand-mark">GM</div>
@@ -43,6 +43,15 @@
         <a href="https://gbh-adminpanel-main-ieebco.laravel.cloud/" target="_blank" rel="noopener noreferrer" class="gm-cloud-admin-link">
             <span>07</span>
             Web Admin Cloud
+        </a>
+
+        {{-- AI4-0044_PREVIEW_VENDOR_LINK_BELOW_ADMIN_CLOUD --}}
+        <a href="https://gbh-store-panel-online-production-yvsizk.laravel.cloud/login"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="gm-cloud-admin-link gm-cloud-store-link">
+            <span>08</span>
+            Web Vendor / Pemasok
         </a>
     </nav>
 
