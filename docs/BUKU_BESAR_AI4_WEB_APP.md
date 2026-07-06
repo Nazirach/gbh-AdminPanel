@@ -795,3 +795,12 @@ SIAP LANJUT KE SAFE_TOUCH_MAP.
 - Status: KEEP_PATCH_ISOLATED
 - File: resources/views/layouts/app.blade.php
 - Output: docs/AI4_0041E_MODULE_SELECTOR_DARK_THEME_IMAGE_FALLBACK_REPORT.md
+
+---
+
+### AI4-0042 — Website Panel Controller Route Safety
+- Tanggal: 2026-07-06
+- Mode: ISOLATED_CONTROLLER_COMMIT
+- Status: KEEP_AND_COMMIT_CONTROLLER
+- File: app/Http/Controllers/WebsitePanelController.php
+- Output: docs/AI4_0042_WEBSITE_PANEL_CONTROLLER_UNTRACKED_ROUTE_REPORT.md
