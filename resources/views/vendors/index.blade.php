@@ -305,7 +305,8 @@ $(document).ready(function () {
                         }
                     }
 
-                    let sid = childData.section_id;
+                    // SERVICE_62G_A_ADMIN_VENDOR_READ_COMPATIBILITY
+                    let sid = childData.section_id || childData.sectionId || '';
                     if (
                         section_id && !(
                             sid === section_id ||
@@ -558,6 +559,23 @@ async function getDocumentStatusIcon(driverId) {
     // Both uploaded (or pending) â†’ no icon
     return '';
 }
+function resolveAdminVendorImage(val) {
+    if (!val) return placeholderImage;
+    if (val.profilePictureURL) return val.profilePictureURL;
+    if (val.photo) return val.photo;
+    if (Array.isArray(val.photos) && val.photos.length > 0) return val.photos[0];
+    return placeholderImage;
+}
+
+function resolveAdminStoreTitle(storeData) {
+    if (!storeData) return '';
+    return storeData.title || storeData.name || storeData.vendorName || '{{trans("lang.unknown")}}';
+}
+
+function resolveAdminCommission(data) {
+    if (!data) return null;
+    return data.adminCommission || data.adminCommision || null;
+}
 async function buildHTML(val) {
     var html = [];
 
@@ -588,18 +606,8 @@ async function buildHTML(val) {
     if(val.isAutoVerify === true){
         verified += ' <i class="mdi mdi-check-circle verified-icon" data-toggle="tooltip" data-bs-original-title="{{ trans('lang.auto_approved') }}"></i>';
     }
-
-    if (val.profilePictureURL == '') {
-
-        html.push('<img class="rounded" style="width:50px" src="' + placeholderImage + '" alt="image">  <a id="userName_' + id + '"  href="'+vendorEdit+'" class="redirecttopage left_space">' + val.firstName + ' ' + val.lastName + '</a>' + verified);
-    } else {
-        if(val.profilePictureURL){
-            photo=val.profilePictureURL;
-        }else{
-            photo=placeholderImage;
-        }
-        html.push('<img class="rounded" style="width:50px" src="' + photo + '" alt="image" onerror="this.onerror=null;this.src=\'' + placeholderImage + '\'">  <a id="userName_' + id + '"  href="'+vendorEdit+'" class="redirecttopage left_space">' + val.firstName + ' ' + val.lastName + '</a>' + verified);
-    }
+    var vendorProfileImage = resolveAdminVendorImage(val);
+    html.push('<img class="rounded" style="width:50px" src="' + vendorProfileImage + '" alt="image" onerror="this.onerror=null;this.src=\'' + placeholderImage + '\'">  <a id="userName_' + id + '" href="'+vendorEdit+'" class="redirecttopage left_space">' + val.firstName + ' ' + val.lastName + '</a>' + verified);
 
     if(val.vendorData){
         html.push('<a href="'+vendorView+'" class="redirecttopage left_space">' + val.vendorData.title + '</a>');
@@ -843,4 +851,5 @@ $(document).on("click", "input[name='isActive']", function (e) {
     }
 </script>
 @endsection
+
 
