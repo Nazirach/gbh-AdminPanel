@@ -610,7 +610,8 @@ async function buildHTML(val) {
     html.push('<img class="rounded" style="width:50px" src="' + vendorProfileImage + '" alt="image" onerror="this.onerror=null;this.src=\'' + placeholderImage + '\'">  <a id="userName_' + id + '" href="'+vendorEdit+'" class="redirecttopage left_space">' + val.firstName + ' ' + val.lastName + '</a>' + verified);
 
     if(val.vendorData){
-        html.push('<a href="'+vendorView+'" class="redirecttopage left_space">' + val.vendorData.title + '</a>');
+        var safeStoreTitle = resolveAdminStoreTitle(val.vendorData);
+        html.push('<a href="'+vendorView+'" class="redirecttopage left_space">' + safeStoreTitle + '</a>');
     }else{
         html.push('');
     }
@@ -851,4 +852,5 @@ $(document).on("click", "input[name='isActive']", function (e) {
     }
 </script>
 @endsection
+
 
