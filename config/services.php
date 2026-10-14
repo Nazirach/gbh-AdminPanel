@@ -30,4 +30,25 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    
+    // Server-side payout provider credentials. Never accept these from browser payloads.
+    // Payout execution stays disabled until SEC-003 and atomicity/idempotency controls are verified.
+    'payouts' => [
+        'enabled' => env('PAYOUTS_ENABLED', false),
+        'paypal' => [
+            'client_id' => env('PAYOUT_PAYPAL_CLIENT_ID'),
+            'client_secret' => env('PAYOUT_PAYPAL_CLIENT_SECRET'),
+            'live' => env('PAYOUT_PAYPAL_LIVE', false),
+        ],
+        'stripe' => [
+            'secret' => env('PAYOUT_STRIPE_SECRET'),
+        ],
+        'razorpay' => [
+            'key' => env('PAYOUT_RAZORPAY_KEY'),
+            'secret' => env('PAYOUT_RAZORPAY_SECRET'),
+        ],
+        'flutterwave' => [
+            'secret' => env('PAYOUT_FLUTTERWAVE_SECRET'),
+        ],
+    ],
 ];
