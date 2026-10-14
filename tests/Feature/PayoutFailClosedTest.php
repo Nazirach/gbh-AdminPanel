@@ -83,6 +83,27 @@ class PayoutFailClosedTest extends TestCase
         $this->assertSame(503, $response->getStatusCode());
     }
 
+
+
+    public function test_payout_stays_unavailable_even_if_enabled_and_dummy_credentials_are_present(): void
+    {
+        config([
+            'services.payouts.enabled' => true,
+            'services.payouts.stripe.secret' => 'sk_test_dummy_not_real',
+        ]);
+
+        $response = (new UserController())->payToUser(
+            $this->requestWithData([
+                'method' => 'stripe',
+                'payoutId' => 'dummy-payout-id',
+                'amount' => '1.00',
+                'user' => ['withdrawMethod' => ['stripe' => ['accountId' => 'acct_dummy']]],
+            ])
+        );
+
+        $this->assertSame(503, $response->getStatusCode());
+    }
+
     public function test_unknown_provider_method_is_rejected(): void
     {
         $response = (new UserController())->payToUser(
