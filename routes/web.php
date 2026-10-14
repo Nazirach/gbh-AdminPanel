@@ -748,8 +748,8 @@ Route::middleware(['permission:payout-request-provider,payout-request.provider']
 });
 
 Route::post('store-firebase-service', [App\Http\Controllers\HomeController::class,'storeFirebaseService'])->name('store-firebase-service');
-Route::post('pay-to-user', [App\Http\Controllers\UserController::class,'payToUser'])->name('pay.user');
-Route::post('check-payout-status', [App\Http\Controllers\UserController::class,'checkPayoutStatus'])->name('check.payout.status');
+Route::post('pay-to-user', [App\Http\Controllers\UserController::class,'payToUser'])->name('pay.user')->middleware('payout-endpoint-permission');
+Route::post('check-payout-status', [App\Http\Controllers\UserController::class,'checkPayoutStatus'])->name('check.payout.status')->middleware('payout-endpoint-permission');
 
 Route::middleware(['permission:subscription-plans,subscription-plans'])->group(function () {
     Route::get('/subscription-plans', [App\Http\Controllers\SubscriptionPlanController::class, 'index'])->name('subscription-plans.index');

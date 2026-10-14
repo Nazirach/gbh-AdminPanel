@@ -19,6 +19,14 @@ use Razorpay\Api\Api;
 
 class UserController extends Controller
 {
+    /**
+     * Hard safety hold: authoritative payout-record ownership/status/amount
+     * checks and atomic idempotency are not implemented or verified yet.
+     * Keep false until SEC-003, PAY-001, and PAY-002 are implemented and
+     * validated in a non-production environment. Provider credentials and
+     * PAYOUTS_ENABLED alone must never unlock real money movement.
+     */
+    private const PAYOUT_EXECUTION_SECURITY_COMPLETE = false;
 
     public function __construct()
     {
@@ -234,35 +242,98 @@ class UserController extends Controller
         return  $shortname.$mask.$domain;
     }
 
+    /**
+     * Payout execution is fail-closed until explicitly enabled after SEC-003,
+     * authorization, and atomic/idempotency controls are verified.
+     * Provider credentials are loaded only from server configuration.
+     */
+    private function payoutProviderReady($method)
+    {
+        // Explicit code-level hold until authoritative record validation and
+        // atomic/idempotent ledger updates are implemented and tested.
+        if (!self::PAYOUT_EXECUTION_SECURITY_COMPLETE) {
+            return false;
+        }
+
+        if (!config('services.payouts.enabled', false)) {
+            return false;
+        }
+
+        $required = [
+            'paypal' => [
+                config('services.payouts.paypal.client_id'),
+                config('services.payouts.paypal.client_secret'),
+            ],
+            'stripe' => [
+                config('services.payouts.stripe.secret'),
+            ],
+            'razorpay' => [
+                config('services.payouts.razorpay.key'),
+                config('services.payouts.razorpay.secret'),
+            ],
+            'flutterwave' => [
+                config('services.payouts.flutterwave.secret'),
+            ],
+        ];
+
+        if (!isset($required[$method])) {
+            return false;
+        }
+
+        foreach ($required[$method] as $credential) {
+            if (!is_string($credential) || trim($credential) === '') {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private function payoutUnavailableResponse()
+    {
+        return response()->json([
+            'success' => false,
+            'message' => 'Payout processing is not configured or enabled on the server.',
+        ], 503);
+    }
+
     public function payToUser(Request $request)
     {
-        $response = array();
-        $encrypt_data =  $request->data;
+        $decoded = base64_decode((string) $request->input('data', ''), true);
+        $data = is_string($decoded) ? json_decode($decoded, true) : null;
 
-        if(!empty($encrypt_data)){
+        if (!is_array($data) || !isset($data['method']) || !is_string($data['method'])) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid payout request.',
+            ], 422);
+        }
 
-            $data = json_decode(base64_decode($encrypt_data),true);
+        $method = strtolower($data['method']);
+        if (!in_array($method, ['paypal', 'stripe', 'razorpay', 'flutterwave'], true)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Unsupported payout method.',
+            ], 422);
+        }
 
-            if($data['method'] == "paypal"){
+        if (!$this->payoutProviderReady($method)) {
+            return $this->payoutUnavailableResponse();
+        }
 
+        switch ($method) {
+            case 'paypal':
                 $response = $this->payWithPaypal($data);
-
-            }else if($data['method'] == "stripe"){
-
+                break;
+            case 'stripe':
                 $response = $this->payWithStripe($data);
-
-            }else if($data['method'] == "razorpay"){
-
+                break;
+            case 'razorpay':
                 $response = $this->payWithRazorpay($data);
-
-            }else if($data['method'] == "flutterwave"){
-
+                break;
+            case 'flutterwave':
                 $response = $this->payWithFlutterwave($data);
-            }
-
-        }else{
-            $response['success'] = false;
-            $response['message'] = 'Payout method setup is not done';
+                break;
         }
 
         return response()->json($response);
@@ -276,9 +347,9 @@ class UserController extends Controller
 
             $paypal_email = $data['user']['withdrawMethod']['paypal']['email'];
 
-            $isLive = $data['settings']['paypal']['isLive'];
-            $clientId = $data['settings']['paypal']['paypalAppId'];
-            $clientSecret = $data['settings']['paypal']['paypalSecret'];
+            $isLive = config('services.payouts.paypal.live', false);
+            $clientId = config('services.payouts.paypal.client_id');
+            $clientSecret = config('services.payouts.paypal.client_secret');
             if($isLive){
                 $environment = new ProductionEnvironment($clientId, $clientSecret);
             }else{
@@ -346,7 +417,7 @@ class UserController extends Controller
             $accountId = $data['user']['withdrawMethod']['stripe']['accountId'];
             $amount = bcmul($data["amount"], 100);
 
-            $stripeSecret = $data['settings']['stripe']['stripeSecret'];
+            $stripeSecret = config('services.payouts.stripe.secret');
             $stripe = new \Stripe\StripeClient($stripeSecret);
 
             try {
@@ -392,8 +463,8 @@ class UserController extends Controller
             $accountId = $data['user']['withdrawMethod']['razorpay']['accountId'];
             $amount = bcmul($data["amount"], 100);
 
-            $api_key = $data['settings']['razorpay']['razorpayKey'];
-            $api_secret = $data['settings']['razorpay']['razorpaySecret'];
+            $api_key = config('services.payouts.razorpay.key');
+            $api_secret = config('services.payouts.razorpay.secret');
             $api = new Api($api_key, $api_secret);
 
             try {
@@ -433,7 +504,7 @@ class UserController extends Controller
             $bankCode = $data['user']['withdrawMethod']['flutterwave']['bankCode'];
             $accountNumber = $data['user']['withdrawMethod']['flutterwave']['accountNumber'];
             $amount = bcmul($data["amount"],10);
-            $secretKey = $data['settings']['flutterwave']['secretKey'];
+            $secretKey = config('services.payouts.flutterwave.secret');
 
             $fields = [
                 "account_bank" => $bankCode,
@@ -475,31 +546,40 @@ class UserController extends Controller
         return $payout_response;
     }
 
-    public function checkPayoutStatus(Request $request){
+    public function checkPayoutStatus(Request $request)
+    {
+        $decoded = base64_decode((string) $request->input('data', ''), true);
+        $data = is_string($decoded) ? json_decode($decoded, true) : null;
 
-        $response = array();
-        $encrypt_data =  $request->data;
+        if (!is_array($data) || !isset($data['method']) || !is_string($data['method'])) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid payout status request.',
+            ], 422);
+        }
 
-        if(!empty($encrypt_data)){
+        $method = strtolower($data['method']);
+        if (!in_array($method, ['paypal', 'razorpay', 'flutterwave'], true)) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Unsupported payout status method.',
+            ], 422);
+        }
 
-            $data = json_decode(base64_decode($encrypt_data),true);
+        if (!$this->payoutProviderReady($method)) {
+            return $this->payoutUnavailableResponse();
+        }
 
-            if($data['method'] == "paypal"){
-
+        switch ($method) {
+            case 'paypal':
                 $response = $this->checkStatusPaypal($data);
-
-            }else if($data['method'] == "razorpay"){
-
+                break;
+            case 'razorpay':
                 $response = $this->checkStatusRazorpay($data);
-
-            }else if($data['method'] == "flutterwave"){
-
+                break;
+            case 'flutterwave':
                 $response = $this->checkStatusFlutterwave($data);
-            }
-
-        }else{
-            $response['success'] = false;
-            $response['message'] = 'Something went wrong to check status';
+                break;
         }
 
         return response()->json($response);
@@ -515,9 +595,9 @@ class UserController extends Controller
 
             if(!empty($payout_batch_id)){
 
-                $isLive = $data['settings']['paypal']['isLive'];
-                $clientId = $data['settings']['paypal']['paypalAppId'];
-                $clientSecret = $data['settings']['paypal']['paypalSecret'];
+                $isLive = config('services.payouts.paypal.live', false);
+                $clientId = config('services.payouts.paypal.client_id');
+                $clientSecret = config('services.payouts.paypal.client_secret');
                 if($isLive){
                     $api_url = "https://api-m.paypal.com";
                 }else{
@@ -594,8 +674,8 @@ class UserController extends Controller
 
             if(!empty($transfer_id)){
 
-                $api_key = $data['settings']['razorpay']['razorpayKey'];
-                $api_secret = $data['settings']['razorpay']['razorpaySecret'];
+                $api_key = config('services.payouts.razorpay.key');
+                $api_secret = config('services.payouts.razorpay.secret');
                 $api = new Api($api_key, $api_secret);
 
                 try {
@@ -642,7 +722,7 @@ class UserController extends Controller
 
             if(!empty($transfer_id)){
 
-                $secretKey = $data['settings']['flutterwave']['secretKey'];
+                $secretKey = config('services.payouts.flutterwave.secret');
 
                 $ch = curl_init();
                 curl_setopt($ch,CURLOPT_URL,"https://api.flutterwave.com/v3/transfers/".$transfer_id);
