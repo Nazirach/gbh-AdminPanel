@@ -19,6 +19,14 @@ use Razorpay\Api\Api;
 
 class UserController extends Controller
 {
+    /**
+     * Hard safety hold: authoritative payout-record ownership/status/amount
+     * checks and atomic idempotency are not implemented or verified yet.
+     * Keep false until SEC-003, PAY-001, and PAY-002 are implemented and
+     * validated in a non-production environment. Provider credentials and
+     * PAYOUTS_ENABLED alone must never unlock real money movement.
+     */
+    private const PAYOUT_EXECUTION_SECURITY_COMPLETE = false;
 
     public function __construct()
     {
@@ -241,6 +249,12 @@ class UserController extends Controller
      */
     private function payoutProviderReady($method)
     {
+        // Explicit code-level hold until authoritative record validation and
+        // atomic/idempotent ledger updates are implemented and tested.
+        if (!self::PAYOUT_EXECUTION_SECURITY_COMPLETE) {
+            return false;
+        }
+
         if (!config('services.payouts.enabled', false)) {
             return false;
         }
