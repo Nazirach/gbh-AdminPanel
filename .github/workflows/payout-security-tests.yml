@@ -1,0 +1,40 @@
+name: Payout security regression tests
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - fix/gbh-adminpanel-payout-hardening-20261014
+
+permissions:
+  contents: read
+
+jobs:
+  payout-security-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: bcmath, curl, dom, fileinfo, mbstring, openssl, pdo_sqlite, sqlite3, xml
+          coverage: none
+
+      - name: Install locked dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Run payout security regression tests
+        env:
+          APP_ENV: testing
+          APP_DEBUG: 'false'
+          FIREBASE_PROJECT_ID: ''
+          PAYOUTS_ENABLED: 'false'
+        run: |
+          vendor/bin/phpunit tests/Unit/PayoutEndpointAccessPolicyTest.php
+          vendor/bin/phpunit tests/Feature/PayoutFailClosedTest.php
